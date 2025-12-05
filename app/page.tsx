@@ -53,7 +53,7 @@ export default function HomePage() {
           className="absolute inset-0 z-0"
           style={{
             backgroundImage:
-              "url(/placeholder.svg?height=1080&width=1920&query=GTA%20V%20cityscape%20Los%20Santos%20street%20urban%20night%20neon)",
+              "url(https://assets.mriqbox.com.br/branding/logo1080.png)",
             backgroundSize: "cover",
             backgroundPosition: "center",
             backgroundAttachment: "fixed",
@@ -115,8 +115,8 @@ export default function HomePage() {
             <div className="text-sm text-muted-foreground">Source</div>
           </Card>
           <Card className="p-6 text-center">
-            <div className="text-3xl font-bold text-brand mb-1">24/7</div>
-            <div className="text-sm text-muted-foreground">Suporte</div>
+            <div className="text-3xl font-bold text-brand mb-1">Suporte</div>
+            <div className="text-sm text-muted-foreground">Online</div>
           </Card>
         </div>
       </section>
@@ -172,7 +172,7 @@ export default function HomePage() {
             </div>
             <h3 className="text-xl font-semibold mb-2">Fácil Instalação</h3>
             <p className="text-muted-foreground leading-relaxed">
-              Clone do GitHub e comece a desenvolver em minutos com nossa documentação completa.
+              Instale com o txAdmin e comece a desenvolver em minutos com nossa documentação. Dúvidas? Acesse o discord da comunidade!
             </p>
           </Card>
           <Card className="p-6 hover:shadow-lg transition-shadow">
