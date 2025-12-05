@@ -47,8 +47,24 @@ export default function HomePage() {
       </header>
 
       {/* Hero Section */}
-      <section className="container mx-auto px-4 py-24 md:py-32">
-        <div className="max-w-4xl mx-auto text-center">
+      <section className="relative container mx-auto px-4 py-24 md:py-32 overflow-hidden">
+        {/* Parallax Background */}
+        <div
+          className="absolute inset-0 z-0"
+          style={{
+            backgroundImage:
+              "url(/placeholder.svg?height=1080&width=1920&query=GTA%20V%20cityscape%20Los%20Santos%20street%20urban%20night%20neon)",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundAttachment: "fixed",
+          }}
+        >
+          {/* Dark overlay mask */}
+          <div className="absolute inset-0 bg-black/80" />
+        </div>
+
+        {/* Content */}
+        <div className="relative z-10 max-w-4xl mx-auto text-center">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-muted border border-border text-xs text-muted-foreground mb-6">
             <Zap className="w-3 h-3" />
             Framework Qbox Adaptada para o Brasil
