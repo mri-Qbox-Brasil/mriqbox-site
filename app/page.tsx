@@ -250,6 +250,12 @@ export default function HomePage() {
               </div>
               <span className="text-sm text-muted-foreground">© 2025 MRI Qbox Brasil. Open Source.</span>
             </div>
+            <div className="text-sm text-muted-foreground">
+              Feito com{" "}
+              <Link href="https://v0.dev" target="_blank" className="text-brand hover:underline">
+                v0.dev
+              </Link>
+            </div>
             <div className="flex items-center gap-6">
               <Link
                 href="https://github.com/mri-Qbox-Brasil"

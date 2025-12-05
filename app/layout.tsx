@@ -15,21 +15,8 @@ export const metadata: Metadata = {
   authors: [{ name: "MRI Qbox Brasil" }],
   generator: "v0.app",
   icons: {
-    icon: [
-      {
-        url: "/icon-light-32x32.png",
-        media: "(prefers-color-scheme: light)",
-      },
-      {
-        url: "/icon-dark-32x32.png",
-        media: "(prefers-color-scheme: dark)",
-      },
-      {
-        url: "/icon.svg",
-        type: "image/svg+xml",
-      },
-    ],
-    apple: "/apple-icon.png",
+    icon: "https://assets.mriqbox.com.br/branding/logo96.png",
+    apple: "https://assets.mriqbox.com.br/branding/logo96.png",
   },
 }
 
