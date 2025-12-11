@@ -87,7 +87,7 @@ export default function HomePage() {
             <Button size="lg" asChild className="text-base px-8">
               <Link href="https://docs.mriqbox.com.br/mri/instalacao" target="_blank">
                 <Download className="w-5 h-5 mr-2" />
-                Começar agora
+                Instale agora
               </Link>
             </Button>
             <Button size="lg" variant="outline" asChild className="text-base px-8 bg-transparent">
