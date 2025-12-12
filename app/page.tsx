@@ -44,11 +44,6 @@ export default function HomePage() {
                 Discord
               </Link>
             </Button>
-            <Button size="sm" asChild>
-              <Link href="https://github.com/mri-Qbox-Brasil" target="_blank">
-                Começar
-              </Link>
-            </Button>
           </div>
         </div>
       </header>
