@@ -2,13 +2,11 @@ import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
-import GoogleAdsense from "@/components/googlead"
 import { Github, MessageCircle, Code2, Users, Download, Zap, Globe, Shield } from "lucide-react"
 
 export default function HomePage() {
   return (
     <div className="min-h-screen bg-background">
-      <GoogleAdsense />
       {/* Header */}
       <header className="border-b border-border">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
