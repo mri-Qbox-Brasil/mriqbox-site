@@ -57,7 +57,6 @@ export default function HomePage() {
             backgroundImage: "url(https://assets.mriqbox.com.br/branding/logo1080.png)",
             backgroundSize: "cover",
             backgroundPosition: "center",
-            backgroundAttachment: "fixed",
           }}
         >
           {/* Dark overlay mask */}
