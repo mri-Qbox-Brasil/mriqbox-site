@@ -1,30 +1,32 @@
-# Landing page for mri qbox
+# MRI Qbox Brasil — Landing Page
 
-*Automatically synced with your [v0.app](https://v0.app) deployments*
+Site institucional da MRI Qbox Brasil, framework FiveM open source (Qbcore + Ox) traduzida e otimizada para servidores brasileiros.
 
-[![Deployed on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?style=for-the-badge&logo=vercel)](https://vercel.com/ggfto-vercel/v0-landing-page-for-mri-qbox)
-[![Built with v0](https://img.shields.io/badge/Built%20with-v0.app-black?style=for-the-badge)](https://v0.app/chat/b3JQxB8HAku)
+## Stack
 
-## Overview
+- [Next.js 16](https://nextjs.org/) (App Router)
+- React 19 + TypeScript
+- Tailwind CSS 4
+- shadcn/ui (button, card)
 
-This repository will stay in sync with your deployed chats on [v0.app](https://v0.app).
-Any changes you make to your deployed app will be automatically pushed to this repository from [v0.app](https://v0.app).
+## Desenvolvimento
 
-## Deployment
+```bash
+pnpm install
+pnpm dev
+```
 
-Your project is live at:
+Abre em `http://localhost:3000`.
 
-**[https://vercel.com/ggfto-vercel/v0-landing-page-for-mri-qbox](https://vercel.com/ggfto-vercel/v0-landing-page-for-mri-qbox)**
+## Build
 
-## Build your app
+```bash
+pnpm build
+pnpm start
+```
 
-Continue building your app on:
+## Links
 
-**[https://v0.app/chat/b3JQxB8HAku](https://v0.app/chat/b3JQxB8HAku)**
-
-## How It Works
-
-1. Create and modify your project using [v0.app](https://v0.app)
-2. Deploy your chats from the v0 interface
-3. Changes are automatically pushed to this repository
-4. Vercel deploys the latest version from this repository
+- Discord: https://discord.mriqbox.com.br
+- GitHub: https://github.com/mri-Qbox-Brasil
+- Docs: https://docs.mriqbox.com.br
