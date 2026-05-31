@@ -27,7 +27,7 @@ export default function TermosPage() {
 
           <section className="space-y-4 text-muted-foreground leading-relaxed">
             <p>
-              Ao acessar <code className="text-brand">mriqbox.com.br</code> e seus subdomínios, ou ao usar
+              Ao acessar <code className="text-primary">mriqbox.com.br</code> e seus subdomínios, ou ao usar
               qualquer código publicado nos repositórios da MRI Qbox Brasil no GitHub, você concorda com
               estes termos. Se discordar, não use o site nem os scripts.
             </p>
@@ -39,7 +39,7 @@ export default function TermosPage() {
                 href="https://github.com/Qbox-project"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-brand hover:underline"
+                className="text-primary hover:underline"
               >
                 Qbox
               </a>{" "}
@@ -48,7 +48,7 @@ export default function TermosPage() {
                 href="https://github.com/mri-Qbox-Brasil"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-brand hover:underline"
+                className="text-primary hover:underline"
               >
                 github.com/mri-Qbox-Brasil
               </a>{" "}
@@ -120,7 +120,7 @@ export default function TermosPage() {
                 href="https://discord.mriqbox.com.br"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-brand hover:underline"
+                className="text-primary hover:underline"
               >
                 discord.mriqbox.com.br
               </a>

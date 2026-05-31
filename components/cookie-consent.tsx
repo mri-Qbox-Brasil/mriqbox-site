@@ -59,7 +59,7 @@ export function CookieConsent() {
           <div className="container mx-auto px-4 py-4 flex flex-col sm:flex-row items-center justify-between gap-4">
             <p className="text-sm text-muted-foreground text-center sm:text-left">
               Usamos cookies para anúncios e métricas. Veja a{" "}
-              <Link href="/privacidade" className="text-brand hover:underline">
+              <Link href="/privacidade" className="text-primary hover:underline">
                 política de privacidade
               </Link>
               .

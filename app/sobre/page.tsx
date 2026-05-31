@@ -22,7 +22,7 @@ export default function SobrePage() {
           </Link>
         </Button>
 
-        <h1 className="text-4xl md:text-5xl font-bold mb-6">Sobre a MRI Qbox Brasil</h1>
+        <h1 className="heading-mri text-4xl md:text-5xl mb-6">Sobre a MRI Qbox Brasil</h1>
         <p className="text-lg text-muted-foreground mb-12 leading-relaxed">
           Somos uma comunidade brasileira de desenvolvedores de FiveM que mantém a adaptação local da
           framework <strong className="text-foreground">Qbox</strong> (a evolução pós-fork do QBCore com
@@ -32,7 +32,7 @@ export default function SobrePage() {
         <section className="space-y-6 text-muted-foreground leading-relaxed">
           <Card className="p-6">
             <h2 className="text-2xl font-bold text-foreground mb-3 flex items-center gap-2">
-              <Heart className="w-5 h-5 text-brand" />
+              <Heart className="w-5 h-5 text-primary" />
               Por que existimos
             </h2>
             <p>
@@ -46,7 +46,7 @@ export default function SobrePage() {
 
           <Card className="p-6">
             <h2 className="text-2xl font-bold text-foreground mb-3 flex items-center gap-2">
-              <Globe className="w-5 h-5 text-brand" />
+              <Globe className="w-5 h-5 text-primary" />
               Nossa missão
             </h2>
             <ul className="list-disc ml-6 space-y-2">
@@ -71,7 +71,7 @@ export default function SobrePage() {
 
           <Card className="p-6">
             <h2 className="text-2xl font-bold text-foreground mb-3 flex items-center gap-2">
-              <Code2 className="w-5 h-5 text-brand" />
+              <Code2 className="w-5 h-5 text-primary" />
               O que mantemos
             </h2>
             <p className="mb-4">
@@ -103,7 +103,7 @@ export default function SobrePage() {
             </ul>
             <p className="mt-4">
               Lista completa em{" "}
-              <Link href="/recursos" className="text-brand hover:underline">
+              <Link href="/recursos" className="text-primary hover:underline">
                 /recursos
               </Link>
               .
@@ -119,7 +119,7 @@ export default function SobrePage() {
                 href="https://www.patreon.com/mriQboxBrasil"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-brand hover:underline"
+                className="text-primary hover:underline"
               >
                 Patreon
               </a>

@@ -28,10 +28,10 @@ export default function PrivacidadePage() {
           <section className="space-y-4 text-muted-foreground leading-relaxed">
             <p>
               A MRI Qbox Brasil (&ldquo;nós&rdquo;, &ldquo;nosso&rdquo;, &ldquo;MRI&rdquo;) opera o site{" "}
-              <code className="text-brand">mriqbox.com.br</code> e os subdomínios{" "}
-              <code className="text-brand">docs.mriqbox.com.br</code>,{" "}
-              <code className="text-brand">assets.mriqbox.com.br</code> e{" "}
-              <code className="text-brand">discord.mriqbox.com.br</code>. Esta política descreve quais dados
+              <code className="text-primary">mriqbox.com.br</code> e os subdomínios{" "}
+              <code className="text-primary">docs.mriqbox.com.br</code>,{" "}
+              <code className="text-primary">assets.mriqbox.com.br</code> e{" "}
+              <code className="text-primary">discord.mriqbox.com.br</code>. Esta política descreve quais dados
               coletamos, por que coletamos e como você pode controlar isso.
             </p>
 
@@ -51,7 +51,7 @@ export default function PrivacidadePage() {
                   href="https://policies.google.com/technologies/ads"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-brand hover:underline"
+                  className="text-primary hover:underline"
                 >
                   política de anúncios do Google
                 </a>
@@ -65,13 +65,13 @@ export default function PrivacidadePage() {
 
             <h2 className="text-2xl font-bold text-foreground mt-8 mb-3">Cookies</h2>
             <p>
-              Usamos um único cookie próprio: <code className="text-brand">mriqbox-consent</code> (armazenado
+              Usamos um único cookie próprio: <code className="text-primary">mriqbox-consent</code> (armazenado
               em <code>localStorage</code>) que guarda sua escolha no banner de consentimento. Os demais
               cookies (analytics, ads) só são definidos se você aceitar.
             </p>
             <p>
               Você pode revogar o consentimento a qualquer momento limpando o{" "}
-              <code className="text-brand">localStorage</code> do site pelas configurações do navegador.
+              <code className="text-primary">localStorage</code> do site pelas configurações do navegador.
             </p>
 
             <h2 className="text-2xl font-bold text-foreground mt-8 mb-3">Base legal (LGPD)</h2>
@@ -113,7 +113,7 @@ export default function PrivacidadePage() {
                 href="https://discord.mriqbox.com.br"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-brand hover:underline"
+                className="text-primary hover:underline"
               >
                 discord.mriqbox.com.br
               </a>

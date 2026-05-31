@@ -107,7 +107,7 @@ export default function RecursosPage() {
         </Button>
 
         <header className="mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">Recursos & Scripts</h1>
+          <h1 className="heading-mri text-4xl md:text-5xl mb-4">Recursos & Scripts</h1>
           <p className="text-lg text-muted-foreground max-w-2xl leading-relaxed">
             Tudo que a MRI Qbox Brasil mantém: a framework completa, painel admin, spawn cinemático,
             multichar, editor de aparência, chat, loadscreen e o design system compartilhado.
@@ -121,8 +121,8 @@ export default function RecursosPage() {
               <Card key={r.name} className="p-6 flex flex-col gap-4">
                 <div className="flex items-start justify-between gap-3">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-lg bg-brand/10 flex items-center justify-center shrink-0">
-                      <Icon className="w-5 h-5 text-brand" />
+                    <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
+                      <Icon className="w-5 h-5 text-primary" />
                     </div>
                     <h2 className="text-xl font-semibold">{r.name}</h2>
                   </div>
@@ -156,7 +156,7 @@ export default function RecursosPage() {
           })}
         </div>
 
-        <Card className="p-8 mt-12 text-center bg-gradient-to-br from-brand/5 to-brand-accent/5 border-brand/20">
+        <Card className="p-8 mt-12 text-center bg-gradient-to-br from-primary/5 to-primary-accent/5 border-primary/20">
           <h2 className="text-2xl font-bold mb-3">Quer começar?</h2>
           <p className="text-muted-foreground mb-6 max-w-xl mx-auto">
             Veja o guia rápido de instalação e configure seu servidor em minutos.

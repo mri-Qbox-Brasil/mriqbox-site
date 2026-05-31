@@ -1,13 +1,19 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Geist, Geist_Mono } from "next/font/google"
+import { Saira } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import CookieConsent from "@/components/cookie-consent"
 import "./globals.css"
 
-const geist = Geist({ subsets: ["latin"], variable: "--font-geist-sans" })
-const geistMono = Geist_Mono({ subsets: ["latin"], variable: "--font-geist-mono" })
+// Saira — mesma fonte usada nas NUIs MRI (Qspawn, Qadmin). Bold italic
+// pra "premium racing" feel da identidade da suite.
+const saira = Saira({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "900"],
+  style: ["normal", "italic"],
+  variable: "--font-saira",
+})
 
 const SITE_URL = "https://mriqbox.com.br"
 const OG_IMAGE = "https://assets.mriqbox.com.br/branding/logo1080.png"
@@ -79,7 +85,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="pt-BR" className={`dark ${geist.variable} ${geistMono.variable}`}>
+    <html lang="pt-BR" className={`dark ${saira.variable}`}>
       <body className="font-sans antialiased">
         <script
           type="application/ld+json"

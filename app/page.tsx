@@ -72,7 +72,7 @@ export default function HomePage() {
             <Zap className="w-3 h-3" />
             Framework Qbox Adaptada para o Brasil
           </div>
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 text-balance">
+          <h1 className="heading-mri text-4xl md:text-6xl mb-6 text-balance">
             A Framework FiveM
             <span className="text-gradient block">para Servidores Brasileiros</span>
           </h1>
@@ -112,19 +112,19 @@ export default function HomePage() {
       <section className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
           <Card className="p-6 text-center">
-            <div className="text-3xl font-bold text-brand mb-1">100%</div>
+            <div className="text-3xl font-bold text-primary mb-1">100%</div>
             <div className="text-sm text-muted-foreground">Gratuito</div>
           </Card>
           <Card className="p-6 text-center">
-            <div className="text-3xl font-bold text-brand mb-1">PT-BR</div>
+            <div className="text-3xl font-bold text-primary mb-1">PT-BR</div>
             <div className="text-sm text-muted-foreground">Traduzido</div>
           </Card>
           <Card className="p-6 text-center">
-            <div className="text-3xl font-bold text-brand mb-1">Open</div>
+            <div className="text-3xl font-bold text-primary mb-1">Open</div>
             <div className="text-sm text-muted-foreground">Source</div>
           </Card>
           <Card className="p-6 text-center">
-            <div className="text-3xl font-bold text-brand mb-1">Suporte</div>
+            <div className="text-3xl font-bold text-primary mb-1">Suporte</div>
             <div className="text-sm text-muted-foreground">Online</div>
           </Card>
         </div>
@@ -133,15 +133,15 @@ export default function HomePage() {
       {/* Features Section */}
       <section id="features" className="container mx-auto px-4 py-24">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Por que escolher MRI Qbox?</h2>
+          <h2 className="heading-mri text-3xl md:text-4xl mb-4">Por que escolher MRI Qbox?</h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             A melhor solução para criar servidores FiveM profissionais no Brasil
           </p>
         </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
           <Card className="p-6 hover:shadow-lg transition-shadow">
-            <div className="w-12 h-12 rounded-lg bg-brand/10 flex items-center justify-center mb-4">
-              <Globe className="w-6 h-6 text-brand" />
+            <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
+              <Globe className="w-6 h-6 text-primary" />
             </div>
             <h3 className="text-xl font-semibold mb-2">Tradução Completa</h3>
             <p className="text-muted-foreground leading-relaxed">
@@ -149,8 +149,8 @@ export default function HomePage() {
             </p>
           </Card>
           <Card className="p-6 hover:shadow-lg transition-shadow">
-            <div className="w-12 h-12 rounded-lg bg-brand/10 flex items-center justify-center mb-4">
-              <Shield className="w-6 h-6 text-brand" />
+            <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
+              <Shield className="w-6 h-6 text-primary" />
             </div>
             <h3 className="text-xl font-semibold mb-2">Segurança & Performance</h3>
             <p className="text-muted-foreground leading-relaxed">
@@ -158,8 +158,8 @@ export default function HomePage() {
             </p>
           </Card>
           <Card className="p-6 hover:shadow-lg transition-shadow">
-            <div className="w-12 h-12 rounded-lg bg-brand/10 flex items-center justify-center mb-4">
-              <Code2 className="w-6 h-6 text-brand" />
+            <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
+              <Code2 className="w-6 h-6 text-primary" />
             </div>
             <h3 className="text-xl font-semibold mb-2">Scripts de Qualidade</h3>
             <p className="text-muted-foreground leading-relaxed">
@@ -167,8 +167,8 @@ export default function HomePage() {
             </p>
           </Card>
           <Card className="p-6 hover:shadow-lg transition-shadow">
-            <div className="w-12 h-12 rounded-lg bg-brand/10 flex items-center justify-center mb-4">
-              <Users className="w-6 h-6 text-brand" />
+            <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
+              <Users className="w-6 h-6 text-primary" />
             </div>
             <h3 className="text-xl font-semibold mb-2">Comunidade Ativa</h3>
             <p className="text-muted-foreground leading-relaxed">
@@ -176,8 +176,8 @@ export default function HomePage() {
             </p>
           </Card>
           <Card className="p-6 hover:shadow-lg transition-shadow">
-            <div className="w-12 h-12 rounded-lg bg-brand/10 flex items-center justify-center mb-4">
-              <Download className="w-6 h-6 text-brand" />
+            <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
+              <Download className="w-6 h-6 text-primary" />
             </div>
             <h3 className="text-xl font-semibold mb-2">Fácil Instalação</h3>
             <p className="text-muted-foreground leading-relaxed">
@@ -186,8 +186,8 @@ export default function HomePage() {
             </p>
           </Card>
           <Card className="p-6 hover:shadow-lg transition-shadow">
-            <div className="w-12 h-12 rounded-lg bg-brand/10 flex items-center justify-center mb-4">
-              <Zap className="w-6 h-6 text-brand" />
+            <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
+              <Zap className="w-6 h-6 text-primary" />
             </div>
             <h3 className="text-xl font-semibold mb-2">Qbcore + Ox</h3>
             <p className="text-muted-foreground leading-relaxed">
@@ -200,7 +200,7 @@ export default function HomePage() {
       {/* FAQ Section */}
       <section id="faq" className="container mx-auto px-4 py-24">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Perguntas frequentes</h2>
+          <h2 className="heading-mri text-3xl md:text-4xl mb-4">Perguntas frequentes</h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Dúvidas comuns de quem está começando ou avaliando a framework
           </p>
@@ -226,7 +226,7 @@ export default function HomePage() {
             <p className="text-sm text-muted-foreground leading-relaxed">
               Pode. A licença MIT permite uso comercial. O que não pode é revender o código se passando
               pela MRI Qbox Brasil ou usar a marca/logo sem autorização. Detalhes nos{" "}
-              <Link href="/termos" className="text-brand hover:underline">
+              <Link href="/termos" className="text-primary hover:underline">
                 termos de uso
               </Link>
               .
@@ -240,7 +240,7 @@ export default function HomePage() {
                 href="https://discord.mriqbox.com.br"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-brand hover:underline"
+                className="text-primary hover:underline"
               >
                 Discord
               </a>
@@ -253,7 +253,7 @@ export default function HomePage() {
             <p className="text-sm text-muted-foreground leading-relaxed">
               Cerca de 30 minutos se você já tem txAdmin e MySQL prontos — basta importar a recipe.
               Veja o{" "}
-              <Link href="/comecar" className="text-brand hover:underline">
+              <Link href="/comecar" className="text-primary hover:underline">
                 guia rápido
               </Link>{" "}
               ou a{" "}
@@ -261,7 +261,7 @@ export default function HomePage() {
                 href="https://docs.mriqbox.com.br/mri/instalacao"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-brand hover:underline"
+                className="text-primary hover:underline"
               >
                 documentação completa
               </a>
@@ -276,7 +276,7 @@ export default function HomePage() {
                 href="https://github.com/mri-Qbox-Brasil"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-brand hover:underline"
+                className="text-primary hover:underline"
               >
                 GitHub
               </a>
@@ -290,9 +290,9 @@ export default function HomePage() {
       {/* Community Section */}
       <section id="community" className="container mx-auto px-4 py-24">
         <div className="max-w-4xl mx-auto">
-          <Card className="p-8 md:p-12 bg-gradient-to-br from-brand/5 to-brand-accent/5 border-brand/20">
+          <Card className="p-8 md:p-12 bg-gradient-to-br from-primary/5 to-primary-accent/5 border-primary/20">
             <div className="text-center">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">Junte-se à Comunidade</h2>
+              <h2 className="heading-mri text-3xl md:text-4xl mb-4">Junte-se à Comunidade</h2>
               <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed">
                 Entre no nosso Discord para suporte, compartilhar scripts, tirar dúvidas e colaborar com outros
                 desenvolvedores brasileiros.

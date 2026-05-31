@@ -22,7 +22,7 @@ export default function ComecarPage() {
           </Link>
         </Button>
 
-        <h1 className="text-4xl md:text-5xl font-bold mb-4">Como começar</h1>
+        <h1 className="heading-mri text-4xl md:text-5xl mb-4">Como começar</h1>
         <p className="text-lg text-muted-foreground mb-12 leading-relaxed">
           Subir um servidor FiveM com MRI Qbox leva menos de 30 minutos se você já tem txAdmin
           rodando. Este é o caminho mais curto — para configurações avançadas, consulte a{" "}
@@ -30,7 +30,7 @@ export default function ComecarPage() {
             href="https://docs.mriqbox.com.br"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-brand hover:underline"
+            className="text-primary hover:underline"
           >
             documentação completa
           </Link>
@@ -74,8 +74,8 @@ export default function ComecarPage() {
             <h2 className="text-2xl font-bold mb-3">2. Configurar convar suite-wide</h2>
             <p className="text-muted-foreground mb-4 leading-relaxed">
               Todos os scripts MRI compartilham um tema através da convar{" "}
-              <code className="text-brand bg-muted px-1.5 py-0.5 rounded">mri:color</code>. Defina no seu{" "}
-              <code className="text-brand bg-muted px-1.5 py-0.5 rounded">server.cfg</code>:
+              <code className="text-primary bg-muted px-1.5 py-0.5 rounded">mri:color</code>. Defina no seu{" "}
+              <code className="text-primary bg-muted px-1.5 py-0.5 rounded">server.cfg</code>:
             </p>
             <pre className="bg-muted p-4 rounded-md text-sm overflow-x-auto border border-border">
               <code className="text-foreground font-mono">
@@ -91,7 +91,7 @@ export default function ComecarPage() {
           <Card className="p-6">
             <h2 className="text-2xl font-bold mb-3">3. Permissões iniciais (ACE)</h2>
             <p className="text-muted-foreground mb-4 leading-relaxed">
-              No <code className="text-brand bg-muted px-1.5 py-0.5 rounded">server.cfg</code>, dê
+              No <code className="text-primary bg-muted px-1.5 py-0.5 rounded">server.cfg</code>, dê
               permissões pro seu identifier abrir o painel admin:
             </p>
             <pre className="bg-muted p-4 rounded-md text-sm overflow-x-auto border border-border">
@@ -100,7 +100,7 @@ add_ace identifier.fivem:SEU_ID mri_Qspawn.admin allow
 add_ace identifier.fivem:SEU_ID qadmin.action.manage_settings allow`}</code>
             </pre>
             <p className="text-muted-foreground mt-3 text-sm leading-relaxed">
-              <code className="text-brand bg-muted px-1 rounded">command</code> cobre god/console como
+              <code className="text-primary bg-muted px-1 rounded">command</code> cobre god/console como
               fallback, então normalmente já libera tudo.
             </p>
           </Card>
@@ -109,30 +109,30 @@ add_ace identifier.fivem:SEU_ID qadmin.action.manage_settings allow`}</code>
             <h2 className="text-2xl font-bold mb-3">4. Subir o servidor</h2>
             <p className="text-muted-foreground leading-relaxed">
               Inicie o txAdmin, start o server profile. Conecte com o FiveM. Em jogo:{" "}
-              <code className="text-brand bg-muted px-1.5 py-0.5 rounded">/qadmin</code> abre o painel
+              <code className="text-primary bg-muted px-1.5 py-0.5 rounded">/qadmin</code> abre o painel
               administrativo;{" "}
-              <code className="text-brand bg-muted px-1.5 py-0.5 rounded">/adminspawn</code> gerencia
+              <code className="text-primary bg-muted px-1.5 py-0.5 rounded">/adminspawn</code> gerencia
               spawns. Se algo não abrir, verifique a console F8 do FiveM.
             </p>
           </Card>
 
-          <Card className="p-6 bg-gradient-to-br from-brand/5 to-brand-accent/5 border-brand/20">
+          <Card className="p-6 bg-gradient-to-br from-primary/5 to-primary-accent/5 border-primary/20">
             <h2 className="text-2xl font-bold mb-3">Próximos passos</h2>
             <ul className="list-disc ml-6 space-y-2 text-muted-foreground mb-6">
               <li>
                 Adicionar/editar spawns ingame pelo{" "}
-                <code className="text-brand bg-muted px-1 rounded">/adminspawn</code>
+                <code className="text-primary bg-muted px-1 rounded">/adminspawn</code>
               </li>
               <li>
                 Customizar o multichar e a aparência ({" "}
-                <Link href="/recursos" className="text-brand hover:underline">
+                <Link href="/recursos" className="text-primary hover:underline">
                   ver lista de scripts
                 </Link>
                 )
               </li>
               <li>
                 Configurar jobs e gangs nos arquivos do{" "}
-                <code className="text-brand bg-muted px-1 rounded">mri_Qbox</code>
+                <code className="text-primary bg-muted px-1 rounded">mri_Qbox</code>
               </li>
               <li>Entrar no Discord pra tirar dúvidas e compartilhar feedback</li>
             </ul>
