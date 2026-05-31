@@ -20,12 +20,10 @@ export const metadata: Metadata = {
   keywords: ["fivem", "qbox", "qbcore", "ox", "brasil", "framework", "gta v", "servidor", "rp", "roleplay"],
   authors: [{ name: "MRI Qbox Brasil" }],
   alternates: { canonical: "/" },
+  // Favicon mri.ico (96x96) — mesmo arquivo usado em docs.mriqbox.com.br
+  // pra consistencia visual entre os dominios da suite na aba do browser.
   icons: {
-    icon: [
-      { url: "/icon.svg", type: "image/svg+xml" },
-      { url: "/icon-light-32x32.png", media: "(prefers-color-scheme: light)" },
-      { url: "/icon-dark-32x32.png", media: "(prefers-color-scheme: dark)" },
-    ],
+    icon: { url: "/mri.ico", type: "image/x-icon" },
     apple: "/apple-icon.png",
   },
   openGraph: {
