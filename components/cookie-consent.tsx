@@ -1,5 +1,6 @@
 "use client"
 
+import Link from "next/link"
 import Script from "next/script"
 import { useCallback, useSyncExternalStore } from "react"
 import { Button } from "@/components/ui/button"
@@ -57,7 +58,11 @@ export function CookieConsent() {
         <div className="fixed bottom-0 inset-x-0 z-50 border-t border-border bg-card/95 backdrop-blur-sm">
           <div className="container mx-auto px-4 py-4 flex flex-col sm:flex-row items-center justify-between gap-4">
             <p className="text-sm text-muted-foreground text-center sm:text-left">
-              Usamos cookies para anúncios e métricas. Você pode aceitar ou recusar.
+              Usamos cookies para anúncios e métricas. Veja a{" "}
+              <Link href="/privacidade" className="text-brand hover:underline">
+                política de privacidade
+              </Link>
+              .
             </p>
             <div className="flex items-center gap-2 shrink-0">
               <Button variant="ghost" size="sm" onClick={() => choose("rejected")}>

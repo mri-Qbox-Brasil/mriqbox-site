@@ -23,18 +23,21 @@ export default function HomePage() {
             <span className="text-xl font-bold">MRI Qbox Brasil</span>
           </div>
           <nav className="hidden md:flex items-center gap-6">
-            <Link href="#features" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-              Features
+            <Link href="/recursos" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+              Recursos
             </Link>
-            <Link href="#community" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-              Comunidade
+            <Link href="/comecar" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+              Como começar
             </Link>
             <Link
-              href="https://github.com/mri-Qbox-Brasil"
+              href="https://docs.mriqbox.com.br"
               target="_blank" rel="noopener noreferrer"
               className="text-sm text-muted-foreground hover:text-foreground transition-colors"
             >
-              GitHub
+              Docs
+            </Link>
+            <Link href="/sobre" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+              Sobre
             </Link>
           </nav>
           <div className="flex items-center gap-2">
@@ -194,6 +197,96 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* FAQ Section */}
+      <section id="faq" className="container mx-auto px-4 py-24">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">Perguntas frequentes</h2>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            Dúvidas comuns de quem está começando ou avaliando a framework
+          </p>
+        </div>
+        <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+          <Card className="p-6">
+            <h3 className="text-lg font-semibold mb-2">Qual a diferença entre MRI Qbox e Qbox/QBCore?</h3>
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              MRI Qbox é a adaptação brasileira oficial da Qbox internacional (que por sua vez é a evolução
+              do QBCore com integração nativa ao ox_lib). Mesma base, mas traduzida, com scripts
+              complementares prontos e documentação em português.
+            </p>
+          </Card>
+          <Card className="p-6">
+            <h3 className="text-lg font-semibold mb-2">É realmente gratuito?</h3>
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              Sim. Todo o código é open source sob licença MIT — pode usar comercialmente, modificar e
+              redistribuir. Os custos de infra são bancados pela comunidade via Patreon e anúncios.
+            </p>
+          </Card>
+          <Card className="p-6">
+            <h3 className="text-lg font-semibold mb-2">Posso usar em servidor pago/comercial?</h3>
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              Pode. A licença MIT permite uso comercial. O que não pode é revender o código se passando
+              pela MRI Qbox Brasil ou usar a marca/logo sem autorização. Detalhes nos{" "}
+              <Link href="/termos" className="text-brand hover:underline">
+                termos de uso
+              </Link>
+              .
+            </p>
+          </Card>
+          <Card className="p-6">
+            <h3 className="text-lg font-semibold mb-2">Tem suporte técnico?</h3>
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              Suporte voluntário no{" "}
+              <a
+                href="https://discord.mriqbox.com.br"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-brand hover:underline"
+              >
+                Discord
+              </a>
+              . Bugs/feature requests via GitHub Issues do repositório correspondente. Sem SLA, mas a
+              comunidade é ativa e geralmente responde rápido.
+            </p>
+          </Card>
+          <Card className="p-6">
+            <h3 className="text-lg font-semibold mb-2">Quanto tempo leva pra instalar?</h3>
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              Cerca de 30 minutos se você já tem txAdmin e MySQL prontos — basta importar a recipe.
+              Veja o{" "}
+              <Link href="/comecar" className="text-brand hover:underline">
+                guia rápido
+              </Link>{" "}
+              ou a{" "}
+              <a
+                href="https://docs.mriqbox.com.br/mri/instalacao"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-brand hover:underline"
+              >
+                documentação completa
+              </a>
+              .
+            </p>
+          </Card>
+          <Card className="p-6">
+            <h3 className="text-lg font-semibold mb-2">Como contribuo com o projeto?</h3>
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              Pull Requests nos repositórios do{" "}
+              <a
+                href="https://github.com/mri-Qbox-Brasil"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-brand hover:underline"
+              >
+                GitHub
+              </a>
+              , relatos de bugs, traduções, melhoria de docs e participação no Discord. Apoio financeiro
+              também ajuda — via Patreon.
+            </p>
+          </Card>
+        </div>
+      </section>
+
       {/* Community Section */}
       <section id="community" className="container mx-auto px-4 py-24">
         <div className="max-w-4xl mx-auto">
@@ -229,34 +322,54 @@ export default function HomePage() {
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-border">
-        <div className="container mx-auto px-4 py-8">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-            <div className="flex items-center gap-2">
-              <div className="w-6 h-6 relative">
-                <Image
-                  src="https://assets.mriqbox.com.br/branding/logo96.png"
-                  alt="MRI Qbox Brasil Logo"
-                  width={24}
-                  height={24}
-                  className="object-contain"
-                />
+      <footer className="border-t border-border bg-card/30">
+        <div className="container mx-auto px-4 py-12">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-8">
+            <div className="col-span-2">
+              <div className="flex items-center gap-2 mb-4">
+                <div className="w-6 h-6 relative">
+                  <Image
+                    src="https://assets.mriqbox.com.br/branding/logo96.png"
+                    alt="MRI Qbox Brasil Logo"
+                    width={24}
+                    height={24}
+                    className="object-contain"
+                  />
+                </div>
+                <span className="font-bold">MRI Qbox Brasil</span>
               </div>
-              <span className="text-sm text-muted-foreground">© 2025 MRI Qbox Brasil. Open Source.</span>
+              <p className="text-sm text-muted-foreground max-w-sm leading-relaxed">
+                Adaptação brasileira open source da framework Qbox (Qbcore + Ox) para servidores FiveM
+                de roleplay. 100% gratuita.
+              </p>
             </div>
-            <div className="flex items-center gap-6">
-              <Link
-                href="https://github.com/mri-Qbox-Brasil"
-                target="_blank" rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-foreground transition-colors"
-              >
+            <div>
+              <h3 className="font-semibold text-sm mb-3">Projeto</h3>
+              <ul className="space-y-2 text-sm">
+                <li><Link href="/sobre" className="text-muted-foreground hover:text-foreground transition-colors">Sobre</Link></li>
+                <li><Link href="/recursos" className="text-muted-foreground hover:text-foreground transition-colors">Recursos</Link></li>
+                <li><Link href="/comecar" className="text-muted-foreground hover:text-foreground transition-colors">Como começar</Link></li>
+                <li><Link href="https://docs.mriqbox.com.br" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors">Documentação</Link></li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="font-semibold text-sm mb-3">Comunidade</h3>
+              <ul className="space-y-2 text-sm">
+                <li><Link href="https://discord.mriqbox.com.br" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors">Discord</Link></li>
+                <li><Link href="https://github.com/mri-Qbox-Brasil" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors">GitHub</Link></li>
+                <li><Link href="https://www.patreon.com/mriQboxBrasil" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors">Patreon</Link></li>
+              </ul>
+            </div>
+          </div>
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4 pt-8 border-t border-border">
+            <span className="text-sm text-muted-foreground">© 2025 MRI Qbox Brasil. Open Source (MIT).</span>
+            <div className="flex items-center gap-6 text-sm">
+              <Link href="/privacidade" className="text-muted-foreground hover:text-foreground transition-colors">Privacidade</Link>
+              <Link href="/termos" className="text-muted-foreground hover:text-foreground transition-colors">Termos</Link>
+              <Link href="https://github.com/mri-Qbox-Brasil" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors" aria-label="GitHub">
                 <Github className="w-5 h-5" />
               </Link>
-              <Link
-                href="https://discord.mriqbox.com.br"
-                target="_blank" rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-foreground transition-colors"
-              >
+              <Link href="https://discord.mriqbox.com.br" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors" aria-label="Discord">
                 <MessageCircle className="w-5 h-5" />
               </Link>
             </div>

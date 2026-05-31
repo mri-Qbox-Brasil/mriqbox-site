@@ -47,6 +47,34 @@ export const metadata: Metadata = {
   },
 }
 
+// JSON-LD Schema.org — sinaliza pros crawlers (Google, AdSense reviewer) que
+// somos uma organizacao real com presenca em multiplos canais. Ajuda a unir
+// mriqbox.com.br + docs.mriqbox.com.br + GitHub + Discord sob uma mesma marca.
+const ORGANIZATION_SCHEMA = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "MRI Qbox Brasil",
+  url: SITE_URL,
+  logo: OG_IMAGE,
+  description:
+    "Adaptação brasileira open source da framework Qbox (Qbcore + Ox) para servidores FiveM.",
+  sameAs: [
+    "https://github.com/mri-Qbox-Brasil",
+    "https://discord.mriqbox.com.br",
+    "https://docs.mriqbox.com.br",
+    "https://www.patreon.com/mriQboxBrasil",
+  ],
+}
+
+const WEBSITE_SCHEMA = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "MRI Qbox Brasil",
+  url: SITE_URL,
+  inLanguage: "pt-BR",
+  publisher: { "@type": "Organization", name: "MRI Qbox Brasil" },
+}
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -55,6 +83,14 @@ export default function RootLayout({
   return (
     <html lang="pt-BR" className={`dark ${geist.variable} ${geistMono.variable}`}>
       <body className="font-sans antialiased">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(ORGANIZATION_SCHEMA) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(WEBSITE_SCHEMA) }}
+        />
         {children}
         <CookieConsent />
         <Analytics />
