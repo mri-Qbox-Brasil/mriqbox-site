@@ -52,25 +52,31 @@ export default function TermosPage() {
               >
                 github.com/mri-Qbox-Brasil
               </a>{" "}
-              e licenciado sob <strong className="text-foreground">MIT License</strong>, salvo quando
-              especificado o contrário em um repositório específico.
+              e licenciado sob <strong className="text-foreground">GPL-3.0</strong> (scripts e frameworks)
+              ou <strong className="text-foreground">LGPL-3.0</strong> (bibliotecas reutilizáveis como
+              @mriqbox/ui-kit), seguindo o mesmo modelo de licenciamento do Qbox e Overextended. Cada
+              repositório indica a licença aplicável no arquivo <code className="text-primary">LICENSE</code>.
             </p>
 
             <h2 className="text-2xl font-bold text-foreground mt-8 mb-3">2. Uso permitido</h2>
             <ul className="list-disc ml-6 space-y-2">
               <li>Usar os scripts em servidores FiveM, comerciais ou não</li>
-              <li>Modificar, redistribuir e contribuir de volta via Pull Request</li>
-              <li>Forkar repositórios respeitando os termos da licença MIT</li>
+              <li>Modificar pra adequar ao seu servidor e contribuir de volta via Pull Request</li>
+              <li>
+                Forkar e redistribuir, desde que mantendo a licença GPL/LGPL original e tornando o código
+                modificado disponível (copyleft)
+              </li>
             </ul>
 
             <h2 className="text-2xl font-bold text-foreground mt-8 mb-3">3. Uso proibido</h2>
             <ul className="list-disc ml-6 space-y-2">
               <li>
-                Revender o código como serviço pago se passando pela MRI Qbox Brasil ou seus mantenedores
+                Redistribuir versões modificadas <strong className="text-foreground">fechadas</strong> —
+                GPL exige que o código permaneça aberto
               </li>
               <li>
-                Usar a marca &ldquo;MRI Qbox&rdquo;, logos e identidade visual sem autorização (a licença MIT cobre o
-                código, não a marca)
+                Usar a marca &ldquo;MRI Qbox&rdquo;, logos e identidade visual sem autorização (a licença
+                cobre o código-fonte, não a marca registrada)
               </li>
               <li>
                 Atacar a infraestrutura do site (scraping abusivo, DDoS, exploração de vulnerabilidades sem

@@ -52,7 +52,8 @@ export default function SobrePage() {
             <ul className="list-disc ml-6 space-y-2">
               <li>
                 Manter <strong className="text-foreground">100% gratuita</strong> e{" "}
-                <strong className="text-foreground">open source</strong> (MIT) a base que servidores
+                <strong className="text-foreground">open source</strong> (GPL-3.0 / LGPL-3.0, mesmo
+                modelo do Qbox e Overextended) a base que servidores
                 brasileiros precisam pra começar
               </li>
               <li>

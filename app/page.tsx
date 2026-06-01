@@ -217,15 +217,17 @@ export default function HomePage() {
           <Card className="p-6">
             <h3 className="text-lg font-semibold mb-2">É realmente gratuito?</h3>
             <p className="text-sm text-muted-foreground leading-relaxed">
-              Sim. Todo o código é open source sob licença MIT — pode usar comercialmente, modificar e
-              redistribuir. Os custos de infra são bancados pela comunidade via Patreon e anúncios.
+              Sim. Todo o código é open source sob GPL-3.0 / LGPL-3.0 (mesmo modelo do Qbox e
+              Overextended) — pode usar comercialmente, modificar e contribuir. Os custos de infra são
+              bancados pela comunidade via Patreon e anúncios.
             </p>
           </Card>
           <Card className="p-6">
             <h3 className="text-lg font-semibold mb-2">Posso usar em servidor pago/comercial?</h3>
             <p className="text-sm text-muted-foreground leading-relaxed">
-              Pode. A licença MIT permite uso comercial. O que não pode é revender o código se passando
-              pela MRI Qbox Brasil ou usar a marca/logo sem autorização. Detalhes nos{" "}
+              Pode. A GPL permite uso comercial em servidores (próprios ou pagos). O que não pode é
+              redistribuir versões modificadas <strong>fechadas</strong> (GPL exige código aberto em
+              forks) nem usar a marca/logo sem autorização. Detalhes nos{" "}
               <Link href="/termos" className="text-primary hover:underline">
                 termos de uso
               </Link>
@@ -362,7 +364,7 @@ export default function HomePage() {
             </div>
           </div>
           <div className="flex flex-col md:flex-row items-center justify-between gap-4 pt-8 border-t border-border">
-            <span className="text-sm text-muted-foreground">© 2025 MRI Qbox Brasil. Open Source (MIT).</span>
+            <span className="text-sm text-muted-foreground">© 2025 MRI Qbox Brasil. Open Source (GPL-3.0 / LGPL-3.0).</span>
             <div className="flex items-center gap-6 text-sm">
               <Link href="/privacidade" className="text-muted-foreground hover:text-foreground transition-colors">Privacidade</Link>
               <Link href="/termos" className="text-muted-foreground hover:text-foreground transition-colors">Termos</Link>
