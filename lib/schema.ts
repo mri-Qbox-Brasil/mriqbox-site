@@ -67,6 +67,48 @@ export function softwareApplication(item: {
   }
 }
 
+export function article(item: {
+  headline: string
+  description: string
+  path: string
+  datePublished: string
+  dateModified?: string
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: item.headline,
+    description: item.description,
+    inLanguage: "pt-BR",
+    datePublished: item.datePublished,
+    dateModified: item.dateModified ?? item.datePublished,
+    author: { "@type": "Organization", name: "MRI Qbox Brasil", url: SITE_URL },
+    publisher: {
+      "@type": "Organization",
+      name: "MRI Qbox Brasil",
+      url: SITE_URL,
+      logo: {
+        "@type": "ImageObject",
+        url: "https://assets.mriqbox.com.br/branding/logo1080.png",
+      },
+    },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `${SITE_URL}${item.path}`,
+    },
+  }
+}
+
+// Formata data ISO (YYYY-MM-DD) pra texto BR ("1 de junho de 2026").
+export function formatDateBR(iso: string): string {
+  const [y, m, d] = iso.split("-").map(Number)
+  const months = [
+    "janeiro", "fevereiro", "março", "abril", "maio", "junho",
+    "julho", "agosto", "setembro", "outubro", "novembro", "dezembro",
+  ]
+  return `${d} de ${months[m - 1]} de ${y}`
+}
+
 // Renderiza o JSON-LD como um <script> tag — usar dentro do JSX da pagina.
 export function jsonLd(data: object) {
   return JSON.stringify(data)

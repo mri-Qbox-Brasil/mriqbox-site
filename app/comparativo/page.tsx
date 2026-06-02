@@ -3,7 +3,10 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { ArrowLeft, Check, X, Minus } from "lucide-react"
-import { breadcrumb, jsonLd } from "@/lib/schema"
+import { article, breadcrumb, formatDateBR, jsonLd } from "@/lib/schema"
+
+const PUBLISHED = "2026-05-15"
+const UPDATED = "2026-06-01"
 
 export const metadata: Metadata = {
   title: "MRI Qbox vs QBCore vs ESX vs Qbox — comparativo de frameworks FiveM",
@@ -22,6 +25,15 @@ const BREADCRUMB = breadcrumb([
   { name: "Início", path: "/" },
   { name: "Comparativo", path: "/comparativo" },
 ])
+
+const ARTICLE = article({
+  headline: "MRI Qbox vs QBCore vs ESX vs Qbox — comparativo de frameworks FiveM",
+  description:
+    "Comparativo objetivo entre as principais frameworks FiveM brasileiras e internacionais. Tabela de 10 critérios e análise quando usar cada uma.",
+  path: "/comparativo",
+  datePublished: PUBLISHED,
+  dateModified: UPDATED,
+})
 
 type Cell = { value: "yes" | "no" | "partial"; note?: string } | { value: string }
 
@@ -119,6 +131,7 @@ export default function ComparativoPage() {
   return (
     <div className="min-h-screen bg-background">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(BREADCRUMB) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(ARTICLE) }} />
       <div className="container mx-auto px-4 py-12 max-w-5xl">
         <Button variant="ghost" size="sm" asChild className="mb-8">
           <Link href="/">
@@ -128,6 +141,11 @@ export default function ComparativoPage() {
         </Button>
 
         <header className="mb-12">
+          <div className="flex items-center gap-3 text-xs text-muted-foreground mb-4 uppercase tracking-wider font-mono">
+            <span>Análise</span>
+            <span>·</span>
+            <time dateTime={UPDATED}>Atualizado em {formatDateBR(UPDATED)}</time>
+          </div>
           <h1 className="heading-mri text-4xl md:text-5xl mb-4">Comparativo de frameworks FiveM</h1>
           <p className="text-lg text-muted-foreground max-w-3xl leading-relaxed">
             Qual framework escolher pro seu servidor FiveM de roleplay? Análise objetiva entre{" "}

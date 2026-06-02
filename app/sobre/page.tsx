@@ -3,7 +3,10 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { ArrowLeft, Github, MessageCircle, Heart, Code2, Globe } from "lucide-react"
-import { breadcrumb, jsonLd } from "@/lib/schema"
+import { article, breadcrumb, formatDateBR, jsonLd } from "@/lib/schema"
+
+const PUBLISHED = "2026-05-01"
+const UPDATED = "2026-06-01"
 
 export const metadata: Metadata = {
   title: "Sobre a MRI Qbox Brasil — quem somos e por que existimos",
@@ -23,10 +26,20 @@ const BREADCRUMB = breadcrumb([
   { name: "Sobre", path: "/sobre" },
 ])
 
+const ARTICLE = article({
+  headline: "Sobre a MRI Qbox Brasil",
+  description:
+    "História, missão e equipe por trás da MRI Qbox Brasil — adaptação brasileira open source da framework Qbox para servidores FiveM.",
+  path: "/sobre",
+  datePublished: PUBLISHED,
+  dateModified: UPDATED,
+})
+
 export default function SobrePage() {
   return (
     <div className="min-h-screen bg-background">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(BREADCRUMB) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(ARTICLE) }} />
       <div className="container mx-auto px-4 py-12 max-w-3xl">
         <Button variant="ghost" size="sm" asChild className="mb-8">
           <Link href="/">
@@ -35,6 +48,11 @@ export default function SobrePage() {
           </Link>
         </Button>
 
+        <div className="flex items-center gap-3 text-xs text-muted-foreground mb-4 uppercase tracking-wider font-mono">
+          <span>Sobre</span>
+          <span>·</span>
+          <time dateTime={UPDATED}>Atualizado em {formatDateBR(UPDATED)}</time>
+        </div>
         <h1 className="heading-mri text-4xl md:text-5xl mb-6">Sobre a MRI Qbox Brasil</h1>
         <p className="text-lg text-muted-foreground mb-12 leading-relaxed">
           Somos uma comunidade brasileira de desenvolvedores de FiveM que mantém a adaptação local da

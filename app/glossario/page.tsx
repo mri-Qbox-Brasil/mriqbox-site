@@ -3,7 +3,10 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { ArrowLeft } from "lucide-react"
-import { breadcrumb, jsonLd } from "@/lib/schema"
+import { article, breadcrumb, formatDateBR, jsonLd } from "@/lib/schema"
+
+const PUBLISHED = "2026-05-20"
+const UPDATED = "2026-06-01"
 
 export const metadata: Metadata = {
   title: "Glossário FiveM & Qbox — termos técnicos de desenvolvimento de servidor",
@@ -22,6 +25,15 @@ const BREADCRUMB = breadcrumb([
   { name: "Início", path: "/" },
   { name: "Glossário", path: "/glossario" },
 ])
+
+const ARTICLE = article({
+  headline: "Glossário FiveM & Qbox — termos técnicos de desenvolvimento de servidor",
+  description:
+    "Dicionário de termos usados no desenvolvimento FiveM com Qbox: ACE, NUI, callback, convar, ox_lib, recipe, txAdmin e mais.",
+  path: "/glossario",
+  datePublished: PUBLISHED,
+  dateModified: UPDATED,
+})
 
 interface Term {
   term: string
@@ -239,6 +251,7 @@ export default function GlossarioPage() {
   return (
     <div className="min-h-screen bg-background">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(BREADCRUMB) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(ARTICLE) }} />
       <div className="container mx-auto px-4 py-12 max-w-4xl">
         <Button variant="ghost" size="sm" asChild className="mb-8">
           <Link href="/">
@@ -248,6 +261,11 @@ export default function GlossarioPage() {
         </Button>
 
         <header className="mb-12">
+          <div className="flex items-center gap-3 text-xs text-muted-foreground mb-4 uppercase tracking-wider font-mono">
+            <span>Referência</span>
+            <span>·</span>
+            <time dateTime={UPDATED}>Atualizado em {formatDateBR(UPDATED)}</time>
+          </div>
           <h1 className="heading-mri text-4xl md:text-5xl mb-4">Glossário FiveM & Qbox</h1>
           <p className="text-lg text-muted-foreground max-w-2xl leading-relaxed">
             Dicionário dos termos técnicos mais usados no desenvolvimento de servidores FiveM com Qbox.
