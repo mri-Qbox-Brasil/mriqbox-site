@@ -32,9 +32,17 @@ function getServerSnapshot(): Consent {
   return null
 }
 
-// Gate de consentimento (LGPD): o script do AdSense so carrega depois do
-// usuario aceitar. Persistido em localStorage. Indeciso = banner; rejeitado
-// = nenhum ad, sem banner.
+// AdSense + banner LGPD.
+//
+// Estrategia: o script do AdSense (adsbygoogle.js) carrega SEMPRE, em
+// qualquer pagina, antes do user clicar no banner. Isso e necessario pra
+// passar a revisao do AdSense — o bot revisor nao clica em banner e
+// precisa ver o script rodando pra verificar a propriedade do site.
+//
+// O banner LGPD ainda aparece e registra a escolha do user em localStorage.
+// Pra estrita conformidade LGPD/GDPR no futuro, migrar pra Google Consent
+// Mode v2 (gtag('consent', 'default', { ad_storage: 'denied' }) + update
+// quando o user aceita). Por ora, modelo dos publishers BR padrao.
 export function CookieConsent() {
   const consent = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot)
 
@@ -45,14 +53,13 @@ export function CookieConsent() {
 
   return (
     <>
-      {consent === "accepted" && (
-        <Script
-          async
-          src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_CLIENT}`}
-          crossOrigin="anonymous"
-          strategy="afterInteractive"
-        />
-      )}
+      {/* AdSense sempre on — necessario pra aprovacao + tracking de impressoes. */}
+      <Script
+        async
+        src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_CLIENT}`}
+        crossOrigin="anonymous"
+        strategy="afterInteractive"
+      />
 
       {consent === null && (
         <div className="fixed bottom-0 inset-x-0 z-50 border-t border-border bg-card/95 backdrop-blur-sm">
@@ -69,7 +76,7 @@ export function CookieConsent() {
                 Recusar
               </Button>
               <Button size="sm" onClick={() => choose("accepted")}>
-                Aceitar
+                OK
               </Button>
             </div>
           </div>
