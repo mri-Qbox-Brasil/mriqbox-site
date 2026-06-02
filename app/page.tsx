@@ -74,6 +74,9 @@ export default function HomePage() {
             >
               Docs
             </Link>
+            <Link href="/por-que-mri" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+              Por que MRI
+            </Link>
             <Link href="/comparativo" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
               Comparativo
             </Link>
@@ -390,6 +393,7 @@ export default function HomePage() {
               <h3 className="font-semibold text-sm mb-3">Projeto</h3>
               <ul className="space-y-2 text-sm">
                 <li><Link href="/sobre" className="text-muted-foreground hover:text-foreground transition-colors">Sobre</Link></li>
+                <li><Link href="/por-que-mri" className="text-muted-foreground hover:text-foreground transition-colors">Por que MRI</Link></li>
                 <li><Link href="/recursos" className="text-muted-foreground hover:text-foreground transition-colors">Recursos</Link></li>
                 <li><Link href="/comecar" className="text-muted-foreground hover:text-foreground transition-colors">Como começar</Link></li>
                 <li><Link href="/comparativo" className="text-muted-foreground hover:text-foreground transition-colors">Comparativo</Link></li>
