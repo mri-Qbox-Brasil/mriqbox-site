@@ -2,17 +2,25 @@ import type { Metadata } from "next"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { ArrowLeft } from "lucide-react"
+import { breadcrumb, jsonLd } from "@/lib/schema"
 
 export const metadata: Metadata = {
   title: "Política de Privacidade — MRI Qbox Brasil",
   description:
-    "Como tratamos seus dados, cookies, analytics e anúncios no site mriqbox.com.br e subdomínios.",
+    "Como tratamos seus dados, cookies, analytics e anúncios no site mriqbox.com.br e subdomínios. Política completa em conformidade com LGPD.",
   alternates: { canonical: "/privacidade" },
+  robots: { index: true, follow: true },
 }
+
+const BREADCRUMB = breadcrumb([
+  { name: "Início", path: "/" },
+  { name: "Privacidade", path: "/privacidade" },
+])
 
 export default function PrivacidadePage() {
   return (
     <div className="min-h-screen bg-background">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(BREADCRUMB) }} />
       <div className="container mx-auto px-4 py-12 max-w-3xl">
         <Button variant="ghost" size="sm" asChild className="mb-8">
           <Link href="/">

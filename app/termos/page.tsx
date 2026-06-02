@@ -2,17 +2,25 @@ import type { Metadata } from "next"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { ArrowLeft } from "lucide-react"
+import { breadcrumb, jsonLd } from "@/lib/schema"
 
 export const metadata: Metadata = {
   title: "Termos de Uso — MRI Qbox Brasil",
   description:
-    "Termos de uso do site mriqbox.com.br, dos códigos open source publicados nos repositórios da MRI Qbox Brasil e do servidor Discord da comunidade.",
+    "Termos de uso do site mriqbox.com.br, dos códigos GPL-3.0/LGPL-3.0 publicados nos repositórios da MRI Qbox Brasil e do servidor Discord da comunidade.",
   alternates: { canonical: "/termos" },
+  robots: { index: true, follow: true },
 }
+
+const BREADCRUMB = breadcrumb([
+  { name: "Início", path: "/" },
+  { name: "Termos", path: "/termos" },
+])
 
 export default function TermosPage() {
   return (
     <div className="min-h-screen bg-background">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(BREADCRUMB) }} />
       <div className="container mx-auto px-4 py-12 max-w-3xl">
         <Button variant="ghost" size="sm" asChild className="mb-8">
           <Link href="/">

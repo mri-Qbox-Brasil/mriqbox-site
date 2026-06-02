@@ -4,13 +4,25 @@ import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { ArrowLeft, Github, ExternalLink, Shield, MapPin, Users, Shirt, MessageCircle, LayoutDashboard, Package, Box } from "lucide-react"
 import type { LucideIcon } from "lucide-react"
+import { breadcrumb, jsonLd, softwareApplication } from "@/lib/schema"
 
 export const metadata: Metadata = {
   title: "Recursos & Scripts — MRI Qbox Brasil",
   description:
     "Catálogo completo dos scripts MRI Qbox Brasil: framework Qbox traduzida, painel admin, spawn, multichar, aparência, chat e o design system @mriqbox/ui-kit.",
   alternates: { canonical: "/recursos" },
+  openGraph: {
+    title: "Recursos & Scripts MRI Qbox Brasil",
+    description: "8 scripts open source pra servidor FiveM brasileiro: framework + painel admin + spawn + multichar + mais.",
+    type: "website",
+  },
+  twitter: { card: "summary_large_image", title: "Recursos & Scripts MRI Qbox Brasil" },
 }
+
+const BREADCRUMB = breadcrumb([
+  { name: "Início", path: "/" },
+  { name: "Recursos", path: "/recursos" },
+])
 
 interface Resource {
   name: string
@@ -98,6 +110,23 @@ const RESOURCES: Resource[] = [
 export default function RecursosPage() {
   return (
     <div className="min-h-screen bg-background">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(BREADCRUMB) }} />
+      {RESOURCES.map((r) => (
+        <script
+          key={`schema-${r.name}`}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: jsonLd(
+              softwareApplication({
+                name: r.name,
+                description: r.description,
+                url: r.repo,
+                applicationCategory: "DeveloperApplication",
+              })
+            ),
+          }}
+        />
+      ))}
       <div className="container mx-auto px-4 py-12 max-w-5xl">
         <Button variant="ghost" size="sm" asChild className="mb-8">
           <Link href="/">

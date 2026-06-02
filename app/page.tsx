@@ -3,10 +3,48 @@ import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { Github, MessageCircle, Code2, Users, Download, Zap, Globe, Shield } from "lucide-react"
+import { faqPage, jsonLd } from "@/lib/schema"
+
+const FAQ_ITEMS = [
+  {
+    question: "Qual a diferença entre MRI Qbox e Qbox/QBCore?",
+    answer:
+      "MRI Qbox é a adaptação brasileira oficial da Qbox internacional (que por sua vez é a evolução do QBCore com integração nativa ao ox_lib). Mesma base, mas traduzida, com scripts complementares prontos e documentação em português.",
+  },
+  {
+    question: "É realmente gratuito?",
+    answer:
+      "Sim. Todo o código é open source sob GPL-3.0 / LGPL-3.0 (mesmo modelo do Qbox e Overextended) — pode usar comercialmente, modificar e contribuir. Os custos de infra são bancados pela comunidade via Patreon e anúncios.",
+  },
+  {
+    question: "Posso usar em servidor pago/comercial?",
+    answer:
+      "Pode. A GPL permite uso comercial em servidores. O que não pode é redistribuir versões modificadas fechadas (GPL exige código aberto em forks) nem usar a marca/logo sem autorização.",
+  },
+  {
+    question: "Tem suporte técnico?",
+    answer:
+      "Suporte voluntário no Discord oficial. Bugs/feature requests via GitHub Issues do repositório correspondente. Sem SLA, mas a comunidade é ativa e geralmente responde rápido.",
+  },
+  {
+    question: "Quanto tempo leva pra instalar?",
+    answer:
+      "Cerca de 30 minutos se você já tem txAdmin e MySQL prontos — basta importar a recipe MRI Qbox.",
+  },
+  {
+    question: "Como contribuo com o projeto?",
+    answer:
+      "Pull Requests nos repositórios do GitHub, relatos de bugs, traduções, melhoria de docs e participação no Discord. Apoio financeiro também ajuda — via Patreon.",
+  },
+]
 
 export default function HomePage() {
   return (
     <div className="min-h-screen bg-background">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: jsonLd(faqPage(FAQ_ITEMS)) }}
+      />
       {/* Header */}
       <header className="border-b border-border">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
@@ -35,6 +73,9 @@ export default function HomePage() {
               className="text-sm text-muted-foreground hover:text-foreground transition-colors"
             >
               Docs
+            </Link>
+            <Link href="/comparativo" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+              Comparativo
             </Link>
             <Link href="/sobre" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
               Sobre
@@ -351,6 +392,8 @@ export default function HomePage() {
                 <li><Link href="/sobre" className="text-muted-foreground hover:text-foreground transition-colors">Sobre</Link></li>
                 <li><Link href="/recursos" className="text-muted-foreground hover:text-foreground transition-colors">Recursos</Link></li>
                 <li><Link href="/comecar" className="text-muted-foreground hover:text-foreground transition-colors">Como começar</Link></li>
+                <li><Link href="/comparativo" className="text-muted-foreground hover:text-foreground transition-colors">Comparativo</Link></li>
+                <li><Link href="/glossario" className="text-muted-foreground hover:text-foreground transition-colors">Glossário</Link></li>
                 <li><Link href="https://docs.mriqbox.com.br" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors">Documentação</Link></li>
               </ul>
             </div>

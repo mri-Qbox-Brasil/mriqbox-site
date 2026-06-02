@@ -3,17 +3,43 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { ArrowLeft, Download, MessageCircle, ExternalLink } from "lucide-react"
+import { breadcrumb, howTo, jsonLd } from "@/lib/schema"
 
 export const metadata: Metadata = {
   title: "Como começar com MRI Qbox Brasil",
   description:
     "Guia rápido de instalação da framework MRI Qbox em servidores FiveM via txAdmin. Pré-requisitos, passo-a-passo e próximos passos.",
   alternates: { canonical: "/comecar" },
+  openGraph: {
+    title: "Como começar com MRI Qbox Brasil — Guia de instalação",
+    description: "Passo-a-passo pra subir um servidor FiveM com MRI Qbox em menos de 30 minutos.",
+    type: "article",
+  },
+  twitter: { card: "summary_large_image", title: "Como começar com MRI Qbox Brasil" },
 }
+
+const HOWTO_SCHEMA = howTo(
+  "Instalar MRI Qbox Brasil em servidor FiveM",
+  "Subir um servidor FiveM completo com a framework MRI Qbox via txAdmin em menos de 30 minutos.",
+  [
+    { name: "Pré-requisitos", text: "FXServer com txAdmin 7+, MySQL 8+ ou MariaDB 10.6+, Node.js 18+." },
+    { name: "Recipe no txAdmin", text: "Importar a recipe oficial MRI Qbox pelo txAdmin — ele baixa ox_lib, oxmysql, qbx_core e mri_Qbox automaticamente." },
+    { name: "Configurar convar mri:color", text: "Adicionar setr mri:color \"#00E699\" no server.cfg pra definir a cor da suite (NUIs MRI usam isso)." },
+    { name: "Permissões ACE", text: "Dar add_ace identifier.fivem:SEU_ID command allow no server.cfg pra liberar acesso aos painéis admin." },
+    { name: "Subir o servidor", text: "Start o profile no txAdmin, conectar pelo FiveM, executar /qadmin pra abrir o painel admin." },
+  ]
+)
+
+const BREADCRUMB = breadcrumb([
+  { name: "Início", path: "/" },
+  { name: "Como começar", path: "/comecar" },
+])
 
 export default function ComecarPage() {
   return (
     <div className="min-h-screen bg-background">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(HOWTO_SCHEMA) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(BREADCRUMB) }} />
       <div className="container mx-auto px-4 py-12 max-w-3xl">
         <Button variant="ghost" size="sm" asChild className="mb-8">
           <Link href="/">

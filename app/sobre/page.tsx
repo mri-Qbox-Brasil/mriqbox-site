@@ -3,17 +3,30 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { ArrowLeft, Github, MessageCircle, Heart, Code2, Globe } from "lucide-react"
+import { breadcrumb, jsonLd } from "@/lib/schema"
 
 export const metadata: Metadata = {
   title: "Sobre a MRI Qbox Brasil — quem somos e por que existimos",
   description:
     "História, missão e equipe por trás da MRI Qbox Brasil — adaptação brasileira open source da framework Qbox para servidores FiveM.",
   alternates: { canonical: "/sobre" },
+  openGraph: {
+    title: "Sobre a MRI Qbox Brasil",
+    description: "Comunidade brasileira mantenedora da adaptação Qbox open source.",
+    type: "website",
+  },
+  twitter: { card: "summary", title: "Sobre a MRI Qbox Brasil" },
 }
+
+const BREADCRUMB = breadcrumb([
+  { name: "Início", path: "/" },
+  { name: "Sobre", path: "/sobre" },
+])
 
 export default function SobrePage() {
   return (
     <div className="min-h-screen bg-background">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(BREADCRUMB) }} />
       <div className="container mx-auto px-4 py-12 max-w-3xl">
         <Button variant="ghost" size="sm" asChild className="mb-8">
           <Link href="/">
