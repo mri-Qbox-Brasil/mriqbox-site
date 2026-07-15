@@ -47,10 +47,6 @@ export default function DiscordPage() {
             <Link href="https://discord.mriqbox.com.br" className="flex items-center justify-center gap-2 px-6 py-3.5 bg-primary hover:bg-primary/90 rounded-xl text-primary-foreground font-bold text-base transition-all">
               Entrar no Discord
             </Link>
-            <Link href="mailto:contact@mriqbox.com.br" className="flex items-center justify-center gap-2 px-6 py-3.5 border border-white/10 hover:bg-white/5 rounded-xl text-white font-bold text-base transition-all">
-              <Mail className="w-5 h-5" />
-              Enviar Email
-            </Link>
           </div>
 
           {/* Cards */}

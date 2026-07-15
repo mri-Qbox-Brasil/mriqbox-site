@@ -221,7 +221,7 @@ export default async function HomePage() {
           Crie com precisão.<br />
           Jogue com segurança.
         </h1>
-        
+
         <p className="text-lg md:text-xl text-white font-medium mb-10 max-w-2xl">
           A framework open-source que combina Qbcore e Ox, tornando a base do seu servidor mais prática e segura.
         </p>
@@ -235,14 +235,14 @@ export default async function HomePage() {
           <div className="flex items-center gap-3">
             <div className="w-3 h-3 rounded-full bg-primary animate-pulse shadow-[0_0_10px_rgba(0,230,153,0.5)]" />
             <span className="text-base md:text-lg text-muted-foreground">
-              <span className="font-bold text-white text-lg md:text-xl">{totalServers}</span> servidores ativos
+              <span className="font-bold text-white text-lg md:text-xl">{totalServers}</span> servidores rodando
             </span>
           </div>
           <div className="w-px h-6 bg-white/20" />
           <div className="flex items-center gap-3">
             <div className="w-3 h-3 rounded-full bg-primary/80 animate-pulse shadow-[0_0_10px_rgba(0,230,153,0.3)]" style={{ animationDelay: "0.5s" }} />
             <span className="text-base md:text-lg text-muted-foreground">
-              <span className="font-bold text-white text-lg md:text-xl">{totalPlayers}</span> jogadores agora
+              <span className="font-bold text-white text-lg md:text-xl">{totalPlayers}</span> jogadores utilizando
             </span>
           </div>
           <div className="w-px h-6 bg-white/20" />
@@ -253,7 +253,7 @@ export default async function HomePage() {
 
         {/* Installer Mockup */}
         <div className="mt-16 w-full px-4">
-           <InstallerMockup />
+          <InstallerMockup />
         </div>
       </section>
 
@@ -269,14 +269,14 @@ export default async function HomePage() {
       {/* Team Section */}
       <section id="equipe" className="w-full max-w-[1440px] mx-auto px-6 md:px-12 py-[80px] flex flex-col items-center justify-center border-b border-white/5">
         <h2 className="text-2xl text-white font-medium mb-12 text-center">Esses são os responsáveis por manter esse projeto rodando:</h2>
-        
+
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-10 w-full max-w-4xl">
           {teamMembers.map((member) => (
             <div key={member.login} className="flex flex-col items-center gap-4">
               <div className="relative w-28 h-28 rounded-full overflow-hidden border-2 border-primary/20 hover:border-primary transition-colors">
                 <Image src={member.avatar_url} alt={member.login} fill className="object-cover" />
               </div>
-              
+
               <div className="flex flex-col w-full gap-2">
                 <a href={member.html_url} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 bg-[#091811] hover:bg-[#0d2218] border border-primary/20 text-primary rounded-md py-2 px-4 w-full transition-colors font-medium">
                   <Github className="w-4 h-4" />
@@ -298,7 +298,7 @@ export default async function HomePage() {
       <section className="w-full max-w-[1440px] mx-auto px-6 md:px-12 py-[120px] flex flex-col lg:flex-row gap-20">
         <div className="flex-1 sticky top-32 h-fit">
           <h2 className="text-4xl md:text-5xl font-bold text-white leading-tight mb-6">
-            Construído para<br/>
+            Construído para<br />
             <span className="text-muted-foreground">Performance e Escala</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-md">
@@ -436,7 +436,7 @@ export default async function HomePage() {
         <div className="w-full rounded-[2rem] bg-glass border border-white/10 p-12 md:p-20 flex flex-col items-center text-center relative overflow-hidden">
           {/* Subtle background glow */}
           <div className="absolute inset-0 bg-primary/10 blur-[100px] pointer-events-none" />
-          
+
           <h2 className="text-4xl md:text-6xl font-bold text-white mb-6 relative z-10">
             Pronto para revolucionar<br />seu servidor?
           </h2>
@@ -454,7 +454,7 @@ export default async function HomePage() {
       {/* Footer */}
       <footer className="w-full border-t border-white/5 bg-background">
         <div className="max-w-[1440px] mx-auto px-6 md:px-12 py-20 flex flex-col lg:flex-row justify-between gap-16">
-          
+
           {/* Brand & Newsletter */}
           <div className="flex flex-col gap-8 max-w-sm">
             <Link href="/" className="flex items-center gap-3">
@@ -464,15 +464,6 @@ export default async function HomePage() {
             <p className="text-muted-foreground text-sm leading-relaxed">
               A base open source definitiva para o seu servidor FiveM. Desempenho, segurança e modernidade para a comunidade brasileira.
             </p>
-            <div className="flex flex-col gap-3 mt-4">
-              <span className="text-sm font-semibold text-white">Receba novidades</span>
-              <div className="flex gap-2">
-                <input type="email" placeholder="Seu melhor email" className="flex-1 bg-white/5 border border-white/10 rounded-lg px-4 py-2 text-sm text-white focus:outline-none focus:border-primary/50 transition-colors" />
-                <button className="px-4 py-2 bg-primary hover:bg-primary-accent rounded-lg text-white text-sm font-semibold transition-colors">
-                  Assinar
-                </button>
-              </div>
-            </div>
           </div>
 
           {/* Links Grid */}
@@ -494,7 +485,7 @@ export default async function HomePage() {
               <h4 className="text-sm font-bold text-white tracking-wider uppercase mb-2">Legal</h4>
               <Link href="/privacidade" className="text-sm text-muted-foreground hover:text-white transition-colors">Privacidade</Link>
               <Link href="/termos" className="text-sm text-muted-foreground hover:text-white transition-colors">Termos de Uso</Link>
-              <span className="text-xs text-muted-foreground/60 mt-4">© {new Date().getFullYear()} MRI Qbox Brasil.<br/>Licença GPL-3.0.</span>
+              <span className="text-xs text-muted-foreground/60 mt-4">© {new Date().getFullYear()} MRI Qbox Brasil.<br />Licença GPL-3.0.</span>
             </div>
           </div>
         </div>
