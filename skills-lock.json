@@ -1,0 +1,53 @@
+{
+  "version": 1,
+  "skills": {
+    "animation-vocabulary": {
+      "source": "emilkowalski/skills",
+      "sourceType": "github",
+      "skillPath": "skills/animation-vocabulary/SKILL.md",
+      "computedHash": "280c6688ef2568ad92f40c4dc638f0cc5cde0f49bdd6debd097410aa9945f44f"
+    },
+    "emil-design-eng": {
+      "source": "emilkowalski/skills",
+      "sourceType": "github",
+      "skillPath": "skills/emil-design-eng/SKILL.md",
+      "computedHash": "ac3fc5b4e206488ffc408a2806f829bb2e5eaf518fded09be34790685c2b3a0d"
+    },
+    "fivem-basics": {
+      "source": "germanfndez/fiveai-skills",
+      "sourceType": "github",
+      "skillPath": "skills/fivem-basics/SKILL.md",
+      "computedHash": "165c3acba8e9895203549015d851d9f5be99547d43b04122446f4ee8fbc04db3"
+    },
+    "fivem-development": {
+      "source": "proelias7/fivem-skill",
+      "sourceType": "github",
+      "skillPath": "skills/fivem-development/SKILL.md",
+      "computedHash": "6ed8fd3e59b9ca10215c2bb5f712b41fe16b7984d5e718875a3e45a29efdfd5a"
+    },
+    "qbcore-framework": {
+      "source": "proelias7/fivem-skill",
+      "sourceType": "github",
+      "skillPath": "skills/qbcore-framework/SKILL.md",
+      "computedHash": "aa8542d01762829ef10469b266e4ab542cd784c0b20da6bab648d32a771dfa41"
+    },
+    "qbox-framework": {
+      "source": "proelias7/fivem-skill",
+      "sourceType": "github",
+      "skillPath": "skills/qbox-framework/SKILL.md",
+      "computedHash": "08694a5532068751741dbd29e8277298e5c8808e55508bd15c4cbbec4e70bfeb"
+    },
+    "review-animations": {
+      "source": "emilkowalski/skills",
+      "sourceType": "github",
+      "skillPath": "skills/review-animations/SKILL.md",
+      "computedHash": "57c681344448379fbec8c11b45e355b70799998427240662318d017f292571bd"
+    },
+    "teach": {
+      "source": "mattpocock/skills",
+      "sourceType": "github",
+      "skillPath": "skills/productivity/teach/SKILL.md",
+      "computedHash": "25bf44a1302ef009772c8e66d14a705672897562659c43650b1468012baa4f8d"
+    }
+  }
+}

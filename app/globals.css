@@ -4,103 +4,67 @@
 @custom-variant dark (&:is(.dark *));
 
 /*
- * Identidade visual MRI Qbox Brasil — alinhada com a convar `mri:color`
- * (#00E699) usada por toda a suite de scripts FiveM (mri_Qadmin, mri_Qspawn,
- * mri_Qmultichar, ui-kit). Tokens shadcn em oklch.
- *
- * --primary: oklch ≈ #00E699 (neon green). Tudo que e "MRI" usa esse token.
- * Removido --brand/--brand-accent — eram redundantes com --primary.
+ * Theme for MRI Qbox Brasil - Colors from MRI UI Kit
  */
 
 :root {
-  --background: oklch(0.98 0.002 160);
-  --foreground: oklch(0.15 0.01 160);
-  --card: oklch(0.99 0.001 160);
-  --card-foreground: oklch(0.15 0.01 160);
-  --popover: oklch(0.99 0.001 160);
-  --popover-foreground: oklch(0.15 0.01 160);
-  --primary: oklch(0.82 0.20 160);
-  --primary-foreground: oklch(0.15 0.01 160);
-  --primary-accent: oklch(0.88 0.16 160);
-  --secondary: oklch(0.95 0.005 160);
-  --secondary-foreground: oklch(0.2 0.015 160);
-  --muted: oklch(0.96 0.003 160);
-  --muted-foreground: oklch(0.5 0.008 160);
-  --accent: oklch(0.95 0.005 160);
-  --accent-foreground: oklch(0.2 0.015 160);
-  --destructive: oklch(0.55 0.22 25);
-  --destructive-foreground: oklch(0.99 0.001 160);
-  --border: oklch(0.9 0.003 160);
-  --input: oklch(0.9 0.003 160);
-  --ring: oklch(0.82 0.20 160);
-  --chart-1: oklch(0.82 0.20 160);
-  --chart-2: oklch(0.88 0.16 160);
-  --chart-3: oklch(0.7 0.18 160);
-  --chart-4: oklch(0.76 0.20 160);
-  --chart-5: oklch(0.65 0.18 160);
-  --radius: 0.75rem;
-}
-
-.dark {
-  --background: oklch(0.1 0.01 160);
-  --foreground: oklch(0.98 0.002 160);
-  --card: oklch(0.12 0.012 160);
-  --card-foreground: oklch(0.98 0.002 160);
-  --popover: oklch(0.12 0.012 160);
-  --popover-foreground: oklch(0.98 0.002 160);
-  --primary: oklch(0.82 0.20 160);
-  --primary-foreground: oklch(0.15 0.01 160);
-  --primary-accent: oklch(0.88 0.16 160);
-  --secondary: oklch(0.18 0.015 160);
-  --secondary-foreground: oklch(0.98 0.002 160);
-  --muted: oklch(0.16 0.012 160);
-  --muted-foreground: oklch(0.6 0.01 160);
-  --accent: oklch(0.18 0.015 160);
-  --accent-foreground: oklch(0.98 0.002 160);
-  --destructive: oklch(0.45 0.18 25);
-  --destructive-foreground: oklch(0.98 0.002 160);
-  --border: oklch(0.2 0.015 160);
-  --input: oklch(0.2 0.015 160);
-  --ring: oklch(0.82 0.20 160);
-  --chart-1: oklch(0.82 0.20 160);
-  --chart-2: oklch(0.88 0.16 160);
-  --chart-3: oklch(0.7 0.18 160);
-  --chart-4: oklch(0.76 0.20 160);
-  --chart-5: oklch(0.65 0.18 160);
+  --background: 240 10% 4%;
+  --foreground: 0 0% 98%;
+  --card: 240 10% 6%;
+  --card-foreground: 0 0% 98%;
+  --popover: 240 10% 6%;
+  --popover-foreground: 0 0% 98%;
+  --primary: 160 100% 45%;
+  --primary-foreground: 144 100% 10%;
+  --secondary: 240 5% 15%;
+  --secondary-foreground: 0 0% 98%;
+  --muted: 240 5% 15%;
+  --muted-foreground: 240 5% 60%;
+  --accent: 240 5% 15%;
+  --accent-foreground: 0 0% 98%;
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 240 5% 15%;
+  --input: 240 5% 15%;
+  --ring: 160 100% 45%;
+  --radius: 0.5rem;
 }
 
 @theme inline {
-  --font-sans: var(--font-saira), ui-sans-serif, system-ui, sans-serif;
-  --font-mono: ui-monospace, "SF Mono", Menlo, monospace;
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-card: var(--card);
-  --color-card-foreground: var(--card-foreground);
-  --color-popover: var(--popover);
-  --color-popover-foreground: var(--popover-foreground);
-  --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-primary-accent: var(--primary-accent);
-  --color-secondary: var(--secondary);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-muted: var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-accent: var(--accent);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-destructive: var(--destructive);
-  --color-destructive-foreground: var(--destructive-foreground);
-  --color-border: var(--border);
-  --color-input: var(--input);
-  --color-ring: var(--ring);
-  --color-chart-1: var(--chart-1);
-  --color-chart-2: var(--chart-2);
-  --color-chart-3: var(--chart-3);
-  --color-chart-4: var(--chart-4);
-  --color-chart-5: var(--chart-5);
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-heading: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  
+  /* Fallback safe hex colors to ensure Tailwind v4 catches them */
+  --color-background: #09090b;
+  --color-foreground: #fafafa;
+  --color-card: #0e0e11;
+  --color-card-foreground: #fafafa;
+  --color-popover: #0e0e11;
+  --color-popover-foreground: #fafafa;
+  --color-primary: #00E699;
+  --color-primary-foreground: #001f14;
+  --color-secondary: #242429;
+  --color-secondary-foreground: #fafafa;
+  --color-muted: #242429;
+  --color-muted-foreground: #919199;
+  --color-accent: #242429;
+  --color-accent-foreground: #fafafa;
+  --color-destructive: #7f1d1d;
+  --color-destructive-foreground: #fafafa;
+  --color-border: #242429;
+  --color-input: #242429;
+  --color-ring: #00E699;
+  
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+
+  --animate-marquee: marquee-scroll 60s linear infinite;
+  @keyframes marquee-scroll {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
 }
 
 @layer base {
@@ -112,16 +76,26 @@
   }
 }
 
-/* Gradient text MRI — usado no destaque do hero. */
-.text-gradient {
-  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-accent) 100%);
+/* Utilities */
+.text-gradient-primary {
+  background: linear-gradient(135deg, #00E699 0%, #A18BF5 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-/* Heading signature MRI — bold italic uppercase com kerning apertado,
- * mesmo estilo usado nas NUIs de mri_Qspawn/mri_Qadmin. */
-.heading-mri {
-  @apply font-bold italic uppercase tracking-tight;
+.bg-glass {
+  background: rgba(14, 14, 17, 0.6);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.badge-outline {
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.02);
+  color: var(--foreground);
+}
+
+html {
+  scroll-behavior: smooth;
 }

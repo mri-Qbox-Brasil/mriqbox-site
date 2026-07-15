@@ -1,18 +1,25 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Saira } from "next/font/google"
+import { Nunito_Sans, Montserrat_Alternates, Inter } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import CookieConsent from "@/components/cookie-consent"
 import "./globals.css"
 
-// Saira — mesma fonte usada nas NUIs MRI (Qspawn, Qadmin). Bold italic
-// pra "premium racing" feel da identidade da suite.
-const saira = Saira({
+const nunito = Nunito_Sans({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "900"],
-  style: ["normal", "italic"],
-  variable: "--font-saira",
+  variable: "--font-nunito",
+})
+
+const montserrat = Montserrat_Alternates({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-montserrat",
+})
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
 })
 
 const SITE_URL = "https://mriqbox.com.br"
@@ -89,8 +96,8 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="pt-BR" className={`dark ${saira.variable}`}>
-      <body className="font-sans antialiased">
+    <html lang="pt-BR" className={`dark ${inter.variable}`}>
+      <body className="font-sans antialiased bg-background text-foreground">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(ORGANIZATION_SCHEMA) }}
