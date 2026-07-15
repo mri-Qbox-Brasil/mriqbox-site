@@ -26,7 +26,7 @@ export default function DiscordPage() {
 
       {/* Main Content */}
       <main className="flex-1 w-full max-w-[1440px] mx-auto px-6 md:px-12 pt-[100px] pb-8 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-        
+
         {/* Left Side: Copy and Buttons */}
         <div className="flex flex-col gap-5 max-w-xl">
           <div className="inline-flex items-center gap-2 py-1 px-4 rounded-full border border-primary/20 bg-primary/10 w-fit">
@@ -47,7 +47,7 @@ export default function DiscordPage() {
             <Link href="https://discord.mriqbox.com.br" className="flex items-center justify-center gap-2 px-6 py-3.5 bg-primary hover:bg-primary/90 rounded-xl text-primary-foreground font-bold text-base transition-all">
               Entrar no Discord
             </Link>
-            <Link href="mailto:suporte@mriqbox.com.br" className="flex items-center justify-center gap-2 px-6 py-3.5 border border-white/10 hover:bg-white/5 rounded-xl text-white font-bold text-base transition-all">
+            <Link href="mailto:contact@mriqbox.com.br" className="flex items-center justify-center gap-2 px-6 py-3.5 border border-white/10 hover:bg-white/5 rounded-xl text-white font-bold text-base transition-all">
               <Mail className="w-5 h-5" />
               Enviar Email
             </Link>
@@ -56,15 +56,15 @@ export default function DiscordPage() {
           {/* Cards */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-2">
             <div className="p-5 rounded-2xl bg-card border border-white/5 flex flex-col gap-2 hover:border-primary/50 transition-colors">
-               <div className="w-7 h-7 rounded-lg bg-white/5 flex items-center justify-center text-white font-bold mb-1">1</div>
-               <h3 className="text-lg font-bold text-white">Entre no servidor</h3>
-               <p className="text-xs md:text-sm text-muted-foreground">Use o botão acima para entrar no nosso servidor oficial do Discord.</p>
+              <div className="w-7 h-7 rounded-lg bg-white/5 flex items-center justify-center text-white font-bold mb-1">1</div>
+              <h3 className="text-lg font-bold text-white">Entre no servidor</h3>
+              <p className="text-xs md:text-sm text-muted-foreground">Use o botão acima para entrar no nosso servidor oficial do Discord.</p>
             </div>
             <div className="p-5 rounded-2xl bg-card border border-white/5 flex flex-col gap-2 hover:border-primary/50 transition-colors">
-               <div className="w-7 h-7 rounded-lg bg-primary/20 flex items-center justify-center text-primary font-bold mb-1">2</div>
-               <h3 className="text-lg font-bold text-white">Abra um ticket</h3>
-               <p className="text-xs md:text-sm text-muted-foreground">Vá para o canal de suporte, abra um ticket e te ajudaremos.</p>
-               <span className="text-[10px] font-bold text-primary mt-1 flex items-center gap-1">IR PARA O CANAL <ArrowRight className="w-3 h-3"/></span>
+              <div className="w-7 h-7 rounded-lg bg-primary/20 flex items-center justify-center text-primary font-bold mb-1">2</div>
+              <h3 className="text-lg font-bold text-white">Abra um ticket</h3>
+              <p className="text-xs md:text-sm text-muted-foreground">Vá para o canal de suporte, abra um ticket e te ajudaremos.</p>
+              <span className="text-[10px] font-bold text-primary mt-1 flex items-center gap-1">IR PARA O CANAL <ArrowRight className="w-3 h-3" /></span>
             </div>
           </div>
         </div>
@@ -80,12 +80,12 @@ export default function DiscordPage() {
               <span className="ml-auto text-[10px] text-white/50 font-semibold tracking-widest">LIVE STATUS</span>
             </div>
             {/* The actual iframe */}
-            <iframe 
-              src="https://discord.com/widget?id=1210457748073091072&theme=dark" 
-              width="100%" 
-              height="100%" 
-              allowTransparency={true} 
-              frameBorder="0" 
+            <iframe
+              src="https://discord.com/widget?id=1210457748073091072&theme=dark"
+              width="100%"
+              height="100%"
+              allowTransparency={true}
+              frameBorder="0"
               sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"
               className="bg-[#2f3136] flex-1"
             ></iframe>
