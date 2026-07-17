@@ -24,4 +24,11 @@ const nextConfig = {
 
 const withMDX = createMDX()
 
-export default withMDX(nextConfig)
+const config = withMDX(nextConfig)
+
+// Buildamos com --webpack (o turbopack do Next 16 nao parseia as regras que o
+// fumadocs-mdx injeta). Essas regras de turbopack ficam no config sem uso e so
+// geram um warning de schema invalido — removemos pra manter o log limpo.
+delete config.turbopack
+
+export default config

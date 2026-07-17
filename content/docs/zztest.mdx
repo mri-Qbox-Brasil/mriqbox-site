@@ -1,0 +1,54 @@
+---
+title: Teste de componentes
+description: Página temporária para validar os componentes migrados
+---
+
+# Teste de componentes
+
+<Callout type="info">Callout info.</Callout>
+<Callout type="warning">Callout warning (mapeado para warn).</Callout>
+<Callout type="error">Callout error.</Callout>
+
+## Tabs Lua/JS
+
+<Tabs items={['Lua', 'JS']}>
+  <Tabs.Tab>
+    ```lua
+    local player = exports.qbx_core:GetPlayer(source)
+    print(player.PlayerData.citizenid)
+    ```
+  </Tabs.Tab>
+  <Tabs.Tab>
+    ```js
+    const player = exports.qbx_core.GetPlayer(source)
+    console.log(player.PlayerData.citizenid)
+    ```
+  </Tabs.Tab>
+</Tabs>
+
+## Steps
+
+<Steps>
+### Primeiro passo
+Faça isto.
+
+### Segundo passo
+Depois aquilo.
+</Steps>
+
+## Botões
+
+<DownloadButton link="https://github.com/mri-Qbox-Brasil/mri_installer_download/releases/latest/download/mri_installer.exe" label="Baixar o instalador" repo="mri-Qbox-Brasil/mri_installer_download" />
+
+<ResourceLinks repo="https://github.com/overextended/oxmysql" />
+
+## Accordion
+
+<CollapsibleTable label="Ver lista">
+
+| Item | Valor |
+| ---- | ----- |
+| a    | 1     |
+| b    | 2     |
+
+</CollapsibleTable>
