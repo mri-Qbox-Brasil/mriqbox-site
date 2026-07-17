@@ -191,7 +191,7 @@ export default async function HomePage() {
         <div className="hidden md:flex items-center gap-8">
           <Link href="/recursos" className="text-xs font-bold uppercase tracking-wider text-white hover:text-primary transition-colors">Recursos</Link>
           <Link href="/comecar" className="text-xs font-bold uppercase tracking-wider text-white hover:text-primary transition-colors">Como começar</Link>
-          <Link href="https://docs.mriqbox.com.br" className="text-xs font-bold uppercase tracking-wider text-white hover:text-primary transition-colors">Suporte</Link>
+          <Link href="/docs" className="text-xs font-bold uppercase tracking-wider text-white hover:text-primary transition-colors">Documentação</Link>
           <Link href="/sobre" className="text-xs font-bold uppercase tracking-wider text-white hover:text-primary transition-colors">Saber Mais</Link>
         </div>
         <div className="flex items-center gap-3">
@@ -226,7 +226,7 @@ export default async function HomePage() {
           A framework open-source que combina Qbcore e Ox, tornando a base do seu servidor mais prática e segura.
         </p>
 
-        <Link href="https://docs.mriqbox.com.br/mri/instalacao" className="px-8 py-3.5 bg-primary hover:bg-primary/90 rounded-full text-primary-foreground font-bold text-lg transition-all hover:scale-105">
+        <Link href="/docs/mri/instalacao" className="px-8 py-3.5 bg-primary hover:bg-primary/90 rounded-full text-primary-foreground font-bold text-lg transition-all hover:scale-105">
           Instalar agora
         </Link>
 
@@ -444,7 +444,7 @@ export default async function HomePage() {
             Junte-se à comunidade MRI Qbox Brasil e eleve a qualidade do seu roleplay hoje mesmo.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 relative z-10">
-            <Link href="https://docs.mriqbox.com.br/mri/instalacao" className="flex items-center justify-center gap-2 px-10 py-5 bg-primary hover:bg-primary-accent rounded-xl text-white font-semibold text-lg transition-all shadow-[0_0_30px_-10px_rgba(0,230,153,0.4)]">
+            <Link href="/docs/mri/instalacao" className="flex items-center justify-center gap-2 px-10 py-5 bg-primary hover:bg-primary-accent rounded-xl text-white font-semibold text-lg transition-all shadow-[0_0_30px_-10px_rgba(0,230,153,0.4)]">
               Começar Gratuitamente
             </Link>
           </div>
@@ -473,7 +473,7 @@ export default async function HomePage() {
               <Link href="/sobre" className="text-sm text-muted-foreground hover:text-white transition-colors">Sobre nós</Link>
               <Link href="/recursos" className="text-sm text-muted-foreground hover:text-white transition-colors">Recursos</Link>
               <Link href="/comecar" className="text-sm text-muted-foreground hover:text-white transition-colors">Como começar</Link>
-              <Link href="https://docs.mriqbox.com.br" className="text-sm text-muted-foreground hover:text-white transition-colors">Documentação</Link>
+              <Link href="/docs" className="text-sm text-muted-foreground hover:text-white transition-colors">Documentação</Link>
             </div>
             <div className="flex flex-col gap-4">
               <h4 className="text-sm font-bold text-white tracking-wider uppercase mb-2">Comunidade</h4>

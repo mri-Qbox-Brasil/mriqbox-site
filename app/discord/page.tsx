@@ -14,7 +14,7 @@ export default function DiscordPage() {
         <div className="hidden md:flex items-center gap-8">
           <Link href="/recursos" className="text-xs font-bold uppercase tracking-wider text-white hover:text-primary transition-colors">Recursos</Link>
           <Link href="/comecar" className="text-xs font-bold uppercase tracking-wider text-white hover:text-primary transition-colors">Como começar</Link>
-          <Link href="https://docs.mriqbox.com.br" className="text-xs font-bold uppercase tracking-wider text-white hover:text-primary transition-colors">Suporte</Link>
+          <Link href="/docs" className="text-xs font-bold uppercase tracking-wider text-white hover:text-primary transition-colors">Documentação</Link>
           <Link href="/sobre" className="text-xs font-bold uppercase tracking-wider text-white hover:text-primary transition-colors">Saber Mais</Link>
         </div>
         <div className="flex items-center gap-3">
