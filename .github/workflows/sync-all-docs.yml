@@ -1,0 +1,96 @@
+name: Sync All Docs
+
+# Publica o MANUAL.md de TODOS os repositorios do catalogo de uma vez, num
+# unico commit.
+#
+# Existe por dois motivos:
+#   - backfill: publica quem ja tem MANUAL.md sem precisar de um push vazio em
+#     cada repositorio;
+#   - rede de seguranca: reconcilia o site com os repos caso algum
+#     repository_dispatch tenha se perdido.
+
+on:
+  workflow_dispatch:
+    inputs:
+      only:
+        description: "CSV de repos para sincronizar (vazio = todos do catalogo)"
+        required: false
+  schedule:
+    - cron: "0 5 * * 1" # toda segunda-feira
+
+# Compartilha o grupo com o update-doc: os dois commitam no mesmo branch e nao
+# podem correr juntos.
+concurrency:
+  group: docs-ingest
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Instalar dependencias
+        run: npm ci
+
+      # O catalogo e a fonte de verdade e mora no repo `workflows`, junto dos
+      # callables — nao duplicado aqui.
+      - name: Buscar catalogo
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+        run: |
+          curl -sSfL \
+            -H "Authorization: token $GH_TOKEN" \
+            -H "Accept: application/vnd.github.v3.raw" \
+            "https://api.github.com/repos/mri-Qbox-Brasil/workflows/contents/docs-repos.json" \
+            -o /tmp/catalog.json
+
+      - name: Publicar documentacao
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          ONLY: ${{ inputs.only }}
+        run: |
+          node -e '
+            const all = JSON.parse(require("fs").readFileSync("/tmp/catalog.json", "utf8"));
+
+            const only = (process.env.ONLY || "")
+              .split(",").map(s => s.trim()).filter(Boolean);
+
+            const items = all
+              .filter(r => r.publish !== false)
+              .filter(r => !only.length || only.includes(r.repo) || only.includes(r.slug));
+
+            console.error(`catalogo: ${all.length} | a sincronizar: ${items.length}`);
+            require("fs").writeFileSync("/tmp/items.json", JSON.stringify(items));
+          '
+
+          node .release/ingest-docs.js "$(cat /tmp/items.json)"
+
+      - name: Validar build
+        run: npm run build
+
+      - name: Commit e push se houver mudancas
+        run: |
+          git config user.name 'github-actions'
+          git config user.email 'github-actions@github.com'
+          git add content/docs/mri/resources/
+
+          if git diff --cached --quiet; then
+            echo "Sem mudancas para commitar."
+            exit 0
+          fi
+
+          git commit -m "docs: sincroniza documentacao de recursos"
+
+          for i in 1 2 3 4 5; do
+            git push && exit 0
+            git pull --rebase origin "${GITHUB_REF_NAME}" || exit 1
+            sleep $((i * 3))
+          done
+          exit 1

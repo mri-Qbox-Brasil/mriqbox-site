@@ -1,0 +1,98 @@
+name: Update Documentation
+
+# Recebe a notificacao de um repositorio de script (via callable-repo-dispatch)
+# e publica o MANUAL.md dele em content/docs/mri/resources.
+#
+# A logica de verdade mora em .release/ingest-docs.js, compartilhada com o
+# sync-all-docs.yml — assim o caminho incremental e o de lote nao divergem.
+
+on:
+  workflow_dispatch:
+    inputs:
+      repo:
+        description: "Repositorio de origem (de onde baixar o MANUAL.md)"
+        required: true
+      name:
+        description: "Nome amigavel na sidebar (vazio => nome do repo)"
+        required: false
+      slug:
+        description: "Slug publicado (vazio => nome do repo; use em repos -source)"
+        required: false
+      doc_file:
+        description: "Arquivo de documentacao"
+        required: false
+        default: "MANUAL.md"
+  repository_dispatch:
+    types: [update-manual]
+
+# Varios repos podem notificar ao mesmo tempo. Sem isto, os jobs concorrentes
+# commitam e dao push no mesmo branch, e todos menos um falham com
+# non-fast-forward. Serializa em vez de cancelar: cada notificacao importa.
+concurrency:
+  group: docs-ingest
+  cancel-in-progress: false
+
+jobs:
+  update-docs:
+    name: Update Documentation
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Instalar dependencias
+        run: npm ci
+
+      - name: Baixar documentacao e atualizar sidebar
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          PAYLOAD: ${{ toJSON(github.event.client_payload) }}
+          IN_REPO: ${{ inputs.repo }}
+          IN_NAME: ${{ inputs.name }}
+          IN_SLUG: ${{ inputs.slug }}
+          IN_DOC: ${{ inputs.doc_file }}
+        run: |
+          if [ "${{ github.event_name }}" = "repository_dispatch" ]; then
+            echo "$PAYLOAD" > /tmp/item.json
+          else
+            node -e '
+              const o = { org: "mri-Qbox-Brasil", repo: process.env.IN_REPO };
+              if (process.env.IN_NAME) o.name = process.env.IN_NAME;
+              if (process.env.IN_SLUG) o.slug = process.env.IN_SLUG;
+              if (process.env.IN_DOC)  o.doc_file = process.env.IN_DOC;
+              require("fs").writeFileSync("/tmp/item.json", JSON.stringify(o));
+            '
+          fi
+
+          node .release/ingest-docs.js "$(cat /tmp/item.json)"
+
+      # O build prova que a pagina renderiza. Se quebrar, falha aqui — antes de
+      # commitar.
+      - name: Validar build
+        run: npm run build
+
+      - name: Commit e push se houver mudancas
+        run: |
+          git config user.name 'github-actions'
+          git config user.email 'github-actions@github.com'
+          git add content/docs/mri/resources/
+
+          if git diff --cached --quiet; then
+            echo "Sem mudancas para commitar."
+            exit 0
+          fi
+
+          git commit -m "docs: atualiza documentacao de recursos"
+
+          for i in 1 2 3 4 5; do
+            git push && exit 0
+            echo "push falhou (tentativa $i), rebase e retry..."
+            git pull --rebase origin "${GITHUB_REF_NAME}" || exit 1
+            sleep $((i * 3))
+          done
+          exit 1
