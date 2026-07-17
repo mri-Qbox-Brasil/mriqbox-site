@@ -2,6 +2,9 @@ import type { MetadataRoute } from "next"
 
 const SITE_URL = "https://mriqbox.com.br"
 
+// Necessario pro `output: export` (build do GitHub Pages); inocuo na Vercel.
+export const dynamic = "force-static"
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date()
   const routes: { path: string; priority: number; changeFrequency: "monthly" | "weekly" }[] = [

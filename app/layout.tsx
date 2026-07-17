@@ -25,6 +25,12 @@ const inter = Inter({
 const SITE_URL = "https://mriqbox.com.br"
 const OG_IMAGE = "https://assets.mriqbox.com.br/branding/logo1080.png"
 
+// Build de dev no GitHub Pages: serve sob /mriqbox-site e nao deve ser indexado.
+// O basePath nao e aplicado automaticamente aos icons do metadata, entao
+// prefixamos manualmente aqui.
+const IS_GITHUB_PAGES = process.env.GITHUB_PAGES === "true"
+const BP = IS_GITHUB_PAGES ? "/mriqbox-site" : ""
+
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: "MRI Qbox Brasil - Framework FiveM Open Source",
@@ -33,15 +39,17 @@ export const metadata: Metadata = {
   keywords: ["fivem", "qbox", "qbcore", "ox", "brasil", "framework", "gta v", "servidor", "rp", "roleplay"],
   authors: [{ name: "MRI Qbox Brasil" }],
   alternates: { canonical: "/" },
+  // Versao de dev (GitHub Pages) nao deve aparecer nos buscadores.
+  ...(IS_GITHUB_PAGES && { robots: { index: false, follow: false } }),
   // Favicon: mri.ico (mesmo da aba do docs.mriqbox.com.br) + icon.png 460px
   // (avatar MRI) pra crawlers/cards de preview que ignoram .ico. apple-icon
   // pro iOS home screen e cards que usam apple-touch-icon.
   icons: {
     icon: [
-      { url: "/mri.ico", type: "image/x-icon" },
-      { url: "/icon.png", type: "image/png", sizes: "460x460" },
+      { url: `${BP}/mri.ico`, type: "image/x-icon" },
+      { url: `${BP}/icon.png`, type: "image/png", sizes: "460x460" },
     ],
-    apple: "/apple-icon.png",
+    apple: `${BP}/apple-icon.png`,
   },
   openGraph: {
     type: "website",

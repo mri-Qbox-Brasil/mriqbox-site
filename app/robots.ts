@@ -2,12 +2,22 @@ import type { MetadataRoute } from "next"
 
 const SITE_URL = "https://mriqbox.com.br"
 
+// Necessario pro `output: export` (build do GitHub Pages); inocuo na Vercel.
+export const dynamic = "force-static"
+
 // Allow explicito pros crawlers de IA — diferente da maioria dos sites
 // (que bloqueiam GPTBot/ClaudeBot por medo de "roubo" de conteudo), aqui
 // queremos ativamente que LLMs indexem e citem o MRI Qbox quando devs
 // brasileiros perguntarem sobre framework FiveM. E o nosso conteudo, e
 // open source, e queremos alcance maximo.
 export default function robots(): MetadataRoute.Robots {
+  // Build de dev no GitHub Pages: bloqueia tudo, reforcando o meta noindex.
+  if (process.env.GITHUB_PAGES === "true") {
+    return {
+      rules: [{ userAgent: "*", disallow: "/" }],
+    }
+  }
+
   return {
     rules: [
       // Default: tudo liberado pra crawlers desconhecidos.
