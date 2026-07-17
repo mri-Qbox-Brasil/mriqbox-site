@@ -4,6 +4,7 @@ import { Nunito_Sans, Montserrat_Alternates, Inter } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import CookieConsent from "@/components/cookie-consent"
+import { RootProvider } from "fumadocs-ui/provider/next"
 import "./globals.css"
 
 const nunito = Nunito_Sans({
@@ -114,7 +115,20 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(WEBSITE_SCHEMA) }}
         />
-        {children}
+        {/* RootProvider habilita a busca/contexto do Fumadocs (docs). Tema fixo
+            em dark (site é dark-only) e busca Orama estática. O endpoint inclui
+            o basePath (vazio em produção, /mriqbox-site no GitHub Pages). */}
+        <RootProvider
+          theme={{ enabled: false }}
+          search={{
+            options: {
+              type: "static",
+              api: `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/search`,
+            },
+          }}
+        >
+          {children}
+        </RootProvider>
         <CookieConsent />
         <Analytics />
         <SpeedInsights />
