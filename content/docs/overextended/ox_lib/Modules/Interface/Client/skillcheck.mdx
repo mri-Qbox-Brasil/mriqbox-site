@@ -1,0 +1,100 @@
+---
+title: Skill Check
+---
+
+## lib.skillCheck
+
+Executa um skill check com a dificuldade definida.
+
+<Tabs items={["Lua", "JS"]}>
+  <Tabs.Tab>
+    ```lua
+    lib.skillCheck(difficulty, inputs)
+    ```
+  </Tabs.Tab>
+  <Tabs.Tab>
+    ```ts
+    import lib from '@overextended/ox_lib/client';
+
+    lib.skillCheck(difficulty, inputs);
+    ```
+
+  </Tabs.Tab>
+</Tabs>
+
+- difficulty: `'easy'` ou `'medium'` ou `'hard'` ou `table`
+  - Dificuldades predefinidas:
+    - 'easy' - `{ areaSize: 50, speedMultiplier: 1 }`
+    - 'medium' - `{ areaSize: 40, speedMultiplier: 1.5 }`
+    - 'hard' - `{ areaSize: 25, speedMultiplier: 1.75 }`
+  - Dificuldades customizadas podem ser definidas enviando um objeto em vez de uma das strings acima
+    - areaSize: `number`
+      - Tamanho da área de sucesso em graus
+    - speedMultiplier: `number`
+      - Multiplicador para a velocidade do indicador
+-- inputs?: `string[]`
+  - Uma tecla aleatória será escolhida do array `inputs` para cada skill check
+  - Se nenhum `inputs` for definido, a tecla padrão será `e`
+
+## lib.skillCheckActive
+
+Retorna `true` se um skill check estiver ativo no momento.
+
+<Tabs items={["Lua", "JS"]}>
+  <Tabs.Tab>
+    ```lua
+    lib.skillCheckActive()
+    ```
+  </Tabs.Tab>
+  <Tabs.Tab>
+    ```ts
+    import lib from '@overextended/ox_lib/client'
+
+    lib.skillCheckActive()
+    ```
+
+  </Tabs.Tab>
+</Tabs>
+
+## lib.cancelSkillCheck
+
+Cancela o skill check atualmente em andamento.
+
+<Tabs items={["Lua", "JS"]}>
+  <Tabs.Tab>
+    ```lua
+    lib.cancelSkillCheck()
+    ```
+  </Tabs.Tab>
+  <Tabs.Tab>
+    ```ts
+    import lib from '@overextended/ox_lib/client'
+
+    lib.cancelSkillCheck()
+    ```
+
+  </Tabs.Tab>
+</Tabs>
+
+## Exemplo de uso
+
+<Tabs items={["Lua", "JS"]}>
+  <Tabs.Tab>
+    ```lua
+    local success = lib.skillCheck({'easy', 'easy', {areaSize = 60, speedMultiplier = 2}, 'hard'}, {'w', 'a', 's', 'd'})
+    ```
+  </Tabs.Tab>
+  <Tabs.Tab>
+    ```ts
+    import lib from '@overextended/ox_lib/client';
+
+    const success = await lib.skillCheck(
+      ['easy', 'easy', { areaSize: 60, speedMultiplier: 2 }, 'hard'],
+      ['w', 'a', 's', 'd']
+    );
+    ```
+
+  </Tabs.Tab>
+</Tabs>
+
+![skillcheck_example](https://i.imgur.com/rgfkn0S.png)

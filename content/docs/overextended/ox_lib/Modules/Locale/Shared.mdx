@@ -1,0 +1,154 @@
+---
+title: Shared
+---
+
+Permite que servidores definam um idioma preferido e tente carregar arquivos de locale em quaisquer recursos que utilizem o módulo.
+Arquivos de locale devem usar o [Código de Idioma ISO](http://www.lingoes.net/en/translator/langcode.htm) e ser salvos como `./locales/langcode.json`
+
+## Configuração
+
+Para alterar o idioma preferido do inglês, adicione o convar ao seu `server.cfg` e troque `en` pelo código de idioma desejado.
+
+```yaml
+setr ox:locale en
+```
+
+Crie um diretório `locales` e um arquivo para o seu idioma.
+
+```json filename="locales/en.json"
+{
+  "grand_theft_auto": "grand theft auto",
+  "male": "male",
+  "female": "female",
+  "suspect_sex": "suspect is %s"
+}
+```
+
+```json filename="locales/fr.json"
+{
+  "grand_theft_auto": "vol de voiture",
+  "male": "homme",
+  "female": "femme",
+  "suspect_sex": "le suspect est %s"
+}
+```
+
+```lua filename="fxmanifest.lua"
+files {
+  'locales/*.json'
+}
+```
+
+## Uso
+
+Inicialize o módulo de locale no seu resource (uma vez).
+
+<Tabs items={["Lua", "JS"]}>
+  <Tabs.Tab>
+  ```lua
+  lib.locale()
+  ```
+  </Tabs.Tab>
+  <Tabs.Tab>
+  ```ts
+  import {initLocale} from '@overextended/ox_lib/shared'
+
+  initLocale()
+  ```
+  </Tabs.Tab>
+</Tabs>
+
+Formate suas strings com o novo global de locale.
+Argumentos adicionais podem ser enviados para formatar a saída do locale.
+
+<Tabs items={['Lua', 'JS']}>
+  <Tabs.Tab>
+
+    ```lua
+    locale(str, ...)
+    ```
+  </Tabs.Tab>
+  <Tabs.Tab>
+
+    ```ts
+    import { locale } from '@overextended/ox_lib/shared'
+
+    locale(str, ...)
+    ```
+  </Tabs.Tab>
+</Tabs>
+
+- str: `string`
+- vararg?: `string` ou `number`
+
+<u>**Exemplo**</u>
+
+<Tabs items={['Lua', 'JS']}>
+  <Tabs.Tab>
+
+    ```lua
+    -- Carrega o módulo de locale
+    lib.locale()
+
+    SetInterval(function()
+      print(locale('grand_theft_auto'))
+      print(locale('suspect_sex', locale('male')))
+    end, 5000)
+    ```
+  </Tabs.Tab>
+  <Tabs.Tab>
+
+    ```ts
+    import { initLocale, locale } from '@overextended/ox_lib/shared
+
+    // Carrega o módulo de locale
+    initLocale()
+
+    setInterval(() => {
+      console.log(locale('grand_theft_auto'))
+      console.log(locale('suspect_sex', locale('male')))
+    }, 5000)
+    ```
+  </Tabs.Tab>
+</Tabs>
+
+
+## Frases
+
+Você pode criar uma string de locale que referencia outros locales para construir uma frase, em vez de chamar `locale` várias vezes.
+
+```json
+{
+  "hello": "hello %s",
+  "my_name_is": "my name is %s",
+  "hello_my_name_is": "${hello}! ${my_name_is}."
+}
+```
+
+<Tabs items={['Lua', 'JS']}>
+  <Tabs.Tab>
+
+  ```lua
+  print(locale('hello_my_name_is', 'doka', 'linden'))
+  ```
+  </Tabs.Tab>
+  <Tabs.Tab>
+
+    ```ts
+    import { locale } from '@overextended/ox_lib/shared'
+
+    console.log(locale('hello_my_name_is', 'doka', 'linden'))
+    ```
+  </Tabs.Tab>
+</Tabs>
+
+## lib.getLocale
+
+Obtém uma string de locale de outro resource e adiciona ao dicionário.
+
+```lua
+lib.getLocale(resource, key)
+```
+
+- resource: `string`
+- key: `string`

@@ -1,0 +1,86 @@
+---
+title: Shared
+---
+
+Adiciona funções adicionais além da biblioteca padrão `table`.
+
+## lib.table.contains
+
+Verifica se a `table` contém o `value` fornecido. Destinado apenas a valores simples e tabelas não aninhadas.
+
+```lua
+lib.table.contains(tbl, value)
+```
+
+- tbl: `table`
+- value: `any`
+
+Retorno:
+- isContained: `boolean`
+
+## lib.table.matches
+
+Compara se dois valores são iguais, iterando sobre tabelas e comparando tanto chaves quanto valores.
+
+```lua
+lib.table.matches(tableOne, tableTwo)
+```
+
+- tableOne: `table`
+- tableTwo: `table`
+
+Retorno:
+- matches: `boolean`
+
+## lib.table.deepclone
+
+Clona recursivamente uma tabela para garantir que não restem referências à tabela original.
+
+```lua
+lib.table.deepclone(tbl)
+```
+
+- tbl: `table`
+
+Retorno:
+- clonedTable: `table`
+
+## lib.table.merge
+
+Mescla duas tabelas. Chaves duplicadas serão somadas se forem números; caso contrário, o valor de `tableTwo` será usado.
+
+```lua
+lib.table.merge(tableOne, tableTwo)
+```
+
+- tableOne: `table`
+- tableTwo: `table`
+
+Retorno:
+- tableOne: `table`
+
+## lib.table.freeze
+
+Transforma uma tabela em somente-leitura, impedindo modificações posteriores. Tabelas internas não congeladas permanecem mutáveis.
+
+```lua
+lib.table.freeze(tbl)
+```
+
+- tbl: `table`
+
+Retorno:
+- frozenTable: `table`
+
+## lib.table.isFrozen
+
+Retorna `true` se `tbl` estiver marcado como somente-leitura.
+
+```lua
+lib.table.isFrozen(tbl)
+```
+
+- tbl: `table`
+
+Retorno:
+- isFrozen: `boolean`

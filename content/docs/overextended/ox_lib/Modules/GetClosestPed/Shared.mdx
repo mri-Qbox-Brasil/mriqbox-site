@@ -1,0 +1,22 @@
+---
+title: Shared
+---
+
+## lib.getClosestPed
+
+Retorna o handle do ped e as coordenadas do ped mais próximo a partir de um conjunto de coordenadas.
+
+```lua
+lib.getClosestPed(coords, maxDistance)
+```
+
+- coords: `vector3`
+  - Coordenadas a partir das quais será feita a verificação.
+- maxDistance?: `number`
+  - Distância máxima para verificação.
+  - Padrão: `2.0`
+
+Retorno:
+
+- ped?: `number`
+- coords?: `vector3`

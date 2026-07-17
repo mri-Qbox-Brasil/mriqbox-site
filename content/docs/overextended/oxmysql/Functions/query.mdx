@@ -1,0 +1,89 @@
+---
+title: query
+---
+
+Quando dados são selecionados, retorna todas as linhas e colunas correspondentes; caso contrário, retorna dados como `insertId`, `affectedRows`, etc.
+
+## Promise
+
+<Tabs items={['Lua', 'JS']}>
+  <Tabs.Tab>
+
+    ```lua
+    local response = MySQL.query.await('SELECT `firstname`, `lastname` FROM `users` WHERE `identifier` = ?', {
+        identifier
+    })
+
+    if response then
+        for i = 1, #response do
+            local row = response[i]
+            print(row.firstname, row.lastname)
+        end
+    end
+    ```
+
+  </Tabs.Tab>
+  <Tabs.Tab>
+
+    ```js
+    const response = await MySQL.query('SELECT `firstname`, `lastname` FROM `users` WHERE `identifier` = ?', [
+      identifier
+    ])
+
+    if (response) {
+      response.forEach((row) => {
+        console.log(row.identifier, row.firstname, row.lastname)
+      })
+    }
+    ```
+
+  </Tabs.Tab>
+</Tabs>
+
+**Aliases**
+
+- `MySQL.Sync.fetchAll`
+- `exports.ghmattimysql.execute`
+- `exports.oxmysql.query_async`
+
+## Callback
+
+<Tabs items={['Lua', 'JS']}>
+  <Tabs.Tab>
+
+    ```lua
+    MySQL.query('SELECT `firstname`, `lastname` FROM `users` WHERE `identifier` = ?', {
+        identifier
+    }, function(response)
+        if response then
+            for i = 1, #response do
+                local row = response[i]
+                print(row.firstname, row.lastname)
+            end
+        end
+    end)
+    ```
+
+  </Tabs.Tab>
+  <Tabs.Tab>
+
+    ```js
+    MySQL.query('SELECT `firstname`, `lastname` FROM `users` WHERE `identifier` = ?', [
+      identifier
+    ], (response) => {
+      if (response) {
+        response.forEach((row) => {
+          console.log(row.firstname, row.lastname)
+        })
+      }
+    })
+    ```
+
+  </Tabs.Tab>
+</Tabs>
+
+**Aliases**
+
+- `MySQL.Async.fetchAll`
+- `exports.ghmattimysql.execute`
+- `exports.oxmysql.query`

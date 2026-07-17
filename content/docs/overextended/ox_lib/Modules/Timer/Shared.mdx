@@ -1,0 +1,162 @@
+---
+title: Shared
+---
+
+Fornece um sistema de timers versátil com opções para operação assíncrona, funcionalidade de pausa/retomada e callbacks ao término do timer.
+
+## Timer
+
+### lib.timer
+
+```lua
+lib.timer(time, onEnd, async)
+```
+
+- time: `number`
+- onEnd: `function`
+- async?: `boolean`
+  - Se `true`, o timer não bloqueia a execução do script na thread que o chamou.
+
+Retorna:
+
+- timer: `OxTimer`
+
+#### Exemplo
+```lua
+
+local timer = lib.timer(5000, function()
+   print("timer ended")
+end)
+```
+
+## Métodos
+
+### pause
+
+Pausa um timer ativo até que `timer:play()` ou `timer:forceEnd()` seja chamado.
+
+```lua
+timer:pause()
+```
+
+#### Exemplo
+```lua
+local timer = lib.timer(5000, function()
+    print("timer ended")
+end, true)
+
+timer:pause()
+```
+
+### play
+Retoma um timer se ele estiver pausado com `timer:pause()`.
+
+```lua
+timer:play()
+```
+
+#### Exemplo
+```lua
+local timer = lib.timer(5000, function()
+    print("timer ended")
+end, true)
+
+timer:pause()
+
+Wait(1000)
+
+timer:play()
+-- o timer termina em 6 segundos em vez de 5 por causa da pausa
+```
+
+### forceEnd
+
+Encerra imediatamente o timer e opcionalmente dispara o callback `onEnd`.
+
+```lua
+timer:forceEnd(triggerOnEnd)
+```
+
+- triggerOnEnd: `boolean`
+
+#### Exemplo
+```lua
+local timer = lib.timer(5000, function()
+    print("timer ended")
+end, true)
+
+timer:pause()
+
+Wait(1000)
+
+timer:forceEnd(false)
+-- o timer termina em 1 segundo em vez de 5 por causa do forceEnd e o callback não é executado
+```
+
+### isPaused
+Verifica se o timer está pausado devido a uma chamada prévia a `timer:pause()`.
+
+```lua
+timer:isPaused()
+```
+
+Retorna:
+- isPaused: `boolean`
+
+#### Exemplo
+```lua
+local timer = lib.timer(5000, function()
+    print("timer ended")
+end, true)
+
+print(timer:isPaused()) -- false
+
+timer:pause()
+
+print(timer:isPaused()) -- true
+```
+
+### getTimeLeft
+Retorna o tempo restante no timer no formato solicitado, arredondado para 2 casas decimais
+
+```lua
+timer:getTimeLeft(format)
+-- format: 'ms' = milissegundos, 's' = segundos, 'm' = minutos, 'h' = horas, nil = todos retornados em uma tabela
+```
+- format?: `'ms'` ou `'s'` ou `'m'` ou `'h'`
+
+Retorna:
+- time: `number` | `{ms: number, s: number, m: number, h: number}`
+
+#### Exemplo
+```lua
+local timer = lib.timer(5000, function()
+    print("timer ended")
+end, true)
+
+print(timer:getTimeLeft('ms')) -- 5000 milissegundos
+print(timer:getTimeLeft('s'))  -- 5.00 segundos
+print(timer:getTimeLeft('m'))  -- 0.08 minutos
+print(timer:getTimeLeft('h'))  -- 0.00 horas
+print(timer:getTimeLeft())     -- {ms = 5000, s = 5.00, m = 0.08, h = 0.00 }
+```
+
+### restart
+Redefine e inicia o timer.
+
+```lua
+timer:restart()
+```
+
+#### Exemplo
+
+```lua
+-- isso criará um timer que se reinicia continuamente
+local timer
+
+timer = lib.timer(5000, function()
+    print("timer ended")
+    timer:restart()
+end, true)
+
+```

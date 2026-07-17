@@ -1,0 +1,169 @@
+---
+title: Ox Lib
+---
+
+Uma biblioteca standalone para fornecer código reutilizável de forma fácil como módulos importáveis e exports.
+
+<ResourceLinks repo="https://github.com/overextended/ox_lib" />
+
+## Instalação
+
+<Callout type="info">
+
+Recomendamos **fortemente** consultar os [Guias](../guides) para configurar o Git, Node.js e pnpm.
+
+</Callout>
+
+<Steps>
+
+### Baixe uma [release](https://github.com/overextended/ox_lib/releases) ou compile o código-fonte.
+
+```bash
+git clone https://github.com/overextended/ox_lib.git
+cd ox_lib/web
+pnpm i
+pnpm build
+```
+
+### Configuração
+
+A configuração do recurso é feita utilizando [convars](https://docs.fivem.net/docs/scripting-reference/convars/).
+
+```bash
+# https://v6.mantine.dev/theming/colors/#default-colors
+setr ox:primaryColor blue
+setr ox:primaryShade 8
+setr ox:userLocales 1 # Permite que os usuários escolham seus idiomas usando /ox_lib
+```
+
+Você também precisará conceder permissões ACE ao recurso.
+
+```bash
+add_ace resource.ox_lib command.add_ace allow
+add_ace resource.ox_lib command.remove_ace allow
+add_ace resource.ox_lib command.add_principal allow
+add_ace resource.ox_lib command.remove_principal allow
+```
+
+</Steps>
+
+## Uso
+
+<Tabs items={["Lua", "JS"]}>
+<Tabs.Tab>
+
+Para habilitar a biblioteca no seu recurso, basta adicionar @ox_lib/init.lua como um shared_script no seu arquivo fxmanifest.lua.
+
+```lua
+shared_scripts {
+    '@ox_lib/init.lua',
+}
+```
+
+Ou, se este for o único shared script que você usa, pode fazer:
+
+```lua
+shared_script '@ox_lib/init.lua'
+```
+
+Você pode especificar os módulos para importar no fxmanifest.lua, ou carregá-los dinamicamente.
+
+```lua
+ox_libs {
+    'locale',
+    'math',
+    'table',
+}
+```
+
+Quando o ox_lib for importado no seu script, ele disponibilizará várias variáveis globais:
+- `lib` Para importar módulos dinamicamente do ox_lib.
+- `require` Para importar módulos do seu próprio script.
+- `cache` Veja [aqui](./ox_lib/Modules/Cache/Shared).
+
+</Tabs.Tab>
+<Tabs.Tab>
+
+<Callout>
+O pacote npm para a biblioteca **não** oferece suporte a todas as funções disponíveis para Lua.
+
+Todas as funções suportadas estão localizadas dentro da pasta `resource` na lib.
+
+</Callout>
+
+Você pode obter o pacote npm [aqui](https://npmjs.com/package/@overextended/ox_lib).
+
+**Uso:**
+Você pode importar o objeto completo da biblioteca, que contém todas as funções para aquele escopo (client/server/shared), ou desestruturá-lo e importar apenas as funções necessárias no momento.
+
+```ts
+import lib from '@overextended/ox_lib/server';
+```
+
+```ts
+import { versionCheck } from '@overextended/ox_lib/server';
+```
+
+</Tabs.Tab>
+</Tabs>
+
+Agora você pode usar as funções da biblioteca dentro do seu recurso; verifique o restante da documentação para ver como utilizá-las.
+
+## Usando ícones nas interfaces
+
+A biblioteca de ícones utilizada é a Font Awesome 6.0. Se você definir apenas uma string para o ícone, o tipo padrão será `solid`.
+Se quiser usar um tipo de ícone diferente (por exemplo, `apple` como brand), é necessário definir o ícone como uma tabela (`array`) com o primeiro valor sendo o tipo (`fas`, `far`, `fab`) como string, e o segundo sendo o nome do ícone.
+
+<Tabs items={["Lua", "JS"]}>
+<Tabs.Tab>
+
+```lua
+icon = {'fab', 'apple'}
+```
+
+</Tabs.Tab>
+<Tabs.Tab>
+
+```ts
+icon: ['fab', 'apple'];
+```
+
+</Tabs.Tab>
+</Tabs>
+
+## Compilando a UI
+
+Se desejar editar qualquer elemento da UI, será necessário baixar o código _source_, editar o que for preciso e compilá-lo.
+
+<Callout type="warning">
+
+**NÃO** faça de-bundle ou desminifique os arquivos CSS/JS de release para editá-los.
+
+</Callout>
+**Requisitos:**
+
+- [Node.js (LTS)](https://nodejs.org/)
+- pnpm
+
+**Instalando o Node.js:**
+
+- Baixe a versão LTS do Node.js.
+- Execute o instalador e certifique-se de instalar todos os componentes necessários.
+- Rode `node --version` no terminal e confirme que exibe o número da versão. Se não exibir, a instalação não foi concluída corretamente.
+
+**Instalando o pnpm:**
+
+- Após instalar o Node.js, instale o pnpm executando `npm install -g pnpm`.
+
+**Compilando a UI:**
+
+- Entre no diretório `web`.
+- Rode `pnpm i` para instalar as dependências.
+- Rode `pnpm build` para compilar os arquivos fonte.
+
+<Callout type="info">
+Ao trabalhar no navegador, você pode executar `pnpm start`, que oferece hot reload — assim você verá suas alterações após salvar o arquivo.
+
+Se quiser trabalhar dentro do jogo, execute `pnpm start:game`, que escreve as alterações no disco; nesse caso, basta reiniciar o recurso para que tenham efeito.
+
+</Callout>

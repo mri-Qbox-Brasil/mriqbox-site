@@ -1,0 +1,119 @@
+---
+title: Shared
+---
+
+_Este módulo é carregado por padrão._
+
+## require
+
+Carrega o módulo especificado. A função verifica a tabela `loaded` para determinar se `modname` já foi carregado. Se já estiver, `require` retorna o valor armazenado em `loaded[modname]`.
+
+- Os nomes de módulo são caminhos para arquivos relativos ao recurso.
+- O nome do módulo deve apontar para um arquivo `.lua`.
+- Use `.` para separar diretórios em um caminho.
+- Módulos podem ser carregados de recursos externos usando `@resource.modname`.
+
+```lua
+require 'modname'
+```
+
+<Callout type="warning">
+
+Módulos do cliente devem ser definidos na seção `file` do manifesto do recurso.
+
+```lua filename="fxmanifest.lua"
+file 'modname.lua'
+-- ou
+files {
+  'modname.lua'
+}
+```
+
+</Callout>
+
+
+
+### Exemplo de uso
+
+```
+- resources/
+  - mylib/
+    - import.lua
+    - data/
+      - events.lua
+  - myresource/
+    - server.lua
+```
+
+```lua filename="mylib/import.lua"
+local mylib = {
+  events = require 'data.events'
+}
+
+print('Loaded mylib')
+
+return mylib
+```
+
+```lua filename="mylib/data/events.lua"
+return {
+  disconnect = 'onPlayerDropped',
+}
+```
+
+```lua filename="myresource/server.lua"
+local mylib = require '@mylib.import'
+print(mylib.events.disconnect)
+```
+
+## lib.load
+
+Carrega e executa um arquivo Lua no caminho fornecido. Diferente de `require`, o chunk não é cacheado para uso futuro.
+
+```lua
+lib.load(filePath, env)
+```
+
+- filePath: `string`
+  - Um caminho para o arquivo Lua, seguindo as mesmas regras de `require`.
+- env?: `table`
+  - Uma tabela a ser usada como ambiente global, por padrão `_ENV`.
+
+### Exemplo de uso
+
+```lua filename="myresource/import.lua"
+local events = lib.load('data.events')
+
+print('Loaded events')
+```
+
+```lua filename="myresource/data/events.lua"
+return {
+  disconnect = 'onPlayerDropped',
+}
+```
+
+## lib.loadJson
+
+Carrega um arquivo JSON no caminho especificado e decodifica-o como uma tabela.
+
+```lua
+lib.loadJson(filePath)
+```
+
+- filePath: `string`
+  - Um caminho para o arquivo JSON, seguindo as mesmas regras de `require`.
+
+### Exemplo de uso
+
+```lua filename="myresource/import.lua"
+local events = lib.loadJson('data.events')
+
+print('Loaded events')
+```
+
+```json filename="myresource/data/events.json"
+{
+  "disconnect": "onPlayerDropped"
+}
+```

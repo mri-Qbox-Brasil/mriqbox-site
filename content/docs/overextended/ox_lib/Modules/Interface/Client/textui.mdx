@@ -1,0 +1,131 @@
+---
+title: TextUI
+---
+
+## lib.showTextUI
+
+Exibe a janela do TextUI.
+
+<Callout type="warning">
+  **NÃO** execute esta função a cada tick; ela deve ser usada como um toggle.
+</Callout>
+
+<Tabs items={["Lua", "JS"]}>
+  <Tabs.Tab>
+    ```lua
+    lib.showTextUI(text, options)
+    ```
+  </Tabs.Tab>
+  <Tabs.Tab>
+    ```ts
+    import lib from '@overextended/ox_lib/client';
+
+    lib.showTextUI(text, options);
+    ```
+  </Tabs.Tab>
+</Tabs>
+
+- text: `string`
+-- options?: `table`
+  - position?: `'right-center'` ou `'left-center'` ou `'top-center'` ou `'bottom-center'`
+    - Padrão: `'right-center'`
+  - icon?: `string` ou `table` (`array`)
+  - iconColor?: `string`
+  - iconAnimation?: `'spin'` `'spinPulse'` `'spinReverse'` `'pulse'` `'beat'` `'fade'` `'beatFade'` `'bounce'` `'shake'`
+  - style?: React.CSSProperties
+  - alignIcon?: `'top'` ou `'center'`
+    - Padrão: `'center'`
+
+## lib.hideTextUI
+
+Oculta a janela TextUI atualmente visível
+
+<Tabs items={["Lua", "JS"]}>
+  <Tabs.Tab>
+    ```lua
+    lib.hideTextUI()
+    ```
+  </Tabs.Tab>
+  <Tabs.Tab>
+    ```ts
+    import lib from '@overextended/ox_lib/client';
+
+    lib.hideTextUI();
+    ```
+  </Tabs.Tab>
+</Tabs>
+
+## lib.isTextUIOpen
+
+Retorna se o TextUI está aberto. O texto atualmente exibido é retornado como o segundo valor.
+
+<Tabs items={["Lua", "JS"]}>
+  <Tabs.Tab>
+    ```lua
+    local isOpen, text = lib.isTextUIOpen()
+    ```
+  </Tabs.Tab>
+  <Tabs.Tab>
+    ```ts
+    import lib from '@overextended/ox_lib/client';
+
+    const [isOpen, text] = lib.isTextUIOpen();
+    ```
+  </Tabs.Tab>
+</Tabs>
+
+## Exemplos de uso
+
+### Básico
+
+<Tabs items={["Lua", "JS"]}>
+  <Tabs.Tab>
+    ```lua
+    lib.showTextUI('[E] - Abastecer veículo')
+    ```
+  </Tabs.Tab>
+  <Tabs.Tab>
+    ```ts
+    import lib from '@overextended/ox_lib/client';
+
+    lib.showTextUI('[E] - Abastecer veículo');
+    ```
+  </Tabs.Tab>
+</Tabs>
+
+![basic_example](https://i.imgur.com/uZS40fD.png)
+
+### Estilização personalizada
+
+<Tabs items={["Lua", "JS"]}>
+  <Tabs.Tab>
+    ```lua
+    lib.showTextUI('[E] - Colher maçã', {
+        position = "top-center",
+        icon = 'hand',
+        style = {
+            borderRadius = 0,
+            backgroundColor = '#48BB78',
+            color = 'white'
+        }
+    })
+    ```
+  </Tabs.Tab>
+  <Tabs.Tab>
+    ```ts
+    import lib from '@overextended/ox_lib/client';
+
+    lib.showTextUI('[E] - Colher maçã', {
+      position: 'top-center',
+      icon: 'hand',
+      style: {
+        borderRadius: 0,
+        backgroundColor: '#48BB78',
+        color: 'white',
+      },
+    });
+    ```
+  </Tabs.Tab>
+</Tabs>
+
+![custom_example](https://i.imgur.com/sy9lPC0.png)

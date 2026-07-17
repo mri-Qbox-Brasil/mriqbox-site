@@ -1,0 +1,107 @@
+---
+title: Caixa de Alerta
+---
+
+Uma caixa de alerta simples que pode exibir uma mensagem ao jogador.  
+Retorna se o jogador pressionou o botão de confirmar ou se cancelou o diálogo.
+
+## lib.alertDialog
+
+<Tabs items={["Lua", "JS"]}>
+  <Tabs.Tab>
+    <Tabs items={["Client", "Server"]}>
+      <Tabs.Tab>
+        ```lua
+        lib.alertDialog(data)
+        ```
+      </Tabs.Tab>
+      <Tabs.Tab>
+        ```lua
+        TriggerClientEvent('ox_lib:alertDialog', source, data)
+        ```
+      </Tabs.Tab>
+    </Tabs>
+  </Tabs.Tab>
+  <Tabs.Tab>
+    <Callout>
+      Esta função é **assíncrona**, sendo necessário utilizar um callback `.then` ou tornar sua função `async`.
+    </Callout>
+
+    ```ts
+    import lib from '@overextended/ox_lib/client';
+
+    lib.alertDialog(data);
+    ```
+  </Tabs.Tab>
+</Tabs>
+
+- data: `table` (`object`)
+  - header: `string`
+    - Título do diálogo.
+  - content: `string`
+    - Conteúdo do corpo do diálogo, com suporte a markdown.
+  - centered?: `boolean`
+    - Centraliza o diálogo vertical e horizontalmente.
+  - cancel?: `boolean`
+    - Exibe um botão de cancelar (ESC ainda funciona mesmo que não esteja definido).
+  - size?: `'xs'` ou `'sm'` ou `'md'` ou `'lg'` ou `'xl'`
+  - overflow?: `boolean`
+  - labels?: `table`
+    - Permite definir os rótulos exibidos para os botões de cancelar e/ou confirmar.
+    - cancel?: `string`
+    - confirm?: `string`
+
+Retorna `'confirm'` se o jogador pressionar o botão de confirmar.  
+Caso contrário, se pressionar cancelar ou sair com ESC, o retorno será `'cancel'`.
+
+## lib.closeAlertDialog
+
+Força o fechamento da caixa de alerta ativa e define seu retorno como `nil`.
+
+<Tabs items={["Lua", "JS"]}>
+  <Tabs.Tab>
+    ```lua
+    lib.closeAlertDialog()
+    ```
+  </Tabs.Tab>
+  <Tabs.Tab>
+    ```ts
+    import lib from '@overextended/ox_lib/client';
+
+    lib.closeAlertDialog();
+    ```
+  </Tabs.Tab>
+</Tabs>
+
+## Exemplo
+
+<Tabs items={["Lua", "JS"]}>
+  <Tabs.Tab>
+    ```lua
+    local alert = lib.alertDialog({
+        header = 'Olá!',
+        content = 'General Kenobi  \n Suporte a Markdown!',
+        centered = true,
+        cancel = true
+    })
+
+    print(alert)
+    ```
+  </Tabs.Tab>
+  <Tabs.Tab>
+    ```ts
+    import lib from '@overextended/ox_lib/client';
+
+    const alert = await lib.alertDialog({
+      header: 'Olá!',
+      content: 'General Kenobi  \n Suporte a Markdown!',
+      centered: true,
+      cancel: true,
+    });
+
+    console.log(alert);
+    ```
+  </Tabs.Tab>
+</Tabs>
+
+![alert_dialog](https://i.imgur.com/Xlx86aK.png)

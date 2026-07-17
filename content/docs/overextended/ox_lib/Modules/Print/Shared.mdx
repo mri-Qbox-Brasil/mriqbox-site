@@ -1,0 +1,56 @@
+---
+title: Shared
+---
+
+Imprime no console condicionalmente com base nos convars configurados.
+Mensagens de diferentes níveis são coloridas e rotuladas.
+O nome do resource é sempre incluído.
+
+## lib.print
+
+```lua
+lib.print.error(...)
+lib.print.warn(...)
+lib.print.info(...)
+lib.print.verbose(...)
+lib.print.debug(...)
+```
+
+- vararg: `any`
+    - O que imprimir no console. Converte tabelas em um formato legível (pretty-print).
+
+### Exemplo
+
+```lua
+lib.print.warn("query latency high: ", latency)
+```
+
+### Levels
+
+- **Error**
+    - Indica uma falha no sistema.
+
+- **Warn**
+    - Aviso sobre uma condição inesperada, ou um estado que provavelmente causará um erro no futuro.
+
+- **Info**
+    - Informações sobre operações de alto nível e bem-sucedidas.
+
+- **Verbose**
+    - Informações mais detalhadas contendo passos intermediários de operações de alto nível.
+
+- **Debug**
+    - Usado por desenvolvedores para entender o sistema e pode conter informações detalhadas de rastreio.
+    - Geralmente não deve ser ativado quando não estiver depurando.
+
+### Configuração
+Use os seguintes convars para definir o nível de impressão. Mensagens com severidade menor que o nível atual não serão exibidas.
+Por exemplo, um nível `info` exibirá `error`, `warn` e `info`, mas não `verbose` nem `debug`.
+Padrão: `info` se não definido.
+Níveis específicos por resource sobrepõem o convar global.
+
+```bash
+set ox:printlevel "info"
+set ox:printlevel:ox_inventory "warn"
+set ox:printlevel:<resourceName> "<level>"
+```

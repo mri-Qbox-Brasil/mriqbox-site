@@ -1,0 +1,26 @@
+---
+title: Shared
+---
+
+## lib.waitFor
+
+Chama uma função repetidamente até que ela retorne um valor não-nil, ou até que o tempo se esgote.
+O resultado da função é então retornado.
+
+```lua
+lib.waitFor(cb, errMessage, timeout)
+```
+
+- cb: `function`
+  - Uma função a ser chamada a cada frame.
+- errMessage?: `string`
+  - A mensagem de erro a ser exibida caso a função atinja o timeout.
+- timeout?: `number | false`
+  - A duração para executar a função, com padrão `1000ms`, a menos que seja definido como `false`.
+
+
+```lua
+local value --[['abc']] = lib.waitFor(function()
+    if math.random(0, 1) == 1 then return 'abc' end
+end)
+```

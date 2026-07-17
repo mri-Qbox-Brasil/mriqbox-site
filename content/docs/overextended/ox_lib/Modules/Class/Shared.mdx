@@ -1,0 +1,134 @@
+---
+title: Shared
+---
+
+## Classes
+
+Uma classe é um molde para criar objetos com atributos e comportamentos definidos.
+
+- Embora o Lua não ofereça suporte a programação orientada a objetos por padrão, é possível simular esse paradigma com [metatables](https://www.lua.org/manual/5.4/manual.html#2.4).
+- Nossa implementação de classes é vagamente baseada em [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes).
+
+### Herança
+
+Classes podem herdar atributos e comportamentos de outras classes, de forma semelhante a como instâncias herdam da classe pai.
+
+Ao especificar uma classe "super" em uma declaração de classe, você cria uma classe derivada ou "sub". Essa subclasse herda campos e métodos do seu pai. A herança pode se estender por vários níveis, permitindo que atributos e métodos sejam compartilhados pela hierarquia.
+
+### Encapsulamento
+
+Encapsulamento é a prática de agrupar dados (atributos) e métodos (comportamentos) dentro de uma classe.
+
+Essa prática ajuda a organizar funcionalidades relacionadas, evita interferência externa com a implementação interna da classe, promove modularidade, preserva a integridade dos dados e controla como os dados são acessados e modificados.
+
+## OxClass
+
+OxClass é um modelo base usado para todas as classes criadas com `lib.class`. Ele fornece alguns atributos e comportamentos básicos compartilhados por todas as classes.
+
+### Atributos
+
+- __name: `string`
+  - Um campo protegido que representa o nome da classe.
+- constructor?: `function`
+  - Um método protegido usado para instanciar um novo objeto que herda da classe.
+  - Chamado por `class:new(...)` se `class:constructor()` existir.
+- private?: `table`
+  - Um campo protegido que contém todos os dados privados da classe.
+  - Dados privados não podem ser acessados fora dos métodos da classe, garantindo segurança e integridade.
+- super?: `class`
+  - Referência ao construtor da superclasse.
+  - Deve ser chamado dentro do construtor da subclasse ao instanciar a classe.
+
+## lib.class
+
+Esta função permite definir uma nova classe, opcionalmente herdando de uma classe pai ou "super".
+
+```lua
+local MyClass = lib.class(name, super)
+```
+
+### Parâmetros
+
+- name: `string`
+- super?: `table`
+  - Define a nova classe como derivada da `super`.
+
+### Retorno
+- `table`
+  - A classe recém-criada.
+
+### Exemplo
+
+```lua
+---@class Person : OxClass
+---@field name string
+local Person = lib.class('Person')
+
+function Person:constructor(name)
+    print('calling Person constructor for', name)
+    self.name = name
+end
+
+-- Classe Professor (estende Person)
+
+---@class Professor : Person
+---@field teaches string
+local Professor = lib.class('Professor', Person)
+
+function Professor:constructor(name, teaches)
+    print('calling Professor constructor for', name)
+    self:super(name)
+    self.teaches = teaches
+end
+
+function Professor:introduceSelf()
+    print(("My name is %s, and I will be your %s professor."):format(self.name, self.teaches))
+end
+
+function Professor:grade(paper)
+    local grade = math.random(1, 4)
+    print(grade)
+end
+
+CreateThread(function()
+    local walter = Professor:new('Walter', 'Chemistry')
+
+    walter:introduceSelf()
+    walter:grade('my paper')
+end)
+
+
+
+-- Classe Student (estende Person)
+
+---@class Student : Person
+---@field private private { year: number }
+local Student = lib.class('Student', Person)
+
+---@param name string
+---@param year number
+function Student:constructor(name, year)
+    print('calling Student constructor for', name)
+    self:super(name)
+    self.private.year = year
+end
+
+function Student:introduceSelf()
+    print(("Hi! I'm %s, and I'm in year %s."):format(self.name, self.private.year))
+end
+
+---@param year number
+function Student:setYear(year)
+    self.private.year = year
+end
+
+CreateThread(function()
+    local jesse = Student:new('Jesse', 2)
+
+    jesse:introduceSelf() -- Olá! Sou Jesse, e estou no ano 2.
+    jesse:setYear(3)
+    jesse:introduceSelf() -- Olá! Sou Jesse, e estou no ano 3.
+    print(jesse.private.year) -- nil
+    print(getmetatable(jesse.private)) -- private
+    jesse.private.year = 4 -- erro
+end)

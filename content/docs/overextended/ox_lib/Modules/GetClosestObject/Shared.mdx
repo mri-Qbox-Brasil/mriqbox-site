@@ -1,0 +1,22 @@
+---
+title: Shared
+---
+
+## lib.getClosestObject
+
+Retorna o handle do objeto e as coordenadas do objeto mais próximo a partir de um conjunto de coordenadas.
+
+```lua
+lib.getClosestObject(coords, maxDistance)
+```
+
+- coords: `vector3`
+  - Coordenadas a partir das quais será feita a verificação.
+- maxDistance?: `number`
+  - Distância máxima para verificação.
+  - Padrão: `2.0`
+
+Retorno:
+
+- object?: `number`
+- coords?: `vector3`

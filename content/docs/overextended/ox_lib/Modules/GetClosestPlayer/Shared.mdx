@@ -1,0 +1,26 @@
+---
+title: Shared
+---
+
+## lib.getClosestPlayer
+
+Retorna o id do jogador, o handle do ped e as coordenadas do jogador mais próximo a partir de um conjunto de coordenadas.
+
+```lua
+lib.getClosestPlayer(coords, maxDistance, includePlayer)
+```
+
+- coords: `vector3`
+  - Coordenadas a partir das quais será feita a verificação.
+- maxDistance?: `number`
+  - Distância máxima para verificação.
+  - Padrão: `2.0`
+- includePlayer?: `boolean`
+  - Se deve incluir o jogador atual. Ignorado no servidor.
+  - Padrão: `false`
+
+Retorno:
+
+- playerId?: `number`
+- playerPed?: `number`
+- playerCoords?: `vector3`

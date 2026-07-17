@@ -1,0 +1,100 @@
+---
+title: Cliente
+---
+
+Verificações de distância simples e centralizadas, com suporte a callbacks ao entrar, sair e permanecer dentro do alcance de coordenadas definidas.
+
+## Classe CPoint
+
+Uma tabela que representa um ponto com as seguintes propriedades.
+
+- id: `number`
+- coords: `vector3`
+- distance: `number`
+  - Distância para o jogador ser considerado "dentro" de um ponto (ou seja, o raio do ponto).
+- currentDistance: `number`
+  - Distância atual do jogador em relação ao centro do ponto.
+- isClosest?: `boolean`
+- remove: `function()`
+  - Remove o ponto do registro de pontos.
+- onEnter?: `function(self: CPoint)`
+  - Função disparada quando o jogador fica dentro de `distance` do ponto.
+- onExit?: `function(self: CPoint)`
+  - Função disparada quando o jogador ultrapassa `distance` do ponto.
+- nearby?: `function(self: CPoint)`
+  - Função chamada a cada frame enquanto estiver dentro de `distance` do ponto.
+
+## lib.points.new
+
+```lua
+lib.points.new(data)
+```
+
+- data: `table`
+  - coords: `vector3`
+  - distance: `number`
+
+Retorna:
+
+- point: `CPoint`
+
+### Exemplo de Uso
+```lua
+local point = lib.points.new({
+    coords = GetEntityCoords(cache.ped),
+    distance = 5,
+    dunak = 'nerd',
+})
+
+function point:onEnter()
+    print('entered range of point', self.id)
+end
+
+function point:onExit()
+    print('left range of point', self.id)
+end
+
+function point:nearby()
+    DrawMarker(2, self.coords.x, self.coords.y, self.coords.z, 0.0, 0.0, 0.0, 0.0, 180.0, 0.0, 1.0, 1.0, 1.0, 200, 20, 20, 50, false, true, 2, false, nil, nil, false)
+
+    if self.currentDistance < 1 and IsControlJustReleased(0, 38) then
+        print('inside marker', self.id, 'dunak is a '.. self.dunak)
+    end
+end
+```
+
+## lib.points.getAllPoints
+
+Retorna uma tabela com todos os pontos criados no recurso.
+
+```lua
+lib.points.getAllPoints()
+```
+
+Retorno:
+
+- points: `CPoint[]`
+
+## lib.points.getNearbyPoints
+
+Retorna um array com todos os pontos no alcance do jogador.
+
+```lua
+lib.points.getNearbyPoints()
+```
+
+Retorno:
+
+- nearbyPoints: `CPoint[]`
+
+## lib.points.getClosestPoint
+
+Retorna os dados do ponto mais próximo do jogador.
+
+```lua
+lib.points.getClosestPoint()
+```
+
+Retorno:
+
+- closestPoint?: `CPoint`

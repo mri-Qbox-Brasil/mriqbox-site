@@ -1,0 +1,372 @@
+---
+title: Menu de Contexto
+---
+
+## lib.registerContext
+
+Usado para registrar um menu de contexto.
+
+<Tabs items={["Lua", "JS"]}>
+  <Tabs.Tab>
+    ```lua
+    lib.registerContext(context)
+    ```
+  </Tabs.Tab>
+  <Tabs.Tab>
+    ```ts
+    import lib from '@overextended/ox_lib/client';
+
+    lib.registerContext(context);
+    ```
+
+  </Tabs.Tab>
+</Tabs>
+
+- id: `string`
+  - Identificador único do menu, usado para abrir o menu.
+- title: `string`
+  - Título exibido no menu; suporta markdown.
+- menu?: `string`
+  - Identificador do menu — se definido, haverá uma seta de voltar ao lado do título que leva ao menu especificado.
+- canClose: `boolean`
+  - Se definido como `false`, o usuário não poderá sair do menu sem pressionar um dos botões.
+- onExit?: `function`
+  - Função executada quando o usuário fecha o menu de contexto com ESC.
+- onBack?: `function`
+  - Função executada quando o usuário pressiona o botão de voltar para retornar a um menu anterior.
+- options: `table` (`object` ou `array`)
+  - item: `key` (`string`) ou `table` (`object`)
+    - title?: `string`
+      - Se não usar chaves, define o título do botão; suporta markdown.
+    - disabled?: `boolean`
+      - Deixa o botão esmaecido e o torna não clicável.
+    - readOnly? `boolean`
+      - Remove estilos de hover/ativo e desabilita `onSelect` se definido.
+    - menu?: `string`
+      - Identificador de menu que o botão abrirá; quando definido, mostra uma seta indicando navegação.
+    - onSelect: `function`
+      - Função executada quando o botão é clicado.
+    - icon?: `string`
+      - Ícone do FontAwesome exibido à esquerda; funciona igual aos ícones de notification e textui.
+      - Também suporta URLs de imagem (png/webp), mas não é recomendado em vez de ícones FontAwesome.
+    - iconColor?: `string`
+      - Cor do ícone exibido.
+    - iconAnimation?: `'spin'` `'spinPulse'` `'spinReverse'` `'pulse'` `'beat'` `'fade'` `'beatFade'` `'bounce'` `'shake'`
+    - progress?: `number`
+      - Adiciona uma barra de progresso preenchida até essa porcentagem.
+    - colorScheme?: `string`
+      - Define o esquema de cores da barra de progresso. Opções atuais:
+        - https://v6.mantine.dev/theming/colors/#default-colors
+        - Por exemplo: `blue` ou `teal`
+    - arrow?: `boolean`
+      - Mostra uma seta no lado direito como `menu`, útil ao abrir um menu a partir de um evento. Pode ser `false` para ocultar.
+    - description?: `string`
+      - Descrição que aparece abaixo do título do botão quando o título é definido como chave; suporta markdown.
+    - image?: `string`
+      - URL para uma imagem exibida nos metadados do botão.
+    - metadata?: `string[]` ou `object` ou `array`
+      - Informações que serão exibidas ao passar o mouse sobre um botão.
+      - label: `string`
+      - value: `any`
+      - progress?: `number`
+        - Mostra uma barra de progresso nos metadados.
+      - colorScheme?: `string`
+        - Igual ao acima.
+    - event?: `string`
+      - Evento que o botão irá disparar.
+    - serverEvent?: `string`
+      - Evento no servidor que o botão irá disparar.
+    - args?: `any`
+      - Argumentos que serão enviados para os eventos ou para a função `onSelect`.
+
+Você pode registrar quantos menus de contexto desejar em uma única chamada de `lib.registerContext`.
+
+O menu pode estar na ordem em que você o define ou ser ordenado alfabeticamente.
+Para ordenar alfabeticamente, os botões (e/ou metadados) precisam ser definidos como chaves; caso contrário, ao usar tabelas, o menu seguirá a ordem em que foi definido.
+
+## lib.showContext
+
+Abre um menu de contexto registrado pelo seu id.
+
+<Tabs items={["Lua", "JS"]}>
+  <Tabs.Tab>
+    ```lua
+    lib.showContext(id)
+    ```
+  </Tabs.Tab>
+  <Tabs.Tab>
+    ```ts
+    import lib from '@overextended/ox_lib/client';
+
+    lib.showContext(id);
+    ```
+
+  </Tabs.Tab>
+</Tabs>
+
+- id: `string`
+
+## lib.hideContext
+
+Oculta qualquer menu de contexto visível no momento.
+
+<Tabs items={["Lua", "JS"]}>
+  <Tabs.Tab>
+    ```lua
+    lib.hideContext(onExit)
+    ```
+  </Tabs.Tab>
+  <Tabs.Tab>
+    ```ts
+    import lib from '@overextended/ox_lib/client';
+
+    lib.hideContext(onExit);
+    ```
+
+  </Tabs.Tab>
+</Tabs>
+
+- onExit: `boolean`
+  - Define se a função `onExit` do menu deve ser executada ou não.
+
+## lib.getOpenContextMenu
+
+Retorna o id do menu de contexto atualmente aberto.
+
+Se nenhum menu de contexto estiver aberto, retorna `nil`.
+
+<Tabs items={["Lua", "JS"]}>
+  <Tabs.Tab>
+    ```lua
+    lib.getOpenContextMenu()
+    ```
+  </Tabs.Tab>
+  <Tabs.Tab>
+    ```ts
+    import lib from '@overextended/ox_lib/client';
+
+    lib.getOpenContextMenu();
+    ```
+
+  </Tabs.Tab>
+</Tabs>
+
+## Exemplo de Uso
+
+Primeiro registramos o menu com as opções especificadas e depois chamamos a função `show` no comando.
+
+<Callout>
+  Evite re-registrar constantemente um menu que não depende de valores externos (ou seja, um menu estático).
+</Callout>
+
+<Tabs items={["Lua", "JS"]}>
+  <Tabs.Tab>
+    ```lua
+    lib.registerContext({
+      id = 'some_menu',
+      title = 'Some context menu',
+      options = {
+        {
+          title = 'Empty button',
+        },
+        {
+          title = 'Disabled button',
+          description = 'This button is disabled',
+          icon = 'hand',
+          disabled = true
+        },
+        {
+          title = 'Example button',
+          description = 'Example button description',
+          icon = 'circle',
+          onSelect = function()
+            print("Pressed the button!")
+          end,
+          metadata = {
+            {label = 'Value 1', value = 'Some value'},
+            {label = 'Value 2', value = 300}
+          },
+        },
+        {
+          title = 'Menu button',
+          description = 'Takes you to another menu!',
+          menu = 'other_menu',
+          icon = 'bars'
+        },
+        {
+          title = 'Event button',
+          description = 'Open a menu from the event and send event data',
+          icon = 'check',
+          event = 'test_event',
+          arrow = true,
+          args = {
+            someValue = 500
+          }
+        }
+      }
+    })
+    ```
+  </Tabs.Tab>
+  <Tabs.Tab>
+    ```ts
+    import lib from '@overextended/ox_lib/client';
+
+    lib.registerContext({
+      id: 'some_menu',
+      title: 'Some context menu',
+      options: [
+        {
+          title: 'Empty button',
+        },
+        {
+          title: 'Disabled button',
+          description: 'This button is disabled',
+          icon: 'hand',
+          disabled: true,
+        },
+        {
+          title: 'Example button',
+          description: 'Example button description',
+          icon: 'circle',
+          onSelect: () => {
+            console.log('Pressed the button!');
+          },
+          metadata: [
+            { label: 'Value 1', value: 'Some value' },
+            { label: 'Value 2', value: 300 },
+          ],
+        },
+        {
+          title: 'Menu button',
+          description: 'Takes you to another menu!',
+          menu: 'other_menu',
+          icon: 'bars',
+        },
+        {
+          title: 'Event button',
+          description: 'Open a menu from the event and send event data',
+          icon: 'check',
+          event: 'test_event',
+          arrow: true,
+          args: {
+            someValue: 500,
+          },
+        },
+      ],
+    });
+    ```
+
+  </Tabs.Tab>
+</Tabs>
+
+Em seguida, também podemos registrar nosso segundo menu chamado `other_menu`
+
+<Tabs items={["Lua", "JS"]}>
+  <Tabs.Tab>
+    ```lua
+    lib.registerContext({
+      id = 'other_menu',
+      title = 'Other context menu',
+      menu = 'some_menu',
+      onBack = function()
+        print('Went back!')
+      end,
+      options = {
+        {
+          title = 'Nothing here'
+        }
+      }
+    })
+  ```
+  </Tabs.Tab>
+  <Tabs.Tab>
+    ```ts
+    lib.registerContext({
+      id: 'other_menu',
+      title: 'Other context menu',
+      menu: 'some_menu',
+      onBack: () => {
+        console.log('Went back!');
+      },
+      options: [
+        {
+          title: 'Nothing here',
+        },
+      ],
+    });
+    ```
+  </Tabs.Tab>
+</Tabs>
+
+E o evento que iremos executar a partir do menu `some_menu`, o qual abrirá outro menu.
+
+<Tabs items={["Lua", "JS"]}>
+  <Tabs.Tab>
+    ```lua
+    RegisterNetEvent('test_event', function(args)
+      lib.registerContext({
+        id = 'event_menu',
+        title = 'Event menu',
+        menu = 'some_menu',
+        options = {
+          {
+            title = 'Event value: '..args.someValue,
+          }
+        }
+      })
+
+      lib.showContext('event_menu')
+    end)
+    ```
+
+  </Tabs.Tab>
+  <Tabs.Tab>
+    ```ts
+    onNet('test_event', (args: { someValue: number }) => {
+      lib.registerContext({
+        id: 'event_menu',
+        title: 'Event menu',
+        menu: 'some_menu',
+        options: [
+          {
+            title: `Event value: ${args.someValue}`,
+          },
+        ],
+      });
+
+      lib.showContext('event_menu');
+    });
+    ```
+
+  </Tabs.Tab>
+</Tabs>
+
+Por fim, registramos um comando de teste para exibir o menu `some_menu`.
+
+<Tabs items={["Lua", "JS"]}>
+  <Tabs.Tab>
+    ```lua
+    RegisterCommand('testcontext', function()
+      lib.showContext('some_menu')
+    end)
+    ```
+  </Tabs.Tab>
+  <Tabs.Tab>
+    ```ts
+    RegisterCommand('testcontext', () => {
+      lib.showContext('some_menu');
+    });
+    ```
+  </Tabs.Tab>
+</Tabs>
+
+Os dados da tabela `args` no menu são passados como primeiro argumento para o evento que você registra.
+
+Usando esse evento, também registramos um novo menu de contexto com suas próprias opções.
+
+Ao definir o parâmetro `menu` como o id do primeiro menu, obtemos o botão de voltar ao lado do título que nos leva de volta.
+
+![menu_example](https://i.imgur.com/TkaH2P9.png)
+![metadata](https://i.imgur.com/0mMmwgi.png)
+![sub_menu](https://i.imgur.com/RbT1tKX.png)
+![event_menu](https://i.imgur.com/zjIiROj.png)

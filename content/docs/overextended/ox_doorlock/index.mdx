@@ -1,0 +1,59 @@
+---
+title: Ox Doorlock
+---
+
+<ResourceLinks repo="https://github.com/overextended/ox_doorlock" />
+
+Um recurso de gerenciamento de portas que pode ser usado de forma independente ou junto com ox_core, qbx_core e es_extended.
+
+## Instalação
+
+<Callout type="info">
+
+Recomendamos **fortemente** que consulte os [Guias](../guides) para configurar Git, Node.js e pnpm.
+
+</Callout>
+
+<Steps>
+
+### Instale todas as dependências do recurso.
+- [oxmysql](../oxmysql)
+- [ox_lib](../ox_lib/)
+
+### Baixe uma [release](https://github.com/overextended/ox_doorlock/releases) ou compile o código-fonte.
+
+```bash
+git clone https://github.com/overextended/ox_doorlock.git
+cd ox_doorlock/web
+pnpm i
+pnpm build
+```
+
+### Instale dependências opcionais.
+
+Esses recursos não são obrigatórios, mas oferecem funcionalidades adicionais.
+
+- [ox_target](../ox_target/)
+
+</Steps>
+
+## Abrindo a UI
+
+Se você instalou e iniciou o recurso, pode usar o comando `/doorlock` para abrir a interface de usuário.
+
+- Caso o cursor seja exibido, mas a UI não apareça, então você não a construiu corretamente.
+- Talvez você não tenha permissão para usar o comando.
+
+  - Insira `test_ace player.1 command.doorlock` no console do servidor (substitua 1 pelo seu ID de servidor).
+
+## Converter portas
+
+Arquivos de configuração de portas escritos para `nui_doorlock` podem ser automaticamente adicionados ao seu banco de dados MySQL.
+
+- Todos os arquivos com extensão `.lua` colocados no diretório `ox_doorlock/convert` serão lidos ao iniciar o recurso.
+- Se o diretório não existir, você pode criá-lo.
+- A conversão não pode ser garantida, especialmente se o arquivo de configuração não foi escrito para `nui_doorlock`.
+
+## Adicionando novos áudios nativos
+
+Um guia pode ser encontrado [aqui](https://forum.cfx.re/t/how-to-make-a-simplesound-using-native-audio/5156001) para adicionar novos áudios nativos.

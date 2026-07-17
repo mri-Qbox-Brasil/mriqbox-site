@@ -1,0 +1,125 @@
+---
+title: transaction
+---
+
+Uma transação executa várias consultas e as confirma apenas se todas tiverem sucesso.
+Se uma falhar, nenhuma das consultas será confirmada.
+
+O valor de retorno é um booleano, que indica o resultado da transação.
+
+## Formato específico
+
+Ao usar este formato, você deve passar um array contendo conjuntos de consultas e parâmetros para o método da transação.
+Neste caso, suas consultas não precisam ser necessariamente iguais, e os valores são exclusivos para cada consulta.
+
+```lua
+-- Você pode renomear "values" como "parameters" para compatibilidade com mysql-async.
+local queries = {
+    { query = 'INSERT INTO `test` (id) VALUES (?)', values = { 1 }},
+    { query = 'INSERT INTO `test` (id, name) VALUES (?, ?)', values = { 2, 'bob' }},
+}
+
+-- Você também pode passar um array de arrays.
+local queries = {
+  { 'INSERT INTO `test` (id) VALUES (?)', { 1 } },
+  { 'INSERT INTO `test` (id, name) VALUES (?, ?)', { 2, 'bob' } },
+}
+```
+
+## Formato compartilhado
+
+Ao usar este formato, você deve passar um array contendo consultas e um conjunto contendo parâmetros compartilhados para o método da transação.
+Neste caso, suas consultas não precisam ser necessariamente iguais, e os valores são exclusivos para cada consulta.
+
+```lua
+-- Você pode renomear "values" como "parameters" para compatibilidade com mysql-async.
+local queries = {
+    'INSERT INTO `test` (id, name) VALUES (@someid, @somename)',
+    'SET `name` = @newname IN `test` WHERE `id` = @someid'
+}
+
+local values = {
+    someid = 2,
+    somename = 'John Doe',
+    newname = 'John Notdoe'
+}
+```
+
+## Promise
+
+<Tabs items={['Lua', 'JS']}>
+  <Tabs.Tab>
+
+    ```lua
+    local success = MySQL.transaction.await(queries, values --[[deixe nil para formato específico]])
+    print(success)
+    ```
+
+  </Tabs.Tab>
+  <Tabs.Tab>
+
+    ```js
+    const success = await MySQL.transaction(queries, values /*deixe nil para formato específico*/)
+    console.log(success)
+    ```
+
+  </Tabs.Tab>
+</Tabs>
+
+**Aliases**
+
+- `MySQL.Sync.transaction`
+- `exports.ghmattimysql.transaction`
+- `exports.oxmysql.transaction_async`
+
+## Callback
+
+<Tabs items={['Lua', 'JS']}>
+  <Tabs.Tab>
+
+    ```lua
+    -- específico
+    MySQL.transaction(queries, values, function(success)
+        print(success)
+    end)
+
+    -- compartilhado
+    MySQL.transaction(queries, function(success)
+        print(success)
+    end)
+    ```
+
+  </Tabs.Tab>
+  <Tabs.Tab>
+
+    ```js
+    // específico
+    MySQL.transaction(queries, (success) => {
+      console.log(success)
+    })
+
+    // compartilhado
+    MySQL.transaction(queries, values, (success) => {
+      console.log(success)
+    })
+    ```
+
+  </Tabs.Tab>
+</Tabs>
+
+**Aliases**
+
+- `MySQL.Async.transaction`
+- `exports.ghmattimysql.transaction`
+- `exports.oxmysql.transaction`
+
+## Nível de Isolamento da Transação
+Isso pode ser configurado através da convar `mysql_transaction_isolation_level`, que é um número inteiro variando de `1-4`.
+O valor padrão é 2.
+
+| Valor da Convar | Resultado     |
+| ------------ | ---------------- |
+| 1            | Repeatable Read  |
+| 2            | Read Committed   |
+| 3            | Read Uncommitted |
+| 4            | Serializable     |

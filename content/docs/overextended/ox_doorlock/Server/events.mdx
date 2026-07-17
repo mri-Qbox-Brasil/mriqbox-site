@@ -1,0 +1,21 @@
+---
+title: Eventos
+---
+
+## Handlers
+
+Esses eventos **não devem** ser acionados por nenhum outro script.
+
+
+### ox_doorlock:stateChanged
+
+Acionado quando o estado de uma porta é atualizado.
+
+```lua
+AddEventHandler('ox_doorlock:stateChanged', function(source, doorId, state, usedItem) end)
+```
+
+- source: `number` or `nil`
+- doorId: `number`
+- state: `boolean`
+- usedItem: `string` or `false` or `nil`

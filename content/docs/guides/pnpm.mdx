@@ -1,0 +1,24 @@
+---
+title: pnpm
+---
+
+pnpm é um gerenciador de pacotes rápido e eficiente em termos de espaço em disco, sendo uma alternativa ao npm e ao yarn.
+
+- Certifique-se de ter [instalado o Node.js](./nodejs).
+- Abra um terminal de linha de comando (ex.: Terminal, Prompt de Comando).
+- Digite `npm install -g pnpm` para instalar o pacote globalmente.
+- Você pode instalar dependências com o pnpm utilizando `pnpm i`.
+
+Você pode consultar os arquivos `package.json` para os scripts disponíveis, por exemplo:
+
+```json
+"scripts": {
+  "start": "vite",
+  "watch": "vite build --watch",
+  "build": "tsc && vite build",
+  "preview": "vite preview",
+  "format": "prettier --write \"./src/**/*.{ts,tsx,css}\""
+},
+```
+
+Usando o exemplo acima, `pnpm build` irá rodar o script de build para o pacote fornecido.

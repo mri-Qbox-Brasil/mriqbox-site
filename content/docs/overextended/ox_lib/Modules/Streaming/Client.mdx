@@ -1,0 +1,215 @@
+---
+title: Cliente
+---
+
+Verifica se assets existem (por exemplo, modelos) e os carrega na memória.
+Lança erros para assets inválidos e retorna `true` se o asset foi carregado.
+
+## lib.requestAnimDict
+
+<Callout>
+  Lembre-se de chamar `RemoveAnimDict(dict)` ao final do seu código!
+</Callout>
+
+<Tabs items={["Lua", "JS"]}>
+  <Tabs.Tab>
+    ```lua
+    lib.requestAnimDict(dict, timeout)
+    ```
+  </Tabs.Tab>
+  <Tabs.Tab>
+    ```ts
+    import lib from '@overextended/ox_lib/client'
+
+    lib.requestAnimDict(dict, timeout)
+    ```
+  </Tabs.Tab>
+</Tabs>
+
+- dict: `string`
+- timeout?: `number`
+  - Número de ticks para aguardar o carregamento do asset.
+  - Padrão: `10000`
+
+## lib.requestAnimSet
+
+<Callout>
+  Lembre-se de chamar `RemoveAnimSet(set)` ao final do seu código!
+</Callout>
+
+<Tabs items={["Lua", "JS"]}>
+  <Tabs.Tab>
+    ```lua
+    lib.requestAnimSet(set, timeout)
+    ```
+  </Tabs.Tab>
+  <Tabs.Tab>
+    ```ts
+    import lib from '@overextended/ox_lib/client'
+
+    lib.requestAnimSet(set, timeout)
+    ```
+  </Tabs.Tab>
+</Tabs>
+
+- set: `string`
+- timeout?: `number`
+  - Número de ticks para aguardar o carregamento do asset.
+  - Padrão: `10000`
+
+## lib.requestModel
+
+<Callout>
+  Lembre-se de chamar `SetModelAsNoLongerNeeded(model)` ao final do seu código!
+</Callout>
+
+<Tabs items={["Lua", "JS"]}>
+  <Tabs.Tab>
+    ```lua
+    lib.requestModel(model, timeout)
+    ```
+  </Tabs.Tab>
+  <Tabs.Tab>
+    ```ts
+    import lib from '@overextended/ox_lib/client'
+
+    lib.requestModel(model, timeout)
+    ```
+  </Tabs.Tab>
+</Tabs>
+
+- model: `string`
+- timeout?: `number`
+  - Número de ticks para aguardar o carregamento do asset.
+  - Padrão: `10000`
+
+## lib.requestStreamedTextureDict
+
+<Callout>
+  Lembre-se de chamar `SetStreamedTextureDictAsNoLongerNeeded(dict)` ao final do seu código!
+</Callout>
+
+<Tabs items={["Lua", "JS"]}>
+  <Tabs.Tab>
+    ```lua
+    lib.requestStreamedTextureDict(dict, timeout)
+    ```
+  </Tabs.Tab>
+  <Tabs.Tab>
+    ```ts
+    import lib from '@overextended/ox_lib/client'
+
+    lib.requestStreamedTextureDict(dict, timeout)
+    ```
+  </Tabs.Tab>
+</Tabs>
+
+- dict: `string`
+- timeout?: `number`
+  - Número de ticks para aguardar o carregamento do asset.
+  - Padrão: `10000`
+
+## lib.requestNamedPtfxAsset
+
+<Callout>
+  Lembre-se de chamar `RemoveNamedPtfxAsset(dict)` ao final do seu código!
+</Callout>
+
+<Tabs items={["Lua", "JS"]}>
+  <Tabs.Tab>
+    ```lua
+    lib.requestNamedPtfxAsset(ptFxName, timeout)
+    ```
+  </Tabs.Tab>
+  <Tabs.Tab>
+    ```ts
+    import lib from '@overextended/ox_lib/client'
+
+    lib.requestNamedPtfxAsset(ptFxName, timeout)
+    ```
+  </Tabs.Tab>
+</Tabs>
+
+- ptFxName: `string`
+- timeout?: `number`
+  - Número de ticks para aguardar o carregamento do asset.
+  - Padrão: `10000`
+
+## lib.requestScaleformMovie
+
+<Callout>
+  Lembre-se de chamar `SetScaleformMovieAsNoLongerNeeded(scaleformName)` ao final do seu código!
+</Callout>
+
+<Tabs items={["Lua", "JS"]}>
+  <Tabs.Tab>
+    ```lua
+    lib.requestScaleformMovie(scaleformName, timeout)
+    ```
+  </Tabs.Tab>
+  <Tabs.Tab>
+    ```ts
+    import lib from '@overextended/ox_lib/client'
+
+    lib.requestScaleformMovie(scaleformName, timeout)
+    ```
+  </Tabs.Tab>
+</Tabs>
+
+- scaleformName: `string`
+- timeout?: `number`
+  - Número de ticks para aguardar o carregamento do asset.
+  - Padrão: `1000`
+
+## lib.requestWeaponAsset
+
+<Callout>
+  Lembre-se de chamar `RemoveWeaponAsset(weaponType)` ao final do seu código!
+</Callout>
+
+<Tabs items={["Lua", "JS"]}>
+  <Tabs.Tab>
+    ```lua
+    lib.requestWeaponAsset(weaponType, timeout, weaponResourceFlags, extraWeaponComponentFlags)
+    ```
+  </Tabs.Tab>
+  <Tabs.Tab>
+    ```ts
+    import lib from '@overextended/ox_lib/client'
+
+    lib.requestWeaponAsset(weaponType, timeout, weaponResourceFlags, extraWeaponComponentFlags)
+    ```
+  </Tabs.Tab>
+</Tabs>
+
+- weaponType: `string | number`
+- timeout?: `number`
+  - Número de ticks para aguardar o carregamento do asset.
+  - Padrão: `10000`
+- weaponResourceFlags?: `WeaponResourceFlags`
+  - Padrão: `31`
+- extraWeaponComponentFlags?: `ExtraWeaponComponentFlags`
+  - Padrão: `0`
+
+### WeaponResourceFlags
+
+```
+1 WRF_REQUEST_BASE_ANIMS
+2 WRF_REQUEST_COVER_ANIMS
+4 WRF_REQUEST_MELEE_ANIMS
+8 WRF_REQUEST_MOTION_ANIMS
+16 WRF_REQUEST_STEALTH_ANIMS
+32 WRF_REQUEST_ALL_MOVEMENT_VARIATION_ANIMS
+31 WRF_REQUEST_ALL_ANIMS
+```
+
+### ExtraWeaponComponentFlags
+
+```
+0 WEAPON_COMPONENT_NONE
+1 WEAPON_COMPONENT_FLASH
+2 WEAPON_COMPONENT_SCOPE
+4 WEAPON_COMPONENT_SUPP
+8 WEAPON_COMPONENT_SCLIP2
+16 WEAPON_COMPONENT_GRIP
+```

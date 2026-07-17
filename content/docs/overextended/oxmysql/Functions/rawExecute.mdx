@@ -1,0 +1,75 @@
+---
+title: rawExecute
+---
+
+`rawExecute` pode ser usado para executar consultas frequentemente chamadas mais rapidamente e aceita múltiplos conjuntos de parâmetros para serem usados com uma única consulta.
+
+- A data não retornará a string de data normalmente usada no FiveM.
+- `TINYINT 1` e `BIT` não retornarão um valor booleano.
+- Você pode usar apenas `?` como substituto de valor, os substitutos `??` para colunas e os nomes de parâmetros irão gerar um erro.
+
+Ao contrário do [prepare](./prepare), a instrução `SELECT` sempre retornará um array de linhas.
+Quando usado com `SELECT`, o valor de retorno corresponderá a `query`, `single` ou `scalar`, dependendo do número de colunas e linhas selecionadas.
+
+## Promise
+
+<Tabs items={['Lua', 'JS']}>
+  <Tabs.Tab>
+
+    ```lua
+    local response = MySQL.rawExecute.await('SELECT `firstname`, `lastname` FROM `users` WHERE `identifier` = ?', {
+        identifier
+    })
+
+
+    print(json.encode(response, { indent = true, sort_keys = true }))
+    ```
+
+  </Tabs.Tab>
+  <Tabs.Tab>
+
+    ```js
+    const response = await MySQL.rawExecute('SELECT `firstname`, `lastname` FROM `users` WHERE `identifier` = ?', [
+      identifier
+    ])
+
+    console.log(JSON.stringify(response))
+    ```
+
+  </Tabs.Tab>
+</Tabs>
+
+**Aliases**
+
+- `exports.oxmysql.rawExecute_async`
+
+## Callback
+
+<Tabs items={['Lua', 'JS']}>
+  <Tabs.Tab>
+
+    ```lua
+    MySQL.rawExecute('SELECT `firstname`, `lastname` FROM `users` WHERE `identifier` = ?', {
+        identifier
+    }, function(response)
+        print(json.encode(response, { indent = true, sort_keys = true }))
+    end)
+    ```
+
+  </Tabs.Tab>
+  <Tabs.Tab>
+
+    ```js
+    MySQL.rawExecute('SELECT `firstname`, `lastname` FROM `users` WHERE `identifier` = ?', [
+      identifier
+    ], (response) => {
+      console.log(JSON.stringify(response))
+    })
+    ```
+
+  </Tabs.Tab>
+</Tabs>
+
+**Aliases**
+
+- `exports.oxmysql.rawExecute`

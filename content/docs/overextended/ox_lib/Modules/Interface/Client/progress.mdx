@@ -1,0 +1,306 @@
+---
+title: Progresso
+---
+
+title: Progresso
+---
+
+
+
+## lib.progressBar
+
+Exibe uma barra de progresso em execução.
+
+<Tabs items={["Lua", "JS"]}>
+  <Tabs.Tab>
+    ```lua
+    lib.progressBar(data)
+    ```
+  </Tabs.Tab>
+  <Tabs.Tab>
+    ```ts
+    import lib from '@overextended/ox_lib/client'
+
+    lib.progressBar(data)
+    ```
+  </Tabs.Tab>
+</Tabs>
+
+- duration: `number`
+- label: `string`
+- useWhileDead?: `boolean`
+- allowRagdoll?: `boolean`
+- allowSwimming?: `boolean`
+- allowCuffed?: `boolean`
+- allowFalling?: `boolean`
+- canCancel?: `boolean`
+- anim?: `table` (`object`)
+  - dict?: `string`
+    - Deve especificar `scenario` ou `dict`
+  - clip: `string`
+  - flag?: `number`
+    - Padrão: `49`
+  - blendIn?: `float`
+    - Padrão: `3.0`
+  - blendOut?: `float`
+    - Padrão: `1.0`
+  - duration?: `number`
+    - Padrão: `-1`
+  - playbackRate?: `number`
+    - Padrão: `0`
+  - lockX?: `boolean`
+  - lockY?: `boolean`
+  - lockZ?: `boolean`
+  - scenario?: `string`
+    - Deve especificar `scenario` ou `dict`
+  - playEnter?: `boolean`
+    - Padrão: `true`
+- prop?: `table` (`object` ou `array`)
+  - [ Se desejar definir múltiplos props, passe-os como tabelas individuais (array de objetos) ]
+  - model: `hash`
+  - bone?: `number`
+    - Padrão: `60309`
+  - pos: `table`
+    - x: `number`
+    - y: `number`
+    - z: `number`
+  - rot: `table` (`object`)
+    - x: `number`
+    - y: `number`
+    - z: `number`
+  - rotOrder?: `number`
+    - [A ordem em que yaw, pitch e roll são aplicados.](https://docs.fivem.net/natives/?_0xAFBD61CC738D9EB9)
+    - Padrão: `0`
+- disable?: `table` (`object`)
+  - move?: `boolean`
+  - car?: `boolean`
+  - combat?: `boolean`
+  - mouse?: `boolean`
+  - sprint?: `boolean`
+
+### Exemplo de uso
+
+<Tabs items={["Lua", "JS"]}>
+  <Tabs.Tab>
+    ```lua
+    if lib.progressBar({
+      duration = 2000,
+      label = 'Bebendo água',
+        useWhileDead = false,
+        canCancel = true,
+        disable = {
+            car = true,
+        },
+        anim = {
+            dict = 'mp_player_intdrink',
+            clip = 'loop_bottle'
+        },
+        prop = {
+            model = `prop_ld_flow_bottle`,
+            pos = vec3(0.03, 0.03, 0.02),
+            rot = vec3(0.0, 0.0, -1.5)
+        },
+    }) then print('Executar ação quando concluído') else print('Executar ação quando cancelado') end
+    ```
+  </Tabs.Tab>
+  <Tabs.Tab>
+    <Callout>
+      Esta função é **assíncrona**: faça um `.then` no `Promise` retornado ou torne sua função `async` e use `await`.
+    </Callout>
+
+    ```ts
+    import lib from '@overextended/ox_lib/client'
+
+    if (await lib.progressBar({
+      duration: 2000,
+      label: 'Bebendo água',
+      useWhileDead: false,
+      canCancel: true,
+      disable: {
+        car: true,
+      },
+      anim: {
+        dict: 'mp_player_intdrink',
+        clip: 'loop_bottle'
+      },
+      prop: {
+        model: `prop_ld_flow_bottle`,
+        pos: {x: 0.03, y: 0.03, z: 0.02},
+        rot: {x: 0.0, y: 0.0, z: -1.5}
+      },
+    })) console.log('Executar ação quando concluído');
+    else console.log('Executar ação quando cancelado')
+    ```
+  </Tabs.Tab>
+</Tabs>
+
+![progress_bar](https://i.imgur.com/7ZJgLjl.png)
+
+## lib.progressCircle
+
+Semelhante a `lib.progressBar`, porém exibe um círculo e permite definir uma posição.
+
+<Tabs items={["Lua", "JS"]}>
+  <Tabs.Tab>
+    ```lua
+    lib.progressCircle(data)
+    ```
+  </Tabs.Tab>
+  <Tabs.Tab>
+    ```ts
+    import lib from '@overextended/ox_lib/client'
+
+    lib.progressCircle(data)
+    ```
+  </Tabs.Tab>
+</Tabs>
+
+- duration: `number`
+- label?: `string`
+ - position?: `'middle'` ou `'bottom'`
+  - Padrão: `'middle'`
+- useWhileDead?: `boolean`
+- allowRagdoll?: `boolean`
+- allowSwimming?: `boolean`
+- allowCuffed?: `boolean`
+- allowFalling?: `boolean`
+- canCancel?: `boolean`
+- anim?: `table` (`object`)
+  - dict?: `string`
+    - Deve especificar `scenario` ou `dict`
+  - clip: `string`
+  - flag?: `number`
+    - Padrão: `49`
+  - blendIn?: `float`
+    - Padrão: `3.0`
+  - blendOut?: `float`
+    - Padrão: `1.0`
+  - duration?: `number`
+    - Padrão: `-1`
+  - playbackRate?: `number`
+    - Padrão: `0`
+  - lockX?: `boolean`
+  - lockY?: `boolean`
+  - lockZ?: `boolean`
+  - scenario?: `string`
+    - Deve especificar `scenario` ou `dict`
+  - playEnter?: `boolean`
+    - Padrão: `true`
+ - prop?: `table` (`object` ou `array`)
+  - [ Se desejar definir múltiplos props, passe-os como tabelas individuais (array de objetos) ]
+  - model: `hash`
+  - bone?: `number`
+    - Padrão: `60309`
+  - pos: `table`
+    - x: `number`
+    - y: `number`
+    - z: `number`
+  - rot: `table` (`object`)
+    - x: `number`
+    - y: `number`
+    - z: `number`
+  - rotOrder?: `number`
+    - [A ordem em que yaw, pitch e roll são aplicados.](https://docs.fivem.net/natives/?_0xAFBD61CC738D9EB9)
+    - Padrão: `0`
+- disable?: `table` (`object`)
+  - move?: `boolean`
+  - car?: `boolean`
+  - combat?: `boolean`
+  - mouse?: `boolean`
+  - sprint?: `boolean`
+
+### Exemplo de uso
+
+<Tabs items={["Lua", "JS"]}>
+  <Tabs.Tab>
+    ```lua
+    if lib.progressCircle({
+        duration = 2000,
+        position = 'bottom',
+        useWhileDead = false,
+        canCancel = true,
+        disable = {
+            car = true,
+        },
+        anim = {
+            dict = 'mp_player_intdrink',
+            clip = 'loop_bottle'
+        },
+        prop = {
+            model = `prop_ld_flow_bottle`,
+            pos = vec3(0.03, 0.03, 0.02),
+            rot = vec3(0.0, 0.0, -1.5)
+        },
+    }) then print('Do stuff when complete') else print('Do stuff when cancelled') end
+    ```
+  </Tabs.Tab>
+  <Tabs.Tab>
+    <Callout>
+      Esta função é **assíncrona**: faça um `.then` no `Promise` retornado ou torne sua função `async` e use `await`.
+    </Callout>
+
+    ```ts
+    import lib from '@overextended/ox_lib/client'
+
+    if (await lib.progressCircle({
+      duration: 2000,
+      position: 'bottom',
+      useWhileDead: false,
+      canCancel: true,
+      disable: {
+        car: true,
+      },
+      anim: {
+        dict: 'mp_player_intdrink',
+        clip: 'loop_bottle'
+      },
+      prop: {
+        model: `prop_ld_flow_bottle`,
+        pos: {x: 0.03, y: 0.03, z: 0.02},
+        rot: {x: 0.0, y: 0.0, z: -1.5}
+      },
+    })) console.log('Do stuff when complete')
+    else console.log('Do stuff when cancelled')
+    ```
+  </Tabs.Tab>
+</Tabs>
+
+![progress_circle](https://i.imgur.com/2tLbgrW.png)
+
+## lib.progressActive
+
+Retorna `true` se uma barra de progresso estiver ativa no momento.
+
+<Tabs items={["Lua", "JS"]}>
+  <Tabs.Tab>
+    ```lua
+    lib.progressActive()
+    ```
+  </Tabs.Tab>
+  <Tabs.Tab>
+    ```ts
+    import lib from '@overextended/ox_lib/client'
+
+    lib.progressActive()
+    ```
+  </Tabs.Tab>
+</Tabs>
+
+## lib.cancelProgress
+
+Se houver uma barra de progresso ativa e ela puder ser cancelada, esta função a cancela.
+
+<Tabs items={["Lua", "JS"]}>
+  <Tabs.Tab>
+    ```lua
+    lib.cancelProgress()
+    ```
+  </Tabs.Tab>
+  <Tabs.Tab>
+    ```ts
+    import lib from '@overextended/ox_lib/client'
+
+    lib.cancelProgress()
+    ```
+  </Tabs.Tab>
+</Tabs>

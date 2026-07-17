@@ -1,0 +1,67 @@
+---
+title: Cliente
+---
+
+## lib.raycast.fromCoords
+
+Inicia um shapetest a partir de coordenadas iniciais até coordenadas de destino.
+
+```lua
+lib.raycast.fromCoords(coords, destination, flags, ignore)
+```
+
+- coords: `vector3`
+  - Coordenadas iniciais para o raycast
+- destination: `vector3`
+  - Coordenadas de destino para o raycast
+- flags?: `number`
+  - Veja: https://docs.fivem.net/natives/?_0x377906D8A31E5586
+  - Padrão: `511`
+- ignore?: `number`
+  - Máscara de bits com os bits 1, 2, 4 ou 7 relacionados a tipos de colisores. Geralmente utilizam-se 4 e 7.
+  - Padrão: `4`
+
+Retorno:
+
+- hit: `boolean`
+  - Indica se uma entidade foi atingida
+- entityHit: `number`
+  - Handle da entidade atingida
+- endCoords: `vector3`
+  - Coordenadas mais próximas de onde o raycast acertou
+- surfaceNormal: `vector3`
+  - Normal à superfície atingida
+- materialHash: `number`
+
+## lib.raycast.fromCamera
+
+Inicia um shapetest a partir da câmera, estendendo por ~10m por padrão.
+
+```lua
+lib.raycast.fromCamera(flags, ignore, distance)
+```
+
+- flags?: `number`
+  - Veja: https://docs.fivem.net/natives/?_0x377906D8A31E5586
+  - Padrão: `511`
+- ignore?: `number`
+  - Máscara de bits com os bits 1, 2, 4 ou 7 relacionados a tipos de colisores. Geralmente utilizam-se 4 e 7.
+  - Padrão: `4`
+- distance?: `number`
+  - Padrão: `10`
+
+Retorno:
+
+- hit: `boolean`
+  - Indica se uma entidade foi atingida
+- entityHit: `number`
+  - Handle da entidade atingida
+- endCoords: `vector3`
+  - Coordenadas mais próximas de onde o raycast acertou
+- surfaceNormal: `vector3`
+  - Normal à superfície atingida
+- materialHash: `number`
+
+## lib.raycast.cam
+
+<Callout type="warning">`lib.raycast.cam` é um alias obsoleto para `lib.raycast.fromCamera` e pode ser removido a qualquer momento. Use `lib.raycast.fromCamera` em seu lugar!</Callout>

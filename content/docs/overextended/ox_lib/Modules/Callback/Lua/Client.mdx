@@ -1,0 +1,63 @@
+---
+title: Client
+---
+
+## Trigger Server Callback
+
+### lib.callback
+
+A resposta é tratada em uma coroutine separada.
+
+```lua
+lib.callback(name, delay, cb, ...)
+```
+
+- name: `string`
+- delay: `number` ou `false`
+  - Quantidade de tempo até que este callback possa ser acionado novamente
+- cb: `function`
+- ...: `any`
+
+```lua
+lib.callback('ox_inventory:getItemCount', false, function(count)
+    print(count)
+end, 'water', {type = 'fresh'})
+```
+
+### lib.callback.await
+
+A coroutine atual é suspensa até que uma resposta seja recebida.
+
+```lua
+lib.callback.await(name, delay, ...)
+```
+
+- name: `string`
+- delay: `number` ou `false`
+  - Quantidade de tempo até que este callback possa ser acionado novamente
+- ...: `any`
+
+```lua
+local count = lib.callback.await('ox_inventory:getItemCount', false, 'water', {type = 'fresh'})
+print(count)
+```
+
+## Register Client Callback
+
+### lib.callback.register
+
+Registra um manipulador de evento para responder a requisições do servidor.
+
+```lua
+lib.callback.register(name, cb)
+```
+
+- name: `string`
+- cb: `function`
+
+```lua
+lib.callback.register('ox:getNearbyVehicles', function(radius)
+    local nearbyVehicles = lib.getNearbyVehicles(GetEntityCoords(cache.ped), radius, true)
+    return nearbyVehicles
+end)
+```

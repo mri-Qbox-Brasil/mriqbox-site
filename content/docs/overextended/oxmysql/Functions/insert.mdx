@@ -1,0 +1,71 @@
+---
+title: insert
+---
+
+Insere uma nova entrada no banco de dados e retorna o ID da linha inserida, se válido.
+
+## Promise
+
+<Tabs items={['Lua', 'JS']}>
+  <Tabs.Tab>
+
+    ```lua
+    local id = MySQL.insert.await('INSERT INTO `users` (identifier, firstname, lastname) VALUES (?, ?, ?)', {
+        identifier, firstName, lastName
+    })
+
+    print(id)
+    ```
+
+  </Tabs.Tab>
+  <Tabs.Tab>
+
+    ```js
+    const id = await MySQL.insert('INSERT INTO `users` (identifier, firstname, lastname) VALUES (?, ?, ?)', [
+      identifier, firstName, lastName
+    ])
+
+    console.log(id)
+    ```
+
+  </Tabs.Tab>
+</Tabs>
+
+**Aliases**
+
+- `MySQL.Sync.insert`
+- `exports.ghmattimysql.executeSync`
+- `exports.oxmysql.insert_async`
+
+## Callback
+
+<Tabs items={['Lua', 'JS']}>
+  <Tabs.Tab>
+
+    ```lua
+    MySQL.insert('INSERT INTO `users` (identifier, firstname, lastname) VALUES (?, ?, ?)', {
+        identifier, firstName, lastName
+    }, function(id)
+        print(id)
+    end)
+    ```
+
+  </Tabs.Tab>
+  <Tabs.Tab>
+
+    ```js
+    MySQL.insert('INSERT INTO `users` (identifier, firstname, lastname) VALUES (?, ?, ?)', [
+      identifier, firstName, lastName
+    ], (id) => {
+      console.log(id)
+    })
+    ```
+
+  </Tabs.Tab>
+</Tabs>
+
+**Aliases**
+
+- `MySQL.Async.insert`
+- `exports.ghmattimysql.execute`
+- `exports.oxmysql.insert`

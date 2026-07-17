@@ -1,0 +1,22 @@
+---
+title: Placeholders
+---
+
+Placeholders permitem que parâmetros de consulta sejam executados de maneira segura, prevenindo [métodos comuns de injeção de SQL](https://bobby-tables.com/).
+
+Os parâmetros podem ser passados como um array ou objeto (referido como parâmetros nomeados).
+
+```lua
+local identifier = 'license:abc123'
+local group = 'admin'
+
+MySQL.scalar('SELECT `username` FROM `users` WHERE `identifier` = ? AND `group` = ?', { identifier, group })
+
+-- Placeholders nomeados (descontinuado)
+MySQL.scalar('SELECT `username` FROM `users` WHERE `identifier` = @identifier AND `group` = @group', {
+    group = group
+    identifier = identifier
+})
+```
+
+Esses placeholders são distintos de declarações preparadas, que são gerenciadas pelo servidor MySQL; você pode usar `MySQL.prepare` para consultas mais otimizadas e seguras.

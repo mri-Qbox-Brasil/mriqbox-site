@@ -1,0 +1,21 @@
+---
+title: Shared
+---
+
+## lib.getNearbyObjects
+
+Retorna o handle do objeto e as coordenadas de todos os objetos dentro do alcance a partir de um conjunto de coordenadas.
+
+```lua
+lib.getNearbyObjects(coords, maxDistance)
+```
+
+- coords: `vector3`
+  - Coordenadas a partir das quais será feita a verificação.
+- maxDistance?: `number`
+  - Distância máxima para verificação.
+  - Padrão: `2.0`
+
+Retorno:
+
+- objects: `{ object: number, coords: vector3 }[]`

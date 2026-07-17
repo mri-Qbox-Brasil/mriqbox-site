@@ -1,0 +1,108 @@
+---
+title: Veículos Addon
+---
+
+Este guia mostra o passo a passo de como adicionar veículos *addon* em bases do **FiveM**, desde a criação das pastas até o cadastro do carro para que ele apareça no jogo.
+
+<Callout type="info">
+Utilizaremos a base **MRI QBOX** como exemplo, mas o tutorial é compatível com bases **qb** e **qbox**.
+</Callout>
+
+## Estrutura de pastas
+
+Os veículos addon ficam melhor organizados dentro da pasta `[addons]`, seguindo esta estrutura:
+
+<Files>
+  <Folder name="resources — pasta principal da base" defaultOpen>
+    <Folder name="[addons] — arquivos addons" defaultOpen>
+      <Folder name="[veiculos] — veículos addons" defaultOpen>
+        <Folder name="BMW55i — pasta do veículo" defaultOpen>
+          <Folder name="stream — .yft, .ytd, .ydr, etc." />
+          <Folder name="data — handling.meta, vehicles.meta, carcols.meta" />
+          <File name="fxmanifest.lua — inicia (starta) o recurso" />
+        </Folder>
+      </Folder>
+    </Folder>
+  </Folder>
+</Files>
+
+## Passo a passo
+
+<Steps>
+
+### Localize a pasta `[addons]`
+
+A pasta `[addons]` **já vem criada** na base MRI QBOX assim que é feito o download.
+
+### Crie a pasta `[veiculos]`
+
+Dentro da pasta `[addons]` **não vem** a pasta `[veiculos]`, então você terá que **criá-la manualmente**.
+
+### Coloque a pasta do carro
+
+Agora, dentro da pasta `[veiculos]`, você coloca a pasta do carro que irá adicionar (ex.: `BMW55i`).
+
+Essa pasta do carro precisa conter:
+
+```
+BMW55i
+├── stream
+├── data
+└── fxmanifest.lua
+```
+</Steps>
+
+## Sobre as pastas
+
+* **`stream`** → onde ficam os arquivos do modelo 3D do veículo (`.yft`, `.ytd`, `.ydr`, etc.).
+* **`data`** → onde ficam os arquivos de configuração (`handling.meta`, `vehicles.meta`, `carcols.meta`, etc.).
+* **`fxmanifest.lua`** → arquivo responsável por iniciar (startar) o recurso do veículo.
+
+## Cadastrando o carro
+
+Depois de colocar os arquivos do veículo, é necessário cadastrá-lo para que ele apareça no jogo.
+
+Acesse o arquivo:
+
+```
+[qbx]/qbx_core/shared/vehicles.lua
+```
+
+Adicione seus carros conforme os já existentes, dessa forma:
+
+```lua
+porsche_cayenne = {
+    name = 'Cayenne',
+    brand = 'Porsche',
+    model = 'porsche_cayenne',
+    price = 86065,
+    category = 'super',
+    type = 'automobile',
+    hash = `porsche_cayenne`,
+},
+```
+
+### Carros com nome começando por número
+
+Caso seu carro tenha o nome começando com número (ex.: `911carrera`), ele ficará dessa forma:
+
+```lua
+['911carrera'] = {
+    name = '911 Carrera',
+    brand = 'Porsche',
+    model = '911carrera',
+    price = 86065,
+    category = 'super',
+    type = 'automobile',
+    hash = `911carrera`,
+},
+```
+<Callout type="warning">
+Após terminar de adicionar os veículos no `vehicles.lua` você **DEVE** reiniciar o servidor por completo, para que os veículos funcionem corretamente com todos os scripts.
+</Callout>
+
+
+<Callout type="info">
+> Se atente às **vírgulas** do arquivo e a todos os sinais (`=`, `[]`, `{}`).
+> Qualquer erro aqui faz a base **não iniciar**!
+</Callout>

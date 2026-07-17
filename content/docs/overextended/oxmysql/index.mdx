@@ -1,0 +1,132 @@
+---
+title: OxMySQL
+---
+
+<ResourceLinks repo="https://github.com/overextended/oxmysql" />
+
+Uma substituição para mysql-async e ghmattimysql com API expandida e compatibilidade aprimorada para MySQL 8.
+
+## MySQL ou MariaDB?
+
+A maioria dos recursos para FiveM foi projetada para ser usada com MySQL 5.7 e pode enfrentar problemas de compatibilidade ao usar MySQL 8, por exemplo:
+
+- Mais palavras reservadas, como 'stored' e 'group'.
+- Campos Longtext / JSON não suportam valores padrão.
+
+[MariaDB](https://mariadb.com/downloads/community/) é altamente recomendada por sua compatibilidade e desempenho aprimorado (em relação a todas as versões do MySQL).
+
+## Devo usar o XAMPP?
+
+**Não.** XAMPP é uma _pilha de servidor web_ destinada a desenvolvimento, permitindo fácil desenvolvimento e teste locais.
+Não instale o XAMPP apenas para rodar seu banco de dados, e instale [MariaDB](https://mariadb.com/downloads/community/) diretamente.
+
+## Instalação
+
+<Steps>
+
+### Baixe e instale [MariaDB](https://mariadb.com/downloads/community/)
+
+### Baixe a [última versão](https://github.com/overextended/oxmysql/releases/latest) do oxmysql
+
+### Configure seu servidor
+
+- Abra o [arquivo de configuração](https://docs.fivem.net/docs/server-manual/setting-up-a-server-vanilla/#servercfg) do seu servidor.
+- Adicione `start oxmysql` ao início da sua lista de recursos.
+- Configure sua string de conexão mysql e defina-a antes de iniciar quaisquer recursos.
+
+```bash
+# Use seu formato preferido. Certifique-se de sempre usar set.
+set mysql_connection_string "mysql://root:12345@localhost:3306/fivem"
+set mysql_connection_string "user=root;password=12345;host=localhost;port=3306;database=fivem"
+```
+
+<Callout type="info">
+
+Certos caracteres especiais são reservados ou não são suportados dependendo da sua string de conexão.
+Evite usar estes caracteres `; , / ? : @ & = + $ #` e tente trocar o formato da string de conexão.
+
+</Callout>
+
+### Avisos de consulta lenta
+
+Você receberá avisos se uma consulta demorar muito para ser concluída, configurável com uma variável de ambiente.
+
+- O tempo de consulta pode não ser totalmente preciso.
+- Consultas lentas podem não indicar um problema de banco de dados (ex.: travamentos do servidor).
+- Consultas lentas na inicialização do servidor não são necessariamente problemáticas.
+
+```bash
+set mysql_slow_query_warning 150
+```
+
+### Debug
+
+Habilitar a opção de debug imprimirá todas as consultas no console do servidor; você também pode usar uma lista para imprimir apenas de recursos específicos.
+
+```bash
+set mysql_debug true
+set mysql_debug [
+  "ox_core",
+  "ox_inventory"
+]
+```
+
+Você pode modificar temporariamente a lista de recursos com comandos.
+
+```bash
+oxmysql_debug remove ox_core
+oxmysql_debug add ox_core
+```
+
+</Steps>
+
+## Compatibilidade
+
+Você pode deletar os seguintes recursos e permitir que oxmysql forneça sua funcionalidade.
+
+- mysql-async
+- ghmattimysql
+
+## Uso
+
+Os recursos podem importar métodos oxmysql incluindo nossa biblioteca, fornecendo alguns recursos de verificação de tipos e pequenas melhorias de desempenho sobre chamadas de exportação diretas.
+
+### Lua
+
+Modifique `fxmanifest.lua` para o seu recurso e adicione o seguinte acima de qualquer outro arquivo de script.
+
+```lua
+server_script '@oxmysql/lib/MySQL.lua'
+```
+
+### JavaScript
+
+Você pode usar exportações diretas ou instalar [nosso pacote npm](https://www.npmjs.com/package/@overextended/oxmysql) para intellisense e uso semelhante ao Lua.
+
+```bash
+# With pnpm
+pnpm add @overextended/oxmysql
+
+# With Yarn
+yarn add @overextended/oxmysql
+
+# With npm
+npm install @overextended/oxmysql
+```
+
+Importe o objeto oxmysql para o seu recurso.
+
+```js
+import { oxmysql as MySQL } from '@overextended/oxmysql';
+```
+
+## Upserting
+
+Quando não tiver certeza se uma linha deve ser inserida no banco de dados ou se uma linha existente deve ser atualizada, as consultas devem verificar a duplicidade de chaves.
+
+```lua
+MySQL.prepare('INSERT INTO ox_inventory (owner, name, data) VALUES (?, ?, ?) ON DUPLICATE KEY UPDATE data = VALUES(data)', { owner, dbId, inventory })
+```
+
+Isso é preferível a verificar a existência de uma linha e, em seguida, inserir ou atualizar dependendo do resultado.
+Além disso, ao contrário do uso de 'REPLACE INTO', a linha não é deletada e reinserida.
