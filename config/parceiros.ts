@@ -3,7 +3,7 @@
  * ║            CONFIGURAÇÃO DE PARCEIROS - MRI Qbox          ║
  * ╠══════════════════════════════════════════════════════════╣
  * ║  Para adicionar um novo parceiro:                        ║
- * ║  1. Coloque a logo em: public/parceiros/nome.png         ║
+ * ║  1. Coloque a logo em: public./parceiros/nome.png         ║
  * ║  2. Adicione uma entrada no array abaixo                 ║
  * ╚══════════════════════════════════════════════════════════╝
  */
@@ -13,7 +13,7 @@ export interface Parceiro {
   name: string
   /**
    * Caminho da logo relativo à pasta /public
-   * Exemplo: "/parceiros/fivem.png"
+   * Exemplo: "./parceiros/fivem.png"
    */
   logo: string
   /** URL do site do parceiro — abre em nova aba ao clicar */
@@ -23,27 +23,27 @@ export interface Parceiro {
 const parceiros: Parceiro[] = [
   {
     name: "Central Cart",
-    logo: "/parceiros/centralcart.webp",
+    logo: "./parceiros/centralcart.webp",
     url: "https://www.centralcart.com/fivem",
   },
   {
     name: "New Age",
-    logo: "/parceiros/newage.webp",
+    logo: "./parceiros/newage.webp",
     url: "https://www.newageoficial.com/",
   },
   {
     name: "Wyze Host",
-    logo: "/parceiros/wyzehost.webp",
+    logo: "./parceiros/wyzehost.webp",
     url: "https://www.wyzehost.com.br/",
   },
   {
     name: "Aprendiz FiveM",
-    logo: "/parceiros/aprendizfivem.webp",
+    logo: "./parceiros/aprendizfivem.webp",
     url: "https://cursofivem.com.br/",
   },
   {
     name: "HaviHost",
-    logo: "/parceiros/havichost.webp",
+    logo: "./parceiros/havichost.webp",
     url: "https://financeiro.havichostbrasil.com/aff.php?aff=93",
   },
 ]
