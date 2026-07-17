@@ -4,7 +4,9 @@ import { ChevronDown, CheckCircle2, Zap, Shield, Code, ArrowRight, Github, Coffe
 import { faqPage, jsonLd } from "@/lib/schema"
 import { InstallerMockup } from "./components/InstallerMockup"
 import { ParceiroCarousel } from "./components/ParceiroCarousel"
+import PlayersChart from "./components/PlayersChart"
 import parceiros from "@/config/parceiros"
+import statsHistory from "@/data/stats-history.json"
 
 const FAQ_ITEMS = [
   {
@@ -121,16 +123,25 @@ const FEEDBACKS = [
 ]
 
 export default async function HomePage() {
-  // Fetch live stats from 5metrics — all MRI resources in parallel
+  // Fetch live stats from 5metrics — MRI resources in parallel.
+  // 5metrics não tem endpoint de wildcard/listagem, então enumeramos os
+  // resources mri_Q que têm presença real (os demais têm 1 servidor ou não
+  // estão indexados). Pegamos o MÁXIMO de cada métrica entre eles: o
+  // mri_Qloadscreen roda em quase todo servidor -> maior nº de jogadores.
   const MRI_RESOURCES = [
-    "mri_Qbox",
+    "mri_Qloadscreen",
     "mri_Qobjects",
+    "mri_Qbox",
+    "mri_Qnitro",
+    "mri_Qadmin",
+    "mri_Qhud",
+    "mri_Qspawn",
     "mri_Qblackout",
     "mri_Qcarkeys",
   ]
 
-  let totalServers = 150  // fallback max (e.g. Qobjects)
-  let totalPlayers = 208  // fallback max
+  let totalServers = 173  // fallback max (e.g. Qobjects)
+  let totalPlayers = 349  // fallback max (e.g. Qloadscreen)
 
   try {
     const results = await Promise.allSettled(
@@ -249,6 +260,11 @@ export default async function HomePage() {
           <a href="https://5metrics.dev/resource/mri_Qbox" target="_blank" rel="noopener noreferrer" className="text-xs md:text-sm text-muted-foreground/60 hover:text-white transition-colors">
             via 5metrics
           </a>
+        </div>
+
+        {/* Players over time chart (renderiza so com serie suficiente) */}
+        <div className="mt-8 w-full flex justify-center px-4">
+          <PlayersChart data={statsHistory} current={totalPlayers} />
         </div>
 
         {/* Installer Mockup */}
