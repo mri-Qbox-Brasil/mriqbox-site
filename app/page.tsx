@@ -122,12 +122,38 @@ const FEEDBACKS = [
   }
 ]
 
+// Server action RSC do 5metrics que devolve a lista de servidores (top ~25 por
+// rank) de um recurso — o unico jeito de ter dados POR SERVIDOR (a meta
+// description so tem agregado, que nao da pra deduplicar). O id do action muda
+// quando o 5metrics faz deploy; se quebrar, caimos no MAX da meta (lower bound)
+// e o site segue funcionando.
+const FIVEMETRICS_SERVERS_ACTION = "401578d09ec9acd55c5b3e73c7c382ca742415877d"
+
+async function fetchResourceServers(resource: string): Promise<{ id: string; players: number }[]> {
+  const res = await fetch(`https://5metrics.dev/resource/${resource}`, {
+    method: "POST",
+    next: { revalidate: 3600 },
+    headers: {
+      "next-action": FIVEMETRICS_SERVERS_ACTION,
+      "content-type": "text/plain;charset=UTF-8",
+      accept: "text/x-component",
+      "User-Agent": "MRIQbox-site/1.0",
+    },
+    body: JSON.stringify([{ order: "asc", locale: "$undefined", search: "", sort: "rank", page: 0, resource: [resource], owner: "$undefined" }]),
+  })
+  if (!res.ok) throw new Error(`${resource}: HTTP ${res.status}`)
+  const text = await res.text()
+  const out: { id: string; players: number }[] = []
+  for (const m of text.matchAll(/"id":"([^"]+)"[^}]*?"players":(\d+)/g)) {
+    out.push({ id: m[1], players: parseInt(m[2], 10) })
+  }
+  return out
+}
+
 export default async function HomePage() {
-  // Fetch live stats from 5metrics — MRI resources in parallel.
-  // 5metrics não tem endpoint de wildcard/listagem, então enumeramos os
-  // resources mri_Q que têm presença real (os demais têm 1 servidor ou não
-  // estão indexados). Pegamos o MÁXIMO de cada métrica entre eles: o
-  // mri_Qloadscreen roda em quase todo servidor -> maior nº de jogadores.
+  // Stats ao vivo do 5metrics — recursos mri_Q com presenca real (os demais tem
+  // 1 servidor ou nao estao indexados). 5metrics nao tem endpoint de listagem,
+  // entao enumeramos.
   const MRI_RESOURCES = [
     "mri_Qloadscreen",
     "mri_Qobjects",
@@ -140,8 +166,8 @@ export default async function HomePage() {
     "mri_Qcarkeys",
   ]
 
-  let totalServers = 173  // fallback max (e.g. Qobjects)
-  let totalPlayers = 349  // fallback max (e.g. Qloadscreen)
+  let totalServers = 173  // fallback: max de servidores (e.g. Qobjects)
+  let totalPlayers = 800  // fallback: uniao de jogadores deduplicada
 
   try {
     const results = await Promise.allSettled(
@@ -173,10 +199,33 @@ export default async function HomePage() {
 
     if (anySucceeded) {
       totalServers = maxServers
-      totalPlayers = maxPlayers
+      totalPlayers = maxPlayers // base/fallback; sobrescrito pela uniao abaixo
     }
   } catch {
     // keep fallback defaults
+  }
+
+  // "Jogadores utilizando neste momento": uniao dos servidores que rodam
+  // QUALQUER recurso MRI, deduplicada por servidor. Somar por recurso contaria
+  // o mesmo jogador varias vezes (um server roda varios mri_Q ao mesmo tempo);
+  // o MAX da meta subestima (ignora servers que rodam outro recurso). A uniao
+  // dedup e o numero honesto. Se o action do 5metrics falhar, fica o MAX.
+  try {
+    const lists = await Promise.allSettled(MRI_RESOURCES.map(fetchResourceServers))
+    const union = new Map<string, number>()
+    for (const r of lists) {
+      if (r.status === "fulfilled") {
+        for (const s of r.value) {
+          const prev = union.get(s.id) ?? 0
+          if (s.players > prev) union.set(s.id, s.players)
+        }
+      }
+    }
+    if (union.size > 0) {
+      totalPlayers = [...union.values()].reduce((a, b) => a + b, 0)
+    }
+  } catch {
+    // mantem o MAX da meta
   }
 
   let teamMembers: any[] = []
@@ -247,13 +296,6 @@ export default async function HomePage() {
             <div className="w-3 h-3 rounded-full bg-primary animate-pulse shadow-[0_0_10px_rgba(0,230,153,0.5)]" />
             <span className="text-base md:text-lg text-muted-foreground">
               <span className="font-bold text-white text-lg md:text-xl">{totalServers}</span> servidores rodando
-            </span>
-          </div>
-          <div className="w-px h-6 bg-white/20" />
-          <div className="flex items-center gap-3">
-            <div className="w-3 h-3 rounded-full bg-primary/80 animate-pulse shadow-[0_0_10px_rgba(0,230,153,0.3)]" style={{ animationDelay: "0.5s" }} />
-            <span className="text-base md:text-lg text-muted-foreground">
-              <span className="font-bold text-white text-lg md:text-xl">{totalPlayers}</span> jogadores utilizando
             </span>
           </div>
           <div className="w-px h-6 bg-white/20" />

@@ -33,6 +33,34 @@ const MRI_RESOURCES = [
   "mri_Qcarkeys",
 ]
 
+// Server action RSC do 5metrics: lista os servidores (top ~25 por rank) de um
+// recurso. O id do action muda quando o 5metrics faz deploy — mantenha em sync
+// com app/page.tsx (FIVEMETRICS_SERVERS_ACTION).
+const FIVEMETRICS_SERVERS_ACTION = "401578d09ec9acd55c5b3e73c7c382ca742415877d"
+
+// Servidores por recurso (id + jogadores), pra deduplicar a uniao.
+async function fetchResourceServers(resource) {
+  const res = await fetch(`https://5metrics.dev/resource/${resource}`, {
+    method: "POST",
+    headers: {
+      "next-action": FIVEMETRICS_SERVERS_ACTION,
+      "content-type": "text/plain;charset=UTF-8",
+      accept: "text/x-component",
+      "User-Agent": "MRIQbox-site/1.0",
+    },
+    body: JSON.stringify([{ order: "asc", locale: "$undefined", search: "", sort: "rank", page: 0, resource: [resource], owner: "$undefined" }]),
+  })
+  if (!res.ok) throw new Error(`${resource}: HTTP ${res.status}`)
+  const text = await res.text()
+  const out = []
+  for (const m of text.matchAll(/"id":"([^"]+)"[^}]*?"players":(\d+)/g)) {
+    out.push({ id: m[1], players: parseInt(m[2], 10) })
+  }
+  return out
+}
+
+// Agregado por recurso (meta description) — usado pro MAX de servidores e como
+// fallback de jogadores se a uniao falhar.
 async function fetchStats(resource) {
   const res = await fetch(`https://5metrics.dev/resource/${resource}`, {
     headers: { "User-Agent": "MRIQbox-site/1.0" },
@@ -56,12 +84,12 @@ function readHistory() {
 }
 
 async function main() {
-  const results = await Promise.allSettled(MRI_RESOURCES.map(fetchStats))
-
+  // Agregado (meta): MAX de servidores + MAX de jogadores (fallback).
+  const stats = await Promise.allSettled(MRI_RESOURCES.map(fetchStats))
   let servers = 0
   let players = 0
   let ok = false
-  for (const r of results) {
+  for (const r of stats) {
     if (r.status === "fulfilled" && r.value) {
       if (r.value.servers > servers) servers = r.value.servers
       if (r.value.players > players) players = r.value.players
@@ -72,6 +100,27 @@ async function main() {
   if (!ok) {
     console.error("Nenhum recurso respondeu — nao gravo ponto vazio.")
     process.exit(1)
+  }
+
+  // Jogadores: uniao dos servidores que rodam qualquer recurso, deduplicada por
+  // servidor (o numero honesto — ver comentario em app/page.tsx). Se falhar,
+  // fica o MAX da meta acima.
+  try {
+    const lists = await Promise.allSettled(MRI_RESOURCES.map(fetchResourceServers))
+    const union = new Map()
+    for (const r of lists) {
+      if (r.status === "fulfilled") {
+        for (const s of r.value) {
+          const prev = union.get(s.id) || 0
+          if (s.players > prev) union.set(s.id, s.players)
+        }
+      }
+    }
+    if (union.size > 0) {
+      players = [...union.values()].reduce((a, b) => a + b, 0)
+    }
+  } catch {
+    // mantem o MAX da meta
   }
 
   const history = readHistory()
