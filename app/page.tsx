@@ -476,20 +476,39 @@ export default async function HomePage() {
       </section>
 
       {/* Metrics Counter */}
-      <section className="w-full bg-primary relative overflow-hidden">
-        <div className="absolute inset-0 bg-[url('https://assets.mriqbox.com.br/branding/logo1080.png')] bg-cover bg-center opacity-10 mix-blend-overlay" />
-        <div className="max-w-[1440px] mx-auto px-6 md:px-12 py-20 relative z-10 flex flex-col md:flex-row justify-between gap-12 md:gap-8 divide-y md:divide-y-0 md:divide-x divide-white/20">
-          <div className="flex flex-col items-center flex-1 pt-6 md:pt-0">
-            <span className="text-5xl font-extrabold text-white mb-2">100%</span>
-            <span className="text-primary-foreground/80 font-medium">Gratuito e Open Source</span>
+      <section className="relative w-full overflow-hidden border-y border-primary/30 bg-primary text-primary-foreground">
+        <div className="pointer-events-none absolute -right-24 -top-48 h-[520px] w-[520px] bg-[url('https://assets.mriqbox.com.br/branding/logo1080.png')] bg-contain bg-center bg-no-repeat opacity-[0.06] mix-blend-multiply" />
+        <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(110deg,rgba(255,255,255,0.12),transparent_40%)]" />
+
+        <div className="relative z-10 mx-auto grid max-w-[1440px] lg:grid-cols-[0.8fr_1.2fr]">
+          <div className="flex flex-col justify-center border-b border-primary-foreground/15 px-6 py-12 md:px-12 lg:border-b-0 lg:border-r lg:py-14">
+            <span className="mb-4 text-[10px] font-black uppercase tracking-[0.24em] text-primary-foreground/60">MRI Qbox em números</span>
+            <h2 className="max-w-md text-3xl font-black leading-[0.95] tracking-[-0.04em] md:text-4xl">
+              Tudo para sua cidade começar grande.
+            </h2>
+            <p className="mt-4 max-w-md text-sm font-medium leading-relaxed text-primary-foreground/65">
+              Código aberto, recursos integrados e uma comunidade brasileira construindo junto.
+            </p>
           </div>
-          <div className="flex flex-col items-center flex-1 pt-6 md:pt-0">
-            <span className="text-5xl font-extrabold text-white mb-2">+50</span>
-            <span className="text-primary-foreground/80 font-medium">Scripts Integrados</span>
-          </div>
-          <div className="flex flex-col items-center flex-1 pt-6 md:pt-0">
-            <span className="text-5xl font-extrabold text-white mb-2">24/7</span>
-            <span className="text-primary-foreground/80 font-medium">Comunidade Ativa</span>
+
+          <div className="grid sm:grid-cols-3">
+            <div className="grid min-h-44 grid-rows-[4rem_2.5rem_3rem] content-center border-b border-primary-foreground/15 px-6 py-8 sm:border-b-0 sm:border-r md:px-8">
+              <span className="flex items-end text-5xl font-black leading-none tracking-[-0.06em] md:text-6xl">100%</span>
+              <span className="flex items-start pt-3 text-xs font-black uppercase tracking-[0.12em]">Gratuito e open source</span>
+              <span className="text-xs leading-relaxed text-primary-foreground/55">Livre para usar, estudar e evoluir.</span>
+            </div>
+
+            <div className="grid min-h-44 grid-rows-[4rem_2.5rem_3rem] content-center border-b border-primary-foreground/15 px-6 py-8 sm:border-b-0 sm:border-r md:px-8">
+              <span className="flex items-end text-5xl font-black leading-none tracking-[-0.06em] md:text-6xl">+50</span>
+              <span className="flex items-start pt-3 text-xs font-black uppercase tracking-[0.12em]">Scripts integrados</span>
+              <span className="text-xs leading-relaxed text-primary-foreground/55">Uma base completa desde o primeiro start.</span>
+            </div>
+
+            <div className="grid min-h-44 grid-rows-[4rem_2.5rem_3rem] content-center px-6 py-8 md:px-8">
+              <span className="flex items-end text-5xl font-black leading-none tracking-[-0.06em] md:text-6xl">24/7</span>
+              <span className="flex items-start pt-3 text-xs font-black uppercase tracking-[0.12em]">Comunidade ativa</span>
+              <span className="text-xs leading-relaxed text-primary-foreground/55">Conhecimento compartilhado todos os dias.</span>
+            </div>
           </div>
         </div>
       </section>
