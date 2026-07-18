@@ -319,23 +319,9 @@ export default async function HomePage() {
           Instalar agora
         </Link>
 
-        {/* 5metrics live stats */}
-        <div className="mt-8 flex items-center gap-6 md:gap-8">
-          <div className="flex items-center gap-3">
-            <div className="w-3 h-3 rounded-full bg-primary animate-pulse shadow-[0_0_10px_rgba(0,230,153,0.5)]" />
-            <span className="text-base md:text-lg text-muted-foreground">
-              <span className="font-bold text-white text-lg md:text-xl">{totalServers}</span> servidores rodando
-            </span>
-          </div>
-          <div className="w-px h-6 bg-white/20" />
-          <a href="https://5metrics.dev/resource/mri_Qbox" target="_blank" rel="noopener noreferrer" className="text-xs md:text-sm text-muted-foreground/60 hover:text-white transition-colors">
-            via 5metrics
-          </a>
-        </div>
-
-        {/* Players over time chart (renderiza so com serie suficiente) */}
+        {/* 5metrics live stats + historico */}
         <div className="mt-8 w-full flex justify-center px-4">
-          <PlayersChart data={statsHistory} current={totalPlayers} />
+          <PlayersChart data={statsHistory} current={totalPlayers} servers={totalServers} />
         </div>
 
         {/* Installer Mockup */}

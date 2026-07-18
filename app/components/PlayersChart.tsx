@@ -19,7 +19,7 @@ function fmtDate(iso: string) {
   return new Date(iso).toLocaleDateString("pt-BR", { day: "2-digit", month: "short" })
 }
 
-export default function PlayersChart({ data, current }: { data: Point[]; current: number }) {
+export default function PlayersChart({ data, current, servers }: { data: Point[]; current: number; servers: number }) {
   const points = [...data].sort((a, b) => a.t.localeCompare(b.t))
   const hasSeries = points.length >= 2
 
@@ -37,14 +37,31 @@ export default function PlayersChart({ data, current }: { data: Point[]; current
 
   return (
     <div className="w-full max-w-2xl rounded-2xl border border-white/5 bg-card/40 backdrop-blur-sm p-5">
-      <div className="flex items-start justify-between">
-        <div className="flex items-center gap-3">
-          <div className="w-2.5 h-2.5 rounded-full bg-primary animate-pulse shadow-[0_0_10px_rgba(0,230,153,0.6)] mt-1.5" />
-          <div className="text-left">
-            <div className="text-3xl md:text-4xl font-black text-white leading-none">{current.toLocaleString("pt-BR")}</div>
-            <div className="text-xs uppercase tracking-wider text-white/60 mt-1">jogadores utilizando neste momento</div>
+      <div className="flex flex-col gap-5 sm:flex-row sm:items-start sm:justify-between">
+        <div className="grid flex-1 grid-cols-1 gap-5 text-left sm:grid-cols-2 sm:gap-0">
+          <div className="flex items-center gap-3 sm:border-r sm:border-white/10 sm:pr-6">
+            <div className="w-2.5 h-2.5 shrink-0 rounded-full bg-primary animate-pulse shadow-[0_0_10px_rgba(0,230,153,0.6)]" />
+            <div>
+              <div className="text-3xl md:text-4xl font-black text-white leading-none">{servers.toLocaleString("pt-BR")}</div>
+              <div className="text-xs uppercase tracking-wider text-white/60 mt-1">servidores rodando</div>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-3 sm:pl-6">
+            <div className="w-2.5 h-2.5 shrink-0 rounded-full bg-primary animate-pulse shadow-[0_0_10px_rgba(0,230,153,0.6)]" />
+            <div>
+              <div className="text-3xl md:text-4xl font-black text-white leading-none">{current.toLocaleString("pt-BR")}</div>
+              <div className="text-xs uppercase tracking-wider text-white/60 mt-1">jogadores neste momento</div>
+            </div>
           </div>
         </div>
+
+        <a href="https://5metrics.dev/resource/mri_Qbox" target="_blank" rel="noopener noreferrer" className="text-xs text-muted-foreground/60 transition-colors hover:text-white sm:pt-1">
+          via 5metrics
+        </a>
+      </div>
+
+      <div className="mt-4 flex justify-end">
         {hasSeries && (
           <span className="text-xs text-muted-foreground/60 whitespace-nowrap">
             pico <span className="font-bold text-primary">{peak.toLocaleString("pt-BR")}</span>
@@ -54,7 +71,7 @@ export default function PlayersChart({ data, current }: { data: Point[]; current
 
       {hasSeries ? (
         <>
-          <svg viewBox={`0 0 ${W} ${H}`} className="w-full h-auto mt-3" preserveAspectRatio="none" role="img" aria-label="Jogadores conectados ao longo do tempo">
+          <svg viewBox={`0 0 ${W} ${H}`} className="w-full h-auto mt-1" preserveAspectRatio="none" role="img" aria-label="Jogadores conectados ao longo do tempo">
             <defs>
               <linearGradient id="playersAreaFill" x1="0" y1="0" x2="0" y2="1">
                 <stop offset="0%" stopColor="rgb(0,230,153)" stopOpacity="0.35" />
@@ -73,7 +90,9 @@ export default function PlayersChart({ data, current }: { data: Point[]; current
           </div>
         </>
       ) : (
-        <p className="mt-3 text-[11px] text-muted-foreground/50">Coletando histórico de uso — a tendência aparece nos próximos dias.</p>
+        <p className="mt-4 max-w-xl text-left text-[11px] leading-relaxed text-muted-foreground/60">
+          Dados reais de servidores FiveM que utilizam a MRI Qbox, atualizados periodicamente pelo 5metrics. O histórico de uso aparecerá nos próximos dias.
+        </p>
       )}
     </div>
   )

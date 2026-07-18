@@ -23,7 +23,8 @@ function Avatar({ src, alt, initials }: { src: string; alt: string; initials: st
         <img
           src={src}
           alt={alt}
-          className="absolute inset-0 h-full w-full object-cover"
+          className="absolute inset-0 block h-full w-full max-w-none object-contain"
+          style={{ margin: 0 }}
           onError={() => setOk(false)}
         />
       )}
