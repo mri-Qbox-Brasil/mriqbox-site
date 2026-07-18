@@ -315,18 +315,52 @@ export default async function HomePage() {
           A framework open-source que combina Qbcore e Ox, tornando a base do seu servidor mais prática e segura.
         </p>
 
-        <Link href="/docs/mri/instalacao" className="px-8 py-3.5 bg-primary hover:bg-primary/90 rounded-full text-primary-foreground font-bold text-lg transition-all hover:scale-105">
-          Instalar agora
-        </Link>
-
         {/* 5metrics live stats + historico */}
         <div className="mt-8 w-full flex justify-center px-4">
           <PlayersChart data={statsHistory} current={totalPlayers} servers={totalServers} />
         </div>
 
-        {/* Installer Mockup */}
-        <div className="mt-16 hidden w-full px-4 md:block">
-          <InstallerMockup />
+        {/* New installer introduction */}
+        <div className="mt-16 w-full max-w-5xl px-4 text-left">
+          <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-[#0c0f0e] p-6 sm:p-7 md:rounded-b-none md:border-b-0">
+            <div className="pointer-events-none absolute -right-20 -top-24 h-64 w-64 rounded-full bg-primary/10 blur-3xl" />
+            <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/70 to-transparent" />
+
+            <div className="relative flex flex-col gap-6 md:flex-row md:items-center md:justify-between md:gap-8">
+              <div className="max-w-2xl">
+                <div className="mb-3 flex items-center gap-2.5">
+                  <span className="h-2 w-2 rounded-full bg-primary shadow-[0_0_8px_rgba(0,230,153,0.45)]" />
+                  <span className="text-[10px] font-black uppercase tracking-[0.22em] text-primary">Novo instalador MRI disponível</span>
+                </div>
+                <h2 className="text-3xl font-black leading-tight tracking-tight text-white md:text-4xl">
+                  Sua base pronta, do download à configuração.
+                </h2>
+                <p className="mt-3 max-w-xl text-sm leading-relaxed text-muted-foreground md:text-base">
+                  Instale a MRI Qbox com um fluxo guiado, da escolha do FXServer à configuração final do ambiente.
+                </p>
+
+                <div className="mt-5 flex flex-wrap items-center gap-x-3 gap-y-2 text-[11px] font-bold uppercase tracking-wider text-white/60">
+                  <span><strong className="mr-1.5 text-primary">01</strong>FXServer</span>
+                  <ArrowRight className="h-3 w-3 text-white/30" />
+                  <span><strong className="mr-1.5 text-primary">02</strong>Ambiente</span>
+                  <ArrowRight className="h-3 w-3 text-white/30" />
+                  <span><strong className="mr-1.5 text-primary">03</strong>MRI Qbox</span>
+                </div>
+              </div>
+
+              <Link href="/docs/mri/instalacao" className="group inline-flex w-full shrink-0 items-center justify-between gap-6 rounded-xl bg-primary px-6 py-4 text-sm font-black text-primary-foreground transition-colors hover:bg-primary/90 sm:w-auto">
+                Abrir instalador
+                <span className="flex h-7 w-7 items-center justify-center rounded-full bg-black/10 transition-transform group-hover:translate-x-0.5">
+                  <ArrowRight className="h-4 w-4" />
+                </span>
+              </Link>
+            </div>
+          </div>
+
+          {/* Installer Mockup — desktop only */}
+          <div className="hidden md:block">
+            <InstallerMockup className="rounded-t-none" />
+          </div>
         </div>
       </section>
 

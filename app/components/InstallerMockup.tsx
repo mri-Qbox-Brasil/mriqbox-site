@@ -77,7 +77,7 @@ const terminalLines: TLine[] = [
   { delay: 8600, badge: "resources",              bg: "#1a7a1a", text: "^2Server booted successfully. 183 resources loaded.^7" },
 ]
 
-export function InstallerMockup() {
+export function InstallerMockup({ className }: { className?: string }) {
   const [globalStep, setGlobalStep] = useState(0)
   const [finalSubStep, setFinalSubStep] = useState(0)
   const [terminalVisible, setTerminalVisible] = useState(0)
@@ -294,7 +294,7 @@ export function InstallerMockup() {
   }
 
   return (
-    <div className="w-full max-w-5xl mx-auto rounded-xl border border-white/10 bg-[#090b0a]/90 backdrop-blur-2xl shadow-2xl overflow-hidden flex flex-col transition-all duration-500 hover:border-primary/30 select-none">
+    <div className={cn("w-full max-w-5xl mx-auto rounded-xl border border-white/10 bg-[#090b0a]/90 backdrop-blur-2xl shadow-2xl overflow-hidden flex flex-col transition-all duration-500 hover:border-primary/30 select-none", className)}>
 
       {/* Window chrome */}
       <div className="w-full h-10 border-b border-white/5 bg-[#0e1110] flex items-center px-4 gap-2 shrink-0">
