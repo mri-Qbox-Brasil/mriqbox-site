@@ -1,9 +1,10 @@
 import type { Metadata } from "next"
 import Link from "next/link"
-import { AlertTriangle, ArrowLeft, CheckCircle2, Download, ExternalLink, Github, Monitor, Server } from "lucide-react"
+import { AlertTriangle, ArrowLeft, CheckCircle2, Download, Github, Monitor, Server } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { breadcrumb, jsonLd } from "@/lib/schema"
 import { getArtifactsDb } from "@/lib/artifacts-db"
+import { ArtifactsDebugList } from "./ArtifactsDebugList"
 
 export const metadata: Metadata = {
   title: "Artifacts DB FiveM | MRI Qbox Brasil",
@@ -91,27 +92,7 @@ export default async function ArtifactsDbPage() {
           </div>
         </section>
 
-        <section>
-          <div className="mb-5 flex flex-col justify-between gap-3 sm:flex-row sm:items-end">
-            <div><h2 className="text-2xl font-bold text-white">Debug de versões</h2><p className="mt-2 text-sm text-muted-foreground">Artefatos com falhas conhecidas e os motivos registrados pela comunidade.</p></div>
-            <Link href="https://artifacts.jgscripts.com/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm font-semibold text-primary hover:underline">Abrir base original <ExternalLink className="h-4 w-4" /></Link>
-          </div>
-
-          {artifacts.brokenArtifacts.length > 0 ? (
-            <div className="overflow-hidden rounded-xl border border-white/10">
-              {artifacts.brokenArtifacts.map((item) => (
-                <div key={`${item.artifact}-${item.reason}`} className="grid gap-2 border-b border-white/10 bg-card p-5 last:border-b-0 md:grid-cols-[180px_1fr]">
-                  <div className="flex items-center gap-2 font-mono font-bold text-amber-400"><AlertTriangle className="h-4 w-4 shrink-0" />{item.artifact}</div>
-                  <p className="text-sm leading-relaxed text-muted-foreground">{item.reason}</p>
-                </div>
-              ))}
-            </div>
-          ) : (
-            <div className="rounded-xl border border-white/10 bg-card p-6 text-sm text-muted-foreground">
-              A lista de debug não pôde ser carregada agora. A versão de segurança acima continua disponível.
-            </div>
-          )}
-        </section>
+        <ArtifactsDebugList artifacts={artifacts.brokenArtifacts} />
       </main>
     </div>
   )
