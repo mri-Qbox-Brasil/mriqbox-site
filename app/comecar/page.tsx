@@ -1,192 +1,118 @@
 import type { Metadata } from "next"
 import Link from "next/link"
+import { AlertTriangle, ArrowLeft, CheckCircle2, Download, ExternalLink, Github, Monitor, Server } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { Card } from "@/components/ui/card"
-import { ArrowLeft, Download, MessageCircle, ExternalLink } from "lucide-react"
-import { breadcrumb, howTo, jsonLd } from "@/lib/schema"
+import { breadcrumb, jsonLd } from "@/lib/schema"
+import { getArtifactsDb } from "@/lib/artifacts-db"
 
 export const metadata: Metadata = {
-  title: "Como começar com MRI Qbox Brasil",
-  description:
-    "Guia rápido de instalação da framework MRI Qbox em servidores FiveM via txAdmin. Pré-requisitos, passo-a-passo e próximos passos.",
+  title: "Artifacts DB FiveM | MRI Qbox Brasil",
+  description: "Consulte o artefato FXServer recomendado, baixe as versões para Windows ou Linux e veja builds com problemas conhecidos.",
   alternates: { canonical: "/comecar" },
   openGraph: {
-    title: "Como começar com MRI Qbox Brasil — Guia de instalação",
-    description: "Passo-a-passo pra subir um servidor FiveM com MRI Qbox em menos de 30 minutos.",
-    type: "article",
+    title: "Artifacts DB FiveM | MRI Qbox Brasil",
+    description: "Versões do FXServer sincronizadas com o banco de artefatos mantido pelo JG Scripts.",
+    type: "website",
   },
-  twitter: { card: "summary_large_image", title: "Como começar com MRI Qbox Brasil" },
+  twitter: { card: "summary_large_image", title: "Artifacts DB FiveM | MRI Qbox Brasil" },
 }
-
-const HOWTO_SCHEMA = howTo(
-  "Instalar MRI Qbox Brasil em servidor FiveM",
-  "Subir um servidor FiveM completo com a framework MRI Qbox via txAdmin em menos de 30 minutos.",
-  [
-    { name: "Pré-requisitos", text: "FXServer com txAdmin 7+, MySQL 8+ ou MariaDB 10.6+, Node.js 18+." },
-    { name: "Recipe no txAdmin", text: "Importar a recipe oficial MRI Qbox pelo txAdmin — ele baixa ox_lib, oxmysql, qbx_core e mri_Qbox automaticamente." },
-    { name: "Configurar convar mri:color", text: "Adicionar setr mri:color \"#00E699\" no server.cfg pra definir a cor da suite (NUIs MRI usam isso)." },
-    { name: "Permissões ACE", text: "Dar add_ace identifier.fivem:SEU_ID command allow no server.cfg pra liberar acesso aos painéis admin." },
-    { name: "Subir o servidor", text: "Start o profile no txAdmin, conectar pelo FiveM, executar /qadmin pra abrir o painel admin." },
-  ]
-)
 
 const BREADCRUMB = breadcrumb([
   { name: "Início", path: "/" },
-  { name: "Como começar", path: "/comecar" },
+  { name: "Artifacts DB", path: "/comecar" },
 ])
 
-export default function ComecarPage() {
+export default async function ArtifactsDbPage() {
+  const artifacts = await getArtifactsDb()
+
   return (
     <div className="min-h-screen bg-background">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(HOWTO_SCHEMA) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(BREADCRUMB) }} />
-      <div className="container mx-auto px-4 py-12 max-w-3xl">
-        <Button variant="ghost" size="sm" asChild className="mb-8">
+
+      <main className="container mx-auto max-w-5xl px-4 pb-12 pt-8 md:pt-10">
+        <Button variant="ghost" size="sm" asChild className="mb-6">
           <Link href="/">
-            <ArrowLeft className="w-4 h-4 mr-2" />
+            <ArrowLeft className="mr-2 h-4 w-4" />
             Voltar
           </Link>
         </Button>
 
-        <h1 className="heading-mri text-4xl md:text-5xl mb-4">Como começar</h1>
-        <p className="text-lg text-muted-foreground mb-12 leading-relaxed">
-          Subir um servidor FiveM com MRI Qbox leva menos de 30 minutos se você já tem txAdmin
-          rodando. Este é o caminho mais curto — para configurações avançadas, consulte a{" "}
-          <Link
-            href="https://docs.mriqbox.com.br"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-primary hover:underline"
-          >
-            documentação completa
-          </Link>
-          .
-        </p>
+        <header className="mb-8 border-b border-white/10 pb-8">
+          <h1 className="text-5xl font-black leading-none tracking-[-0.055em] text-white md:text-6xl">Artifacts DB</h1>
+          <div className="mt-5 flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-primary">
+            <span className={`h-2 w-2 rounded-full ${artifacts.synced ? "bg-primary" : "bg-amber-400"}`} />
+            {artifacts.synced ? "Sincronizado com JG Scripts" : "Exibindo dados de segurança"}
+          </div>
+          <p className="mt-3 max-w-2xl text-base leading-relaxed text-muted-foreground md:text-lg">
+            Consulte a versão estável recomendada do FXServer e confira os artefatos com problemas conhecidos antes de atualizar seu servidor.
+          </p>
+        </header>
 
-        <section className="space-y-6">
-          <Card className="p-6">
-            <h2 className="text-2xl font-bold mb-3">Pré-requisitos</h2>
-            <ul className="list-disc ml-6 space-y-2 text-muted-foreground">
-              <li>Servidor com FiveM/FXServer instalado</li>
-              <li>
-                <strong className="text-foreground">txAdmin</strong> 7+ (geralmente já vem no FXServer)
-              </li>
-              <li>MySQL 8+ ou MariaDB 10.6+ acessível</li>
-              <li>Node.js 18+ (para builds de UI dos scripts MRI)</li>
-              <li>Familiaridade básica com Lua e linha de comando</li>
-            </ul>
-          </Card>
-
-          <Card className="p-6">
-            <h2 className="text-2xl font-bold mb-3">1. Recipe MRI Qbox no txAdmin</h2>
-            <p className="text-muted-foreground mb-4 leading-relaxed">
-              A forma mais rápida é importar a recipe oficial pelo txAdmin: na criação do servidor,
-              cole a URL da recipe MRI Qbox. O txAdmin baixa todas as dependências (ox_lib, oxmysql,
-              qbx_core, mri_Qbox) e configura banco automaticamente.
-            </p>
-            <Button asChild>
-              <Link
-                href="https://docs.mriqbox.com.br/mri/instalacao"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <ExternalLink className="w-4 h-4 mr-2" />
-                Recipe + passo-a-passo nos docs
-              </Link>
-            </Button>
-          </Card>
-
-          <Card className="p-6">
-            <h2 className="text-2xl font-bold mb-3">2. Configurar convar suite-wide</h2>
-            <p className="text-muted-foreground mb-4 leading-relaxed">
-              Todos os scripts MRI compartilham um tema através da convar{" "}
-              <code className="text-primary bg-muted px-1.5 py-0.5 rounded">mri:color</code>. Defina no seu{" "}
-              <code className="text-primary bg-muted px-1.5 py-0.5 rounded">server.cfg</code>:
-            </p>
-            <pre className="bg-muted p-4 rounded-md text-sm overflow-x-auto border border-border">
-              <code className="text-foreground font-mono">
-                setr mri:color &quot;#00E699&quot;
-              </code>
-            </pre>
-            <p className="text-muted-foreground mt-3 text-sm leading-relaxed">
-              Qualquer hex válido funciona. Mudar a convar em runtime atualiza as NUIs ao vivo (mri_Qadmin,
-              mri_Qspawn, mri_Qmultichar) sem restart.
-            </p>
-          </Card>
-
-          <Card className="p-6">
-            <h2 className="text-2xl font-bold mb-3">3. Permissões iniciais (ACE)</h2>
-            <p className="text-muted-foreground mb-4 leading-relaxed">
-              No <code className="text-primary bg-muted px-1.5 py-0.5 rounded">server.cfg</code>, dê
-              permissões pro seu identifier abrir o painel admin:
-            </p>
-            <pre className="bg-muted p-4 rounded-md text-sm overflow-x-auto border border-border">
-              <code className="text-foreground font-mono whitespace-pre">{`add_ace identifier.fivem:SEU_ID command allow
-add_ace identifier.fivem:SEU_ID mri_Qspawn.admin allow
-add_ace identifier.fivem:SEU_ID qadmin.action.manage_settings allow`}</code>
-            </pre>
-            <p className="text-muted-foreground mt-3 text-sm leading-relaxed">
-              <code className="text-primary bg-muted px-1 rounded">command</code> cobre god/console como
-              fallback, então normalmente já libera tudo.
-            </p>
-          </Card>
-
-          <Card className="p-6">
-            <h2 className="text-2xl font-bold mb-3">4. Subir o servidor</h2>
-            <p className="text-muted-foreground leading-relaxed">
-              Inicie o txAdmin, start o server profile. Conecte com o FiveM. Em jogo:{" "}
-              <code className="text-primary bg-muted px-1.5 py-0.5 rounded">/qadmin</code> abre o painel
-              administrativo;{" "}
-              <code className="text-primary bg-muted px-1.5 py-0.5 rounded">/adminspawn</code> gerencia
-              spawns. Se algo não abrir, verifique a console F8 do FiveM.
-            </p>
-          </Card>
-
-          <Card className="p-6 bg-gradient-to-br from-primary/5 to-primary-accent/5 border-primary/20">
-            <h2 className="text-2xl font-bold mb-3">Próximos passos</h2>
-            <ul className="list-disc ml-6 space-y-2 text-muted-foreground mb-6">
-              <li>
-                Adicionar/editar spawns ingame pelo{" "}
-                <code className="text-primary bg-muted px-1 rounded">/adminspawn</code>
-              </li>
-              <li>
-                Customizar o multichar e a aparência ({" "}
-                <Link href="/recursos" className="text-primary hover:underline">
-                  ver lista de scripts
-                </Link>
-                )
-              </li>
-              <li>
-                Configurar jobs e gangs nos arquivos do{" "}
-                <code className="text-primary bg-muted px-1 rounded">mri_Qbox</code>
-              </li>
-              <li>Entrar no Discord pra tirar dúvidas e compartilhar feedback</li>
-            </ul>
-            <div className="flex flex-wrap gap-3">
-              <Button asChild>
-                <Link
-                  href="https://docs.mriqbox.com.br"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <Download className="w-4 h-4 mr-2" />
-                  Documentação completa
-                </Link>
-              </Button>
-              <Button variant="outline" asChild>
-                <Link
-                  href="https://discord.mriqbox.com.br"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <MessageCircle className="w-4 h-4 mr-2" />
-                  Discord
-                </Link>
-              </Button>
+        <section className="mb-9 grid gap-3 md:grid-cols-[1.35fr_0.65fr]">
+          <div className="rounded-xl border border-primary/30 bg-primary/[0.06] px-6 py-5 md:px-7">
+            <span className="text-[10px] font-black uppercase tracking-[0.18em] text-primary">Versão recomendada</span>
+            <div className="mt-2 flex flex-wrap items-end gap-3">
+              <strong className="text-5xl font-black leading-none tracking-[-0.06em] text-white md:text-6xl">{artifacts.recommendedArtifact}</strong>
+              <span className={`mb-1 flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[10px] font-bold ${artifacts.synced ? "bg-primary/10 text-primary" : "bg-amber-400/10 text-amber-400"}`}>
+                {artifacts.synced ? <CheckCircle2 className="h-3.5 w-3.5" /> : <AlertTriangle className="h-3.5 w-3.5" />}
+                {artifacts.synced ? "Estável" : "Indisponível"}
+              </span>
             </div>
-          </Card>
+            <p className="mt-3 max-w-xl text-xs leading-relaxed text-muted-foreground md:text-sm">
+              {artifacts.synced
+                ? "Build mais recente sem falhas conhecidas registradas no FiveM Artifacts DB."
+                : "A sincronização está temporariamente indisponível. Consulte a fonte original antes de escolher uma versão."}
+            </p>
+          </div>
+
+          <div className="flex flex-col justify-between rounded-xl border border-white/10 bg-card px-6 py-5">
+            <div>
+              <span className="text-[10px] font-black uppercase tracking-[0.18em] text-muted-foreground">Problemas catalogados</span>
+              <strong className="mt-2 block text-4xl font-black leading-none tracking-tight text-white">{artifacts.brokenArtifacts.length}</strong>
+              <p className="mt-2 text-xs leading-relaxed text-muted-foreground">Versões ou intervalos documentados na base atual.</p>
+            </div>
+            <Link href="https://github.com/jgscripts/fivem-artifacts-db" target="_blank" rel="noopener noreferrer" className="mt-4 flex items-center gap-2 text-xs font-semibold text-primary hover:underline">
+              <Github className="h-4 w-4" /> Ver fonte no GitHub
+            </Link>
+          </div>
         </section>
-      </div>
+
+        <section className="mb-12">
+          <h2 className="mb-5 text-2xl font-bold text-white">Baixar FXServer recomendado</h2>
+          <div className="grid gap-4 sm:grid-cols-2">
+            <Link href={artifacts.windowsDownloadLink} className="group flex items-center justify-between rounded-xl border border-white/10 bg-card p-5 transition-colors hover:border-primary/30" target="_blank" rel="noopener noreferrer">
+              <div className="flex items-center gap-4"><span className="rounded-lg bg-primary/10 p-3 text-primary"><Monitor className="h-5 w-5" /></span><div><strong className="block text-white">Windows</strong><span className="text-xs text-muted-foreground">Build recomendada</span></div></div>
+              <Download className="h-5 w-5 text-muted-foreground transition-colors group-hover:text-primary" />
+            </Link>
+            <Link href={artifacts.linuxDownloadLink} className="group flex items-center justify-between rounded-xl border border-white/10 bg-card p-5 transition-colors hover:border-primary/30" target="_blank" rel="noopener noreferrer">
+              <div className="flex items-center gap-4"><span className="rounded-lg bg-primary/10 p-3 text-primary"><Server className="h-5 w-5" /></span><div><strong className="block text-white">Linux</strong><span className="text-xs text-muted-foreground">Build recomendada</span></div></div>
+              <Download className="h-5 w-5 text-muted-foreground transition-colors group-hover:text-primary" />
+            </Link>
+          </div>
+        </section>
+
+        <section>
+          <div className="mb-5 flex flex-col justify-between gap-3 sm:flex-row sm:items-end">
+            <div><h2 className="text-2xl font-bold text-white">Debug de versões</h2><p className="mt-2 text-sm text-muted-foreground">Artefatos com falhas conhecidas e os motivos registrados pela comunidade.</p></div>
+            <Link href="https://artifacts.jgscripts.com/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm font-semibold text-primary hover:underline">Abrir base original <ExternalLink className="h-4 w-4" /></Link>
+          </div>
+
+          {artifacts.brokenArtifacts.length > 0 ? (
+            <div className="overflow-hidden rounded-xl border border-white/10">
+              {artifacts.brokenArtifacts.map((item) => (
+                <div key={`${item.artifact}-${item.reason}`} className="grid gap-2 border-b border-white/10 bg-card p-5 last:border-b-0 md:grid-cols-[180px_1fr]">
+                  <div className="flex items-center gap-2 font-mono font-bold text-amber-400"><AlertTriangle className="h-4 w-4 shrink-0" />{item.artifact}</div>
+                  <p className="text-sm leading-relaxed text-muted-foreground">{item.reason}</p>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div className="rounded-xl border border-white/10 bg-card p-6 text-sm text-muted-foreground">
+              A lista de debug não pôde ser carregada agora. A versão de segurança acima continua disponível.
+            </div>
+          )}
+        </section>
+      </main>
     </div>
   )
 }

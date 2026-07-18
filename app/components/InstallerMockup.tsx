@@ -77,7 +77,17 @@ const terminalLines: TLine[] = [
   { delay: 8600, badge: "resources",              bg: "#1a7a1a", text: "^2Server booted successfully. 183 resources loaded.^7" },
 ]
 
-export function InstallerMockup({ className }: { className?: string }) {
+export function InstallerMockup({
+  className,
+  recommendedArtifact = "N/D",
+  brokenArtifactsCount = 0,
+  artifactsSynced = false,
+}: {
+  className?: string
+  recommendedArtifact?: string
+  brokenArtifactsCount?: number
+  artifactsSynced?: boolean
+}) {
   const [globalStep, setGlobalStep] = useState(0)
   const [finalSubStep, setFinalSubStep] = useState(0)
   const [terminalVisible, setTerminalVisible] = useState(0)
@@ -451,21 +461,21 @@ export function InstallerMockup({ className }: { className?: string }) {
                       {selectedArtifact === 'recommended' && <Check className="w-4 h-4 text-primary" />}
                     </div>
                     <div className="flex items-center gap-2">
-                      <span className="text-2xl font-black text-white">10244</span>
+                      <span className="text-2xl font-black text-white">{recommendedArtifact}</span>
                       <span className="px-1.5 py-0.5 rounded bg-primary/10 text-primary text-[8px] font-bold uppercase">Stable</span>
                     </div>
                   </div>
                   <div className="p-4 border border-white/10 rounded-xl bg-black/30 opacity-60">
                     <div className="flex justify-between items-start mb-3">
-                      <span className="text-[10px] font-bold uppercase tracking-tight text-white/60">Mais Recente</span>
+                      <span className="text-[10px] font-bold uppercase tracking-tight text-white/60">Artifacts DB</span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <span className="text-2xl font-black text-white">10250</span>
-                      <span className="px-1.5 py-0.5 rounded bg-amber-500/10 text-amber-500 text-[8px] font-bold uppercase">Latest</span>
+                      <span className="text-2xl font-black text-white">{artifactsSynced ? brokenArtifactsCount : "—"}</span>
+                      <span className="px-1.5 py-0.5 rounded bg-amber-500/10 text-amber-500 text-[8px] font-bold uppercase">Debug</span>
                     </div>
                     <div className="mt-3 flex items-center gap-1">
                       <AlertTriangle className="w-3 h-3 text-amber-500" />
-                      <span className="text-[9px] text-amber-500/80">Pode conter instabilidades</span>
+                      <span className="text-[9px] text-amber-500/80">Problemas conhecidos catalogados</span>
                     </div>
                   </div>
                 </div>
@@ -534,7 +544,7 @@ export function InstallerMockup({ className }: { className?: string }) {
                   </div>
                   <div className="p-4 border-b border-white/5 flex items-center justify-between">
                     <div className="flex items-center gap-3"><Globe className="w-4 h-4 text-white/40" /><span className="text-sm text-white/60">Artefato FXServer</span></div>
-                    <span className="text-sm font-bold text-white">10244 (Recomendado)</span>
+                    <span className="text-sm font-bold text-white">{recommendedArtifact} (Recomendado)</span>
                   </div>
                   <div className="p-4 flex items-center justify-between">
                     <div className="flex items-center gap-3"><Box className="w-4 h-4 text-white/40" /><span className="text-sm text-white/60">Receita</span></div>

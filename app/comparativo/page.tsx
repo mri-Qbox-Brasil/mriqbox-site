@@ -279,7 +279,7 @@ export default function ComparativoPage() {
               <Link href="/recursos">Ver recursos</Link>
             </Button>
             <Button variant="outline" asChild>
-              <Link href="/comecar">Como começar</Link>
+              <Link href="/comecar">Artifacts DB</Link>
             </Button>
           </div>
         </Card>

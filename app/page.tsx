@@ -8,6 +8,7 @@ import { ParceiroCarousel } from "./components/ParceiroCarousel"
 import PlayersChart from "./components/PlayersChart"
 import parceiros from "@/config/parceiros"
 import statsHistory from "@/data/stats-history.json"
+import { getArtifactsDb } from "@/lib/artifacts-db"
 
 export const metadata: Metadata = {
   title: "MRI Qbox Brasil | Framework FiveM Open Source",
@@ -190,6 +191,7 @@ async function fetchResourceServers(resource: string): Promise<{ id: string; pla
 }
 
 export default async function HomePage() {
+  const artifactsDb = await getArtifactsDb()
   // Stats ao vivo do 5metrics — recursos mri_Q com presenca real (os demais tem
   // 1 servidor ou nao estao indexados). 5metrics nao tem endpoint de listagem,
   // entao enumeramos.
@@ -297,7 +299,7 @@ export default async function HomePage() {
         </Link>
         <div className="hidden md:flex items-center gap-8">
           <Link href="/recursos" className="text-xs font-bold uppercase tracking-wider text-white hover:text-primary transition-colors">Recursos</Link>
-          <Link href="/comecar" className="text-xs font-bold uppercase tracking-wider text-white hover:text-primary transition-colors">Como começar</Link>
+          <Link href="/comecar" className="text-xs font-bold uppercase tracking-wider text-white hover:text-primary transition-colors">Artifacts DB</Link>
           <Link href="/docs" className="text-xs font-bold uppercase tracking-wider text-white hover:text-primary transition-colors">Documentação</Link>
           <Link href="/sobre" className="text-xs font-bold uppercase tracking-wider text-white hover:text-primary transition-colors">Saber Mais</Link>
         </div>
@@ -377,7 +379,12 @@ export default async function HomePage() {
 
           {/* Installer Mockup — desktop only */}
           <div className="hidden md:block">
-            <InstallerMockup className="rounded-t-none" />
+            <InstallerMockup
+              className="rounded-t-none"
+              recommendedArtifact={artifactsDb.recommendedArtifact}
+              brokenArtifactsCount={artifactsDb.brokenArtifacts.length}
+              artifactsSynced={artifactsDb.synced}
+            />
           </div>
         </div>
       </section>
@@ -637,7 +644,7 @@ export default async function HomePage() {
               <h4 className="text-sm font-bold text-white tracking-wider uppercase mb-2">Projeto</h4>
               <Link href="/sobre" className="text-sm text-muted-foreground hover:text-white transition-colors">Sobre nós</Link>
               <Link href="/recursos" className="text-sm text-muted-foreground hover:text-white transition-colors">Recursos</Link>
-              <Link href="/comecar" className="text-sm text-muted-foreground hover:text-white transition-colors">Como começar</Link>
+              <Link href="/comecar" className="text-sm text-muted-foreground hover:text-white transition-colors">Artifacts DB</Link>
               <Link href="/docs" className="text-sm text-muted-foreground hover:text-white transition-colors">Documentação</Link>
             </div>
             <div className="flex flex-col gap-4">

@@ -192,7 +192,7 @@ export default function RecursosPage() {
           </p>
           <div className="flex flex-wrap gap-3 justify-center">
             <Button asChild>
-              <Link href="/comecar">Guia de instalação</Link>
+              <Link href="/comecar">Artifacts DB</Link>
             </Button>
             <Button variant="outline" asChild>
               <Link href="https://docs.mriqbox.com.br" target="_blank" rel="noopener noreferrer">
