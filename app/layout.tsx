@@ -34,12 +34,29 @@ const BP = IS_GITHUB_PAGES ? "/mriqbox-site" : ""
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: "MRI Qbox Brasil - Framework FiveM Open Source",
+  title: "MRI Qbox Brasil | Framework FiveM Open Source",
   description:
-    "Framework Qbox (Qbcore + Ox) traduzida e otimizada para servidores brasileiros de FiveM. 100% gratuito e open source.",
-  keywords: ["fivem", "qbox", "qbcore", "ox", "brasil", "framework", "gta v", "servidor", "rp", "roleplay"],
+    "Framework FiveM open source baseada em Qbox, QBCore e Ox, traduzida e otimizada para servidores brasileiros. Gratuita, moderna e documentada em português.",
+  keywords: ["FiveM", "framework FiveM", "Qbox Brasil", "QBCore Brasil", "servidor FiveM", "base FiveM", "Ox", "GTA RP", "roleplay", "open source"],
+  applicationName: "MRI Qbox Brasil",
   authors: [{ name: "MRI Qbox Brasil" }],
+  creator: "MRI Qbox Brasil",
+  publisher: "MRI Qbox Brasil",
+  category: "technology",
+  referrer: "origin-when-cross-origin",
+  formatDetection: { email: false, address: false, telephone: false },
   alternates: { canonical: "/" },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
   // Versao de dev (GitHub Pages) nao deve aparecer nos buscadores.
   ...(IS_GITHUB_PAGES && { robots: { index: false, follow: false } }),
   // Favicon: mri.ico (mesmo da aba do docs.mriqbox.com.br) + icon.png 460px
@@ -57,16 +74,16 @@ export const metadata: Metadata = {
     locale: "pt_BR",
     url: SITE_URL,
     siteName: "MRI Qbox Brasil",
-    title: "MRI Qbox Brasil - Framework FiveM Open Source",
+    title: "MRI Qbox Brasil | Framework FiveM Open Source",
     description:
-      "Framework Qbox (Qbcore + Ox) traduzida e otimizada para servidores brasileiros de FiveM. 100% gratuito e open source.",
+      "Framework FiveM open source baseada em Qbox, QBCore e Ox. Gratuita, moderna e feita para servidores brasileiros.",
     images: [{ url: OG_IMAGE, width: 1080, height: 1080, alt: "MRI Qbox Brasil" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "MRI Qbox Brasil - Framework FiveM Open Source",
+    title: "MRI Qbox Brasil | Framework FiveM Open Source",
     description:
-      "Framework Qbox (Qbcore + Ox) traduzida e otimizada para servidores brasileiros de FiveM.",
+      "Framework FiveM open source, gratuita e em português para servidores brasileiros.",
     images: [OG_IMAGE],
   },
 }
@@ -78,10 +95,11 @@ const ORGANIZATION_SCHEMA = {
   "@context": "https://schema.org",
   "@type": "Organization",
   name: "MRI Qbox Brasil",
+  alternateName: "MRI Qbox",
   url: SITE_URL,
   logo: OG_IMAGE,
   description:
-    "Adaptação brasileira open source da framework Qbox (Qbcore + Ox) para servidores FiveM.",
+    "Framework FiveM open source baseada em Qbox, QBCore e Ox, mantida pela comunidade brasileira.",
   sameAs: [
     "https://github.com/mri-Qbox-Brasil",
     "https://discord.mriqbox.com.br",
@@ -94,8 +112,10 @@ const WEBSITE_SCHEMA = {
   "@context": "https://schema.org",
   "@type": "WebSite",
   name: "MRI Qbox Brasil",
+  alternateName: "MRI Qbox",
   url: SITE_URL,
   inLanguage: "pt-BR",
+  description: "Documentação, recursos e comunidade da framework FiveM open source MRI Qbox Brasil.",
   publisher: { "@type": "Organization", name: "MRI Qbox Brasil" },
 }
 

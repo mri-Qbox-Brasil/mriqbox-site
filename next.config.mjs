@@ -1,9 +1,13 @@
 import { createMDX } from "fumadocs-mdx/next"
+import path from "node:path"
+import { fileURLToPath } from "node:url"
 
 /** @type {import('next').NextConfig} */
 const isGithubPages = process.env.GITHUB_PAGES === "true"
+const projectRoot = path.dirname(fileURLToPath(import.meta.url))
 
 const nextConfig = {
+  outputFileTracingRoot: projectRoot,
   images: {
     unoptimized: true,
   },

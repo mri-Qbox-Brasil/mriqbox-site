@@ -1,6 +1,7 @@
 import Link from "next/link"
 import Image from "next/image"
-import { ChevronDown, CheckCircle2, Zap, Shield, Code, ArrowRight, Github, Coffee } from "lucide-react"
+import type { Metadata } from "next"
+import { ChevronDown, CheckCircle2, Zap, Shield, Code, ArrowRight, Github, Coffee, Download } from "lucide-react"
 import { faqPage, jsonLd } from "@/lib/schema"
 import { InstallerMockup } from "./components/InstallerMockup"
 import { ParceiroCarousel } from "./components/ParceiroCarousel"
@@ -8,30 +9,47 @@ import PlayersChart from "./components/PlayersChart"
 import parceiros from "@/config/parceiros"
 import statsHistory from "@/data/stats-history.json"
 
+export const metadata: Metadata = {
+  title: "MRI Qbox Brasil | Framework FiveM Open Source",
+  description: "Crie servidores FiveM com uma base Qbox moderna, gratuita e em português. Instalação guiada, scripts otimizados, documentação completa e comunidade brasileira.",
+  alternates: { canonical: "/" },
+  openGraph: {
+    title: "MRI Qbox Brasil | A base FiveM feita para o Brasil",
+    description: "Framework FiveM open source com Qbox, QBCore e Ox, instalação guiada e suporte da comunidade brasileira.",
+    url: "/",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "MRI Qbox Brasil | Framework FiveM Open Source",
+    description: "Uma base FiveM moderna, gratuita, otimizada e documentada em português.",
+  },
+}
+
 const FAQ_ITEMS = [
   {
-    question: "Qual a diferença entre MRI Qbox e Qbox/QBCore?",
-    answer: "MRI Qbox é a adaptação brasileira oficial da Qbox internacional (que por sua vez é a evolução do QBCore com integração nativa ao ox_lib). Mesma base, mas traduzida, com scripts complementares prontos e documentação em português."
+    question: "Qual é a diferença entre MRI Qbox, Qbox e QBCore?",
+    answer: "A MRI Qbox é a adaptação brasileira da Qbox, a evolução moderna do ecossistema QBCore com integração nativa ao Ox. Ela preserva a base que a comunidade já conhece e acrescenta tradução em português, documentação local e recursos complementares prontos para servidores brasileiros."
   },
   {
     question: "É realmente gratuito?",
-    answer: "Sim. Todo o código é open source sob GPL-3.0 / LGPL-3.0 (mesmo modelo do Qbox e Overextended) — pode usar comercialmente, modificar e contribuir. Os custos de infra são bancados pela comunidade via Patreon e anúncios."
+    answer: "Sim. A MRI Qbox é gratuita e open source, com projetos publicados sob GPL-3.0 ou LGPL-3.0. Você pode estudar, modificar, contribuir e usar o software em projetos comerciais, respeitando a licença de cada repositório. A infraestrutura é mantida com o apoio da comunidade, do Patreon e de anúncios."
   },
   {
-    question: "Posso usar em servidor pago/comercial?",
-    answer: "Pode. A GPL permite uso comercial em servidores. O que não pode é redistribuir versões modificadas fechadas (GPL exige código aberto em forks) nem usar a marca/logo sem autorização."
+    question: "Posso usar em um servidor comercial?",
+    answer: "Sim. As licenças permitem o uso comercial. Caso você distribua uma versão modificada, podem existir obrigações de disponibilizar o código-fonte e preservar os avisos da licença; consulte sempre a licença do repositório correspondente. A marca e os logotipos da MRI Qbox possuem regras próprias e não devem representar outro projeto sem autorização."
   },
   {
-    question: "Tem suporte técnico?",
-    answer: "Suporte voluntário no Discord oficial. Bugs/feature requests via GitHub Issues do repositório correspondente. Sem SLA, mas a comunidade é ativa e geralmente responde rápido."
+    question: "Onde encontro suporte técnico?",
+    answer: "O suporte é comunitário e voluntário no Discord oficial. Para relatar bugs ou sugerir novos recursos, abra uma Issue no repositório correspondente do GitHub. Não há SLA, mas pedidos com logs e passos para reprodução costumam ser atendidos mais rapidamente."
   },
   {
-    question: "Quanto tempo leva pra instalar?",
-    answer: "Cerca de 30 minutos se você já tem txAdmin e MySQL prontos — basta importar a recipe MRI Qbox."
+    question: "Quanto tempo leva para instalar?",
+    answer: "Em condições normais, o novo instalador baixa e prepara a base MRI Qbox em cerca de 4 minutos. Ao final, você só precisa revisar as configurações do servidor e concluir os ajustes específicos da sua cidade."
   },
   {
-    question: "Como contribuo com o projeto?",
-    answer: "Pull Requests nos repositórios do GitHub, relatos de bugs, traduções, melhoria de docs e participação no Discord. Apoio financeiro também ajuda — via Patreon."
+    question: "Como posso contribuir com o projeto?",
+    answer: "Você pode enviar Pull Requests, relatar bugs, sugerir melhorias, traduzir conteúdos, aprimorar a documentação ou ajudar outros membros no Discord. Para apoiar a infraestrutura e a continuidade do projeto, também é possível contribuir pelo Patreon."
   }
 ]
 
@@ -307,12 +325,12 @@ export default async function HomePage() {
         </a>
 
         <h1 className="text-5xl md:text-[72px] font-extrabold text-primary leading-[1.05] tracking-tight mb-6 max-w-4xl">
-          Crie com precisão.<br />
-          Jogue com segurança.
+          Menos configuração.<br />
+          Mais criação.
         </h1>
 
         <p className="text-lg md:text-xl text-white font-medium mb-10 max-w-2xl">
-          A framework open-source que combina Qbcore e Ox, tornando a base do seu servidor mais prática e segura.
+          Uma framework FiveM open source que une Qbox e Ox para você construir servidores mais rápidos, seguros e fáceis de manter.
         </p>
 
         {/* 5metrics live stats + historico */}
@@ -333,10 +351,10 @@ export default async function HomePage() {
                   <span className="text-[10px] font-black uppercase tracking-[0.22em] text-primary">Novo instalador MRI disponível</span>
                 </div>
                 <h2 className="text-3xl font-black leading-tight tracking-tight text-white md:text-4xl">
-                  Sua base pronta, do download à configuração.
+                  Do download ao primeiro start. Sem complicação.
                 </h2>
                 <p className="mt-3 max-w-xl text-sm leading-relaxed text-muted-foreground md:text-base">
-                  Instale a MRI Qbox com um fluxo guiado, da escolha do FXServer à configuração final do ambiente.
+                  O novo instalador conduz cada etapa, da escolha do FXServer à configuração completa do ambiente MRI Qbox.
                 </p>
 
                 <div className="mt-5 flex flex-wrap items-center gap-x-3 gap-y-2 text-[11px] font-bold uppercase tracking-wider text-white/60">
@@ -374,23 +392,31 @@ export default async function HomePage() {
       </section>
 
       {/* Team Section */}
-      <section id="equipe" className="w-full max-w-[1440px] mx-auto px-6 md:px-12 py-[80px] flex flex-col items-center justify-center border-b border-white/5">
-        <h2 className="text-2xl text-white font-medium mb-12 text-center">Esses são os responsáveis por manter esse projeto rodando:</h2>
+      <section id="equipe" className="w-full max-w-[1440px] mx-auto px-6 md:px-12 py-[96px] flex flex-col items-center justify-center border-b border-white/5">
+        <div className="mb-12 flex max-w-2xl flex-col items-center text-center">
+          <span className="mb-4 text-[10px] font-black uppercase tracking-[0.22em] text-primary">As pessoas por trás do código</span>
+          <h2 className="text-3xl font-black leading-tight tracking-tight text-white md:text-5xl">
+            Código aberto.<br />Construído por pessoas.
+          </h2>
+          <p className="mt-4 max-w-xl text-sm leading-relaxed text-muted-foreground md:text-base">
+            Conheça quem dedica tempo, experiência e cuidado para manter a MRI Qbox evoluindo todos os dias.
+          </p>
+        </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-10 w-full max-w-4xl">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 w-full max-w-5xl">
           {teamMembers.map((member) => (
-            <div key={member.login} className="flex flex-col items-center gap-4">
-              <div className="relative w-28 h-28 rounded-full overflow-hidden border-2 border-primary/20 hover:border-primary transition-colors">
+            <div key={member.login} className="group flex h-full flex-col items-center gap-5 rounded-2xl border border-white/5 bg-white/[0.015] p-5 transition-colors hover:border-primary/20 hover:bg-primary/[0.025]">
+              <div className="relative w-24 h-24 rounded-full overflow-hidden border-2 border-white/10 transition-colors group-hover:border-primary/50">
                 <Image src={member.avatar_url} alt={member.login} fill className="object-cover" />
               </div>
 
-              <div className="flex flex-col w-full gap-2">
-                <a href={member.html_url} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 bg-[#091811] hover:bg-[#0d2218] border border-primary/20 text-primary rounded-md py-2 px-4 w-full transition-colors font-medium">
+              <div className="flex w-full flex-1 flex-col justify-end gap-2">
+                <a href={member.html_url} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 rounded-lg border border-primary/20 bg-[#091811] px-4 py-2 text-sm font-semibold text-primary transition-colors hover:bg-[#0d2218]">
                   <Github className="w-4 h-4" />
                   {member.login}
                 </a>
                 {member.kofi_username && (
-                  <a href={`https://ko-fi.com/${member.kofi_username}`} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 bg-[#091811] hover:bg-[#0d2218] border border-primary/20 text-primary rounded-md py-2 px-4 w-full transition-colors font-medium">
+                  <a href={`https://ko-fi.com/${member.kofi_username}`} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 rounded-lg border border-white/10 bg-white/[0.025] px-4 py-2 text-sm font-semibold text-white/65 transition-colors hover:border-primary/20 hover:bg-primary/5 hover:text-primary">
                     <Coffee className="w-4 h-4" />
                     Apoie
                   </a>
@@ -405,11 +431,11 @@ export default async function HomePage() {
       <section className="w-full max-w-[1440px] mx-auto px-6 md:px-12 py-[120px] flex flex-col lg:flex-row gap-20">
         <div className="flex-1 sticky top-32 h-fit">
           <h2 className="text-4xl md:text-5xl font-bold text-white leading-tight mb-6">
-            Construído para<br />
-            <span className="text-muted-foreground">Performance e Escala</span>
+            Leve para começar.<br />
+            <span className="text-muted-foreground">Pronta para crescer.</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-md">
-            Tudo o que você precisa para rodar um servidor de alta qualidade, sem a dor de cabeça de scripts desatualizados e bugs constantes.
+            Uma base FiveM moderna, pensada para reduzir manutenção, evitar dependências ultrapassadas e acompanhar o crescimento da sua cidade.
           </p>
         </div>
 
@@ -419,9 +445,9 @@ export default async function HomePage() {
             <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary mb-2">
               <Zap className="w-6 h-6" />
             </div>
-            <h3 className="text-2xl font-semibold text-white">Segurança e Otimização</h3>
+            <h3 className="text-2xl font-semibold text-white">Desempenho por arquitetura</h3>
             <p className="text-muted-foreground leading-relaxed">
-              Baseado na Qbox internacional e Ox ecosystem. O código roda leve no cliente e no servidor, suportando centenas de jogadores.
+              Construída sobre Qbox e o ecossistema Ox, com código enxuto no cliente e no servidor para manter sua cidade rápida, estável e segura.
             </p>
           </div>
 
@@ -430,9 +456,9 @@ export default async function HomePage() {
             <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary mb-2">
               <Code className="w-6 h-6" />
             </div>
-            <h3 className="text-2xl font-semibold text-white">Base Pronta & Traduzida</h3>
+            <h3 className="text-2xl font-semibold text-white">Pronta no primeiro start</h3>
             <p className="text-muted-foreground leading-relaxed">
-              Inicie com dezenas de scripts profissionais já configurados e 100% em português. Não perca tempo traduzindo locales.
+              Comece com scripts profissionais configurados e em português. Menos tempo traduzindo locales, mais tempo construindo sua cidade.
             </p>
           </div>
 
@@ -441,9 +467,9 @@ export default async function HomePage() {
             <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary mb-2">
               <Shield className="w-6 h-6" />
             </div>
-            <h3 className="text-2xl font-semibold text-white">Integração Nativa</h3>
+            <h3 className="text-2xl font-semibold text-white">Ox desde a base</h3>
             <p className="text-muted-foreground leading-relaxed">
-              Feito para funcionar perfeitamente com ox_lib, ox_inventory e ox_target desde o primeiro dia.
+              Integração nativa com ox_lib, ox_inventory e ox_target desde o primeiro dia, sem adaptações improvisadas.
             </p>
           </div>
         </div>
@@ -540,19 +566,32 @@ export default async function HomePage() {
 
       {/* CTA Banner */}
       <section className="w-full max-w-[1440px] mx-auto px-6 md:px-12 pb-[120px]">
-        <div className="w-full rounded-[2rem] bg-glass border border-white/10 p-12 md:p-20 flex flex-col items-center text-center relative overflow-hidden">
-          {/* Subtle background glow */}
-          <div className="absolute inset-0 bg-primary/10 blur-[100px] pointer-events-none" />
+        <div className="w-full rounded-[2rem] bg-glass border border-white/10 px-6 py-14 md:p-20 flex flex-col items-center text-center relative overflow-hidden">
+          <div className="absolute -left-24 top-1/2 h-72 w-72 -translate-y-1/2 rounded-full bg-primary/10 blur-[100px] pointer-events-none" />
+          <div className="absolute -right-24 top-1/2 h-72 w-72 -translate-y-1/2 rounded-full bg-primary/10 blur-[100px] pointer-events-none" />
+          <div className="absolute inset-x-16 top-0 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
+
+          <div className="mb-5 flex items-center gap-2 relative z-10">
+            <span className="h-2 w-2 rounded-full bg-primary shadow-[0_0_8px_rgba(0,230,153,0.5)]" />
+            <span className="text-[10px] font-black uppercase tracking-[0.22em] text-primary">Open source por princípio. Brasileira por essência. Feita para ir além.</span>
+          </div>
 
           <h2 className="text-4xl md:text-6xl font-bold text-white mb-6 relative z-10">
-            Pronto para revolucionar<br />seu servidor?
+            Uma grande cidade<br className="hidden sm:block" /> começa pela base.
           </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mb-10 relative z-10">
-            Junte-se à comunidade MRI Qbox Brasil e eleve a qualidade do seu roleplay hoje mesmo.
+          <p className="text-base md:text-xl text-muted-foreground max-w-2xl mb-10 relative z-10 leading-relaxed">
+            Comece gratuitamente com a MRI Qbox ou entre no Discord para aprender, contribuir e construir com a comunidade brasileira.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 relative z-10">
-            <Link href="/docs/mri/instalacao" className="flex items-center justify-center gap-2 px-10 py-5 bg-primary hover:bg-primary-accent rounded-xl text-white font-semibold text-lg transition-all shadow-[0_0_30px_-10px_rgba(0,230,153,0.4)]">
-              Começar Gratuitamente
+          <div className="flex w-full max-w-lg flex-col sm:flex-row gap-3 relative z-10">
+            <Link href="/docs/mri/instalacao" className="flex min-h-16 flex-1 items-center justify-center gap-3 rounded-xl bg-primary px-7 py-4 text-primary-foreground font-black transition-colors hover:bg-primary/90 shadow-[0_0_30px_-10px_rgba(0,230,153,0.4)]">
+              <Download className="h-5 w-5" />
+              Baixar gratuitamente
+            </Link>
+            <Link href="/discord" className="flex min-h-16 flex-1 items-center justify-center gap-3 rounded-xl border border-[#5865F2] bg-[#5865F2] px-7 py-4 text-white font-black shadow-[0_0_30px_-12px_rgba(88,101,242,0.65)] transition-colors hover:border-[#4752C4] hover:bg-[#4752C4]">
+              {/* Simple Icons: Discord brand mark */}
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="https://cdn.simpleicons.org/discord/ffffff" alt="" aria-hidden="true" className="h-5 w-5" />
+              Entrar no Discord
             </Link>
           </div>
         </div>
@@ -569,7 +608,7 @@ export default async function HomePage() {
               <span className="font-bold text-xl text-white">MRI Qbox</span>
             </Link>
             <p className="text-muted-foreground text-sm leading-relaxed">
-              A base open source definitiva para o seu servidor FiveM. Desempenho, segurança e modernidade para a comunidade brasileira.
+              Uma base FiveM open source para criar sem limites. Feita no Brasil para cidades que querem ir além.
             </p>
           </div>
 

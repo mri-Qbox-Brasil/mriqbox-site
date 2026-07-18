@@ -1,6 +1,24 @@
 import Link from "next/link"
 import Image from "next/image"
+import type { Metadata } from "next"
 import { Headphones, Mail, ArrowRight } from "lucide-react"
+
+export const metadata: Metadata = {
+  title: "Discord MRI Qbox Brasil | Suporte e comunidade FiveM",
+  description: "Entre no Discord oficial da MRI Qbox Brasil para receber suporte, tirar dúvidas e participar da comunidade brasileira de desenvolvimento FiveM.",
+  alternates: { canonical: "/discord" },
+  openGraph: {
+    title: "Discord MRI Qbox Brasil",
+    description: "Suporte, desenvolvimento e comunidade FiveM brasileira em um só lugar.",
+    url: "/discord",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Discord MRI Qbox Brasil",
+    description: "Entre na comunidade brasileira da MRI Qbox e receba suporte para seu servidor FiveM.",
+  },
+}
 
 export default function DiscordPage() {
   return (
