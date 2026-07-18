@@ -515,8 +515,8 @@ export function InstallerMockup({
                     <div className="w-10 h-10 rounded bg-white/5 border border-white/10 flex items-center justify-center mb-4">
                       <FileCode className="w-5 h-5 text-white/40" />
                     </div>
-                    <h3 className="text-base font-black text-white mb-2">Plume ESX (Legacy)</h3>
-                    <p className="text-[11px] text-white/50 leading-relaxed">Base ESX clássica. Sem as otimizações do ecossistema Qbox moderno.</p>
+                    <h3 className="text-base font-black text-white mb-2">MRI Beta</h3>
+                    <p className="text-[11px] text-white/50 leading-relaxed">Acesso antecipado às novidades da MRI Qbox, disponível para quem apoia o desenvolvimento do projeto.</p>
                   </div>
                 </div>
                 <div className="flex justify-end pt-2">
