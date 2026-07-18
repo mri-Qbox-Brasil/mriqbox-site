@@ -34,12 +34,7 @@ export function ParceiroCarousel({ parceiros }: Props) {
       >
         {items.map((p, i) => {
           const isHovered = hoveredIndex === i
-          // Since items are duplicated 4 times, we calculate the original index to highlight all copies of the same logo
-          const originalIndex = i % parceiros.length
-          const hoveredOriginal = hoveredIndex !== null ? hoveredIndex % parceiros.length : null
-          
-          const isThisHovered = hoveredOriginal === originalIndex
-          const isOtherHovered = hoveredOriginal !== null && hoveredOriginal !== originalIndex
+          const isOtherHovered = hoveredIndex !== null && !isHovered
 
           return (
             <a
@@ -52,12 +47,12 @@ export function ParceiroCarousel({ parceiros }: Props) {
               onMouseLeave={() => setHoveredIndex(null)}
               className="flex items-center justify-center shrink-0 transition-all duration-400 pr-24"
               style={{
-                filter: isThisHovered
+                filter: isHovered
                   ? "grayscale(0%) brightness(1.1) opacity(1)"
                   : isOtherHovered
                   ? "grayscale(100%) opacity(0.15)"
                   : "grayscale(100%) opacity(0.25)",
-                transform: isThisHovered ? "scale(1.08)" : "scale(1)",
+                transform: isHovered ? "scale(1.08)" : "scale(1)",
                 transition: "filter 350ms ease, transform 350ms ease",
               }}
             >
