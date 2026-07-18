@@ -40,86 +40,107 @@ const FEEDBACKS = [
     name: "Smith",
     role: "Membro da Comunidade",
     content: "Base ela entrega uma possibilidade de criação de script muito alta, diferente de outros frameworks, que a criação de script é uma dor de cabeça enorme, com o mriqbox, adianta bastante, já que são caminhos diretos com ox, a raiz do projeto é direta e reta, diferente de um exemplo, o vrp, que para gerenciar e desenvolver scripts é uma negação, a equipe está de parabéns!",
-    avatar: "/profiles/smith.webp"
+    avatar: "./profiles/smith.webp"
   },
   {
     name: "alexandrear3",
     role: "Legacy Empire",
     content: "Depois de muito tempo procurando a base ideal, batendo cabeça com bases vazadas cheias de erros e scripts mal otimizados, encontrei a Miri Qbox. Foi um achado por acaso que mudou o rumo do Legacy Empire. Finalmente, uma base totalmente em PT-BR, pensada para quem quer profissionalismo sem a dor de cabeça de traduzir linha por linha.",
-    avatar: "/profiles/alexandrear3.webp"
+    avatar: "./profiles/alexandrear3.webp"
   },
   {
     name: "nino_stark01",
     role: "Desenvolvedor",
     content: "A melhor base do momento eu estou criando muitos scripts nela com o anti gravity mto top fácil de manusear top de mais vou deixar um trabalho de interface e sistema de danca com modos e ranking mas nao esta pronto ainda porem eu estou conseguindo fazer tudo que tenho de ideia nessa base!!!",
-    avatar: "/profiles/nino_stark01.webp"
+    avatar: "./profiles/nino_stark01.webp"
   },
   {
     name: ".k0ji",
     role: "Membro da Comunidade",
     content: "Script mri_Qadmin tá muito show! Parabéns a equipe!!",
-    avatar: "/profiles/.k0ji.webp"
+    avatar: "./profiles/koji.webp"
   },
   {
     name: "Fazeres",
     role: "Comunidade PT",
     content: "Acompanho á pouco tempo, entretanto estou a programar abrir um servidor aqui em Portugal, estou seriamente usar esta base, a humildade de vocês é muito top.",
-    avatar: "/profiles/Fazeres.webp"
+    avatar: "./profiles/Fazeres.webp"
   },
   {
     name: "Smokey",
     role: "Membro da Comunidade",
     content: "A Base é boa 10/10, ela pode ser também um alicerce do seu projeto. A equipe de programação, estão de parabéns, muito paciente... ⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐",
-    avatar: "/profiles/Smokey.webp"
+    avatar: "./profiles/Smokey.webp"
   },
   {
     name: "Branca",
     role: "Criadora de Conteúdo",
     content: "Usei em live para criar conteúdo e muita gente amou a base. Adorei, fácil de instalar e bem completa, muito bem feita. Obrigada pessoal ❤️",
-    avatar: "/profiles/Branca.webp"
+    avatar: "./profiles/Branca.webp"
   },
   {
     name: "Lucas Sousa",
     role: "Membro da Comunidade",
     content: "Primeiramente belo trabalho à equipe @MUR4I @G5 e o resto da equipe que eu não sei quem é kk base muito boa por ser free excelente trabalho.",
-    avatar: "/profiles/LucasSousa.webp"
+    avatar: "./profiles/LucasSousa.webp"
   },
   {
     name: "! VITIMexe",
     role: "Membro da Comunidade",
     content: "Top demais pra quem gosta de interação e imersão é uma ótima opção claro que falta alguns sistemas mas é perfeito!",
-    avatar: "/profiles/VITIMexe.webp"
+    avatar: "./profiles/VITIMexe.webp"
   },
   {
     name: "lrwx",
     role: "Observador",
     content: "Não baixei a base ainda apenas estou acompanhando a comunidade faz alguns dias e de longe, essa é a melhor comunidade brasileira de fivem... parabéns aos responsáveis.",
-    avatar: "/profiles/lrwx.webp"
+    avatar: "./profiles/lrwx.webp"
   },
   {
     name: "Araújo",
     role: "Membro da Comunidade",
     content: "Excelente trabalho, gostei da base e das coisas que podemos criar dentro da cidade, sei que tá em fase beta, mas está mt boa.",
-    avatar: "/profiles/Araújo.webp"
+    avatar: "./profiles/Araújo.webp"
   },
   {
     name: "Zerow",
     role: "Membro da Comunidade",
     content: "Ótimo produto, fácil de configurar e adicionar novas atualizações também. Muito Bom!",
-    avatar: "/profiles/Zerow.webp"
+    avatar: "./profiles/Zerow.webp"
   },
   {
     name: "gleibsonms",
     role: "Membro da Comunidade",
     content: "Parabéns pela iniciativa. O produto entrega muita coisa.",
-    avatar: "/profiles/gleibsonms.webp"
+    avatar: "./profiles/gleibsonms.webp"
   },
   {
     name: "baumel_",
     role: "Membro da Comunidade",
     content: "Parabéns à equipe @MUR4I @G5 @Ailton Zamboti e o resto da equipe pelo excelente trabalho no desenvolvimento, a otimização, estabilidade e facilidade de personalização são impressionantes, tornando a experiência de criação de cidades muito mais fluida. O comprometimento com atualizações e suporte à comunidade faz toda a diferença! 10/10",
-    avatar: "/profiles/baumel.webp"
+    avatar: "./profiles/baumel.webp"
   }
+]
+
+type TeamMember = {
+  login: string
+  avatar_url: string
+  html_url: string
+  kofi_username?: string
+}
+
+// O build do GitHub Pages e estatico. Se o servico que agrega os membros
+// estiver indisponivel naquele momento, esta lista impede que a secao seja
+// publicada vazia. Os dados remotos continuam sendo usados quando disponiveis.
+const TEAM_MEMBERS_FALLBACK: TeamMember[] = [
+  { login: "BrunoOlivera07", avatar_url: "https://github.com/BrunoOlivera07.png?size=224", html_url: "https://github.com/BrunoOlivera07" },
+  { login: "ggfto", avatar_url: "https://github.com/ggfto.png?size=224", html_url: "https://github.com/ggfto", kofi_username: "ggfto" },
+  { login: "GordelaG", avatar_url: "https://github.com/GordelaG.png?size=224", html_url: "https://github.com/GordelaG", kofi_username: "GordelaG" },
+  { login: "gvs006", avatar_url: "https://github.com/gvs006.png?size=224", html_url: "https://github.com/gvs006", kofi_username: "gvs006" },
+  { login: "JJ4hts", avatar_url: "https://github.com/JJ4hts.png?size=224", html_url: "https://github.com/JJ4hts", kofi_username: "JJ4hts" },
+  { login: "mur4i", avatar_url: "https://github.com/mur4i.png?size=224", html_url: "https://github.com/mur4i", kofi_username: "mur4i" },
+  { login: "SubZeroGLX", avatar_url: "https://github.com/SubZeroGLX.png?size=224", html_url: "https://github.com/SubZeroGLX", kofi_username: "SubZeroGLX" },
+  { login: "xstells", avatar_url: "https://github.com/xstells.png?size=224", html_url: "https://github.com/xstells", kofi_username: "xstells" },
 ]
 
 // Server action RSC do 5metrics que devolve a lista de servidores (top ~25 por
@@ -228,14 +249,22 @@ export default async function HomePage() {
     // mantem o MAX da meta
   }
 
-  let teamMembers: any[] = []
+  let teamMembers: TeamMember[] = TEAM_MEMBERS_FALLBACK
   try {
     const teamRes = await fetch("https://users.mriqbox.com.br/public/members.json", {
       next: { revalidate: 3600 }
     })
-    teamMembers = await teamRes.json()
+    if (!teamRes.ok) throw new Error(`HTTP ${teamRes.status}`)
+
+    const members: unknown = await teamRes.json()
+    if (!Array.isArray(members)) throw new Error("Resposta de membros invalida")
+
+    // O JSON remoto e autoritativo: inclusive uma lista vazia representa a
+    // configuracao atual. O fallback local so entra em falhas de rede/HTTP ou
+    // quando a resposta nao tem o formato esperado.
+    teamMembers = members as TeamMember[]
   } catch {
-    // fallback or empty
+    // Mantem o fallback local no build estatico e em falhas temporarias da API.
   }
 
   return (
@@ -310,7 +339,7 @@ export default async function HomePage() {
         </div>
 
         {/* Installer Mockup */}
-        <div className="mt-16 w-full px-4">
+        <div className="mt-16 hidden w-full px-4 md:block">
           <InstallerMockup />
         </div>
       </section>

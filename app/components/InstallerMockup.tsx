@@ -130,6 +130,10 @@ export function InstallerMockup() {
   }, [])
 
   useEffect(() => {
+    // O mockup e exclusivo do desktop; nao execute a timeline quando ele esta
+    // oculto pelo breakpoint mobile da pagina.
+    if (window.matchMedia("(max-width: 767px)").matches) return
+
     let isActive = true
     const wait = (ms: number) => new Promise<void>(r => setTimeout(r, ms))
 
