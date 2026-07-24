@@ -30,7 +30,6 @@ export default function DiscordPage() {
           <span className="font-semibold text-sm tracking-widest uppercase text-white">MRI Qbox</span>
         </Link>
         <div className="hidden md:flex items-center gap-8">
-          <Link href="/recursos" className="text-xs font-bold uppercase tracking-wider text-white hover:text-primary transition-colors">Recursos</Link>
           <Link href="/comecar" className="text-xs font-bold uppercase tracking-wider text-white hover:text-primary transition-colors">Artifacts DB</Link>
           <Link href="/docs" className="text-xs font-bold uppercase tracking-wider text-white hover:text-primary transition-colors">Documentação</Link>
           <Link href="/sobre" className="text-xs font-bold uppercase tracking-wider text-white hover:text-primary transition-colors">Saber Mais</Link>

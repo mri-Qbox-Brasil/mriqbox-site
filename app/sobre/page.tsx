@@ -133,13 +133,6 @@ export default function SobrePage() {
                 compartilhado
               </li>
             </ul>
-            <p className="mt-4">
-              Lista completa em{" "}
-              <Link href="/recursos" className="text-primary hover:underline">
-                /recursos
-              </Link>
-              .
-            </p>
           </Card>
 
           <Card className="p-6">

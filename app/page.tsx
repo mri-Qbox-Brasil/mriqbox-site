@@ -313,7 +313,6 @@ export default async function HomePage() {
           <span className="font-semibold text-sm tracking-widest uppercase text-white hidden sm:inline-block">MRI Qbox</span>
         </Link>
         <div className="hidden md:flex items-center gap-8">
-          <Link href="/recursos" className="text-xs font-bold uppercase tracking-wider text-white hover:text-primary transition-colors">Recursos</Link>
           <Link href="/comecar" className="text-xs font-bold uppercase tracking-wider text-white hover:text-primary transition-colors">Artifacts DB</Link>
           <Link href="/docs" className="text-xs font-bold uppercase tracking-wider text-white hover:text-primary transition-colors">Documentação</Link>
           <Link href="/sobre" className="text-xs font-bold uppercase tracking-wider text-white hover:text-primary transition-colors">Saber Mais</Link>
@@ -669,7 +668,6 @@ export default async function HomePage() {
             <div className="flex flex-col gap-4">
               <h4 className="text-sm font-bold text-white tracking-wider uppercase mb-2">Projeto</h4>
               <Link href="/sobre" className="text-sm text-muted-foreground hover:text-white transition-colors">Sobre nós</Link>
-              <Link href="/recursos" className="text-sm text-muted-foreground hover:text-white transition-colors">Recursos</Link>
               <Link href="/comecar" className="text-sm text-muted-foreground hover:text-white transition-colors">Artifacts DB</Link>
               <Link href="/docs" className="text-sm text-muted-foreground hover:text-white transition-colors">Documentação</Link>
             </div>
