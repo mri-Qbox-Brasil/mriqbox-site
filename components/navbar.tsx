@@ -3,7 +3,7 @@
 import Link from "next/link"
 import Image from "next/image"
 import { useState } from "react"
-import { Menu, X } from "lucide-react"
+import { Menu, X, Heart } from "lucide-react"
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
@@ -23,6 +23,7 @@ export function Navbar() {
           <Link href="/docs" className="text-xs font-bold uppercase tracking-wider text-white hover:text-primary transition-colors">Documentação</Link>
           <Link href="/sobre" className="text-xs font-bold uppercase tracking-wider text-white hover:text-primary transition-colors">Saber Mais</Link>
           <Link href="https://github.com/mri-Qbox-Brasil" target="_blank" rel="noopener noreferrer" className="text-xs font-bold uppercase tracking-wider text-white hover:text-primary transition-colors">GitHub</Link>
+          <Link href="https://www.patreon.com/mriQboxBrasil" target="_blank" rel="noopener noreferrer" className="text-xs font-bold uppercase tracking-wider text-white hover:text-primary transition-colors">Apoiar</Link>
         </div>
 
         <div className="flex items-center gap-3">
@@ -49,6 +50,10 @@ export function Navbar() {
           <Link href="/docs" onClick={() => setIsOpen(false)} className="text-sm font-bold uppercase tracking-wider text-white hover:text-primary transition-colors py-2 border-b border-white/5">Documentação</Link>
           <Link href="/sobre" onClick={() => setIsOpen(false)} className="text-sm font-bold uppercase tracking-wider text-white hover:text-primary transition-colors py-2 border-b border-white/5">Saber Mais</Link>
           <Link href="https://github.com/mri-Qbox-Brasil" onClick={() => setIsOpen(false)} target="_blank" rel="noopener noreferrer" className="text-sm font-bold uppercase tracking-wider text-white hover:text-primary transition-colors py-2 border-b border-white/5">GitHub</Link>
+          <Link href="https://www.patreon.com/mriQboxBrasil" onClick={() => setIsOpen(false)} target="_blank" rel="noopener noreferrer" className="text-sm font-bold uppercase tracking-wider text-white hover:text-primary transition-colors py-2 border-b border-white/5 flex items-center justify-between">
+            <span>Apoiar (Patreon)</span>
+            <Heart className="w-4 h-4 text-rose-500" />
+          </Link>
           <Link href="/discord" onClick={() => setIsOpen(false)} className="text-sm font-bold uppercase tracking-wider text-primary-foreground px-6 py-3 bg-primary hover:bg-primary/90 rounded-xl transition-all flex items-center justify-center gap-2 mt-2 text-center">
             Acesse o Discord
           </Link>
