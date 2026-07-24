@@ -390,9 +390,9 @@ export default async function HomePage() {
 
       {/* Social Proof — Parceiros */}
       <section className="w-full flex flex-col items-center justify-center py-10 gap-8 border-b border-white/5 overflow-hidden">
-        <div className="flex flex-col items-center gap-3 mb-6">
+        <div className="flex flex-col items-center gap-3 mb-6 px-6 text-center">
           <h2 className="text-3xl font-bold text-white tracking-tight">Nossos Parceiros</h2>
-          <p className="text-[15px] text-white/40">Tecnologias, comunidades e projetos que apoiam e confiam na MRI Qbox.</p>
+          <p className="text-[15px] text-white/40 max-w-md">Tecnologias, comunidades e projetos que apoiam e confiam na MRI Qbox.</p>
         </div>
         <ParceiroCarousel parceiros={parceiros} />
       </section>
@@ -607,7 +607,6 @@ export default async function HomePage() {
           <div className="absolute inset-x-16 top-0 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
 
           <div className="mb-5 flex items-center gap-2 relative z-10">
-            <span className="h-2 w-2 rounded-full bg-primary shadow-[0_0_8px_rgba(0,230,153,0.5)]" />
             <span className="text-[10px] font-black uppercase tracking-[0.22em] text-primary">Open source por princípio. Brasileira por essência. Feita para ir além.</span>
           </div>
 
