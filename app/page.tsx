@@ -287,6 +287,21 @@ export default async function HomePage() {
     // Mantem o fallback local no build estatico e em falhas temporarias da API.
   }
 
+  let totalDiscordMembers = "+3,5k"
+  try {
+    const discordRes = await fetch("https://discord.com/api/v9/invites/uEfGD4mmVh?with_counts=true", {
+      next: { revalidate: 3600 }
+    })
+    if (discordRes.ok) {
+      const data = await discordRes.json()
+      if (data.approximate_member_count) {
+        totalDiscordMembers = `+${(data.approximate_member_count / 1000).toFixed(1).replace('.', ',')}k`
+      }
+    }
+  } catch {
+    // fallback
+  }
+
   return (
     <div className="min-h-screen bg-background text-foreground font-sans relative overflow-hidden flex flex-col">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(faqPage(FAQ_ITEMS)) }} />
@@ -498,23 +513,29 @@ export default async function HomePage() {
             </p>
           </div>
 
-          <div className="grid sm:grid-cols-3">
-            <div className="grid min-h-44 grid-rows-[4rem_2.5rem_3rem] content-center border-b border-primary-foreground/15 px-6 py-8 sm:border-b-0 sm:border-r md:px-8">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4">
+            <div className="grid min-h-44 grid-rows-[4rem_2.5rem_3rem] content-center border-b border-primary-foreground/15 px-6 py-8 sm:border-r lg:border-b-0 md:px-8">
               <span className="flex items-end text-5xl font-black leading-none tracking-[-0.06em] md:text-6xl">100%</span>
               <span className="flex items-start pt-3 text-xs font-black uppercase tracking-[0.12em]">Gratuito e open source</span>
               <span className="text-xs leading-relaxed text-primary-foreground/55">Livre para usar, estudar e evoluir.</span>
             </div>
 
-            <div className="grid min-h-44 grid-rows-[4rem_2.5rem_3rem] content-center border-b border-primary-foreground/15 px-6 py-8 sm:border-b-0 sm:border-r md:px-8">
+            <div className="grid min-h-44 grid-rows-[4rem_2.5rem_3rem] content-center border-b border-primary-foreground/15 px-6 py-8 lg:border-r lg:border-b-0 md:px-8">
               <span className="flex items-end text-5xl font-black leading-none tracking-[-0.06em] md:text-6xl">+50</span>
               <span className="flex items-start pt-3 text-xs font-black uppercase tracking-[0.12em]">Scripts integrados</span>
               <span className="text-xs leading-relaxed text-primary-foreground/55">Uma base completa desde o primeiro start.</span>
             </div>
 
-            <div className="grid min-h-44 grid-rows-[4rem_2.5rem_3rem] content-center px-6 py-8 md:px-8">
+            <div className="grid min-h-44 grid-rows-[4rem_2.5rem_3rem] content-center border-b border-primary-foreground/15 px-6 py-8 sm:border-b-0 sm:border-r lg:border-b-0 md:px-8">
               <span className="flex items-end text-5xl font-black leading-none tracking-[-0.06em] md:text-6xl">24/7</span>
               <span className="flex items-start pt-3 text-xs font-black uppercase tracking-[0.12em]">Comunidade ativa</span>
               <span className="text-xs leading-relaxed text-primary-foreground/55">Conhecimento compartilhado todos os dias.</span>
+            </div>
+
+            <div className="grid min-h-44 grid-rows-[4rem_2.5rem_3rem] content-center px-6 py-8 md:px-8">
+              <span className="flex items-end text-5xl font-black leading-none tracking-[-0.06em] md:text-5xl lg:text-6xl">{totalDiscordMembers}</span>
+              <span className="flex items-start pt-3 text-xs font-black uppercase tracking-[0.12em]">Membros no Discord</span>
+              <span className="text-xs leading-relaxed text-primary-foreground/55">Pessoas criando e jogando juntas.</span>
             </div>
           </div>
         </div>
