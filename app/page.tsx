@@ -526,34 +526,36 @@ export default async function HomePage() {
       </section>
 
       {/* Feedback Carousel Section */}
-      <section className="w-full py-20 flex flex-col items-center gap-12 overflow-hidden border-t border-white/5">
+      <section className="w-full py-20 flex flex-col items-center gap-8 md:gap-12 overflow-hidden border-t border-white/5">
         <div className="text-center max-w-2xl px-6">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">O que a comunidade diz</h2>
-          <p className="text-muted-foreground text-lg">Veja o feedback de quem já utiliza o MRI Qbox no dia a dia.</p>
+          <p className="text-muted-foreground text-base md:text-lg">Veja o feedback de quem já utiliza o MRI Qbox no dia a dia.</p>
         </div>
 
         {/* Marquee Wrapper - seamless infinite scroll */}
         <div className="relative w-full overflow-hidden group">
           {/* Fading Edges */}
-          <div className="absolute top-0 bottom-0 left-0 w-32 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
-          <div className="absolute top-0 bottom-0 right-0 w-32 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
+          <div className="absolute top-0 bottom-0 left-0 w-8 md:w-32 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
+          <div className="absolute top-0 bottom-0 right-0 w-8 md:w-32 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
 
           {/*
             The track contains the full list TWICE side by side.
             The animation moves -50% (= one full copy width), so when
             it resets to 0 the visual is identical — completely seamless.
           */}
-          <div className="flex gap-6 py-4 w-max animate-marquee group-hover:[animation-play-state:paused]">
+          <div className="flex gap-4 md:gap-6 py-4 w-max animate-marquee group-hover:[animation-play-state:paused]">
             {/* First copy */}
             {FEEDBACKS.map((feedback, idx) => (
-              <div key={`a-${idx}`} className="w-[420px] shrink-0 p-8 rounded-2xl bg-card border border-white/5 flex flex-col gap-6 hover:border-primary/30 transition-colors">
-                <p className="text-muted-foreground leading-relaxed italic line-clamp-4">
+              <div key={`a-${idx}`} className="w-[300px] sm:w-[360px] md:w-[420px] shrink-0 p-6 md:p-8 rounded-2xl bg-card border border-white/5 flex flex-col gap-4 md:gap-6 hover:border-primary/30 transition-colors">
+                <p className="text-white/80 leading-relaxed italic line-clamp-4 text-sm md:text-base">
                   &ldquo;{feedback.content}&rdquo;
                 </p>
                 <div className="flex items-center gap-4 mt-auto pt-4 border-t border-white/5">
-                  <Image src={feedback.avatar} alt={feedback.name} width={48} height={48} className="rounded-full bg-white/10 object-cover" />
+                  <div className="relative w-10 h-10 md:w-12 md:h-12 shrink-0">
+                    <Image src={feedback.avatar} alt={feedback.name} fill className="rounded-full bg-white/10 object-cover" />
+                  </div>
                   <div className="flex flex-col">
-                    <span className="font-bold text-white">{feedback.name}</span>
+                    <span className="font-bold text-white text-sm md:text-base">{feedback.name}</span>
                     <span className="text-xs text-primary">{feedback.role}</span>
                   </div>
                 </div>
@@ -561,14 +563,16 @@ export default async function HomePage() {
             ))}
             {/* Second copy — makes the loop seamless */}
             {FEEDBACKS.map((feedback, idx) => (
-              <div key={`b-${idx}`} aria-hidden className="w-[420px] shrink-0 p-8 rounded-2xl bg-card border border-white/5 flex flex-col gap-6 hover:border-primary/30 transition-colors">
-                <p className="text-muted-foreground leading-relaxed italic line-clamp-4">
+              <div key={`b-${idx}`} aria-hidden className="w-[300px] sm:w-[360px] md:w-[420px] shrink-0 p-6 md:p-8 rounded-2xl bg-card border border-white/5 flex flex-col gap-4 md:gap-6 hover:border-primary/30 transition-colors">
+                <p className="text-white/80 leading-relaxed italic line-clamp-4 text-sm md:text-base">
                   &ldquo;{feedback.content}&rdquo;
                 </p>
                 <div className="flex items-center gap-4 mt-auto pt-4 border-t border-white/5">
-                  <Image src={feedback.avatar} alt={feedback.name} width={48} height={48} className="rounded-full bg-white/10 object-cover" />
+                  <div className="relative w-10 h-10 md:w-12 md:h-12 shrink-0">
+                    <Image src={feedback.avatar} alt={feedback.name} fill className="rounded-full bg-white/10 object-cover" />
+                  </div>
                   <div className="flex flex-col">
-                    <span className="font-bold text-white">{feedback.name}</span>
+                    <span className="font-bold text-white text-sm md:text-base">{feedback.name}</span>
                     <span className="text-xs text-primary">{feedback.role}</span>
                   </div>
                 </div>
