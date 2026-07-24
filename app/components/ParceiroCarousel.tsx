@@ -26,7 +26,7 @@ export function ParceiroCarousel({ parceiros }: Props) {
       <div className="pointer-events-none absolute right-0 top-0 h-full w-32 z-10 bg-gradient-to-l from-background to-transparent" />
 
       <div
-        className="flex w-max"
+        className="flex w-max items-center py-4"
         style={{
           animation: "marquee 40s linear infinite",
           animationPlayState: paused ? "paused" : "running",
