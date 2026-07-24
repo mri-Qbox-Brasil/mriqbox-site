@@ -2,6 +2,7 @@ import Link from "next/link"
 import Image from "next/image"
 import type { Metadata } from "next"
 import { ChevronDown, CheckCircle2, Zap, Shield, Code, ArrowRight, Github, Coffee, Download } from "lucide-react"
+import { Navbar } from "@/components/navbar"
 import { faqPage, jsonLd } from "@/lib/schema"
 import { InstallerMockup } from "./components/InstallerMockup"
 import { ParceiroCarousel } from "./components/ParceiroCarousel"
@@ -306,24 +307,7 @@ export default async function HomePage() {
     <div className="min-h-screen bg-background text-foreground font-sans relative overflow-hidden flex flex-col">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(faqPage(FAQ_ITEMS)) }} />
 
-      {/* Navbar (Nexatlas style - Pill) */}
-      <nav className="fixed top-6 left-1/2 -translate-x-1/2 w-[90%] max-w-[1100px] z-50 h-[64px] px-6 flex items-center justify-between bg-card/60 backdrop-blur-xl border border-white/5 rounded-full transition-all">
-        <Link href="/" className="flex items-center gap-2">
-          <Image src="https://assets.mriqbox.com.br/branding/logo96.png" alt="MRI Qbox Brasil Logo" width={24} height={24} className="object-contain" />
-          <span className="font-semibold text-sm tracking-widest uppercase text-white hidden sm:inline-block">MRI Qbox</span>
-        </Link>
-        <div className="hidden md:flex items-center gap-8">
-          <Link href="/comecar" className="text-xs font-bold uppercase tracking-wider text-white hover:text-primary transition-colors">Artifacts DB</Link>
-          <Link href="/docs" className="text-xs font-bold uppercase tracking-wider text-white hover:text-primary transition-colors">Documentação</Link>
-          <Link href="/sobre" className="text-xs font-bold uppercase tracking-wider text-white hover:text-primary transition-colors">Saber Mais</Link>
-          <Link href="https://github.com/mri-Qbox-Brasil" target="_blank" rel="noopener noreferrer" className="text-xs font-bold uppercase tracking-wider text-white hover:text-primary transition-colors">GitHub</Link>
-        </div>
-        <div className="flex items-center gap-3">
-          <Link href="/discord" className="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-primary-foreground px-4 sm:px-6 py-2 sm:py-2.5 bg-primary hover:bg-primary/90 rounded-full transition-all flex items-center gap-2 hover:scale-105">
-            Acesse o Discord
-          </Link>
-        </div>
-      </nav>
+      <Navbar />
 
       {/* Hero Section (Centered like Nexatlas) */}
       <section className="relative w-full pt-[180px] pb-[60px] px-6 flex flex-col items-center justify-center text-center">
@@ -347,7 +331,7 @@ export default async function HomePage() {
         </h1>
 
         <p className="text-lg md:text-xl text-white font-medium mb-10 max-w-2xl">
-          Uma framework FiveM open source que une Qbox e Ox para você construir servidores mais rápidos, seguros e fáceis de manter.
+          Uma framework FiveM open source que une Qbox para você construir servidores mais rápidos, seguros e fáceis de manter.
         </p>
 
         {/* 5metrics live stats + historico */}

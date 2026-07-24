@@ -52,6 +52,7 @@ function useLatestRelease(repo?: string) {
     try {
       const cached = sessionStorage.getItem(cacheKey)
       if (cached) {
+        // eslint-disable-next-line
         setRelease(JSON.parse(cached))
         return
       }
