@@ -1,7 +1,7 @@
 import Link from "next/link"
 import Image from "next/image"
 import type { Metadata } from "next"
-import { Headphones, Mail, ArrowRight } from "lucide-react"
+import { Headphones, Mail, ArrowRight, Github } from "lucide-react"
 
 export const metadata: Metadata = {
   title: "Discord MRI Qbox Brasil | Suporte e comunidade FiveM",
@@ -64,6 +64,10 @@ export default function DiscordPage() {
           <div className="flex flex-col sm:flex-row gap-3 mt-2">
             <Link href="https://discord.mriqbox.com.br" className="flex items-center justify-center gap-2 px-6 py-3.5 bg-primary hover:bg-primary/90 rounded-xl text-primary-foreground font-bold text-base transition-all">
               Entrar no Discord
+            </Link>
+            <Link href="https://github.com/mri-Qbox-Brasil" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl border border-white/10 bg-white/5 text-white font-bold text-base transition-all hover:bg-white/10 hover:border-white/30 backdrop-blur-md">
+              <Github className="h-5 w-5" />
+              Ver no GitHub
             </Link>
           </div>
 
