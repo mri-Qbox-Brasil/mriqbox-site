@@ -629,16 +629,20 @@ export default async function HomePage() {
           <p className="text-base md:text-xl text-muted-foreground max-w-2xl mb-10 relative z-10 leading-relaxed">
             Comece gratuitamente com a MRI Qbox ou entre no Discord para aprender, contribuir e construir com a comunidade brasileira.
           </p>
-          <div className="flex w-full max-w-lg flex-col sm:flex-row gap-3 relative z-10">
-            <Link href="/docs/mri/instalacao" className="flex min-h-16 flex-1 items-center justify-center gap-3 rounded-xl bg-primary px-7 py-4 text-primary-foreground font-black transition-colors hover:bg-primary/90 shadow-[0_0_30px_-10px_rgba(0,230,153,0.4)]">
+          <div className="flex w-full max-w-3xl flex-col sm:flex-row sm:flex-wrap justify-center gap-4 relative z-10">
+            <Link href="/docs/mri/instalacao" className="flex items-center justify-center gap-3 rounded-xl bg-primary px-8 py-4 text-primary-foreground font-bold transition-all hover:bg-primary/90 hover:scale-[1.02] hover:shadow-[0_0_40px_-10px_rgba(0,230,153,0.4)] whitespace-nowrap">
               <Download className="h-5 w-5" />
               Baixar gratuitamente
             </Link>
-            <Link href="/discord" className="flex min-h-16 flex-1 items-center justify-center gap-3 rounded-xl border border-[#5865F2] bg-[#5865F2] px-7 py-4 text-white font-black shadow-[0_0_30px_-12px_rgba(88,101,242,0.65)] transition-colors hover:border-[#4752C4] hover:bg-[#4752C4]">
+            <Link href="/discord" className="flex items-center justify-center gap-3 rounded-xl border border-white/10 bg-white/5 px-8 py-4 text-white font-bold transition-all hover:bg-[#5865F2]/20 hover:border-[#5865F2]/50 hover:text-white backdrop-blur-md hover:scale-[1.02] whitespace-nowrap">
               {/* Simple Icons: Discord brand mark */}
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src="https://cdn.simpleicons.org/discord/ffffff" alt="" aria-hidden="true" className="h-5 w-5" />
               Entrar no Discord
+            </Link>
+            <Link href="https://github.com/mri-Qbox-Brasil" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-3 rounded-xl border border-white/10 bg-white/5 px-8 py-4 text-white font-bold transition-all hover:bg-white/10 hover:border-white/30 hover:text-white backdrop-blur-md hover:scale-[1.02] whitespace-nowrap">
+              <Github className="h-5 w-5" />
+              Ver no GitHub
             </Link>
           </div>
         </div>
