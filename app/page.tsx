@@ -657,6 +657,7 @@ export default async function HomePage() {
               <Link href="/sobre" className="text-sm text-muted-foreground hover:text-white transition-colors">Sobre nós</Link>
               <Link href="/comecar" className="text-sm text-muted-foreground hover:text-white transition-colors">Artifacts DB</Link>
               <Link href="/docs" className="text-sm text-muted-foreground hover:text-white transition-colors">Documentação</Link>
+              <Link href="https://tela.mriqbox.com.br" target="_blank" rel="noopener noreferrer" className="text-sm text-muted-foreground hover:text-white transition-colors">Compartilhar Tela</Link>
             </div>
             <div className="flex flex-col gap-4">
               <h4 className="text-sm font-bold text-white tracking-wider uppercase mb-2">Comunidade</h4>
