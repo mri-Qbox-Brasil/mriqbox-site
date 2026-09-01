@@ -1,22 +1,11 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Nunito_Sans, Montserrat_Alternates, Inter } from "next/font/google"
+import { Inter } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import CookieConsent from "@/components/cookie-consent"
 import { RootProvider } from "fumadocs-ui/provider/next"
 import "./globals.css"
-
-const nunito = Nunito_Sans({
-  subsets: ["latin"],
-  variable: "--font-nunito",
-})
-
-const montserrat = Montserrat_Alternates({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-montserrat",
-})
 
 const inter = Inter({
   subsets: ["latin"],
@@ -104,6 +93,7 @@ const ORGANIZATION_SCHEMA = {
     "https://github.com/mri-Qbox-Brasil",
     "https://discord.mriqbox.com.br",
     "https://docs.mriqbox.com.br",
+    "https://tela.mriqbox.com.br",
     "https://www.patreon.com/mriQboxBrasil",
   ],
 }
