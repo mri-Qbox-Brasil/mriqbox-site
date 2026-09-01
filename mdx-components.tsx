@@ -8,6 +8,7 @@ import { Tabs, Tab } from "@/components/docs/tabs"
 import Contributors from "@/components/docs/contributors"
 import ResourceLinks from "@/components/docs/resource-links"
 import CollapsibleTable from "@/components/docs/collapsible-table"
+import Video from "@/components/docs/video"
 import {
   GhButton,
   DocButton,
@@ -64,6 +65,7 @@ export function getMDXComponents(components?: MDXComponents): MDXComponents {
     Contributors,
     ResourceLinks,
     CollapsibleTable,
+    Video,
     GhButton,
     DocButton,
     DownloadButton,
