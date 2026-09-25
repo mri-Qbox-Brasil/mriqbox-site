@@ -3,7 +3,18 @@
 import Link from "next/link"
 import Image from "next/image"
 import { useState } from "react"
-import { Menu, X } from "lucide-react"
+import { Github, Menu, X } from "lucide-react"
+
+// Links secundarios (Compartilhar Tela, Apoiar, Comparativo, Glossario...) ficam
+// so no footer, pra manter o nav enxuto.
+const NAV_LINKS = [
+  { href: "/docs", label: "Documentação" },
+  { href: "/comecar", label: "Artifacts DB" },
+  { href: "/por-que-mri", label: "Manifesto" },
+  { href: "/sobre", label: "Sobre" },
+]
+
+const GITHUB_URL = "https://github.com/mri-Qbox-Brasil"
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
@@ -19,15 +30,16 @@ export function Navbar() {
 
         {/* Desktop Links */}
         <div className="hidden lg:flex items-center gap-6">
-          <Link href="/comecar" className="text-xs font-bold uppercase tracking-wider text-white hover:text-primary transition-colors">Artifacts DB</Link>
-          <Link href="/docs" className="text-xs font-bold uppercase tracking-wider text-white hover:text-primary transition-colors">Documentação</Link>
-          <Link href="/sobre" className="text-xs font-bold uppercase tracking-wider text-white hover:text-primary transition-colors">Saber Mais</Link>
-          <Link href="https://tela.mriqbox.com.br" target="_blank" rel="noopener noreferrer" className="text-xs font-bold uppercase tracking-wider text-white hover:text-primary transition-colors">Compartilhar Tela</Link>
-          <Link href="https://github.com/mri-Qbox-Brasil" target="_blank" rel="noopener noreferrer" className="text-xs font-bold uppercase tracking-wider text-white hover:text-primary transition-colors">GitHub</Link>
-          <Link href="https://www.patreon.com/mriQboxBrasil" target="_blank" rel="noopener noreferrer" className="text-xs font-bold uppercase tracking-wider text-white hover:text-primary transition-colors">Apoiar</Link>
+          {NAV_LINKS.map((l) => (
+            <Link key={l.href} href={l.href} className="text-xs font-bold uppercase tracking-wider text-white hover:text-primary transition-colors">{l.label}</Link>
+          ))}
         </div>
 
         <div className="flex items-center gap-3">
+          <Link href={GITHUB_URL} target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="hidden lg:flex p-2 rounded-full text-white hover:text-primary hover:bg-white/10 transition-colors">
+            <Github className="w-5 h-5" />
+          </Link>
+
           {/* Desktop Discord Button */}
           <Link href="/discord" className="hidden lg:flex text-[10px] sm:text-xs font-bold uppercase tracking-wider text-primary-foreground px-4 sm:px-6 py-2 sm:py-2.5 bg-primary hover:bg-primary/90 rounded-full transition-all items-center gap-2 hover:scale-105">
             Acesse o Discord
@@ -47,12 +59,12 @@ export function Navbar() {
       {/* Mobile Menu Dropdown */}
       {isOpen && (
         <div className="fixed top-[90px] left-1/2 -translate-x-1/2 w-[90%] max-w-[1100px] z-40 bg-card/95 backdrop-blur-xl border border-white/10 rounded-2xl p-6 flex flex-col gap-4 shadow-2xl lg:hidden animate-in slide-in-from-top-4 fade-in">
-          <Link href="/comecar" onClick={() => setIsOpen(false)} className="text-sm font-bold uppercase tracking-wider text-white hover:text-primary transition-colors py-2 border-b border-white/5">Artifacts DB</Link>
-          <Link href="/docs" onClick={() => setIsOpen(false)} className="text-sm font-bold uppercase tracking-wider text-white hover:text-primary transition-colors py-2 border-b border-white/5">Documentação</Link>
-          <Link href="/sobre" onClick={() => setIsOpen(false)} className="text-sm font-bold uppercase tracking-wider text-white hover:text-primary transition-colors py-2 border-b border-white/5">Saber Mais</Link>
-          <Link href="https://tela.mriqbox.com.br" onClick={() => setIsOpen(false)} target="_blank" rel="noopener noreferrer" className="text-sm font-bold uppercase tracking-wider text-white hover:text-primary transition-colors py-2 border-b border-white/5">Compartilhar Tela</Link>
-          <Link href="https://github.com/mri-Qbox-Brasil" onClick={() => setIsOpen(false)} target="_blank" rel="noopener noreferrer" className="text-sm font-bold uppercase tracking-wider text-white hover:text-primary transition-colors py-2 border-b border-white/5">GitHub</Link>
-          <Link href="https://www.patreon.com/mriQboxBrasil" onClick={() => setIsOpen(false)} target="_blank" rel="noopener noreferrer" className="text-sm font-bold uppercase tracking-wider text-white hover:text-primary transition-colors py-2 border-b border-white/5">Apoiar</Link>
+          {NAV_LINKS.map((l) => (
+            <Link key={l.href} href={l.href} onClick={() => setIsOpen(false)} className="text-sm font-bold uppercase tracking-wider text-white hover:text-primary transition-colors py-2 border-b border-white/5">{l.label}</Link>
+          ))}
+          <Link href={GITHUB_URL} onClick={() => setIsOpen(false)} target="_blank" rel="noopener noreferrer" className="text-sm font-bold uppercase tracking-wider text-white hover:text-primary transition-colors py-2 border-b border-white/5 flex items-center gap-2">
+            <Github className="w-4 h-4" /> GitHub
+          </Link>
           <Link href="/discord" onClick={() => setIsOpen(false)} className="text-sm font-bold uppercase tracking-wider text-primary-foreground px-6 py-3 bg-primary hover:bg-primary/90 rounded-xl transition-all flex items-center justify-center gap-2 mt-2 text-center">
             Acesse o Discord
           </Link>
