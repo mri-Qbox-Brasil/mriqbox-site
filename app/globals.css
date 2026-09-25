@@ -106,6 +106,30 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Fumadocs no @theme: o Tailwind v4 gera, para cada cor com opacidade
+   (color-mix), uma cor fixa de reserva calculada no build a partir do valor do
+   @theme. Sem isto a reserva sai do tema CLARO padrão do Fumadocs (ex.: texto
+   #0a0a0ae6), e navegadores sem color-mix (o CEF do FiveM, Chromium < 111)
+   mostram texto quase preto no fundo escuro. */
+@theme {
+  --color-fd-background: #09090b;
+  --color-fd-foreground: #fafafa;
+  --color-fd-muted: #242429;
+  --color-fd-muted-foreground: #919199;
+  --color-fd-popover: #0e0e11;
+  --color-fd-popover-foreground: #fafafa;
+  --color-fd-card: #0e0e11;
+  --color-fd-card-foreground: #fafafa;
+  --color-fd-border: #242429;
+  --color-fd-primary: #00e699;
+  --color-fd-primary-foreground: #001f14;
+  --color-fd-secondary: #242429;
+  --color-fd-secondary-foreground: #fafafa;
+  --color-fd-accent: #242429;
+  --color-fd-accent-foreground: #fafafa;
+  --color-fd-ring: #00e699;
+}
+
 /* Fumadocs: mapeia os tokens do tema dos docs para a paleta do site (dark-only).
    Usa os mesmos hex do @theme inline acima. */
 :root,
