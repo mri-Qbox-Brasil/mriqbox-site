@@ -4,6 +4,7 @@ import { Inter } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import CookieConsent from "@/components/cookie-consent"
+import Script from "next/script"
 import { RootProvider } from "fumadocs-ui/provider/next"
 import "./globals.css"
 
@@ -143,6 +144,16 @@ export default function RootLayout({
         <CookieConsent />
         <Analytics />
         <SpeedInsights />
+        {/* Cloudflare Web Analytics (sem cookies). O dominio principal nao passa
+            pelo proxy da Cloudflare, entao o beacon e instalado aqui. So em
+            producao: o build do GitHub Pages (dev) nao entra nas metricas. */}
+        {process.env.GITHUB_PAGES !== "true" && (
+          <Script
+            src="https://static.cloudflareinsights.com/beacon.min.js"
+            data-cf-beacon='{"token": "0a3acba5583644a5abcf6c0b607ae14a"}'
+            strategy="afterInteractive"
+          />
+        )}
       </body>
     </html>
   )

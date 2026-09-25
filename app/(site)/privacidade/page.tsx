@@ -31,7 +31,7 @@ export default function PrivacidadePage() {
 
         <article className="prose prose-invert max-w-none">
           <h1 className="text-4xl font-bold mb-2">Política de Privacidade</h1>
-          <p className="text-sm text-muted-foreground mb-8">Última atualização: maio de 2026</p>
+          <p className="text-sm text-muted-foreground mb-8">Última atualização: setembro de 2026</p>
 
           <section className="space-y-4 text-muted-foreground leading-relaxed">
             <p>
@@ -47,8 +47,8 @@ export default function PrivacidadePage() {
             <p>Não exigimos cadastro nem login. Os dados que recebemos vêm de três fontes:</p>
             <ul className="list-disc ml-6 space-y-2">
               <li>
-                <strong className="text-foreground">Métricas anônimas</strong> via Vercel Analytics e Vercel
-                Speed Insights — páginas acessadas, performance e país aproximado. Sem cookies, sem dados
+                <strong className="text-foreground">Métricas anônimas</strong> via Vercel Analytics, Vercel
+                Speed Insights e Cloudflare Web Analytics — páginas acessadas, performance e país aproximado. Sem cookies, sem dados
                 pessoais identificáveis.
               </li>
               <li>
