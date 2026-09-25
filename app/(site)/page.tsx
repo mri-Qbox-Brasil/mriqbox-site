@@ -10,6 +10,7 @@ import PlayersChart from "./components/PlayersChart"
 import parceiros from "@/config/parceiros"
 import statsHistory from "@/data/stats-history.json"
 import { getArtifactsDb } from "@/lib/artifacts-db"
+import { MriBotPromo } from "@/components/mri-bot-promo"
 
 export const metadata: Metadata = {
   title: "MRI Qbox Brasil | Framework FiveM Open Source",
@@ -386,6 +387,9 @@ export default async function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* Chamada do MRI BOT */}
+      <MriBotPromo />
 
       {/* Social Proof — Parceiros */}
       <section className="w-full flex flex-col items-center justify-center py-10 gap-8 border-b border-white/5 overflow-hidden">
