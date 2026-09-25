@@ -126,13 +126,15 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(WEBSITE_SCHEMA) }}
         />
         {/* RootProvider habilita a busca/contexto do Fumadocs (docs). Tema fixo
-            em dark (site é dark-only) e busca Orama estática. O endpoint inclui
+            em dark (site é dark-only). Busca no servidor na Vercel e estática
+            no GitHub Pages (ver app/api/search/route.ts). O endpoint inclui
             o basePath (vazio em produção, /mriqbox-site no GitHub Pages). */}
         <RootProvider
           theme={{ enabled: false }}
           search={{
             options: {
-              type: "static",
+              // sem `type` o dialog usa a busca no servidor (fetch)
+              type: process.env.GITHUB_PAGES === "true" ? "static" : undefined,
               api: `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/search`,
             },
           }}
