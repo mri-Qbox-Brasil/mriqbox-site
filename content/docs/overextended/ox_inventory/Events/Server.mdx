@@ -1,0 +1,41 @@
+---
+title: Server
+---
+
+Esta não é uma lista completa de eventos e está faltando eventos destinados apenas ao uso interno.
+
+## Manipuladores
+
+<Callout type="warning">
+  Estes eventos **não devem** ser disparados por outros scripts.
+</Callout>
+
+### ox_inventory:openedInventory
+
+Disparado após um inventário ser aberto por um jogador.
+
+```lua
+AddEventHandler('ox_inventory:openedInventory', function(playerId, inventoryId) end)
+```
+
+- playerId: `number`
+- inventoryId: `string`
+
+### ox_inventory:closedInventory
+
+Disparado após um inventário ser fechado por um jogador.
+
+```lua
+AddEventHandler('ox_inventory:closedInventory', function(playerId, inventoryId) end)
+```
+
+### ox_inventory:usedItem
+
+```lua
+AddEventHandler('ox_inventory:usedItem', function(playerId, name, slotId, metadata) end)
+```
+
+- playerId: `number`
+- name: `string`
+- slotId: `number`
+- metadata?: `table`

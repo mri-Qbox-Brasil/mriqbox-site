@@ -12,8 +12,8 @@ Site institucional da MRI Qbox Brasil, framework FiveM open source (Qbcore + Ox)
 ## Desenvolvimento
 
 ```bash
-pnpm install
-pnpm dev
+npm install
+npm run dev
 ```
 
 Abre em `http://localhost:3000`.
@@ -21,8 +21,8 @@ Abre em `http://localhost:3000`.
 ## Build
 
 ```bash
-pnpm build
-pnpm start
+npm run build
+npm run start
 ```
 
 ## Links

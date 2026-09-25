@@ -1,0 +1,32 @@
+---
+title: Shared
+---
+
+## lib.string
+
+Estende a tabela padrão `string` do Lua com funções adicionais.
+
+```
+string = lib.string
+```
+
+### string.random
+
+Gera uma string aleatória baseada em um padrão fornecido.
+
+```lua
+string.random(pattern, length)
+```
+
+- pattern: `string`
+ - `1` produzirá um número aleatório de 0 a 9.
+ - `A` produzirá uma letra aleatória de A a Z.
+ - `a` produzirá uma letra aleatória de a a z.
+ - `.` produzirá uma letra ou número aleatório.
+ - `^` produzirá o caractere seguinte literalmente.
+ - Qualquer outro caractere produzirá esse caractere.
+- length?: `number`
+  - Define o comprimento da string retornada, preenchendo ou omitindo caracteres conforme necessário.
+
+Retorno:
+- string: `string`

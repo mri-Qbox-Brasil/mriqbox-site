@@ -1,0 +1,260 @@
+---
+title: Creating Items
+---
+
+## Definindo dados do item
+
+Antes de poder ver ou usar um item no jogo, ele **deve** primeiro ser definido.
+
+Todos os itens são definidos no arquivo [/data/items.lua](https://github.com/overextended/ox_inventory/blob/main/data/items.lua) com pares chave-valor.
+A chave é o nome (não o label) de um item e o valor é uma tabela contendo as
+opções do item.
+
+- Opções do item: `tabela`
+  - label: `string`
+  - weight?: `number`
+  - stack?: `boolean`
+    - Se definido como false, o item não poderá ser empilhado.
+  - degrade?: `number`
+    - Quantidade de tempo em minutos após a qual o item irá degradar.
+  - decay?: `boolean`
+    - Se true, o item será deletado quando a durabilidade chegar a 0 (não é instantâneo para itens degradados).
+  - close?: `boolean`
+    - Se definido como false, não fecha o inventário ao usar o item.
+  - description?: `string`
+    - Descrição do item que será exibida na dica (tooltip).
+  - consume?: `number`
+    - Quantidade de itens necessária e removida ao usar.
+  - Padrão: 1
+    - Se definido como valor decimal, consumirá durabilidade em vez disso (0.2 = 20%).
+  - allowArmed?: `boolean`
+    - Se definido como true, permite usar o item enquanto estiver armado com uma arma.
+  - server?: `tabela`
+    - export?: `string`
+  - client?: `tabela`
+    - export?: `string`
+      - Export a ser acionado após o uso do item.
+    - event?: `string`
+      - Evento a ser acionado após o uso do item.
+    - status?: `tabela`
+      - Ajusta valores do esx_status após o uso.
+    - anim?: `tabela`
+      - Animação que será reproduzida durante a barra de progresso.
+      - dict: `string`
+      - clip: `string`
+    - prop?: `tabela`
+      - Prop anexado que será exibido durante a barra de progresso.
+      - model: `string` ou `hash`
+      - pos: `tabela` (x, y, z)
+      - rot: `tabela` (x, y, z)
+      - bone?: `number`
+      - rotOrder?: `number`
+    - disable?: `tabela`
+      - Ações a serem desabilitadas durante a barra de progresso.
+      - move?: `boolean`
+      - car?: `boolean`
+      - combat?: `boolean`
+      - mouse?: `boolean`
+      - sprint?: `boolean`
+    - usetime?: `number`
+    - cancel?: `boolean`
+      - Se definido como true, o jogador pode cancelar o uso do item.
+    - add?: `function`(total: `number`)
+      - Função que é acionada ao receber um item.
+      - Retorna a quantidade total do item como `total`.
+    - remove?: `function`(total: `number`)
+      - Função que é acionada ao remover um item.
+      - Retorna a quantidade total do item como `total`.
+  - buttons?: `tabela`
+    - label: `string`
+    - action: `function`(slot: `number`)
+      - Função de retorno (callback) quando o botão é clicado no menu de contexto, retorna o slot do item.
+
+### Exemplos
+
+<Tabs items={["Burger", "Burger com descrição", "Burger com notificação"]}>
+  <Tabs.Tab>
+    ```lua
+    ['burger'] = {
+        label = 'Burger',
+        weight = 220,
+        stack = true,
+        close = true,
+        client = {
+            status = { hunger = 200000 },
+            anim = { dict = 'mp_player_inteat@burger', clip = 'mp_player_int_eat_burger_fp' },
+            prop = {
+                model = 'prop_cs_burger_01',
+                pos = { x = 0.02, y = 0.02, y = -0.02},
+                rot = { x = 0.0, y = 0.0, y = 0.0}
+            },
+            usetime = 2500,
+        }
+    }
+    ```
+  </Tabs.Tab>
+  <Tabs.Tab>
+    Um item burger modificado que inclui uma descrição.
+
+    ```lua
+    ['burger'] = {
+        label = 'Burger',
+        description = 'Just what is the secret formula?'
+        weight = 220,
+        stack = true,
+        close = true,
+        client = {
+            status = { hunger = 200000 },
+            anim = { dict = 'mp_player_inteat@burger', clip = 'mp_player_int_eat_burger_fp' },
+            prop = {
+                model = 'prop_cs_burger_01',
+                pos = { x = 0.02, y = 0.02, y = -0.02},
+                rot = { x = 0.0, y = 0.0, y = 0.0}
+            },
+            usetime = 2500,
+        }
+    }
+    ```
+  </Tabs.Tab>
+  <Tabs.Tab>
+    Um item burger modificado que envia notificações nos argumentos add e remove.
+
+    ```lua
+    ['burger'] = {
+        label = 'Burger',
+        weight = 220,
+        stack = true,
+        consume = 0,
+        client = {
+            add = function(total)
+                if total > 0 then
+                    lib.notify({description = 'Nice burger you got there!'})
+                end
+            end,
+
+            remove = function(total)
+                if total < 1 then
+                    lib.notify({description = 'You lost all of your burgers!'})
+                end
+            end
+        }
+    }
+    ```
+  </Tabs.Tab>
+</Tabs>
+
+## Tornando o item utilizável
+
+- Se você estiver usando ESX, pode continuar usando `ESX.RegisterUsableItem`.
+- Se você estiver usando QBox, pode continuar usando `exports.qbx_core:CreateUseableItem`.
+
+Usar o sistema integrado é mais seguro e oferece muito mais funcionalidades.
+
+### Callbacks do cliente
+
+Callbacks de item podem ser adicionados definindo um export (recomendado), ou adicionando-o em [items/client.lua](https://github.com/overextended/ox_inventory/blob/main/modules/items/client.lua#L33).
+
+Ao definir os [dados do item](https://github.com/overextended/ox_inventory/blob/main/data/items.lua#L11), adicionar client.export acionará um evento ao usar o item.
+A formatação correta é `export = resourceName.exportName`.
+
+```lua
+exports('bandage', function(data, slot)
+    local playerPed = PlayerPedId()
+    local maxHealth = GetEntityMaxHealth(playerPed)
+    local health = GetEntityHealth(playerPed)
+
+    -- O ped precisa de cura? Podemos cancelar o uso do item.
+    if health < maxHealth then
+        -- Aciona o código interno para usar itens corretamente.
+        -- Isso adiciona segurança, remove o item ao usar, adiciona suporte à barra de progresso e é necessário para callbacks do servidor.
+        exports.ox_inventory:useItem(data, function(data)
+            -- O servidor verificou que o item pode ser usado.
+            if data then
+                SetEntityHealth(playerPed, math.min(maxHealth, math.floor(health + maxHealth / 16)))
+                lib.notify({description = 'You feel better already'})
+            end
+        end)
+    else
+        -- Não usar o item
+        lib.notify({type = 'error', description = 'You don\'t need a bandage right now'})
+    end
+end)
+```
+
+### Callbacks do servidor
+
+Uma função de retorno (callback) pode ser definida no servidor para lidar com vários eventos (usingItem, usedItem, buyItem).
+Isso pode ser um export (recomendado) ou adicionado ao final de [items/server.lua](https://github.com/overextended/ox_inventory/blob/main/modules/items/server.lua).
+Ao definir os [dados do item](https://github.com/overextended/ox_inventory/blob/main/data/items.lua#L14), adicionar server.export acionará um evento para as ações acima.
+A formatação correta é `export = resourceName.exportName`.
+
+```lua
+exports('bandage', function(event, item, inventory, slot, data)
+    -- O jogador está tentando usar o item.
+    if event == 'usingItem' then
+        local playerPed = GetPlayerPed(inventory.id)
+        local maxHealth = GetEntityMaxHealth(playerPed)
+        local health = GetEntityHealth(playerPed)
+
+        -- Verifica se o jogador precisa ser curado.
+        if health >= maxHealth then
+            TriggerClientEvent('ox_lib:notify', inventory.id, {type = 'error', description = 'You don\'t need a bandage right now'})
+
+            -- Retornar 'false' impedirá que o item seja usado
+            return false
+        end
+
+        return
+    end
+
+    -- O jogador terminou de usar o item.
+    if event == 'usedItem' then
+        return TriggerClientEvent('ox_lib:notify', inventory.id, {description = 'You feel better already'})
+    end
+
+    -- O jogador está tentando comprar o item.
+    if event == 'buying' then
+        return TriggerClientEvent('ox_lib:notify', inventory.id, {type = 'success', description = 'You bought a bandage'})
+    end
+end)
+```
+
+## Criando itens de contêiner
+
+Assim como outros itens, o item deve primeiro ser registrado.
+
+Quando registrado, você pode definir o item como um contêiner em `/modules/items/containers.lua`
+A chave do contêiner é o `nome` que você deu ao registrar o item.
+Você também pode definir o número de slots, o peso máximo, itens na lista negra (blacklist) e lista branca (whitelist).
+
+- itemName:
+  - slots: number
+    - O número representa a quantidade de slots.
+  - maxWeight: number
+    - O número representa o peso máximo dentro do contêiner.
+  - blacklist:
+    - Suporta itens únicos e múltiplos.
+    - `{ 'testburger', 'testburger2' }`
+  - whitelist:
+    - Suporta itens únicos e múltiplos.
+    - `{ 'testburger', 'testburger2' }`
+
+### Exemplo
+
+```lua filename="Register Example"
+['paperbag'] = {
+    label = 'Paper Bag',
+    weight = 1,
+    stack = false,
+    close = false,
+    consume = 0
+},
+```
+
+```lua filename="Properties Example"
+setContainerProperties('paperbag', {
+	slots = 5,
+	maxWeight = 1000,
+	blacklist = { 'testburger' }
+})
+```

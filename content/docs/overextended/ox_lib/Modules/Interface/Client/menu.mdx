@@ -1,0 +1,299 @@
+---
+title: Menu
+---
+
+Menu de navegação por teclado com funções de evento específicas.
+
+## lib.registerMenu
+
+Registra e armazena em cache um menu sob o `id` especificado.
+
+<Tabs items={["Lua", "JS"]}>
+  <Tabs.Tab>
+    ```lua
+    lib.registerMenu(data, cb)
+    ```
+  </Tabs.Tab>
+  <Tabs.Tab>
+    ```ts
+    import lib from '@overextended/ox_lib/client';
+
+    lib.registerMenu(data, cb);
+    ```
+  </Tabs.Tab>
+</Tabs>
+
+- data: `table` (`object`)
+  - id: `string`
+  - title: `string`
+  - options: `table` (`array`)
+    - label: `string`
+    - progress?: `number`
+    - colorScheme?: `string`
+    - icon?: `string`
+      - Ícone FontAwesome exibido no lado esquerdo; funciona da mesma forma que os ícones de `notification` e `textui`.
+      - Também suporta URLs de imagem (`png`, `webp`), mas não é recomendado usá-las em vez dos ícones do FontAwesome.
+    - iconColor?: `string`
+    - iconAnimation?: `'spin'` `'spinPulse'` `'spinReverse'` `'pulse'` `'beat'` `'fade'` `'beatFade'` `'bounce'` `'shake'`
+    - values?: `string[]` ou `{ label: string, description: string }[]`
+      - Se fornecido, cria uma lista lateral rolável.
+      - Ao usar um objeto e definir `description`, essa descrição será exibida na tooltip do menu.
+    - checked?: `boolean`
+      - Definindo `true` ou `false` o botão se comportará como um checkbox; se `values` também for fornecido, o botão será
+        uma lista rolável.
+    - description?: `string`
+      - Exibe uma tooltip abaixo do menu no item quando o mouse estiver sobre ele, usando a descrição fornecida.
+    - defaultIndex?: `number`
+      - Define o índice atual da lista para o número especificado.
+    - args?: `{[string]: any}`
+      - Permite passar quaisquer argumentos através do botão.
+      - Se o botão tiver `values`, então `isScroll` será passado automaticamente.
+      - Se o botão tiver `checked`, então `isCheck` será passado automaticamente.
+    - close?: `boolean`
+      - Se definido como `false`, o menu não será fechado ao interagir com essa opção.
+  - position?: `'top-left'` ou `'top-right'` ou `'bottom-left'` ou `'bottom-right'`
+    - Padrão: `'top-left'`
+  - disableInput?: `boolean`
+    - Padrão: `false`
+  - canClose: `boolean`
+    - Se definido como `false`, o usuário não conseguirá sair do menu sem pressionar um dos botões.
+  - onClose: `function`(keyPressed?: `'Escape' | 'Backspace'`)
+    - Função executada quando o menu é fechado via ESC/Backspace.
+  - onSelected: `function`(selected: `number`, secondary: `number` | `boolean`, args: `{[string]: any}`)
+    - Função executada quando o botão selecionado no menu for alterado.
+  - onSideScroll: `function`(selected: `number`, scrollIndex: `number`, args: `{[string]: any}`)
+    - Função executada sempre que um item de lista rolável for alterado.
+  - onCheck: `function`(selected: `number`, checked: `boolean`, args: `{[string]: any}`)
+    - Função executada sempre que um checkbox for alternado.
+-- cb: `function`(selected: `number`, scrollIndex: `number`, args: `{[string]: any}`)
+  - Função de callback executada quando um item do menu é pressionado.
+
+## lib.showMenu
+
+Exibe o menu com o `id` fornecido.
+
+<Tabs items={["Lua", "JS"]}>
+  <Tabs.Tab>
+    ```lua
+    lib.showMenu(id)
+    ```
+  </Tabs.Tab>
+  <Tabs.Tab>
+    ```ts
+    import lib from '@overextended/ox_lib/client';
+
+    lib.showMenu(id);
+    ```
+  </Tabs.Tab>
+</Tabs>
+
+- id: `string`
+
+## lib.hideMenu
+
+<Tabs items={["Lua", "JS"]}>
+  <Tabs.Tab>
+    ```lua
+    lib.hideMenu(onExit)
+    ```
+  </Tabs.Tab>
+  <Tabs.Tab>
+    ```ts
+    import lib from '@overextended/ox_lib/client';
+
+    lib.hideMenu(onExit);
+    ```
+  </Tabs.Tab>
+</Tabs>
+
+-- onExit?: `boolean`
+  - Se `true`, executa a função `onClose` do menu.
+
+## lib.getOpenMenu
+
+Retorna o `id` do menu atualmente aberto.
+
+<Tabs items={["Lua", "JS"]}>
+  <Tabs.Tab>
+    ```lua
+    lib.getOpenMenu()
+    ```
+  </Tabs.Tab>
+  <Tabs.Tab>
+    ```ts
+    import lib from '@overextended/ox_lib/client';
+
+    lib.getOpenMenu();
+    ```
+  </Tabs.Tab>
+</Tabs>
+
+## lib.setMenuOptions
+
+<Tabs items={["Lua", "JS"]}>
+  <Tabs.Tab>
+    ```lua
+    lib.setMenuOptions(id, options, index)
+    ```
+  </Tabs.Tab>
+  <Tabs.Tab>
+    ```ts
+    import lib from '@overextended/ox_lib/client';
+
+    lib.setMenuOptions(id, options, index);
+    ```
+  </Tabs.Tab>
+</Tabs>
+
+- id: `string`
+- options: `table` (`object` ou `array`)
+-- index?: `number`
+  - Se especificado, atualiza apenas a tabela de opções no índice indicado.
+
+<u>**Exemplo:**</u><br />
+Substitui a opção no índice 3 do menu especificado
+
+<Tabs items={["Lua", "JS"]}>
+  <Tabs.Tab>
+    ```lua
+    lib.setMenuOptions('some_menu_id', {label = 'New option', icon = 'plus'}, 3)
+    ```
+  </Tabs.Tab>
+  <Tabs.Tab>
+    ```ts
+    import lib from '@overextended/ox_lib/client';
+
+    lib.setMenuOptions('some_menu_id', { label: 'New option', icon: 'plus' }, 3);
+    ```
+  </Tabs.Tab>
+</Tabs>
+
+## Exemplo de uso
+
+Primeiro registramos o menu com as opções especificadas e então chamamos a função `show` através de um comando.
+
+<Callout>
+  Evite re-registrar constantemente um menu que não dependa de valores externos (ou seja, um menu estático).
+</Callout>
+
+<Tabs items={["Lua", "JS"]}>
+  <Tabs.Tab>
+    ```lua
+    lib.registerMenu({
+        id = 'some_menu_id',
+        title = 'Menu title',
+        position = 'top-right',
+        onSideScroll = function(selected, scrollIndex, args)
+            print("Scroll: ", selected, scrollIndex, args)
+        end,
+        onSelected = function(selected, secondary, args)
+            if not secondary then
+                print("Normal button")
+            else
+                if args.isCheck then
+                    print("Check button")
+                end
+
+                if args.isScroll then
+                    print("Scroll button")
+                end
+            end
+            print(selected, secondary, json.encode(args, {indent=true}))
+        end,
+        onCheck = function(selected, checked, args)
+            print("Check: ", selected, checked, args)
+        end,
+        onClose = function(keyPressed)
+            print('Menu closed')
+            if keyPressed then
+                print(('Pressed %s to close the menu'):format(keyPressed))
+            end
+        end,
+        options = {
+            {label = 'Simple button', description = 'It has a description!'},
+            {label = 'Checkbox button', checked = true},
+            {label = 'Scroll button with icon', icon = 'arrows-up-down-left-right', values={'hello', 'there'}},
+            {label = 'Button with args', args = {someArg = 'nice_button'}},
+            {label = 'List button', values = {'You', 'can', 'side', 'scroll', 'this'}, description = 'It also has a description!'},
+            {label = 'List button with default index', values = {'You', 'can', 'side', 'scroll', 'this'}, defaultIndex = 5},
+            {label = 'List button with args', values = {'You', 'can', 'side', 'scroll', 'this'}, args = {someValue = 3, otherValue = 'value'}},
+        }
+    }, function(selected, scrollIndex, args)
+        print(selected, scrollIndex, args)
+    end)
+
+    RegisterCommand('testmenu', function()
+        lib.showMenu('some_menu_id')
+    end)
+    ```
+  </Tabs.Tab>
+  <Tabs.Tab>
+    ```ts
+    import lib from '@overextended/ox_lib/client';
+
+    lib.registerMenu(
+      {
+        id: 'some_menu_id',
+        title: 'Menu title',
+        position: 'top-right',
+        onSideScroll: (selected, scrollIndex, args) => {
+          console.log('Scroll: ', selected, scrollIndex, args);
+        },
+        onSelected: (selected, secondary, args) => {
+          if (!secondary) {
+            console.log('Normal button');
+          } else {
+            if (args.isCheck) {
+              console.log('Check button');
+            }
+
+            if (args.isScroll) {
+              console.log('Scroll button');
+            }
+          }
+          console.log(selected, secondary, JSON.stringify(args, null, 2));
+        },
+        onCheck: (selected, checked, args) => {
+          console.log('Check: ', selected, checked, args);
+        },
+        onClose: (keyPressed) => {
+          console.log('Menu closed');
+          if (keyPressed) {
+            console.log(`Pressed ${keyPressed} to close the menu`);
+          }
+        },
+        options: [
+          { label: 'Simple button', description: 'It has a description!' },
+          { label: 'Checkbox button', checked: true },
+          { label: 'Scroll button with icon', icon: 'arrows-up-down-left-right', values: ['hello', 'there'] },
+          { label: 'Button with args', args: { someArg: 'nice_button' } },
+          {
+            label: 'List button',
+            values: ['You', 'can', 'side', 'scroll', 'this'],
+            description: 'It also has a description!',
+          },
+          { label: 'List button with default index', values: ['You', 'can', 'side', 'scroll', 'this'], defaultIndex: 5 },
+          {
+            label: 'List button with args',
+            values: ['You', 'can', 'side', 'scroll', 'this'],
+            args: { someValue: 3, otherValue: 'value' },
+          },
+        ],
+      },
+      (selected, scrollIndex, args) => {
+        console.log(selected, scrollIndex, args);
+      }
+    );
+
+    RegisterCommand(
+      'testmenu',
+      () => {
+        lib.showMenu('some_menu_id');
+      },
+      false
+    );
+    ```
+  </Tabs.Tab>
+</Tabs>
+
+![Example](https://i.imgur.com/2zxbsnN.png)

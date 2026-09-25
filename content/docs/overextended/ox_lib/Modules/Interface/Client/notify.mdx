@@ -1,0 +1,144 @@
+---
+title: Notificações
+---
+
+## lib.notify
+
+Notificações customizadas com várias opções de estilo.
+
+<Tabs items={["Lua", "JS"]}>
+  <Tabs.Tab>
+    <Tabs items={["Client", "Server"]}>
+      <Tabs.Tab>
+        ```lua
+        lib.notify(data)
+        ```
+      </Tabs.Tab>
+      <Tabs.Tab>
+        ```lua
+        TriggerClientEvent('ox_lib:notify', source, data)
+        ```
+      </Tabs.Tab>
+    </Tabs>
+  </Tabs.Tab>
+  <Tabs.Tab>
+    ```ts
+    import lib from '@overextended/ox_lib/client';
+
+    lib.notify(data);
+    ```
+  </Tabs.Tab>
+</Tabs>
+
+-- id?: `string`
+  - Se definido, a notificação será única e exibida apenas uma vez na tela quando houver spam.
+-- title?: `string`
+  - Obrigatório se não houver `description`.
+-- description?: `string`
+  - Obrigatório se não houver `title`.
+  - Suporta Markdown.
+-- duration?: `number`
+  - Padrão: `3000` (ms)
+-- showDuration?: `boolean`
+  - Padrão: `true`
+  - Padrão: `'top-right'`
+  - Padrão: `'inform'`
+-- position?: `'top'` ou `'top-right'` ou `'top-left'` ou `'bottom'` ou `'bottom-right'` ou `'bottom-left'` ou `'center-right'` ou `'center-left'`
+  - Padrão: `'top-right'`
+-- type?: `'inform'` ou `'error'` ou `'success'` ou `'warning'`
+  - Padrão: `'inform'`
+-- style?: `table` (`object`)
+-- icon?: `string`
+-- alignIcon?: `'top'` ou `'center'`
+  - Padrão: `'center'`
+  - Nome do ícone do Font Awesome 6
+-- iconColor?: `string`
+  - Valores válidos de cor em CSS
+-- iconAnimation?: `'spin'` `'spinPulse'` `'spinReverse'` `'pulse'` `'beat'` `'fade'` `'beatFade'` `'bounce'` `'shake'`
+-- sound?: `table` (`object`)
+  - bank?: `string`
+    - Nome do banco de áudio que contém o `soundset` fornecido
+  - set: `string`
+    - Soundset ao qual o `soundname` pertence.
+  - name: `string`
+<Callout>
+  Definir `iconColor` removerá a cor contrastante do ícone e seu fundo circular.
+</Callout>
+
+## Exemplos de uso
+
+### Padrão
+
+<Tabs items={["Lua", "JS"]}>
+  <Tabs.Tab>
+    ```lua
+    lib.notify({
+      title = 'Título da notificação',
+      description = 'Descrição da notificação',
+      type = 'success'
+    })
+    ```
+  </Tabs.Tab>
+  <Tabs.Tab>
+    ```ts
+    import lib from '@overextended/ox_lib/client';
+
+    lib.notify({
+      title: 'Título da notificação',
+      description: 'Descrição da notificação',
+      type: 'success',
+    });
+    ```
+  </Tabs.Tab>
+</Tabs>
+
+![notification](https://i.imgur.com/UOISjlm.png)
+
+### Personalizado
+
+<Tabs items={["Lua", "JS"]}>
+  <Tabs.Tab>
+    ```lua
+    lib.notify({
+      id = 'some_identifier',
+      title = 'Título da notificação',
+      description = 'Descrição da notificação',
+      showDuration = false,
+      position = 'top',
+      style = {
+        backgroundColor = '#141517',
+        color = '#C1C2C5',
+        ['.description'] = {
+          color = '#909296'
+        }
+      },
+      icon = 'ban',
+      iconColor = '#C53030'
+    })
+    ```
+  </Tabs.Tab>
+  <Tabs.Tab>
+    ```ts
+    import lib from '@overextended/ox_lib/client';
+
+    lib.notify({
+      id: 'some_identifier',
+      title: 'Título da notificação',
+      description: 'Descrição da notificação',
+      showDuration: false,
+      position: 'top',
+      style: {
+        backgroundColor: '#141517',
+        color: '#C1C2C5',
+        '.decription': {
+          color: '#909296',
+        },
+      },
+      icon: 'ban',
+      iconColor: '#C53030',
+    });
+    ```
+  </Tabs.Tab>
+</Tabs>
+
+![custom_notification](https://i.imgur.com/1qwsJsH.png)

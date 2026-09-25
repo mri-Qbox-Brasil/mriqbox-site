@@ -1,0 +1,112 @@
+---
+title: Servidor
+---
+
+Wrapper em torno do sistema ACL embutido. Gerencia permissões relacionadas a `lib.addCommand` e `ox_groups`.
+Consulte [Basic Aces & Principals overview/guide](https://forum.cfx.re/t/basic-aces-principals-overview-guide/90917) para mais informações.
+
+## lib.addAce
+
+Atribui a permissão ACE a um principal. O terceiro parâmetro tem valor padrão 'allow'; passar `false` define a permissão como 'deny'.
+
+<Tabs items={["Lua", "JS"]}>
+    <Tabs.Tab>
+        ```lua
+        lib.addAce(principal, ace, allow)
+
+        lib.addAce('group.admin', 'command.say')
+        ```
+    </Tabs.Tab>
+    <Tabs.Tab>
+        ```ts
+        import lib from '@overextended/ox_lib/server'
+
+        lib.addAce(principal, ace, allow)
+
+        lib.addAce('group.admin', 'command.say')
+        ```
+    </Tabs.Tab>
+</Tabs>
+
+- principal: `string`
+- ace: `string`
+- allow: `boolean`
+
+## lib.removeAce
+
+Remove a permissão ACE de um principal. O terceiro parâmetro tem valor padrão 'allow'; passar `false` define a permissão como 'deny'.
+
+<Tabs items={["Lua", "JS"]}>
+    <Tabs.Tab>
+        ```lua
+        lib.removeAce(principal, ace, allow)
+
+        lib.removeAce('group.admin', 'command.say')
+        ```
+    </Tabs.Tab>
+    <Tabs.Tab>
+        ```ts
+        import lib from '@overextended/ox_lib/server'
+
+        lib.removeAce(principal, ace, allow)
+
+        lib.removeAce('group.admin', 'command.say')
+        ```
+    </Tabs.Tab>
+</Tabs>
+
+- principal: `string`
+- ace: `string`
+- allow: `boolean`
+
+## lib.addPrincipal
+
+Atribui um principal a um principal pai. Os filhos herdam as permissões do pai.
+
+<Tabs items={["Lua", "JS"]}>
+    <Tabs.Tab>
+        ```lua
+        lib.addPrincipal(child, parent)
+
+        lib.addPrincipal('player.1', 'group.moderator')
+        ```
+    </Tabs.Tab>
+    <Tabs.Tab>
+        ```ts
+        import lib from '@overextended/ox_lib/server'
+
+        lib.addPrincipal(child, parent)
+
+        lib.addPrincipal('player.1', 'group.moderator')
+        ```
+    </Tabs.Tab>
+</Tabs>
+
+- child: `string`
+- parent: `string`
+
+## lib.removePrincipal
+
+Remove um principal de um principal pai.
+
+<Tabs items={["Lua", "JS"]}>
+    <Tabs.Tab>
+        ```lua
+        lib.removePrincipal(child, parent)
+
+        lib.removePrincipal('player.1', 'group.moderator')
+        ```
+    </Tabs.Tab>
+    <Tabs.Tab>
+        ```ts
+        import lib from '@overextended/ox_lib/server'
+
+        lib.removePrincipal(child, parent)
+
+        lib.removePrincipal('player.1', 'group.moderator')
+        ```
+    </Tabs.Tab>
+</Tabs>
+
+- child: `string`
+- parent: `string`

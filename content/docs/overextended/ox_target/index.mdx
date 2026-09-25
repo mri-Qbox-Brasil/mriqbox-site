@@ -1,0 +1,59 @@
+---
+title: Ox Target
+---
+
+<ResourceLinks repo="https://github.com/overextended/ox_target" />
+
+Um recurso de targeting independente, performático e flexível ("terceiro-olho"), com funcionalidades adicionais para `ox_inventory`, `ox_core`, `qbx_core` e `es_extended`.
+
+## Instalação
+
+<Callout type="info">
+
+Recomendamos **fortemente** consultar os [Guias](../guides) para configurar o Git, Node.js e pnpm.
+
+</Callout>
+
+<Steps>
+### Instalar todas as dependências do recurso
+- [ox_lib](../ox_lib/)
+
+### Baixe um [release](https://github.com/overextended/ox_target/releases) ou clone o código-fonte.
+
+```bash
+git clone https://github.com/overextended/ox_target.git
+```
+
+### Configuração
+
+A configuração do recurso é feita usando [convars](https://docs.fivem.net/docs/scripting-reference/convars/).
+
+```bash
+# Alterna o targeting ao pressionar a tecla de atalho, em vez de mantê-la pressionada.
+setr ox_target:toggleHotkey 0
+
+# Altera a tecla para ativar o targeting (https://docs.fivem.net/docs/game-references/input-mapper-parameter-ids/keyboard)
+setr ox_target:defaultHotkey LMENU
+
+# Desenha um sprite (círculo) no centróide de uma zona.
+setr ox_target:drawSprite 1
+
+# Habilita opções de targeting embutidas, ex.: alternar portas de veículos.
+setr ox_target:defaults 1
+
+# Habilita opções de depuração/teste, contornos de entidades e um indicador de raycast.
+setr ox_target:debug 0
+
+# Ativar/Desativar clique esquerdo para selecionar opções
+setr ox_target:leftClick 1
+```
+
+</Steps>
+
+## Frameworks suportados
+
+Não são necessários para executar o `ox_target`, mas adicionam funcionalidades extras.
+
+- [ox_core](https://github.com/overextended/ox_core)
+- [esx](https://github.com/esx-framework/esx-legacy)
+- [qbx_core](https://github.com/Qbox-project/qbx_core)

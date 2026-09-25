@@ -1,0 +1,29 @@
+---
+title: Problemas Comuns
+---
+
+## UI não está compilada
+
+Como a interface do inventário é feita em React, ela não roda nativamente no FiveM — portanto precisa ser compilada/empaquetada em HTML/CSS/JS.
+
+Oferecemos uma forma fácil: baixe a release pré-compilada disponível [aqui](https://github.com/overextended/ox_inventory/releases/latest).  
+Certifique-se de baixar o arquivo `ox_inventory.zip`, pois ele contém os arquivos empacotados; outras releases podem conter o código-fonte cru.
+
+Se você pretende editar a UI do inventário, será necessário compilar esses arquivos localmente.  
+Para isso, leia nosso guia de [_Instalação_](../ox_inventory#installation).
+
+## "No such export * in resource ox_inventory"
+
+Existem algumas causas prováveis para esse erro:
+- Ocorreu um erro ao iniciar o `ox_inventory` ou alguma de suas dependências (por exemplo, `ox_lib`).
+- O recurso que tenta usar o export (por exemplo, `esx_addoninventory`) está sendo iniciado _antes_ do `ox_inventory`.
+- Você está tentando chamar um export que não existe.
+
+## Stashes / trunks não são salvos ao reiniciar o servidor
+
+Parar o servidor ou "reiniciá-lo" não dispara eventos que permitam salvar imediatamente.
+
+- Os inventários são salvos a cada 5 minutos.
+- Reinícios e desligamentos agendados pelo txAdmin disparam um salvamento.
+- O comando `saveinv` pode ser usado manualmente ou chamado via console.
+- Todos os inventários são salvos quando o número de jogadores online chega a 0.

@@ -1,0 +1,32 @@
+---
+title: Área de Transferência
+---
+
+## lib.setClipboard
+
+Define o conteúdo da área de transferência do jogador com o valor da string especificada.
+
+<Callout>
+    Não funcionará se o foco já estiver sendo utilizado por algum componente NUI.
+</Callout>
+
+<Callout>
+    Para criar uma nova linha, use `\t\n` e **não apenas** `\n` na sua string.
+</Callout>
+
+<Tabs items={["Lua", "JS"]}>
+    <Tabs.Tab>
+        ```lua
+        lib.setClipboard(value)
+        ```
+    </Tabs.Tab>
+    <Tabs.Tab>
+        ```ts
+        import lib from '@overextended/ox_lib/client';
+
+        lib.setClipboard(value);
+        ```
+    </Tabs.Tab>
+</Tabs>
+
+- value: `string`

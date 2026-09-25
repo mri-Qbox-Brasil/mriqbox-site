@@ -1,0 +1,29 @@
+---
+title: Server
+---
+
+## lib.versionCheck
+
+Compara a versão do resource com a última release publicada no GitHub.
+[Utiliza a API de releases do GitHub](https://docs.github.com/en/rest/reference/releases)
+
+```lua
+lib.versionCheck(repository)
+```
+
+- repository: `string`
+
+<Tabs items={["Lua", "JS"]}>
+    <Tabs.Tab>
+        ```lua
+        lib.versionCheck('overextended/ox_lib')
+        ```
+    </Tabs.Tab>
+    <Tabs.Tab>
+        ```ts
+        import lib from '@overextended/ox_lib/server'
+
+        lib.versionCheck('overextended/ox_lib')
+        ```
+    </Tabs.Tab>
+</Tabs>

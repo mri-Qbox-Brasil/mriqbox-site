@@ -1,0 +1,86 @@
+---
+title: Stashes Personalizados
+---
+
+Podemos configurar stashes personalizados fora do recurso utilizando a função exportada `RegisterStash`.
+
+Primeiro, precisamos definir as propriedades do stash.
+
+## Propriedades do stash
+
+- id: `string`
+  - Nome único para identificar o stash no banco de dados.
+- label: `string`
+  - Nome exibido ao visualizar o stash.
+- slots: `number`
+  - Quantidade de slots que o stash terá.
+- weight: `number`
+  - Peso máximo do inventário do stash.
+- owner?: `string` or `boolean`
+  - `true`: Cada jogador tem seu próprio stash único, mas pode solicitar abrir o stash de outro jogador.
+  - `false`: Existe apenas um stash compartilhado entre todos os jogadores.
+  - `string`: O stash pertence explicitamente ao proprietário informado, geralmente um identificador de jogador.
+- groups?: `table`
+  - Pares chave-valor com nome do job e grade mínima para acessar o stash. (`{["police"] = 0, ["ambulance"] = 2}`)
+  - name: `string`
+  - grade: `number`
+- coords?: `vector3` or `table`
+  - Você pode definir as coordenadas do stash para impedir que ele seja aberto se o jogador não estiver próximo.
+  - Vetor ou tabela contendo as coordenadas do stash.
+
+## Example
+
+Below the value is hardset, but it could be loaded from the database (especially if there are unknown fields, i.e. owner)
+
+```lua
+-- Server
+local stash = {
+    id = '42wallabyway',
+    label = '42 Wallaby Way',
+    slots = 50,
+    weight = 100000,
+    owner = 'char1:license'
+}
+
+AddEventHandler('onServerResourceStart', function(resourceName)
+    if resourceName == 'ox_inventory' or resourceName == GetCurrentResourceName() then
+        exports.ox_inventory:RegisterStash(stash.id, stash.label, stash.slots, stash.weight, stash.owner)
+    end
+end)
+
+-- Client
+exports.ox_inventory:openInventory('stash', {id='42wallabyway', owner=property.owner})
+```
+
+O exemplo a seguir é baseado nos dados do banco do `esx_property`.
+
+```lua
+-- Server
+local properties
+
+MySQL.query('SELECT * FROM `properties`', {}, function(result)
+    properties = result
+end)
+
+RegisterNetEvent('ox:loadStashes', function(id)
+local stash = properties[id]
+    if stash then
+        -- id: 1, name: WhispymoundDrive, label: 2677 Whispymound Drive, coords: {"x":118.748,"y":566.573,"z":175.697}
+        ox_inventory:RegisterStash(stash.name, stash.label, 50, 100000, true, false, json.encode(stash.room_menu))
+    end
+end)
+
+-- Client
+local ox_inventory = exports.ox_inventory
+
+if ox_inventory:openInventory('stash', property.id) == false then
+    TriggerServerEvent('ox:loadStashes')
+    ox_inventory:openInventory('stash', property.id)
+end
+```
+
+## Recurso de exemplo
+
+Criamos um recurso de exemplo demonstrando como utilizar corretamente a API de stash:
+
+<GhButton link="https://www.github.com/overextended/ox_inventory_examples" label="Ox Inventory Examples" />

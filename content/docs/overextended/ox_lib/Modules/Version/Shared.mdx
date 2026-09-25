@@ -1,0 +1,30 @@
+---
+title: Shared
+---
+
+## lib.checkDependency
+
+Verifica se um resource está utilizando uma versão específica ou superior, permitindo checagens de compatibilidade ou lançar erros.
+
+```lua
+lib.checkDependency(resource, version)
+```
+
+- resource: `string`
+- version: `string`
+
+<Tabs items={["Lua", "JS"]}>
+    <Tabs.Tab>
+        ```lua
+        if not lib.checkDependency('ox_lib', '1.5.0') then error() end
+        ```
+    </Tabs.Tab>
+    <Tabs.Tab>
+        ```ts
+        import lib from '@overextended/ox_lib/shared'
+        // import { checkDependency } from '@overextended/ox_lib/shared'
+
+        if (!lib.checkDependency('ox_lib', '1.5.0')) error()
+        ```
+    </Tabs.Tab>
+</Tabs>

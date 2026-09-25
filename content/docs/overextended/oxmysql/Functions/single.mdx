@@ -1,0 +1,75 @@
+---
+title: single
+---
+
+Retorna todas as colunas selecionadas para uma única linha.
+
+## Promise
+
+<Tabs items={['Lua', 'JS']}>
+  <Tabs.Tab>
+
+    ```lua
+    local row = MySQL.single.await('SELECT `firstname`, `lastname` FROM `users` WHERE `identifier` = ? LIMIT 1', {
+        identifier
+    })
+
+    if not row then return end
+
+    print(row.firstname, row.lastname)
+    ```
+
+  </Tabs.Tab>
+  <Tabs.Tab>
+
+    ```js
+    const row = await MySQL.single('SELECT `firstname`, `lastname` FROM `users` WHERE `identifier` = ? LIMIT 1', [
+      identifier
+    ])
+
+    if (!row) return;
+
+    console.log(row.firstname, row.lastname)
+    ```
+
+  </Tabs.Tab>
+</Tabs>
+
+**Aliases**
+
+- `exports.oxmysql.single_async`
+
+## Callback
+
+<Tabs items={['Lua', 'JS']}>
+  <Tabs.Tab>
+
+    ```lua
+    MySQL.single('SELECT `firstname`, `lastname` FROM `users` WHERE `identifier` = ? LIMIT 1', {
+        identifier
+    }, function(row)
+        if not row then return end
+
+        print(row.firstname, row.lastname)
+    end)
+    ```
+
+  </Tabs.Tab>
+  <Tabs.Tab>
+
+    ```js
+    MySQL.single('SELECT `firstname`, `lastname` FROM `users` WHERE `identifier` = ? LIMIT 1', [
+      identifier
+    ], (row) => {
+      if (!row) return;
+
+      console.log(row.firstname, row.lastname)
+    })
+    ```
+
+  </Tabs.Tab>
+</Tabs>
+
+**Aliases**
+
+- `exports.oxmysql.single`

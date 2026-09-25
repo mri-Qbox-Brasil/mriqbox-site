@@ -1,0 +1,76 @@
+---
+title: Cliente
+---
+
+Valores e funcionalidades de cache disponíveis no cliente, além dos valores [shared](../Shared).
+
+## Valores Padrão
+ - ped: `number`
+  - id da entidade do jogador
+ - playerId: `number`
+  - id do jogador
+ - serverId: `number`
+  - id do jogador no servidor
+ - weapon: `number` ou `false`
+  - hash da arma atual
+ - vehicle: `number` ou `false`
+  - id da entidade do veículo
+ - seat: `number` ou `false`
+  - índice do assento no veículo
+ - coords: `vector3`
+  - coordenadas atuais do jogador
+  - preenchido apenas se estiver usando `zones` ou `points`
+  - não pode ser ouvido com `lib.onCache`
+ - mount: `number` ou `false` (RedM only)
+  - id da montaria
+
+## lib.onCache
+
+Registra um manipulador de evento acionado quando um valor em cache é atualizado.
+
+<Tabs items={["Lua", "JS"]}>
+  <Tabs.Tab>
+    ```lua
+    lib.onCache(key, function(value) end)
+    ```
+
+    - key: `string`
+      - `ped`
+      - `vehicle`
+      - `seat`
+      - `weapon`
+      - `mount` (RedM only)
+    - value: `any`
+
+    ```lua
+    lib.onCache('vehicle', function(value)
+        print('old vehicle:', cache.vehicle)
+        print('new vehicle:', value)
+    end)
+    ```
+  </Tabs.Tab>
+  <Tabs.Tab>
+    ```ts
+    import { onCache } from '@overextended/ox_lib/client';
+
+    onCache(key, (value) => {});
+    ```
+
+    - key: `string`
+      - `ped`
+      - `vehicle`
+      - `seat`
+      - `weapon`
+      - `mount` (RedM only)
+    - value: `any`
+
+    ```ts
+    import { cache, onCache } from '@overextended/ox_lib/client';
+
+    lib.onCache('vehicle', (value) => {
+      console.log('old vehicle:', cache.vehicle);
+      console.log('new vehicle:', value);
+    });
+    ```
+  </Tabs.Tab>
+</Tabs>

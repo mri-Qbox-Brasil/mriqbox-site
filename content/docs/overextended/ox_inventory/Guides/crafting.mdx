@@ -1,0 +1,78 @@
+---
+title: Crafting
+---
+
+Locais de criação, itens e seus ingredientes são definidos em [data/crafting.lua](https://github.com/overextended/ox_inventory/blob/main/data/crafting.lua).
+
+## Definição de crafting
+
+```lua
+{
+    items = {
+        {
+            name = 'lockpick',
+            ingredients = {
+              garbage = 3,
+              WEAPON_HAMMER = 0.1
+            },
+            duration = 5000,
+            count = 3,
+            metadata = { durability = 20 }
+        },
+        {
+            name = 'garbage',
+            ingredients = {
+              cola = 1
+            },
+            metadata = { description = 'An empty soda can.', weight = 20, image = 'trash_can' }
+        },
+    },
+    points = {
+      vec3(-1147.083008, -2002.662109, 13.180260),
+    },
+    zones = {
+        {
+          label = 'Open Crafting Bench',
+          icon = 'fa-solid fa-wrench',
+          coords = vec3(-1146.2, -2002.05, 13.2),
+          size = vec3(3.8, 1.05, 0.15),
+          distance = 1.5,
+          rotation = 315.0,
+        },
+    },
+    blip = { id = 566, colour = 31, scale = 0.8 },
+},
+```
+
+- items: `tabela`
+  - name: `string`
+  - ingredients: `tabela`
+    - Os ingredientes do item podem ser vistos na dica (tooltip) do item.
+    - Pares chave-valor com o nome do item e a quantidade consumida
+      - key - Nome do item.
+      - value - Se for 1 ou maior, é a quantidade a consumir; se estiver entre 0 e 1, é a quantidade de durabilidade consumida; se for 0, o item é requerido mas não é consumido.
+  - duration: `number`
+    - Duração da criação em milissegundos.
+  - count: `number` ou `tabela` (min, max)
+    - Quantidade de itens recebida ao fabricar.
+    - Se definido como tabela, precisa de dois números: o primeiro é o mínimo e o segundo é o máximo; será gerado um número aleatório entre esses dois valores para adicionar o item fabricado ao jogador.
+  - metadata: `tabela`
+    - Metadados aplicados ao item que está sendo fabricado.
+- points: `vector3[]`
+  - Locais de interação que abrirão o inventário de crafting.
+- groups: `tabela`
+  - Pares chave-valor com o nome do job e a grade mínima para acessar o local de crafting.
+  - `{["police"] = 0, ["ambulance"] = 2}`
+- zones: `tabela`
+  - Zonas de targeting do `ox_lib` usadas pelo `ox_target`.
+  - label: `string`
+  - icon: `string`
+  - coords: `vector3`
+  - size: `vector3`
+  - distance: `number`
+  - rotation: `number`
+- blip: `tabela`
+  - id: `number`
+    - Número do sprite do blip.
+  - colour: `number`
+  - scale: `number`

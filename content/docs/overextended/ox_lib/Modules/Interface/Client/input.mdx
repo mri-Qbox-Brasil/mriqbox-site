@@ -1,0 +1,276 @@
+---
+title: Diálogo de Entrada
+---
+
+A janela de diálogo de entrada permite coletar dados do usuário através de campos de input.
+
+## lib.inputDialog
+
+<Tabs items={["Lua", "JS"]}>
+  <Tabs.Tab>
+    ```lua
+    lib.inputDialog(heading, rows, options)
+    ```
+  </Tabs.Tab>
+  <Tabs.Tab>
+    ```ts
+    import lib from '@overextended/ox_lib/client';
+
+    lib.inputDialog(heading, rows, options);
+    ```
+  </Tabs.Tab>
+</Tabs>
+
+- heading: `string`
+- rows: `string[]` ou `table` (`array`)
+  - type: `'input'` ou `'number'` ou `'checkbox'` ou `'select'` ou `'slider'` ou `'color'` ou `'multi-select'` ou `'date'` ou `'date-range'` ou `'time'` ou `'textarea'`
+- options?: `table`(`object`)
+  - allowCancel: `boolean`
+    - Se `false`, o usuário não poderá cancelar e fechar o diálogo de entrada até submetê-lo.
+    - Se não definido, o usuário poderá cancelar e fechar o diálogo de entrada.
+
+### Propriedades dos Tipos de Campo
+
+- input
+
+  - label: `string`
+  - description?: `string`
+  - placeholder?: `string`
+  - icon?: `string`
+  - required? `boolean`
+  - disabled?: `boolean`
+  - default?: `string`
+  - password?: `boolean`
+  - min?: `number`
+  - max?: `number`
+
+- number
+
+  - label: `string`
+  - description?: `string`
+  - placeholder?: `string`
+  - icon?: `string`
+  - required? `boolean`
+  - disabled?: `boolean`
+  - default?: `number`
+  - min?: `number`
+  - max?: `number`
+  - precision?:  `number`
+  - step?: `number`
+
+- checkbox
+
+  - label: `string`
+  - checked?: `boolean`
+  - disabled?: `boolean`
+  - required?: `boolean`
+
+- select and multi-select
+
+  - label: `string`
+  - options: `table`(`array`)
+    - value: `string`
+    - label?: `string`
+  - description?: `string`
+  - placeholder?: `string`
+  - icon?: `string`
+  - required? `boolean`
+  - disabled?: `boolean`
+  - default?: `string` | `table` (only for `multi-select`)
+    - valor da opção padrão.
+  - clearable?: `boolean`
+  - searchable?: `boolean`
+  - maxSelectedValues?: `number` (only for `multi-select`)
+    - Número máximo de opções que podem ser selecionadas.
+
+- slider
+
+  - label: `string`
+  - placeholder?: `string`
+  - icon?: `string`
+  - required? `boolean`
+  - disabled?: `boolean`
+  - default?: `number`
+  - min?: `number`
+  - max?: `number`
+  - step?: `number`
+
+- color
+
+  - label: `string`
+  - description?: `string`
+  - placeholder?: `string`
+  - icon?: `string`
+  - required? `boolean`
+  - disabled?: `boolean`
+  - default?: `string`
+  - format?: `'hex'` | `'hexa'` | `'rgb'` | `'rgba'` | `'hsl'` | `'hsla'`;
+
+- date
+
+  - label: `string`
+  - description?: `string`
+  - icon?: `string`
+  - required? `boolean`
+  - disabled?: `boolean`
+  - default?: `string` ou `true`
+    - `true` define por padrão a data atual
+  - format?: `string`
+    - Formato de data para exibir no campo
+  - returnString?: `boolean`
+    - Retorna a data como string; o formato padrão é `DD/MM/YYYY`, mas se `format` estiver definido ele será utilizado.
+  - clearable?: `boolean`
+  - min?: `string`
+    - "01/01/2000"
+  - max?: `string`
+    - "12/12/2023"
+
+- date-range
+
+  - label: `string`
+  - description?: `string`
+  - icon?: `string`
+  - required? `boolean`
+  - disabled?: `boolean`
+  - default?: `[string, string]`
+  - format?: `string`
+    - Formato de data para exibir no campo
+  - returnString?: `boolean`
+    - Retorna a data como string; o formato padrão é `DD/MM/YYYY`, mas se `format` estiver definido ele será utilizado.
+  - clearable?: `boolean`
+
+- time
+
+  - label: `string`
+  - description?: `string`
+  - icon?: `string`
+  - required? `boolean`
+  - disabled?: `boolean`
+  - default?: `string`
+  - format?: `'12'` ou `'24'`
+  - clearable?: `boolean`
+
+- textarea
+  - label: `string`
+  - description?: `string`
+  - placeholder?: `string`
+  - icon?: `string`
+  - required? `boolean`
+  - disabled?: `boolean`
+  - default?: `number`
+  - min?: `number`
+    - Quantidade mínima de linhas que a área de texto ocupará.
+  - max?: `number`
+    - Quantidade máxima de linhas que a área de texto pode ocupar; quando excedido, entra em overflow.
+  - autosize?: `boolean`
+    - Se `true`, a área de texto crescerá com o conteúdo até atingir o máximo de linhas.
+
+Os dados de retorno são baseados em promessas, o que significa que a execução não continuará até que o usuário envie os dados ou feche o popup.
+
+Os dados retornados serão uma tabela (array); os índices representam as linhas enviadas ao diálogo. Por exemplo, o primeiro campo está no índice `1` (`0`), o terceiro no índice `3` (`2`), etc.
+
+<Callout>
+  Tipos de campo como `date`, `date-range` e `time` retornam um timestamp Unix no valor definido.
+</Callout>
+
+## lib.closeInputDialog
+
+Fecha forçadamente o diálogo de entrada ativo e define seus dados de retorno como `nil`.
+
+<Tabs items={["Lua", "JS"]}>
+  <Tabs.Tab>
+    ```lua
+    lib.closeInputDialog()
+    ```
+  </Tabs.Tab>
+  <Tabs.Tab>
+    ```ts
+    import lib from '@overextended/ox_lib/client';
+
+    lib.closeInputDialog();
+    ```
+  </Tabs.Tab>
+</Tabs>
+
+## Exemplo de Uso
+
+### Básico
+
+<Tabs items={["Lua", "JS"]}>
+  <Tabs.Tab>
+    ```lua
+    local input = lib.inputDialog('Basic dialog', {'First row', 'Second row'})
+
+    if not input then return end
+    print(json.encode(input), input[1], input[2])
+    ```
+  </Tabs.Tab>
+  <Tabs.Tab>
+    <Callout>
+      Esta função é **assíncrona**, exigindo que você use `.then` no promise ou torne sua função `async`.
+    </Callout>
+
+    ```ts
+    const input = await lib.inputDialog('Basic dialog', ['First row', 'Second row']);
+
+    if (!input) return;
+    console.log(input, input[0], input[1]);
+    ```
+  </Tabs.Tab>
+</Tabs>
+
+![Example image](https://i.imgur.com/KnZ0sEW.png)
+
+### Advanced
+
+<Tabs items={["Lua", "JS"]}>
+  <Tabs.Tab>
+    ```lua
+    local input = lib.inputDialog('Dialog title', {
+      {type = 'input', label = 'Text input', description = 'Some input description', required = true, min = 4, max = 16},
+      {type = 'number', label = 'Number input', description = 'Some number description', icon = 'hashtag'},
+      {type = 'checkbox', label = 'Simple checkbox'},
+      {type = 'color', label = 'Colour input', default = '#eb4034'},
+      {type = 'date', label = 'Date input', icon = {'far', 'calendar'}, default = true, format = "DD/MM/YYYY"}
+    })
+
+    print(json.encode(input))
+
+    -- Obtendo valores RGB a partir do seletor de cores
+    local rgb = lib.math.torgba(input[4])
+
+    -- Transformando timestamp de data para um formato legível com a biblioteca os do Lua (apenas no servidor)
+    local timestamp = math.floor(input[5] / 1000)
+    local date = os.date('%Y-%m-%d %H:%M:%S', timestamp)
+    ```
+  </Tabs.Tab>
+  <Tabs.Tab>
+    <Callout>
+      Esta função é **assíncrona**, exigindo que você use `.then` no promise ou torne sua função `async`.
+    </Callout>
+
+    ```ts
+    const input = await lib.inputDialog('Police locker', [
+      { type: 'input', label: 'Text input', description: 'Some input description', required: true, min: 3, max: 16 },
+      { type: 'number', label: 'Number input', description: 'Some number description', icon: 'hashtag' },
+      { type: 'checkbox', label: 'Simple checkbox' },
+      { type: 'color', label: 'Colour input', default: '#eb4034' },
+      { type: 'date', label: 'Date input', icon: ['far', 'calendar'], default: true, format: 'DD/MM/YYYY' },
+    ]);
+
+    console.log(JSON.stringify(input, null, 2));
+
+    // Obtendo os valores r, g e b a partir do seletor de cores
+    const regExp = /rgb\((\d+),\s*(\d+),\s*(\d+)\)/;
+    const colourInput = input[3];
+
+    const color = regExp.exec(colourInput);
+
+    if (!color) return;
+
+    console.log(+color[1], +color[2], +color[3]);
+    ```
+  </Tabs.Tab>
+</Tabs>
+
+![Example image](https://i.imgur.com/v44YEkC.png)

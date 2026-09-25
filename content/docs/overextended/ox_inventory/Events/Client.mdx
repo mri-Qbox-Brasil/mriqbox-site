@@ -1,0 +1,82 @@
+---
+title: Client
+---
+
+Esta não é uma lista completa de eventos e alguns eventos destinados ao uso interno foram omitidos.
+
+## Event Triggers
+
+<Callout type="info">
+  Estes eventos **são seguros** para ser disparados e manipulados por outros scripts.
+</Callout>
+
+### ox_inventory:disarm
+
+Pode ser disparado para forçar o jogador a desarmar.
+
+```lua
+TriggerClientEvent('ox_inventory:disarm', playerId, noAnim)
+```
+
+- playerId: `number`
+- noAnim: `boolean`
+  - Se `true`, a animação de desarme será ignorada
+
+## Event Handlers
+
+<Callout type="warning">
+  Estes eventos **não devem** ser disparados por outros scripts.
+</Callout>
+
+### ox_inventory:updateInventory
+
+Disparado após os slots do inventário serem atualizados, incluindo no carregamento.
+`changes` é uma tabela contendo todos os dados de slots atualizados indexados por `slotId`. Slots vazios são `false`.
+
+```lua
+AddEventHandler('ox_inventory:updateInventory', function(changes) end)
+```
+
+- changes: `table<number, table | false>`
+
+### ox_inventory:currentWeapon
+
+Disparado quando o jogador equipa ou altera o metadado de uma arma.
+
+```lua
+AddEventHandler('ox_inventory:currentWeapon', function(weapon) end)
+```
+
+- weapon?: `table`
+
+### ox_inventory:itemCount
+
+Disparado quando a quantidade de um item no inventário do jogador mudar.
+_Nota: Indisponível para ESX, use esx:addInventoryItem ou esx:removeInventoryItem._
+
+```lua
+AddEventHandler('ox_inventory:itemCount', function(itemName, totalCount) end)
+```
+
+- itemName: `string`
+- totalCount: `number`
+
+### ox_inventory:updateWeaponComponent
+
+```lua
+AddEventHandler('ox_inventory:updateWeaponComponent', function(action, componentHash, componentItem) end)
+```
+
+- action: `'added' | 'removed'`
+- componentHash: `number`
+- componentItem: `string`
+
+### ox_inventory:usedItem
+
+```lua
+AddEventHandler('ox_inventory:usedItem', function(name, slotId, metadata) end)
+```
+
+- name: `string`
+- slotId: `number`
+- metadata?: `table`

@@ -1,0 +1,24 @@
+---
+title: Shared
+---
+
+## lib.getNearbyVehicles
+
+Retorna o identificador (handle) e as coordenadas de todos os veículos dentro do alcance a partir de um ponto.
+
+```lua
+lib.getNearbyVehicles(coords, maxDistance, includePlayerVehicle)
+```
+
+- coords: `vector3`
+  - Coordenadas a partir das quais será feita a verificação.
+- maxDistance?: `number`
+  - Distância máxima para verificação.
+  - Padrão: `2.0`
+- includePlayerVehicle?: `boolean`
+  - Se deve incluir o veículo atual do jogador. Ignorado no servidor.
+  - Padrão: `false`
+
+Retorno:
+
+- vehicles: `{ vehicle: number, coords: vector3 }[]`

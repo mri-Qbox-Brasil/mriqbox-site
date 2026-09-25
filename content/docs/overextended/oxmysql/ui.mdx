@@ -1,0 +1,36 @@
+---
+title: Debug UI
+---
+
+A interface de depuração permite que você veja facilmente todas as consultas que foram executadas pelos recursos, o tempo de resposta das consultas e as estatísticas por recurso.
+Você deve ativar essa interface apenas durante o desenvolvimento, ou com um número pequeno de jogadores - para servidores maiores, consulte o registro nativo de MySQL.
+
+Antes de usar a interface, você deve garantir que tenha o convar `mysql_ui` configurado como `true`:
+
+```bash
+set mysql_ui true
+```
+
+Também certifique-se de que você tenha permissão de acesso `command` ou `command.mysql`, então você deverá ser capaz de usar o comando `mysql` no jogo.
+
+<Callout type="info">
+Você não precisa ter o mysql_debug ativado para usar a interface de depuração.
+
+</Callout>
+Página principal
+A página principal exibe os recursos que executaram consultas, onde você pode filtrá-los através de uma barra de pesquisa. Além disso, mostra seus dados gerais junto a um gráfico de pizza, que indica quais recursos consumiram mais tempo de consulta.
+
+![oxmysql_ui_main](https://i.imgur.com/iQqWELJ.png)
+
+Página do recurso
+A página do recurso mostra todas as consultas e seu tempo de execução em uma tabela, das quais o recurso executou, juntamente com a quantidade total de consultas, tempo de execução e consultas lentas para o recurso selecionado.
+
+As colunas podem ser ordenadas por ordem crescente ou decrescente, e ao passar o mouse sobre uma consulta, você verá a consulta completa em uma dica de ferramenta.
+
+<Callout type="info">
+Consultas que excedem o valor de `mysql_slow_query_warning` (por padrão 150ms) são exibidas em laranja.
+Para fins de demonstração, o convar `mysql_slow_query_warning` foi configurado para 5ms aqui.
+
+</Callout>
+
+![oxmysql_ui_queries](https://i.imgur.com/gZpJoIg.png)

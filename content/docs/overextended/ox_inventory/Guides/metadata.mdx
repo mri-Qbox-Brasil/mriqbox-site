@@ -1,0 +1,114 @@
+---
+title: Metadados
+---
+
+## Metadados
+
+Metadados de itens são uma ferramenta poderosa que pode ser usada para criar vários itens diferentes a partir de um único item.
+
+Neste guia usaremos cards de Pokémon como exemplo, mas você pode encontrar um exemplo já integrado no inventário com o item `garbage`.
+
+## Criando o item base
+
+Primeiro precisamos criar um item base ao qual aplicaremos metadados.
+
+```lua filename="/data/items.lua"
+['pokemon_card'] = {
+    label = 'Pokemon card',
+    weight = 10,
+    consume = 0,
+    server = {
+        export = 'pokemon.pokemon_card'
+    }
+}
+```
+
+Neste caso definimos o `label` e o `weight` já que todos os cards pesarão o mesmo; se você não quiser que todos pesem igual, pode omitir e aplicar o peso via metadados.
+
+Também tornaremos o item utilizável chamando o export `pokemon_card` no recurso `pokemon`.
+
+```lua filename="pokemon/server.lua"
+exports('pokemon_card', function(event, item, inventory, slot, data)
+    if event == 'usingItem' then
+        local itemSlot = exports.ox_inventory:GetSlot(inventory.id, slot)
+        print(json.encode(itemSlot.metadata, {indent=true}))
+    end
+end)
+```
+
+## Propriedades especiais de metadados
+
+Você pode definir qualquer propriedade de metadado com o valor que desejar, mas existem algumas propriedades que possuem casos de uso especiais.
+
+Essas propriedades são:
+
+- label: `string`
+  - Nome exibido do item
+- weight: `number`
+  - Peso do item
+- description: `string`
+  - Descrição do item exibida no tooltip
+- image: `string`
+  - Caminho da imagem que o item usará
+- imageurl: `string`
+  - URL para a imagem que o item usará
+- type: `any`
+  - Tipo do item exibido no canto superior direito do tooltip
+
+Usaremos essas propriedades para criar nossos cards de Pokémon a partir do item `pokemon_card` que criamos anteriormente.
+
+## Criando itens via metadados
+
+Podemos criar itens com metadados definindo um hook usando [createItem](../Functions/Server/Hooks#createitem) e adicionando-o também a uma loja.
+
+```lua filename="/data/shops.lua"
+inventory = {
+    {name = 'pokemon_card', price = 300, metadata = {
+        label = 'Charizard',
+        description = 'It is said that Charizard’s fire burns hotter if it has experienced harsh battles.',
+        image = 'panties',
+        type = 'Fire',
+        hp = 78,
+        attack = 84,
+        defense = 78
+    }}
+}
+```
+
+```lua filename="pokemon/server.lua"
+local pokemonMetadata = {
+    charizard = {
+        label = 'Charizard',
+        description = 'It is said that Charizard’s fire burns hotter if it has experienced harsh battles.',
+        image = 'panties',
+        type = 'Fire',
+        hp = 78,
+        attack = 84,
+        defense = 78
+    }
+}
+
+local hookId = exports.ox_inventory:registerHook('createItem', function(payload)
+    local pokemon = pokemonMetadata[payload.metadata.type]
+    if not pokemon then return end
+    return pokemon
+end, {
+    itemFilter = {
+        pokemon_card = true
+    }
+})
+```
+
+Como visto acima, quando o item é utilizável, as propriedades de metadados estarão disponíveis e acessíveis através do slot.
+
+## Exibindo propriedades de metadados customizadas
+
+Podemos exibir as propriedades de metadados customizadas configuradas no card Charizard seja concatenando-as na descrição ou usando a função cliente [displayMetadata](../Functions/Client#displaymetadata).
+
+```lua
+exports.ox_inventory:displayMetadata({
+    hp = 'HP',
+    attack = 'ATK',
+    defense = 'DEF'
+})
+```

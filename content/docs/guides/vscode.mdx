@@ -1,0 +1,43 @@
+---
+title: VS Code
+---
+
+O Visual Studio Code é nosso editor recomendado ao trabalhar com Lua.
+
+<DownloadButton link="https://code.visualstudio.com/Download" />
+
+## Extensões recomendadas
+
+As extensões permitem que você adicione linguagens, depuradores e outras ferramentas ao VS Code, melhorando sua experiência como desenvolvedor.
+
+### sumneko.lua
+
+<Callout type="warning">
+Cuidado ao usar essa extensão com SSH no vsCode. Ela é conhecida por consumir RAM e CPU excessivamente no servidor e pode travá-lo.
+</Callout>
+
+O Lua Language Server fornece numerosos recursos de linguagem para tornar o desenvolvimento mais fácil e rápido, por exemplo:
+
+- Anotações
+- Autocompletar
+- Formatação de código
+- Diagnósticos/avisos
+- Verificação de tipo dinâmica
+- Verificação de sintaxe
+
+<div className="flex flex-wrap gap-1">
+  <GhButton link="https://github.com/LuaLS/lua-language-server" />
+  <DownloadButton link="https://marketplace.visualstudio.com/items?itemName=sumneko.lua" />
+  <DocButton link="https://github.com/LuaLS/lua-language-server/wiki" />
+</div>
+
+### overextended.cfxlua-vscode
+
+Funciona junto com o Lua Language Server para fornecer declarações de função e tipo do [runtime Lua](https://github.com/citizenfx/fivem/blob/master/code/components/citizen-scripting-lua/src/LuaScriptRuntime.cpp) da Cfx, [dialeto Lua](https://github.com/citizenfx/lua/tree/luaglm-dev/cfx), [globais de ambiente](https://github.com/citizenfx/fivem/blob/master/data/shared/citizen/scripting/lua/scheduler.lua) e nativos do jogo.
+
+![](https://user-images.githubusercontent.com/65407488/141656446-21f9105a-9371-4bb3-9089-ab672930f830.png)
+
+<div className="flex flex-wrap gap-1">
+  <GhButton link="https://github.com/overextended/cfxlua-vscode" />
+  <DownloadButton link="https://marketplace.visualstudio.com/items?itemName=overextended.cfxlua-vscode" />
+</div>

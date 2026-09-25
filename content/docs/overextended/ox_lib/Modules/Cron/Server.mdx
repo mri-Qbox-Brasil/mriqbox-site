@@ -1,0 +1,51 @@
+---
+title: Server
+---
+
+Uma implementação em Lua de cron, permitindo agendar tarefas para execução periódica em horários, datas e intervalos fixos.
+
+## Expressão Cron
+
+Uma string contendo cinco valores separados por espaços em branco, representando um conjunto de horários para executar uma tarefa.
+
+| Field        | Valores válidos        |
+| ------------ | ---------------------- |
+| Minutes      | `0-59`                 |
+| Hours        | `0-23`                 |
+| Day of month | `1-31`                 |
+| Month        | `1-12` ou `jan-dec`    |
+| Day of week  | `1-7` ou `sun-sat`     |
+
+**Nota:** O dia da semana está configurado para coincidir com `os.date` e começa em 1, diferente do padrão cron que começa em 0.
+
+### `*` Coringa
+Representa todos os valores, por exemplo `* * * * *` executará a cada minuto; ou `* * * * 1` executará a cada minuto no domingo.
+
+### `,` Listas
+Vírgulas podem ser usadas para criar uma lista de valores, por exemplo `* * * * sun,mon,tue` executará a cada minuto no domingo, segunda e terça.
+
+### `-` Intervalos
+Hífens definem um intervalo de valores, por exemplo `10-30 * * * *` iniciará a tarefa no minuto 10 e repetirá a cada minuto até o minuto 30.
+
+### `/` Passos
+Barras podem ser usadas para valores em passo, por exemplo `* */4 * * *` executará a cada 4 horas e é equivalente a `* 0,4,8,12,16,20 * * *`.
+
+## Funções
+
+### lib.cron.new
+
+Cria um novo [cronjob](https://en.wikipedia.org/wiki/Cron), agendando uma tarefa para ser executada em horários fixos ou intervalos.
+
+```lua
+lib.cron.new(expression, job, options)
+```
+
+- expression: `string`
+  - Uma expressão cron como `* * * * *` representando minuto, hora, dia, mês e dia da semana
+- job: `fun(task: OxTask, date: osdate)`
+- options?: `table`
+  - debug?: `boolean`
+
+Retorno:
+
+- task: `OxTask`

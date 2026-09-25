@@ -1,0 +1,106 @@
+---
+title: Server
+---
+
+## lib.logger
+
+```lua
+lib.logger(source, event, message, ...)
+```
+
+- source: `number` ou `string`
+  - Preferencialmente um id de player ativo, caso contrário um identificador, ou a origem do evento.
+- event: `string`
+  - Um nome para o evento de log (ex.: o evento que disparou ou uma descrição).
+- message: `string`
+  - O conteúdo do log.
+- vararg: `string`
+  - Argumentos adicionais convertidos em tags para filtragem e busca.
+
+<br />
+<u>**Exemplo**</u>
+
+```lua
+local vehicle = Ox.CreateVehicle(false, `sultanrs`, vector4(-56.479122, -1116.870362, 26.432250, 0.000030517578))
+lib.logger(-1, 'CreateVehicle', json.encode(vehicle))
+```
+
+## Datadog
+
+<Steps>
+  ### Crie sua conta no [Datadog](https://www.datadoghq.com/)
+  Você receberá um teste gratuito de 14 dias; caso contrário, consulte o guia de [preços](https://www.datadoghq.com/pricing/).
+  Contas gratuitas têm limitações, porém os logs ainda serão retidos por 14 dias.
+
+  ### Crie uma [chave de API](https://app.datadoghq.com/organization-settings/api-keys)
+
+  Esta é um UUID usado para enviar logs para sua organização no Datadog.
+
+  ### Configuração
+
+  Defina sua chave de API e o [Datadog site](https://docs.datadoghq.com/getting_started/site/) usando os seguintes convars.
+
+  ```bash
+  set datadog:key "yourapikey"
+  set datadog:site "datadoghq.com"
+  ```
+</Steps>
+
+
+## Grafana Loki
+
+Loki é um sistema de agregação de logs, escalável horizontalmente, altamente disponível e multi-tenant, inspirado pelo Prometheus.
+Foi projetado para ser econômico e fácil de operar.
+
+<Tabs items={["Cloud", "Self-hosted"]}>
+  <Tabs.Tab>
+    - Possui tier gratuito com algumas restrições
+    - Fácil de gerenciar
+    - Mais fácil de configurar
+    - Principalmente gerenciado pela Grafana
+
+    <Steps>
+      ### Crie sua conta em [Grafana](https://grafana.com/)
+      ### Acesse [My Account](https://grafana.com/auth/sign-in/?plcmt=top-nav&cta=myaccount)
+      ### Configure o Loki
+      Encontre a seção do Loki no painel da sua conta e clique em "Details".
+      Gere uma senha e salve a chave de API, bem como seu `user` e `url`.
+    </Steps>
+  </Tabs.Tab>
+  <Tabs.Tab>
+    Para configurar uma instância Grafana você precisará de Docker e conhecimento em containers ou Kubernetes.
+    Procure um guia para configurar uma stack Grafana (requisito mínimo: Grafana e Grafana Loki) e siga-o.
+
+    Uma vez pronto, configure a autenticação e utilize o usuário e senha para proteger seu endpoint.
+
+    - Por padrão, instâncias Loki self-hosted não fornecem camadas de autenticação e exigirão uma camada externa, como NGINX basic auth ou Cloudflare Access.
+  </Tabs.Tab>
+</Tabs>
+
+  ### Configuração
+  Use os seguintes convars para definir seu serviço de logging, endpoint e detalhes de autenticação.
+
+  ```bash
+  set ox:logger "loki"
+  set loki:user "<insert your user>"
+  set loki:password "<insert the api key or password>"
+  set loki:endpoint "<insert loki url without http:// or https://>"
+  ```
+
+
+## Fivemanage
+[Fivemanage](https://fivemanage.com/?ref=overextended) é uma solução SaaS tudo-em-um, fácil de usar, para servidores de jogos que fornece logging.
+
+<Steps>
+    ### Crie uma conta
+    Inscreva-se em [Fivemanage](https://fivemanage.com/?ref=overextended).
+    ### Certifique-se de ter o plano `Hobby` ou `Pro`.
+    Você terá um teste gratuito de 14 dias se não possuir uma assinatura; mais informações estão disponíveis [aqui](https://fivemanage.com/profile/billing?ref=overextended) e na página de [preços](https://fivemanage.com/pricing?ref=overextended).
+    ### Crie um novo token
+    Será necessário criar um novo token com o tipo `Logs`.
+    ### Configuração
+  ```bash
+  set ox:logger "fivemanage"
+  set fivemanage:key "YOUR_API_KEY"
+  ```
+</Steps>

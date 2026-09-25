@@ -1,0 +1,55 @@
+name: Snapshot Stats
+
+# Amostra o uso atual dos recursos MRI (via 5metrics) e acumula a serie em
+# data/stats-history.json. A home renderiza o grafico a partir desse arquivo.
+#
+# Cada commit dispara um redeploy (Vercel / GitHub Pages), entao o intervalo e
+# um equilibrio entre frescor do grafico e numero de builds. A cada 3h -> 8
+# pontos/dia. Ajuste o cron se quiser mais/menos granularidade.
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 */3 * * *"
+
+# Nao concorre com si mesmo (commita no mesmo branch).
+concurrency:
+  group: stats-snapshot
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Coletar snapshot
+        run: node .release/snapshot-stats.js
+
+      - name: Commit e push se houver mudancas
+        run: |
+          git config user.name 'github-actions'
+          git config user.email 'github-actions@github.com'
+          git add data/stats-history.json
+
+          if git diff --cached --quiet; then
+            echo "Sem mudancas para commitar."
+            exit 0
+          fi
+
+          git commit -m "chore(stats): snapshot de uso dos recursos MRI"
+
+          for i in 1 2 3 4 5; do
+            git push && exit 0
+            git pull --rebase origin "${GITHUB_REF_NAME}" || exit 1
+            sleep $((i * 3))
+          done
+          exit 1

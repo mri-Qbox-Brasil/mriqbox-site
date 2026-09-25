@@ -1,0 +1,67 @@
+---
+title: Configurações da Porta
+---
+
+## Geral
+
+- Nome da porta
+  - Usado para identificar facilmente a porta.
+- Código de acesso
+  - A porta pode ser desbloqueada por qualquer pessoa usando o código ou frase.
+- Intervalo de autolock
+  - A porta será trancada após x segundos.
+- Distância de interação
+  - A porta só pode ser usada quando estiver a x metros de distância.
+- Taxa da porta
+  - Velocidade de movimento da porta para portas deslizantes/garaus/automáticas ou portas de abrir quando trancadas.
+- Trancada
+  - Define a porta como trancada por padrão.
+- Dupla
+  - A porta é um conjunto de duas portas, controladas juntas.
+- Automática
+  - Porta deslizante/garaus/automática.
+- Arrombamento
+  - A porta pode ser arrombada ao interagir com um recurso de mira.
+- Ocultar UI
+  - Nenhum indicador (ou seja, ícone, texto) será exibido na porta.
+- Manter aberta
+  - Mantém a porta aberta enquanto estiver desbloqueada.
+
+## Personagens
+
+- Id do personagem
+  - Identificador do personagem usado por um framework (ou seja, player.charid, xPlayer.identifier, Player.CitizenId).
+
+## Grupos
+
+- Grupo
+  - Dependente do framework, referindo-se a empregos, gangues, etc.
+- Grau
+  - O grau mínimo para permitir acesso ao grupo (0 para permitir todos).
+
+## Itens
+
+- Item
+  - Nome do item.
+- Tipo de metadata
+  - Requer suporte a metadata (ou seja, ox_inventory) para verificar slot.metadata.type.
+- Remover ao usar
+  - Remove o item após interagir com a porta.
+
+## Arrombamento
+
+- Dificuldade
+  - Define a dificuldade do teste de habilidade (veja [documentos](../ox_lib/Modules/Interface/Client/skillcheck)).
+- Tamanho da área
+  - Tamanho da área de dificuldade personalizada em graus.
+- Multiplicador de velocidade
+  - Multiplicador de velocidade do indicador de dificuldade personalizado.
+
+## Som
+
+- Som de trancamento
+  - Som a ser reproduzido ao trancar a porta.
+- Som de desbloqueio
+  - Som a ser reproduzido ao desbloquear a porta.
+
+*Nota*: Os sons são armazenados no diretório `./web/public/sounds`.

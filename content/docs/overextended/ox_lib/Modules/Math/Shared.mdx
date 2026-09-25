@@ -1,0 +1,192 @@
+---
+title: Shared
+---
+
+## lib.math
+
+Estende a tabela padrão `math` do Lua com funções adicionais.
+
+```
+math = lib.math
+```
+
+### math.toscalars
+
+Recebe uma string e retorna um conjunto de valores escalares.
+
+```lua
+math.toscalars(input, min, max, round)
+```
+
+- input: `string`
+- min?: `number`
+- max?: `number`
+- round?: `boolean`
+
+Retorno:
+
+- ...: `number`
+
+### math.tovector
+
+Recebe uma string ou tabela e retorna um valor `vector`, ou um número se apenas um valor for encontrado.
+
+```lua
+math.tovector(input, min, max, round)
+```
+
+- input: `string` ou `table`
+- min?: `number`
+- max?: `number`
+- round?: `boolean`
+
+Retorno:
+
+- value: `number` ou `vector2` ou `vector3` ou `vector4`
+
+### math.normaltorotation
+
+Recebe uma normal de superfície e tenta convertê-la em uma rotação `vector3`.
+
+```lua
+math.normaltorotation(input)
+```
+
+- input: `vector3`
+
+Retorno:
+
+- value: `vector3`
+
+### math.torgba
+
+Recebe uma string ou tabela e retorna um valor `vector`, ou um número se apenas um valor for encontrado.
+Os valores são arredondados e devem estar no intervalo de 0 a 255.
+
+```lua
+math.torgba(input)
+```
+
+- input: `string` ou `table`
+
+Retorno:
+
+- value: `number` ou `vector2` ou `vector3` ou `vector4`
+
+### math.hextorgb
+
+Recebe uma string hexadecimal e retorna três inteiros.
+
+```lua
+math.hextorgb(input)
+```
+
+- input: `string`
+  - Um valor hexadecimal, por exemplo `'eb4034'`.
+
+Retorno:
+
+- r: `number`
+- g: `number`
+- b: `number`
+
+### math.tohex
+
+Recebe um número ou string e formata como uma string hexadecimal.
+
+```lua
+math.tohex(n, upper)
+```
+
+- n: `number` ou `string`
+- upper?: `boolean`
+
+Retorno:
+
+- hex: `string`
+
+
+### math.groupdigits
+
+Recebe um número e formata seus dígitos em grupos.
+
+```lua
+math.groupdigits(number, seperator)
+```
+
+- number: `number`
+- seperator?: `string`
+  - Padrão: `,`
+
+Retorno:
+
+- groupedDigits: `string`
+
+### math.clamp
+
+Limita um número entre um limite inferior e superior.
+
+```lua
+math.clamp(number, lower, upper)
+```
+
+- number: `number`
+- lower: `number`
+- upper: `number`
+
+Retorno:
+
+- number: `number`
+
+### math.round
+
+Arredonda um número para inteiro ou para o número especificado de casas decimais.
+
+```lua
+math.round(value, places)
+```
+
+- value: `number` | `string`
+- places?: `number` | `string`
+
+Retorno:
+
+- roundedValue: `number`
+
+### math.interp
+
+Calcula um valor intermediário entre `start` e `finish` com base no fator de interpolação `factor`.
+
+```lua
+math.interp(start, finish, factor)
+```
+
+- generic `T`: `number` | `vector2` | `vector3` | `vector4`
+- start: `T`
+- finish: `T`
+- factor: `number`
+  - Fator de interpolação entre 0 e 1.
+
+Retorno:
+
+- result: `T`
+
+### math.lerp
+
+Interpola linearmente entre dois valores ao longo de uma duração especificada, retornando uma função iteradora que será executada uma vez por frame do jogo.
+
+```lua
+math.lerp(start, finish, duration)
+```
+
+- generic `T`: `number` | `table` | `vector2` | `vector3` | `vector4`
+- start: `T`
+  - Valor inicial da interpolação
+- finish: `T`
+  - Valor final da interpolação
+- duration: `number`
+  - Duração, em milissegundos, sobre a qual interpolar.
+
+Retorno:
+
+- iteratorFunction: `fun(): T, number`
