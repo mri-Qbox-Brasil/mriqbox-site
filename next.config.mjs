@@ -11,6 +11,16 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
+  // /recursos (lista de scripts) saiu no redesign; o equivalente agora e a
+  // secao de resources da doc. O `output: export` do GitHub Pages nao suporta
+  // redirects, entao so entram no build da Vercel.
+  ...(!isGithubPages && {
+    async redirects() {
+      return [
+        { source: "/recursos", destination: "/docs/mri/resources", permanent: true },
+      ]
+    },
+  }),
   ...(isGithubPages && {
     output: "export",
     basePath: "/mriqbox-site",
