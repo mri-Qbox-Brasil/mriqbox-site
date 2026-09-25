@@ -20,6 +20,10 @@ on:
 
 # Compartilha o grupo com o update-doc: os dois commitam no mesmo branch e nao
 # podem correr juntos.
+# Commita as docs no proprio branch; o token padrao do repo e so leitura.
+permissions:
+  contents: write
+
 concurrency:
   group: docs-ingest
   cancel-in-progress: false

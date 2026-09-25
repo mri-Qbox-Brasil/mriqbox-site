@@ -28,6 +28,10 @@ on:
 # Varios repos podem notificar ao mesmo tempo. Sem isto, os jobs concorrentes
 # commitam e dao push no mesmo branch, e todos menos um falham com
 # non-fast-forward. Serializa em vez de cancelar: cada notificacao importa.
+# Commita as docs no proprio branch; o token padrao do repo e so leitura.
+permissions:
+  contents: write
+
 concurrency:
   group: docs-ingest
   cancel-in-progress: false
