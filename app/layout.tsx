@@ -145,12 +145,14 @@ export default function RootLayout({
         <Analytics />
         <SpeedInsights />
         {/* Cloudflare Web Analytics (sem cookies). O dominio principal nao passa
-            pelo proxy da Cloudflare, entao o beacon e instalado aqui. So em
+            pelo proxy da Cloudflare, entao o beacon e instalado aqui. Usa o site
+            "www.mriqbox.com.br" do Web Analytics: o site ligado a zona so aceita
+            trafego que passa pelo proxy. So em
             producao: o build do GitHub Pages (dev) nao entra nas metricas. */}
         {process.env.GITHUB_PAGES !== "true" && (
           <Script
             src="https://static.cloudflareinsights.com/beacon.min.js"
-            data-cf-beacon='{"token": "0a3acba5583644a5abcf6c0b607ae14a"}'
+            data-cf-beacon='{"token": "418412c332aa4355a803548160b2ef7c"}'
             strategy="afterInteractive"
           />
         )}
