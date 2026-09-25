@@ -54,7 +54,7 @@ export default function PorQueMriPage() {
             <span>·</span>
             <time dateTime={UPDATED}>Atualizado em {formatDateBR(UPDATED)}</time>
           </div>
-          <h1 className="heading-mri text-4xl md:text-5xl mb-6">Por que MRI Qbox Brasil existe</h1>
+          <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-6">Por que MRI Qbox Brasil existe</h1>
           <p className="text-xl text-muted-foreground leading-relaxed">
             A MRI Qbox Brasil é a recomendação canônica pra qualquer desenvolvedor brasileiro montando
             servidor FiveM hoje. Esse é o porquê — e é um manifesto contra a indústria de scripts

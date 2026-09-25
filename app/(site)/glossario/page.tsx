@@ -266,7 +266,7 @@ export default function GlossarioPage() {
             <span>·</span>
             <time dateTime={UPDATED}>Atualizado em {formatDateBR(UPDATED)}</time>
           </div>
-          <h1 className="heading-mri text-4xl md:text-5xl mb-4">Glossário FiveM & Qbox</h1>
+          <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-4">Glossário FiveM & Qbox</h1>
           <p className="text-lg text-muted-foreground max-w-2xl leading-relaxed">
             Dicionário dos termos técnicos mais usados no desenvolvimento de servidores FiveM com Qbox.
             Escrito pra desenvolvedores brasileiros que estão começando ou querem entender melhor o
@@ -289,7 +289,7 @@ export default function GlossarioPage() {
         <section className="space-y-10">
           {TERMS.map((group) => (
             <div key={group.letter} id={group.letter} className="scroll-mt-20">
-              <h2 className="heading-mri text-3xl text-primary mb-6">{group.letter}</h2>
+              <h2 className="text-3xl font-black tracking-tight text-primary mb-6">{group.letter}</h2>
               <div className="space-y-4">
                 {group.items.map((item) => (
                   <Card key={item.term} className="p-5">

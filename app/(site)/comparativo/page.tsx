@@ -146,7 +146,7 @@ export default function ComparativoPage() {
             <span>·</span>
             <time dateTime={UPDATED}>Atualizado em {formatDateBR(UPDATED)}</time>
           </div>
-          <h1 className="heading-mri text-4xl md:text-5xl mb-4">Comparativo de frameworks FiveM</h1>
+          <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-4">Comparativo de frameworks FiveM</h1>
           <p className="text-lg text-muted-foreground max-w-3xl leading-relaxed">
             Qual framework escolher pro seu servidor FiveM de roleplay? Análise objetiva entre{" "}
             <strong className="text-foreground">MRI Qbox</strong>,{" "}
@@ -183,7 +183,7 @@ export default function ComparativoPage() {
         </section>
 
         <section className="mb-12">
-          <h2 className="heading-mri text-3xl mb-6">Tabela comparativa</h2>
+          <h2 className="text-3xl font-black tracking-tight mb-6">Tabela comparativa</h2>
           <div className="overflow-x-auto">
             <table className="w-full text-sm border-collapse">
               <thead>

@@ -2,7 +2,6 @@ import Link from "next/link"
 import Image from "next/image"
 import type { Metadata } from "next"
 import { ChevronDown, CheckCircle2, Zap, Shield, Code, ArrowRight, Github, Coffee, Download } from "lucide-react"
-import { Navbar } from "@/components/navbar"
 import { faqPage, jsonLd } from "@/lib/schema"
 import { InstallerMockup } from "./components/InstallerMockup"
 import { ParceiroCarousel } from "./components/ParceiroCarousel"
@@ -307,7 +306,6 @@ export default async function HomePage() {
     <div className="min-h-screen bg-background text-foreground font-sans relative overflow-hidden flex flex-col">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(faqPage(FAQ_ITEMS)) }} />
 
-      <Navbar />
 
       {/* Hero Section (Centered like Nexatlas) */}
       <section className="relative w-full pt-[180px] pb-[60px] px-6 flex flex-col items-center justify-center text-center">
@@ -635,45 +633,6 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="w-full border-t border-white/5 bg-background">
-        <div className="max-w-[1440px] mx-auto px-6 md:px-12 py-20 flex flex-col lg:flex-row justify-between gap-16">
-
-          {/* Brand & Newsletter */}
-          <div className="flex flex-col gap-8 max-w-sm">
-            <Link href="/" className="flex items-center gap-3">
-              <Image src="https://assets.mriqbox.com.br/branding/logo96.png" alt="Logo" width={36} height={36} />
-              <span className="font-bold text-xl text-white">MRI Qbox</span>
-            </Link>
-            <p className="text-muted-foreground text-sm leading-relaxed">
-              Uma base FiveM open source para criar sem limites. Feita no Brasil para cidades que querem ir além.
-            </p>
-          </div>
-
-          {/* Links Grid */}
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-12 lg:gap-24">
-            <div className="flex flex-col gap-4">
-              <h4 className="text-sm font-bold text-white tracking-wider uppercase mb-2">Projeto</h4>
-              <Link href="/sobre" className="text-sm text-muted-foreground hover:text-white transition-colors">Sobre nós</Link>
-              <Link href="/comecar" className="text-sm text-muted-foreground hover:text-white transition-colors">Artifacts DB</Link>
-              <Link href="/docs" className="text-sm text-muted-foreground hover:text-white transition-colors">Documentação</Link>
-              <Link href="https://tela.mriqbox.com.br" target="_blank" rel="noopener noreferrer" className="text-sm text-muted-foreground hover:text-white transition-colors">Compartilhar Tela</Link>
-            </div>
-            <div className="flex flex-col gap-4">
-              <h4 className="text-sm font-bold text-white tracking-wider uppercase mb-2">Comunidade</h4>
-              <Link href="/discord" className="text-sm text-muted-foreground hover:text-white transition-colors">Discord</Link>
-              <Link href="https://github.com/mri-Qbox-Brasil" className="text-sm text-muted-foreground hover:text-white transition-colors">GitHub</Link>
-              <Link href="https://www.patreon.com/mriQboxBrasil" className="text-sm text-muted-foreground hover:text-white transition-colors">Patreon</Link>
-            </div>
-            <div className="flex flex-col gap-4 col-span-2 md:col-span-1">
-              <h4 className="text-sm font-bold text-white tracking-wider uppercase mb-2">Legal</h4>
-              <Link href="/privacidade" className="text-sm text-muted-foreground hover:text-white transition-colors">Privacidade</Link>
-              <Link href="/termos" className="text-sm text-muted-foreground hover:text-white transition-colors">Termos de Uso</Link>
-              <span className="text-xs text-muted-foreground/60 mt-4">© {new Date().getFullYear()} MRI Qbox Brasil.<br />Licença GPL-3.0.</span>
-            </div>
-          </div>
-        </div>
-      </footer>
     </div>
   )
 }

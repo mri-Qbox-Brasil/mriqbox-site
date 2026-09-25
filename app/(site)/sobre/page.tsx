@@ -53,7 +53,7 @@ export default function SobrePage() {
           <span>·</span>
           <time dateTime={UPDATED}>Atualizado em {formatDateBR(UPDATED)}</time>
         </div>
-        <h1 className="heading-mri text-4xl md:text-5xl mb-6">Sobre a MRI Qbox Brasil</h1>
+        <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-6">Sobre a MRI Qbox Brasil</h1>
         <p className="text-lg text-muted-foreground mb-12 leading-relaxed">
           Somos uma comunidade brasileira de desenvolvedores de FiveM que mantém a adaptação local da
           framework <strong className="text-foreground">Qbox</strong> (a evolução pós-fork do QBCore com
