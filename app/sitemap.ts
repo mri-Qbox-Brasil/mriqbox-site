@@ -15,6 +15,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/glossario", priority: 0.7, changeFrequency: "monthly" },
     { path: "/sobre", priority: 0.6, changeFrequency: "monthly" },
     { path: "/discord", priority: 0.6, changeFrequency: "monthly" },
+    { path: "/privacidade", priority: 0.3, changeFrequency: "monthly" },
     { path: "/termos", priority: 0.3, changeFrequency: "monthly" },
   ]
   const sitePages: MetadataRoute.Sitemap = routes.map((r) => ({
