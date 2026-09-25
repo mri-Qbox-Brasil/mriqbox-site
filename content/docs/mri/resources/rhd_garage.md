@@ -1,5 +1,5 @@
 ---
-title: RHD Garage
+title: rhd_garage
 ---
 
 Sistema de garagens com criador in-game: garagens públicas, de job/gang, compartilhadas, de casa, barcos, aeronaves, pátio da polícia e loja de veículos de serviço.
