@@ -3,7 +3,8 @@
 import Link from "next/link"
 import Image from "next/image"
 import { useState } from "react"
-import { Github, Menu, X } from "lucide-react"
+import { Menu, X } from "lucide-react"
+import { Github } from "@/components/icons/github"
 
 // Links secundarios (Compartilhar Tela, Apoiar, Comparativo, Glossario...) ficam
 // so no footer, pra manter o nav enxuto.

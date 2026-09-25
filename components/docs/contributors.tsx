@@ -1,7 +1,8 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { Github, Coffee } from "lucide-react"
+import { Coffee } from "lucide-react"
+import { Github } from "@/components/icons/github"
 
 interface Contributor {
   id: number | string

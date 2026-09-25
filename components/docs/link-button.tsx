@@ -1,7 +1,8 @@
 "use client"
 
 import React, { useEffect, useState } from "react"
-import { Github, Tag, FileText, Download, Package } from "lucide-react"
+import { Tag, FileText, Download, Package } from "lucide-react"
+import { Github } from "@/components/icons/github"
 import { cn } from "@/lib/utils"
 
 interface Props {

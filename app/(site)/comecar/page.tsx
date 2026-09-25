@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import Link from "next/link"
-import { AlertTriangle, ArrowLeft, CheckCircle2, Download, Github, Monitor, Server } from "lucide-react"
+import { AlertTriangle, ArrowLeft, CheckCircle2, Download, Monitor, Server } from "lucide-react"
+import { Github } from "@/components/icons/github"
 import { Button } from "@/components/ui/button"
 import { breadcrumb, jsonLd } from "@/lib/schema"
 import { getArtifactsDb } from "@/lib/artifacts-db"

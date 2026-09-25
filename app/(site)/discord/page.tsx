@@ -1,7 +1,8 @@
 import Link from "next/link"
 import Image from "next/image"
 import type { Metadata } from "next"
-import { Headphones, Mail, ArrowRight, Github } from "lucide-react"
+import { Headphones, Mail, ArrowRight } from "lucide-react"
+import { Github } from "@/components/icons/github"
 
 export const metadata: Metadata = {
   title: "Discord MRI Qbox Brasil | Suporte e comunidade FiveM",
