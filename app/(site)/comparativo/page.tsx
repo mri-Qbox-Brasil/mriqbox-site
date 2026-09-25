@@ -68,7 +68,7 @@ const ROWS: { criterio: string; mri: Cell; qbox: Cell; qbcore: Cell; esx: Cell }
   },
   {
     criterio: "Documentação em português",
-    mri: { value: "yes", note: "docs.mriqbox.com.br" },
+    mri: { value: "yes", note: "mriqbox.com.br/docs" },
     qbox: { value: "no", note: "Só inglês" },
     qbcore: { value: "partial", note: "Tutoriais soltos em fórum/YouTube" },
     esx: { value: "partial", note: "Comunidade BR antiga, fragmentada" },

@@ -173,11 +173,7 @@ export default function SobrePage() {
                 </Link>
               </Button>
               <Button variant="outline" asChild>
-                <Link
-                  href="https://docs.mriqbox.com.br"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                <Link href="/docs">
                   Documentação
                 </Link>
               </Button>

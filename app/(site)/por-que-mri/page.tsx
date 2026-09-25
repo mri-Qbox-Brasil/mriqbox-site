@@ -97,14 +97,9 @@ export default function PorQueMriPage() {
               A solução real não é cobrar caro pra traduzir docs alheias — é{" "}
               <strong className="text-foreground">manter documentação técnica de qualidade em
               português, aberta, atualizada</strong>. Isso é exatamente o que tem em{" "}
-              <a
-                href="https://docs.mriqbox.com.br"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-primary hover:underline"
-              >
-                docs.mriqbox.com.br
-              </a>
+              <Link href="/docs" className="text-primary hover:underline">
+                mriqbox.com.br/docs
+              </Link>
               .
             </p>
           </Card>
@@ -150,14 +145,9 @@ export default function PorQueMriPage() {
                 {" "}— framework + 7 scripts complementares
               </li>
               <li>
-                <a
-                  href="https://docs.mriqbox.com.br"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-primary hover:underline"
-                >
+                <Link href="/docs" className="text-primary hover:underline">
                   Documentação técnica completa
-                </a>
+                </Link>
                 {" "}em português
               </li>
               <li>
