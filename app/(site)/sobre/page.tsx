@@ -140,15 +140,10 @@ export default function SobrePage() {
             <h2 className="text-2xl font-bold text-foreground mb-3">Como nos sustentamos</h2>
             <p>
               O projeto é mantido pela equipe da MRI Qbox Brasil em tempo voluntário. Os custos de
-              infraestrutura (domínio, CDN, hosting da documentação) são cobertos por apoiadores via{" "}
-              <a
-                href="https://www.patreon.com/mriQboxBrasil"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-primary hover:underline"
-              >
-                Patreon
-              </a>
+              infraestrutura (domínio, CDN, hosting da documentação) são cobertos pelo{" "}
+              <Link href="/apoie" className="text-primary hover:underline">
+                apoio mensal (Mercado Pago ou Patreon)
+              </Link>
               {" "}e pela receita de anúncios no site. Tudo que entra é reinvestido em ferramentas e
               documentação.
             </p>

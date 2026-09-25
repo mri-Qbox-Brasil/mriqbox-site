@@ -27,7 +27,7 @@ export function Footer() {
             <Link href="/sobre" className={LINK}>Sobre nós</Link>
             <Link href="/comecar" className={LINK}>Artifacts DB</Link>
             <Link href="/docs" className={LINK}>Documentação</Link>
-          <Link href="https://tela.mriqbox.com.br" target="_blank" rel="noopener noreferrer" className={LINK}>Compartilhar Tela</Link>
+            <Link href="https://tela.mriqbox.com.br" target="_blank" rel="noopener noreferrer" className={LINK}>Compartilhar Tela</Link>
           </div>
           {/* Páginas de conteúdo/SEO — existiam desde o site antigo mas tinham
               ficado sem nenhum link interno (só no sitemap). */}
@@ -41,7 +41,7 @@ export function Footer() {
             <h4 className={TITLE}>Comunidade</h4>
             <Link href="/discord" className={LINK}>Discord</Link>
             <Link href="https://github.com/mri-Qbox-Brasil" className={LINK}>GitHub</Link>
-            <Link href="https://www.patreon.com/mriQboxBrasil" className={LINK}>Patreon</Link>
+            <Link href="/apoie" className={LINK}>Nos apoie</Link>
           </div>
           <div className="flex flex-col gap-4 col-span-2 md:col-span-1">
             <h4 className={TITLE}>Legal</h4>

@@ -4,7 +4,7 @@ import { createFromSource } from "fumadocs-core/search/server"
 // Busca Orama, sem Algolia. Conteúdo em pt-BR: usa o stemmer português (melhora
 // a relevância vs o default english).
 //
-// - Vercel: busca no servidor — o browser manda a query e recebe só os
+// - Vercel: busca no servidor. O browser manda a query e recebe só os
 //   resultados. O índice estático passou do limite de 19 MB por página
 //   pré-renderizada da Vercel depois que os ~120 manuais entraram.
 // - GitHub Pages (output: export): não há servidor, então o índice é gerado no

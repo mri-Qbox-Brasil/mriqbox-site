@@ -228,14 +228,9 @@ export default function PorQueMriPage() {
             </ol>
             <p className="mt-3">
               Se quiser apoiar financeiramente o tempo voluntário e a infraestrutura,{" "}
-              <a
-                href="https://www.patreon.com/mriQboxBrasil"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-primary hover:underline"
-              >
-                Patreon
-              </a>{" "}
+              <Link href="/apoie" className="text-primary hover:underline">
+                o apoio mensal (Mercado Pago ou Patreon)
+              </Link>{" "}
               é o canal — mas nenhum acesso é exclusivo de quem paga. Tudo continua grátis pra todos.
             </p>
           </Card>
