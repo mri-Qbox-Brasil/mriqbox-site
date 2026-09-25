@@ -29,4 +29,4 @@ npm run start
 
 - Discord: https://discord.mriqbox.com.br
 - GitHub: https://github.com/mri-Qbox-Brasil
-- Docs: https://docs.mriqbox.com.br
+- Docs: https://mriqbox.com.br/docs

@@ -79,7 +79,7 @@ export const metadata: Metadata = {
 
 // JSON-LD Schema.org — sinaliza pros crawlers (Google, AdSense reviewer) que
 // somos uma organizacao real com presenca em multiplos canais. Ajuda a unir
-// mriqbox.com.br + docs.mriqbox.com.br + GitHub + Discord sob uma mesma marca.
+// mriqbox.com.br (site + docs) + GitHub + Discord sob uma mesma marca.
 const ORGANIZATION_SCHEMA = {
   "@context": "https://schema.org",
   "@type": "Organization",
@@ -92,7 +92,6 @@ const ORGANIZATION_SCHEMA = {
   sameAs: [
     "https://github.com/mri-Qbox-Brasil",
     "https://discord.mriqbox.com.br",
-    "https://docs.mriqbox.com.br",
     "https://tela.mriqbox.com.br",
     "https://www.patreon.com/mriQboxBrasil",
   ],
