@@ -1,4 +1,4 @@
-# Documentação (Fumadocs) — notas
+# Documentação (Fumadocs): notas
 
 A documentação mora neste repo, sob `/docs` (Fumadocs). A migração do Nextra
 (`docs-mriqbox`, hoje arquivado) está concluída.
@@ -15,7 +15,7 @@ A documentação mora neste repo, sob `/docs` (Fumadocs). A migração do Nextra
   `content/docs/mri/resources/<slug>.md` e regenera o `meta.json`.
 - `.github/workflows/sync-all-docs.yml` reconcilia o catálogo inteiro
   (`docs-repos.json`, no repo `workflows`) toda segunda e via
-  `workflow_dispatch` — rede de segurança para avisos perdidos.
+  `workflow_dispatch`, como rede de segurança para avisos perdidos.
 - Os dois usam o `GH_TOKEN` da organização para ler os manuais (há repo
   `-source` privado) e o `GITHUB_TOKEN` (`contents: write`) para dar push.
 

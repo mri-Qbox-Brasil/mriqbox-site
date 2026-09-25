@@ -6,14 +6,18 @@ import { useState } from "react"
 import { Menu, X } from "lucide-react"
 import { Github } from "@/components/icons/github"
 
-// Links secundarios (Compartilhar Tela, Apoiar, Comparativo, Glossario...) ficam
-// so no footer, pra manter o nav enxuto.
+// Links secundarios (Manifesto, Sobre, Comparativo, Glossario...) ficam so no
+// footer, pra manter o nav enxuto.
 const NAV_LINKS = [
   { href: "/docs", label: "Documentação" },
   { href: "/comecar", label: "Artifacts DB" },
-  { href: "/por-que-mri", label: "Manifesto" },
-  { href: "/sobre", label: "Sobre" },
+  { href: "https://tela.mriqbox.com.br", label: "Compartilhar Tela", external: true },
+  { href: "/apoie", label: "Nos apoie" },
 ]
+
+// Links externos abrem em nova aba.
+const linkTarget = (l: { external?: boolean }) =>
+  l.external ? { target: "_blank", rel: "noopener noreferrer" } : {}
 
 const GITHUB_URL = "https://github.com/mri-Qbox-Brasil"
 
@@ -32,7 +36,7 @@ export function Navbar() {
         {/* Desktop Links */}
         <div className="hidden lg:flex items-center gap-6">
           {NAV_LINKS.map((l) => (
-            <Link key={l.href} href={l.href} className="text-xs font-bold uppercase tracking-wider text-white hover:text-primary transition-colors">{l.label}</Link>
+            <Link key={l.href} href={l.href} {...linkTarget(l)} className="text-xs font-bold uppercase tracking-wider text-white hover:text-primary transition-colors">{l.label}</Link>
           ))}
         </div>
 
@@ -61,7 +65,7 @@ export function Navbar() {
       {isOpen && (
         <div className="fixed top-[90px] left-1/2 -translate-x-1/2 w-[90%] max-w-[1100px] z-40 bg-card/95 backdrop-blur-xl border border-white/10 rounded-2xl p-6 flex flex-col gap-4 shadow-2xl lg:hidden animate-in slide-in-from-top-4 fade-in">
           {NAV_LINKS.map((l) => (
-            <Link key={l.href} href={l.href} onClick={() => setIsOpen(false)} className="text-sm font-bold uppercase tracking-wider text-white hover:text-primary transition-colors py-2 border-b border-white/5">{l.label}</Link>
+            <Link key={l.href} href={l.href} {...linkTarget(l)} onClick={() => setIsOpen(false)} className="text-sm font-bold uppercase tracking-wider text-white hover:text-primary transition-colors py-2 border-b border-white/5">{l.label}</Link>
           ))}
           <Link href={GITHUB_URL} onClick={() => setIsOpen(false)} target="_blank" rel="noopener noreferrer" className="text-sm font-bold uppercase tracking-wider text-white hover:text-primary transition-colors py-2 border-b border-white/5 flex items-center gap-2">
             <Github className="w-4 h-4" /> GitHub
