@@ -32,6 +32,23 @@ function getServerSnapshot(): Consent {
   return null
 }
 
+// Dentro de iframe (ex.: pagina Documentacao do painel admin in-game) o
+// AdSense nao carrega: o CEF do FiveM desenha o iframe do anuncio fora do
+// recorte do painel e ele fica preso na tela. Nunca muda durante a vida da
+// pagina, entao o subscribe e vazio. No servidor e na hidratacao o valor e
+// `true` (nao carrega); no client passa a refletir a janela real.
+function subscribeNoop() {
+  return () => {}
+}
+
+function getEmbeddedSnapshot(): boolean {
+  return window.self !== window.top
+}
+
+function getEmbeddedServerSnapshot(): boolean {
+  return true
+}
+
 // AdSense + banner LGPD.
 //
 // Estrategia: o script do AdSense (adsbygoogle.js) carrega SEMPRE, em
@@ -45,6 +62,7 @@ function getServerSnapshot(): Consent {
 // quando o user aceita). Por ora, modelo dos publishers BR padrao.
 export function CookieConsent() {
   const consent = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot)
+  const embedded = useSyncExternalStore(subscribeNoop, getEmbeddedSnapshot, getEmbeddedServerSnapshot)
 
   const choose = useCallback((value: Exclude<Consent, null>) => {
     localStorage.setItem(STORAGE_KEY, value)
@@ -53,13 +71,15 @@ export function CookieConsent() {
 
   return (
     <>
-      {/* AdSense sempre on — necessario pra aprovacao + tracking de impressoes. */}
-      <Script
-        async
-        src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_CLIENT}`}
-        crossOrigin="anonymous"
-        strategy="afterInteractive"
-      />
+      {/* AdSense sempre on fora de iframe: necessario pra aprovacao + tracking de impressoes. */}
+      {!embedded && (
+        <Script
+          async
+          src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_CLIENT}`}
+          crossOrigin="anonymous"
+          strategy="afterInteractive"
+        />
+      )}
 
       {consent === null && (
         <div className="fixed bottom-0 inset-x-0 z-50 border-t border-border bg-card/95 backdrop-blur-sm">
