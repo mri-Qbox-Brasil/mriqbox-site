@@ -17,7 +17,7 @@ export function ServersPreview() {
         <div>
           <h2 className="text-3xl font-bold text-white tracking-tight">Servidores rodando MRI agora</h2>
           <p className="text-[15px] text-white/40 mt-2">
-            Cidades que usam scripts da MRI Qbox, pelos jogadores conectados.
+            Cidades que usam scripts da MRI Qbox. Obrigado a todas por manterem os créditos!
           </p>
         </div>
         <Link

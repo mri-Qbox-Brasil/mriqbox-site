@@ -1,6 +1,6 @@
 import type { Metadata } from "next"
 import Link from "next/link"
-import { ArrowLeft, Server } from "lucide-react"
+import { ArrowLeft, Heart, Server } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { ServerCard } from "@/components/server-card"
 import { breadcrumb, jsonLd } from "@/lib/schema"
@@ -70,6 +70,20 @@ export default function ServidoresPage() {
             </a>
             , atualizados a cada 3 horas. Última atualização: {fmtUpdated(mriServersUpdatedAt)}.
           </p>
+        </div>
+
+        {/* Os servidores só são detectados pelo nome original do recurso, então
+            quem aparece aqui é quem manteve os créditos. */}
+        <div className="mb-12 flex gap-4 rounded-2xl border border-primary/30 bg-primary/5 p-6">
+          <Heart className="h-6 w-6 shrink-0 text-primary" />
+          <div>
+            <h2 className="font-bold text-foreground mb-1">Obrigado por manterem os créditos</h2>
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              Cada cidade desta lista usa os scripts da MRI Qbox com o nome original, mantendo os
+              créditos de quem desenvolveu. É isso que nos permite mostrar o alcance do projeto e
+              continuar oferecendo tudo de graça e open source. Valeu demais!
+            </p>
+          </div>
         </div>
 
         {online.length > 0 && (
