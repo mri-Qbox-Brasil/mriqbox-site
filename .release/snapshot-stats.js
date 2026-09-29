@@ -7,10 +7,12 @@
 // Roda via GitHub Action (snapshot-stats.yml), que commita os dois arquivos. A
 // home e a pagina /servidores so leem esses arquivos, sem chamar o 5metrics.
 //
-// Quais recursos contam: todo repo da org que NAO e fork e comeca com "mri_"
-// (o sufixo "-source" dos repos privados sai do nome). Forks ficam de fora de
-// proposito: o 5metrics identifica recurso pelo nome, e um fork tem o mesmo
-// nome do original, entao contaria servidores que nao usam a MRI.
+// Quais recursos contam: todo repo da org que comeca com "mri_" (o sufixo
+// "-source" dos repos privados sai do nome), inclusive forks. O 5metrics
+// identifica recurso pelo nome, e os forks da org foram renomeados com o
+// prefixo mri_ (ex.: qw_objectspawner -> mri_Qobjects), entao quem roda esse
+// nome esta usando a versao da MRI. Fork que manteve o nome do original nao
+// comeca com mri_ e fica de fora.
 //
 // Numeros sem repeticao: um servidor que roda varios recursos MRI entra uma
 // vez so, com os jogadores dele contados uma vez.
@@ -40,7 +42,7 @@ async function listMriResources() {
     if (!res.ok) throw new Error(`GitHub: HTTP ${res.status}`)
     const repos = await res.json()
     for (const r of repos) {
-      if (!r.fork && /^mri_/i.test(r.name)) names.add(r.name.replace(/-source$/i, ""))
+      if (/^mri_/i.test(r.name)) names.add(r.name.replace(/-source$/i, ""))
     }
     if (repos.length < 100) break
   }
