@@ -1,0 +1,773 @@
+---
+title: mri_Qadmin-source
+---
+
+Painel de administração para servidores QBCore/Qbox: jogadores, veículos, itens, permissões por grupo, staff chat, logs, mapa e telas ao vivo, navegador de recursos e uma arquitetura de plugins para outros recursos se plugarem ao painel.
+
+---
+
+## Sumário
+
+1. [Dependências](#dependências)
+2. [Instalação](#instalação)
+3. [Permissões (ACE)](#permissões-ace)
+4. [Configuração](#configuração)
+5. [Comandos](#comandos)
+6. [Teclas](#teclas)
+7. [Painel — abas](#painel--abas)
+8. [Grupos e Master Admin](#grupos-e-master-admin)
+9. [Logs](#logs)
+10. [Navegador de recursos](#navegador-de-recursos)
+11. [Telas ao vivo (WebRTC)](#telas-ao-vivo-webrtc)
+12. [Ações customizadas](#ações-customizadas)
+13. [Plugins](#plugins)
+14. [Banco de dados](#banco-de-dados)
+15. [Integrações](#integrações)
+16. [Entrypoints para outros recursos](#entrypoints-para-outros-recursos)
+17. [Localização](#localização)
+18. [Estrutura de arquivos](#estrutura-de-arquivos)
+
+---
+
+## Dependências
+
+| Recurso | Obrigatório | Observação |
+|---|---|---|
+| `ox_lib` | Sim | Declarado em `dependencies`. Comandos, callbacks, keybinds, locale, ACE (`lib.addAce`/`lib.addPrincipal`) |
+| `oxmysql` | Sim | Declarado em `dependencies`. Grupos, permissões, logs, chat, settings, ações |
+| `qb-core` / `qbx_core` | Sim | `exports['qb-core']:GetCoreObject()` é chamado em vários arquivos do servidor. Fonte de jogadores, jobs, gangues, dinheiro e metadata |
+| `ox_inventory` | Não | Detectado automaticamente. Alternativas: `ps-inventory`, `lj-inventory`, `qb-inventory` (padrão) |
+| `cdn-fuel` | Não | Configurável em `Config.Fuel`. Alternativas: `ps-fuel`, `LegacyFuel`, `ox_fuel` |
+| `qbx_vehicleshop` | Não | Necessário para o sistema de estoque quando `Config.Dealership = "mri"` |
+| `mri_Qsignaling` | Não | Só quando `Config.SignalingProvider = "websocket"` (telas ao vivo) |
+
+---
+
+## Instalação
+
+1. Copie a pasta `mri_Qadmin` para `resources/`.
+2. Adicione ao `server.cfg`, depois de `ox_lib`, `oxmysql` e do framework:
+   ```
+   ensure mri_Qadmin
+   ```
+3. **SQL** — as tabelas são criadas automaticamente no start (`server/db.lua` lê e executa o `database.sql`). Importar na mão é opcional.
+4. **Primeiro acesso** — nenhum jogador tem acesso ao painel por padrão. Pelo console do servidor, promova alguém a Master Admin:
+   ```
+   mri_qadmin.setmaster 1
+   ```
+   O Master Admin ignora todas as checagens e consegue abrir o painel para criar os grupos definitivos.
+5. **Escrita em outros recursos** (opcional) — para o navegador de arquivos poder salvar em recursos de terceiros, libere cada um no `server.cfg`:
+   ```
+   add_filesystem_permission mri_Qadmin write <nome_do_resource>
+   ```
+   Veja [Navegador de recursos](#navegador-de-recursos).
+6. **Patch do ox_lib** (opcional) — para que logs de outros recursos feitos com `lib.logger` apareçam no painel, veja [ox_lib (logger)](#ox_lib-logger).
+
+---
+
+## Permissões (ACE)
+
+Todas as permissões nativas usam o prefixo `qadmin.`. O servidor é a única fonte de verdade: as definições vivem em `server/permissions.lua` e são enviadas para a NUI, que apenas renderiza o que recebe.
+
+| Prefixo | Finalidade |
+|---|---|
+| `qadmin.open` | Abrir o painel. É o valor padrão de `Config.OpenPanelPerms` |
+| `qadmin.master` | Bypass total — ignora todas as checagens |
+| `qadmin.page.*` | Acesso a cada aba (`qadmin.page.players`, `qadmin.page.vehicles`, …) |
+| `qadmin.action.*` | Cada ação executável dentro das abas (`qadmin.action.noclip`, `qadmin.action.ban`, …) |
+| `qadmin.commands` | Acesso à lista de comandos |
+
+A referência completa, permissão por permissão, está em [PERMISSIONS.md](PERMISSIONS.md).
+
+Na prática, as permissões não são escritas no `server.cfg`: elas são atribuídas a **grupos** pelo próprio painel, gravadas no banco e reaplicadas com `lib.addAce` a cada start. Um grupo pode ser vinculado a principals do FiveM (`group.admin`, `job.police`, `gang.ballas`) para herança automática, ou a personagens específicos (`char:<citizenid>`).
+
+---
+
+## Configuração
+
+Arquivo: `shared/config.lua`.
+
+| Campo | Tipo | Obrigatório | Descrição |
+|---|---|---|---|
+| `Config.Fuel` | string | Sim | Recurso de combustível: `cdn-fuel`, `ps-fuel`, `LegacyFuel` ou `ox_fuel` |
+| `Config.Dealership` | string | Sim | Concessionária: `mri` (estoque via `qbx_vehicleshop`), `ps-dealerships` ou `none` |
+| `Config.Inventory` | string | — | **Detectado automaticamente** no start e a cada start de inventário. Ordem: `ox_inventory` → `ps-inventory` → `lj-inventory` → `qb-inventory` (padrão) |
+| `Config.OpenPanelPerms` | array | Sim | Permissões que liberam a abertura do painel. Padrão: `{ 'qadmin.open' }` |
+| `Config.RenewedPhone` | bool | Não | Ative se usar o qb-phone do Renewed (multijob) |
+| `Config.SupportedLanguages` | array | Sim | Idiomas oferecidos na UI. Padrão: `pt-br`, `en`, `es` |
+| `Config.Keybindings` | bool | Não | Liga/desliga as duas keybinds do recurso |
+| `Config.AdminKey` | string | Não | Tecla que abre o painel. Padrão: `0` |
+| `Config.NoclipKey` | string | Não | Tecla que alterna o noclip. Padrão: `9` |
+| `Config.PrintLevel` | string | Não | Verbosidade do console: `none`, `error`, `warn`, `info`, `verbose` ou `debug` |
+| `Config.AceMaster` | bool | Não | Quem tem ACE `admin` ou `god` é master do painel (padrão `true`) |
+| `Config.FirstMasterClaim` | bool | Não | Painel sem master nem grupos: o primeiro com ACE `admin`/`god` que abrir vira master (padrão `false`) |
+| `Config.QBNotify` | bool | Não | Usa `QBCore.Functions.Notify` nas notificações |
+| `Config.InternalNotify` | bool | Não | Usa o sistema de notificação interno do painel |
+| `Config.DefaultGarage` | string | Não | Garagem usada ao dar um veículo permanente. Padrão: `Pillbox Garage Parking` |
+| `Config.VehicleImages` | string | Não | URL base para as imagens de veículos. Vazio usa o padrão |
+| `Config.MapBaseUrl` | string | Não | URL base dos tiles do mapa ao vivo |
+| `Config.SignalingProvider` | string | Não | Backend das telas ao vivo: `fivem-native`, `websocket` ou `cloudflare-sfu` |
+| `Config.WebRTCUrl` | string | Não | URL WebSocket. Só usada com `SignalingProvider = "websocket"` |
+| `Config.Actions` | tabela | Não | Ações customizadas genéricas — ver [Ações customizadas](#ações-customizadas) |
+| `Config.PlayerActions` | tabela | Não | Ações customizadas exibidas no contexto de um jogador |
+| `Config.OtherActions` | tabela | Não | Demais ações customizadas |
+| `Config.Logs` | tabela | Sim | Configuração de logs — ver [Logs](#logs) |
+| `Config.Descriptions` | tabela | — | Chaves de locale usadas como descrição de cada campo na aba Configurações |
+| `Config.Options` | tabela | — | Valores possíveis dos campos `select` da aba Configurações |
+
+Boa parte desses campos também é editável pela aba **Configurações** do painel, sem restart — os valores alterados ali são gravados na tabela `mri_qadmin_settings` e passam a ter precedência sobre o arquivo.
+
+---
+
+## Comandos
+
+| Comando | Permissão | Descrição |
+|---|---|---|
+| `/adm` | `qadmin.open` | Abre o painel |
+| `/nc` | `qadmin.action.noclip` | Alterna o noclip |
+| `/vector2`, `/vec2` | `qadmin.action.toggle_coords` | Copia a posição atual como `vector2` |
+| `/vector3`, `/vec3` | `qadmin.action.toggle_coords` | Copia a posição atual como `vector3` |
+| `/vector4`, `/vec4` | `qadmin.action.toggle_coords` | Copia a posição atual como `vector4` (com heading) |
+| `/heading` | `qadmin.action.toggle_coords` | Copia o heading atual |
+| `/setammo` | `qadmin.action.set_ammo` | Define 999 de munição na arma equipada |
+| `mri_qadmin.setmaster <alvo>` | Console | Concede Master Admin. Aceita ID online, `license` ou `license2` |
+| `mri_qadmin.removemaster <alvo>` | Console | Revoga Master Admin |
+| `mri_qadmin.purgemasters` | Console | Remove todos os Master Admins do banco e da sessão |
+| `mri_qadmin.debugperms <id>` | Console | Imprime o diagnóstico de permissões de um jogador |
+| `mri_qadmin.inspectdb` | Console | Inspeciona as tabelas de permissão em busca de linhas escondidas |
+
+Os cinco comandos `mri_qadmin.*` só respondem quando `source == 0`, ou seja, **apenas pelo console** do servidor — não há como executá-los pelo chat, mesmo sendo admin.
+
+---
+
+## Teclas
+
+| Tecla (padrão) | Ação |
+|---|---|
+| `0` (`Config.AdminKey`) | Executa `/adm` — abre o painel |
+| `9` (`Config.NoclipKey`) | Executa `/nc` — alterna o noclip |
+
+As duas são keybinds do `ox_lib` (`mri:toogleAdmin` e `mri:toogleNoclip`), reatribuíveis pelo jogador nas configurações do FiveM. `Config.Keybindings = false` desativa as duas.
+
+---
+
+## Painel — abas
+
+Cada aba é gated por sua própria permissão `qadmin.page.*` e cada ação dentro dela por uma `qadmin.action.*`.
+
+| Aba | Permissão | Conteúdo |
+|---|---|---|
+| Dashboard | `qadmin.page.dashboard` | Visão geral: jogadores online, uptime, estatísticas financeiras (exige `qadmin.action.info_admin`), anúncios e controle do chat |
+| Jogadores | `qadmin.page.players` | Lista de online e offline, com busca, filtros e paginação. Identifiers, vitais, inventário, coordenadas e bucket; teleporte (ir, trazer, voltar, para coordenada/local); moderação (matar, expulsar, advertir, banir, desbanir, algemar, congelar, silenciar, embriagar); personagem (job/gangue, dinheiro, model do ped, roupas, inventário) |
+| Veículos | `qadmin.page.vehicles` | Estoque e spawn. Spawnar temporário, dar permanente, deletar, consertar, abastecer, modificar, trocar placa, alterar estoque |
+| Itens | `qadmin.page.items` | Base de itens com spawn direto no inventário de qualquer jogador online |
+| Staff Chat | `qadmin.page.staffchat` | Chat interno da equipe, com menções `@[Nome]` e alerta para o mencionado |
+| Grupos | `qadmin.page.groups` | Vínculo de personagens e principals a grupos |
+| Permissões | `qadmin.page.permissions` | Editor de grupos: categorias e checkboxes vindas do servidor, vinculação de principals e wizard de criação |
+| Comandos | `qadmin.page.commands` | Lista de comandos disponíveis para o jogador |
+| Ações | `qadmin.page.actions` | Ações customizadas (ver seção própria) |
+| Recursos | `qadmin.page.resources` | Start/stop/restart de recursos e navegador de arquivos |
+| Configurações | `qadmin.page.settings` | Editor visual das opções do `Config`, sem editar arquivo |
+| Mapa ao Vivo | `qadmin.page.livemap` | Posição de todos os jogadores em tempo real, com filtros |
+| Telas ao Vivo | `qadmin.page.livescreens` | Transmissão da tela dos jogadores via WebRTC |
+| Dev Mode | `qadmin.page.devmode` | Coordenadas na tela, blips de jogadores, scanner de entidades próximas, laser, modo mock |
+
+---
+
+## Grupos e Master Admin
+
+### Grupos
+
+Um grupo (`mri_qadmin_groups`) é um conjunto de permissões (`mri_qadmin_group_permissions`) com um label. As permissões do grupo são aplicadas como ACE via `lib.addAce` a cada start do recurso.
+
+Um grupo pode ser alcançado de três formas:
+
+- **Principal do FiveM** — vinculando o grupo a `group.admin`, `job.police`, `gang.ballas` etc.
+- **Personagem** — vinculando um `citizenid` diretamente (`mri_qadmin_character_groups`).
+### Master Admin
+
+Status especial que ignora toda checagem de permissão. Três formas de ser master:
+
+- **ACE do servidor** (`Config.AceMaster = true`, padrão): quem tem a ACE `admin` ou `god` (ex.: está no `group.admin` do `permissions.cfg`) é master, sempre. Não grava nada no banco.
+- **Console**: `mri_qadmin.setmaster`, gravado em `mri_qadmin_masters` (por license) e reaplicado como ACE a cada start.
+- **Primeiro a abrir** (`Config.FirstMasterClaim = true`, desligado por padrão): enquanto o painel não tem master nem ninguém em grupo, o primeiro com ACE `admin`/`god` que abrir o painel vira master e fica gravado no banco.
+
+O antigo `QBCoreAutoSync` era esse "primeiro a abrir" e foi substituído pelo `FirstMasterClaim`; o valor dele que ficou salvo no banco não tem mais efeito.
+
+```
+mri_qadmin.setmaster 1                  # por ID online
+mri_qadmin.setmaster license:abcd1234   # por license
+mri_qadmin.removemaster 1
+mri_qadmin.purgemasters                 # limpa todos do banco
+```
+
+Use para o primeiro acesso e para recuperação — não como cargo do dia a dia.
+
+---
+
+## Logs
+
+O painel centraliza os logs do servidor. Cada log tem `resource`, `category`, `level`, `message` e um `data` opcional. O buffer em memória (exibição instantânea) recebe todo log, sempre; a partir dele, cada log pode seguir para até quatro destinos independentes: banco (`mri_qadmin_logs`), webhook do Discord, evento de relay e Fivemanage.
+
+```lua
+Config.Logs = {
+    Webhooks = {
+        players     = "",   -- bans, kicks, revives
+        bans        = "",
+        inventory   = "",
+        vehicles    = "",
+        money       = "",
+        server      = "",   -- clima, hora, anúncios
+        permissions = "",
+        chat        = "",
+        system      = "",
+        Fallback    = "",   -- recebe as categorias sem webhook próprio
+    },
+    ForwardEvent    = "",           -- evento de servidor disparado a cada log ("" desativa)
+    Fivemanage = {
+        Token   = "",               -- token de LOGS da Fivemanage
+        Enabled = false,            -- liga o envio
+        Mirror  = false,            -- painel lê o histórico da Fivemanage em vez do banco
+        Dataset = "",               -- opcional; precisa já existir no painel deles
+    },
+    DBEnabled       = true,
+    MaxMemory       = 500,          -- quantidade de logs mantidos em memória
+    ResourceMode    = 'blacklist',  -- 'blacklist' | 'whitelist'
+    ResourceEntries = {},           -- { name = 'meu_resource', db = true, discord = false, relay = true, fm = true }
+    Categories      = { … },        -- id + label das categorias exibidas no painel
+}
+```
+
+| Campo | Descrição |
+|---|---|
+| `Webhooks.<categoria>` | URL do webhook do Discord da categoria. Vazio desativa o envio daquela categoria |
+| `Webhooks.Fallback` | Recebe as categorias que não têm webhook próprio |
+| `ForwardEvent` | Nome de um evento de servidor disparado a cada log — permite que outro recurso consuma o fluxo |
+| `Fivemanage` | Envio para a Fivemanage e, opcionalmente, leitura do histórico de lá — ver abaixo |
+| `DBEnabled` | Persiste os logs em `mri_qadmin_logs` |
+| `MaxMemory` | Tamanho do buffer em memória (os N logs mais recentes) |
+| `ResourceMode` | `blacklist`: recursos não listados passam. `whitelist`: só os listados são processados |
+| `ResourceEntries` | Override por recurso — permite decidir, por recurso, se vai para o banco, para o Discord, para o `ForwardEvent` e para a Fivemanage |
+| `Categories` | `id` (precisa bater com a categoria usada no `AddLog`) e `label` exibido no painel |
+
+Cada categoria e cada entrada de `ResourceEntries` tem uma flag por destino. Para um destino ser usado, **categoria e recurso precisam permitir** — a lógica é E, não OU:
+
+| Flag | Padrão | Destino |
+|---|---|---|
+| `db` | `true` | Banco (`mri_qadmin_logs`) |
+| `discord` | `false` | Webhook da categoria (ou o `Fallback`) |
+| `relay` | `false` | `ForwardEvent` |
+| `fm` | `true` | Fivemanage (sem efeito se `Fivemanage.Enabled = false`) |
+
+Uma categoria com `disabled = true` não vai para destino nenhum, mas **continua aparecendo no painel em tempo real** — o buffer em memória é anterior a qualquer filtro.
+
+As categorias e destinos também são editáveis em runtime pela aba de configurações de logs; o que for salvo lá tem precedência sobre o `Config` (arquivo `logs_settings.json`).
+
+**Discord.** Os envios são agrupados: até 10 embeds ou ~5800 caracteres por requisição, na ordem de prioridade das categorias (a posição no array `Categories`). A fila fica em `server/logs_queue.json` e sobrevive a restart; o retry respeita o header `retry-after` do HTTP 429.
+
+**qb-log.** O evento `qb-log:server:CreateLog` é interceptado automaticamente: a categoria é inferida pelo conteúdo da mensagem e o log entra no fluxo normal. Recursos legados não precisam de adaptação.
+
+Para receber logs de recursos que usam `lib.logger` do `ox_lib`, veja [ox_lib (logger)](#ox_lib-logger).
+
+### Fivemanage
+
+Serve para não guardar log em duas bases. São duas coisas, e a segunda depende da primeira:
+
+- **Envio** (`Enabled`): os logs vão também para a Fivemanage, em paralelo aos outros destinos.
+- **Modo espelho** (`Mirror`): o painel passa a ler o **histórico** de lá em vez do banco. O feed em tempo real não muda — ele sempre veio do buffer em memória.
+
+O token precisa ser de **Logs**. Um token de Media/Files é recusado em todos os endpoints de log, tanto no envio quanto na leitura. `Dataset` é opcional e, se preenchido, precisa já existir no dashboard da Fivemanage: um nome desconhecido derruba o lote inteiro.
+
+Ligar o espelho muda três comportamentos do painel — o filtro de recurso vira exato (em vez de busca parcial), o de categoria aceita uma por vez, e a retenção do histórico passa a ser a do seu plano na Fivemanage. Um meio-termo comum é manter `db = true` só nas categorias sensíveis (`bans`, `permissions`) e mandar o resto só para a Fivemanage; a lógica por categoria já permite isso sem código novo.
+
+O envio usa fila própria (`server/logs_fm_queue.json`), em lotes de até 50, e trata as respostas assim:
+
+| Resposta | Ação |
+|---|---|
+| 2xx | Lote sai da fila |
+| 401 / 403 / 400 | **Permanente** — a fila é descartada e o erro aparece no console e no painel |
+| Demais | Retry com backoff exponencial, mantendo a fila |
+
+Descartar em 401/400 é proposital: reenviar não conserta token errado, e uma fila que só cresce é pior que log perdido. A fila também tem teto de 5000 entradas.
+
+Categoria e busca de texto disputam o mesmo parâmetro na API deles. Quando os dois estão ativos, a busca vai para a API e a categoria é filtrada no servidor, varrendo até 5 páginas de 100 — se o teto for atingido, o painel avisa que o total é um piso, nunca mostra número aproximado como se fosse exato. Falha de consulta também vira erro visível, não lista vazia.
+
+> Só aparece no espelho o que tem o destino `fm` ligado. Categoria com `fm = false` e `Mirror = true` fica invisível no histórico.
+
+---
+
+## Navegador de recursos
+
+A aba Recursos lista todos os recursos do servidor, permite start/stop/restart e traz um navegador de arquivos: explorar pastas, abrir e editar arquivos de texto, criar e excluir arquivos e pastas.
+
+**Escrita e o sandbox do FiveM.** Desde os artifacts > 25770, o FiveM bloqueia a escrita de um recurso nos arquivos de **outro** recurso. Na prática:
+
+- **Leitura e navegação funcionam em todos os recursos.**
+- **Salvar, criar e excluir** só funcionam nos arquivos do próprio `mri_Qadmin` ou em recursos liberados explicitamente:
+  ```
+  add_filesystem_permission mri_Qadmin write <nome_do_resource>
+  ```
+  Uma linha por recurso — o FiveM não aceita wildcard. Depois de adicionar, **reinicie o `mri_Qadmin`** para reavaliar.
+
+Quando o recurso não é gravável, o painel mostra um aviso de "somente leitura" com a linha exata a colar no `server.cfg` e desabilita os controles de escrita. A exclusão exige `qadmin.action.change_resource` **e** `qadmin.action.resource_delete`.
+
+---
+
+## Telas ao vivo (WebRTC)
+
+Transmissão da tela de um jogador para o painel, para monitoramento. O backend de sinalização é escolhido em `Config.SignalingProvider`:
+
+| Valor | Como funciona |
+|---|---|
+| `fivem-native` | Sinalização pelos próprios eventos do FiveM. Padrão, não exige nada extra |
+| `websocket` | Usa um servidor de sinalização externo. Requer `Config.WebRTCUrl` apontando para o `mri_Qsignaling` (porta 3002 por padrão) |
+| `cloudflare-sfu` | Usa o SFU da Cloudflare |
+
+---
+
+## Ações customizadas
+
+`Config.Actions`, `Config.PlayerActions` e `Config.OtherActions` permitem declarar botões próprios no painel, que disparam eventos ou comandos. As ações padrão ficam em `data/default_actions.lua` (carregado via `LoadResourceFile`) e as criadas pelo painel são persistidas em `mri_qadmin_actions`.
+
+O servidor valida o payload de cada ação antes de executá-la — só eventos explicitamente permitidos passam.
+
+---
+
+## Plugins
+
+Outros recursos podem registrar uma aba própria no sidebar do painel e adicionar suas permissões ao editor de grupos.
+
+```lua
+-- no server-side do plugin (ex.: mri_Qspawn/server/main.lua)
+exports['mri_Qadmin']:RegisterPlugin({
+    id            = 'spawns',                  -- slug lógico do plugin
+    label         = 'Spawns',
+    icon          = 'car',                     -- ícone lucide-react
+    resource      = 'mri_Qspawn',              -- NOME DO RESOURCE (monta a URL cfx-nui-<resource>)
+    htmlPath      = 'web/build/index.html',    -- opcional
+    requiredPerms = { 'mri_Qspawn.admin', 'command' },
+    permDefs      = {                          -- opcional: metadados por permissão
+        { id = 'mri_Qspawn.admin', label = 'Administrador', desc = 'Acesso total ao painel de spawns' },
+    },
+    description   = 'Gerenciador de spawns',
+    defaultRoute    = 'plugin:spawns',         -- opcional: página do painel (default `plugin:<id>`)
+    defaultPage     = 'lista',                 -- opcional: página INTERNA do plugin
+    defaultCategory = 'veiculos',              -- opcional: categoria/aba inicial
+})
+```
+
+- `id` e `resource` são coisas diferentes: `id` é o slug do plugin, `resource` é o nome do recurso usado para montar a URL do iframe.
+- A visibilidade é **OR**: o plugin aparece para quem tiver **qualquer uma** das `requiredPerms`. Sem `requiredPerms`, aparece para todos.
+- A checagem usa `HasPerms`, então honra o Master Admin e os principals estendidos (`char:`, `job.`, `gang.`).
+- Permissões válidas das `requiredPerms` (as que têm ponto e não são built-ins do FiveM, como `command`) entram automaticamente no editor de grupos, em uma categoria com o nome do plugin.
+- Quando o recurso do plugin para, o Qadmin o remove do registry automaticamente.
+
+### Abrir e fechar o painel na página do plugin
+
+Registrado o plugin, ele mesmo abre e fecha o painel já na sua página — o admin não precisa procurar a aba no sidebar. O destino sai do próprio manifest (`defaultRoute` / `defaultPage`); sem esses campos, cai na convenção `plugin:<id>`.
+
+No **cliente** do plugin (retorno síncrono, dá pra reagir ao erro):
+
+```lua
+local ok, reason = exports['mri_Qadmin']:OpenPlugin('spawns')
+if not ok then print('nao abriu:', reason) end        -- razoes na tabela abaixo
+
+exports['mri_Qadmin']:TogglePlugin('spawns')          -- abre; fecha se já estiver na página dele
+exports['mri_Qadmin']:ClosePlugin('spawns')           -- só fecha se a página ativa for a do plugin
+exports['mri_Qadmin']:ClosePlugin()                   -- fecha o painel de qualquer jeito
+local aberto = exports['mri_Qadmin']:IsPluginOpen('spawns')
+```
+
+No **servidor** do plugin, quando a decisão nasce lá (comando, webhook, evento de negócio):
+
+```lua
+local ok, reason = exports['mri_Qadmin']:OpenPluginForPlayer(source, 'spawns')
+exports['mri_Qadmin']:TogglePluginForPlayer(source, 'spawns')
+exports['mri_Qadmin']:ClosePluginForPlayer(source, 'spawns')
+```
+
+| Razão | Quando acontece | Quem devolve |
+| :--- | :--- | :--- |
+| `invalid_id` | veio um `pluginId` que não é string não-vazia | todos |
+| `not_registered` | o plugin não existe **ou** o jogador não pode vê-lo | `Open` · `Toggle` · `Close(id)` |
+| `no_permission` | falta `qadmin.open` — ou, nos exports de servidor, as `requiredPerms` do plugin | `Open` · `Toggle` |
+| `already_closed` | o painel já estava fechado | `Close` |
+| `not_active` | o painel está aberto, mas em outra página | `Close(id)` |
+| `invalid_source` | `source` inválido | só os exports `*ForPlayer` |
+
+`not_registered` cobrir dois casos é de propósito: o Qadmin não conta a um plugin se o admin *poderia* enxergar outro. `IsPluginOpen` é a exceção do contrato — devolve só um booleano, sem razão.
+
+Sobrescrevendo o destino por chamada — e apontando para o lugar exato da tela:
+
+```lua
+exports['mri_Qadmin']:OpenPlugin('spawns', {
+    route    = 'plugin:spawns',  -- página do painel
+    page     = 'editor',         -- página interna do plugin
+    category = 'veiculos',       -- categoria/aba dentro da página
+    focus    = 'campo-placa',    -- componente que a tela deve focar
+})
+```
+
+| Campo | O que faz | Manifest |
+| :--- | :--- | :--- |
+| `route` | Página do painel (`plugin:<id>` ou uma página nativa) | `defaultRoute` |
+| `page` | Página interna do plugin | `defaultPage` |
+| `category` | Categoria/aba dentro da página | `defaultCategory` |
+| `focus` | Componente que recebe foco, scroll e realce — **exige marcação prévia** | — (só por chamada) |
+
+`route`, `page`, `category` e `focus` são independentes: dá pra pedir só a categoria, só o foco, ou os quatro. Os campos `default*` valem também na abertura manual pelo sidebar — `focus` não tem equivalente no manifest de propósito, senão o realce piscaria toda vez que o admin abrisse a aba.
+
+**Nas páginas nativas do painel**, `category` seleciona a aba e `focus` leva a tela até o componente:
+
+| Rota | `category` aceitos |
+| :--- | :--- |
+| `settings` | `general`, `server`, `wall` |
+| `permissions` | `groups`, `players` |
+| `actions` | `all`, `favorites`, `manager`, `All`, `Actions`, `PlayerActions`, `OtherActions` |
+
+O `focus` procura, nesta ordem, `[data-nav-id="<focus>"]`, `#<focus>` e `[name="<focus>"]`; achando, faz scroll até o elemento, dá foco nele e aplica um realce de ~2s.
+
+> **Hoje nenhum componente nativo do painel carrega qualquer um dos três marcadores**, então `focus` em página nativa tenta por 2s (20 × 100ms) e desiste em silêncio — sem erro e sem efeito. O mecanismo está pronto, o catálogo de alvos é que ainda não existe: marcar os componentes é trabalho pendente, não configuração do integrador. Até lá, `focus` só entrega valor em página de plugin, onde o guest implementa a navegação. Para tornar um componente alcançável, adicione `data-nav-id="<id>"` a ele.
+
+**Nas páginas de plugin**, o Qadmin não mexe no DOM do iframe: os três campos chegam ao plugin pelo postMessage `mri-plugin/navigate` (e no `mri-plugin/init`, quando o plugin abre direto neles). Navegar internamente é responsabilidade do plugin:
+
+```ts
+// no guest (plugin)
+window.addEventListener('message', (event) => {
+  const msg = event.data
+  if (msg?.type !== 'mri-plugin/navigate') return
+  if (msg.page) setPage(msg.page)
+  if (msg.category) setCategory(msg.category)
+  if (msg.focus) document.querySelector(`[data-nav-id="${msg.focus}"]`)?.scrollIntoView({ block: 'center' })
+})
+```
+
+- O gate para **abrir** é o mesmo do `/adm`: `qadmin.open` **mais** as `requiredPerms` do plugin (o plugin só chega ao cliente se já passou pelo filtro por ACE do servidor). Nos exports de servidor a checagem roda lá, com `HasPerms`, antes de qualquer coisa chegar ao cliente. **Fechar não é privilégio** — `ClosePlugin`/`ClosePluginForPlayer` não exigem permissão.
+- **O painel avisa quando some da tela.** Como o iframe não desmonta mais, o guest recebe `mri-plugin/visibility` com `visible: false` ao fechar e `true` ao reabrir — é por ali que o plugin pausa o polling e os streams dele. Não confunda com `mri-plugin/close`: fechar **preserva** o estado, não manda limpar.
+
+```ts
+window.addEventListener('message', (event) => {
+  if (event.data?.type !== 'mri-plugin/visibility') return
+  event.data.visible ? retomarPolling() : pausarPolling()
+})
+```
+
+- **Fechar não descarta o que estava preenchido.** O painel é escondido, não desmontado: reabrir pelo `OpenPlugin` devolve a tela exatamente como ficou — campos digitados, aba selecionada, scroll, e o iframe do plugin sem recarregar (ou seja, o plugin **não** recebe um novo boot: se ele precisa reagir à reabertura, escute `mri-plugin/navigate`, que agora chega em **toda** chamada de `OpenPlugin`, com ou sem `page`/`category`/`focus`). Trocar de aba no sidebar, essa sim, remonta a página — e é também o que faz o iframe do plugin pegar um build novo.
+- Enquanto está escondido o painel não fica trabalhando à toa: o polling do mapa ao vivo, do modal de mapa e do stream de tela pausa e volta sozinho na reabertura.
+- `ClosePlugin`/`ClosePluginForPlayer` com `pluginId` só fecham se a página ativa for a do plugin — um plugin em background não derruba o painel que o admin abriu em outra aba.
+
+Para registrar apenas permissões, sem aba no painel, use `RegisterPermissions` (ver [Entrypoints](#entrypoints-para-outros-recursos)).
+
+---
+
+## Banco de dados
+
+Tabelas criadas automaticamente no start:
+
+| Tabela | Conteúdo |
+|---|---|
+| `mri_qadmin_groups` | Grupos de permissão (`id`, `label`, `description`) |
+| `mri_qadmin_group_permissions` | Permissões de cada grupo |
+| `mri_qadmin_known_permissions` | Whitelist durável das permissões registradas por plugins — evita que um restart apague do banco permissões de plugin parado |
+| `mri_qadmin_character_groups` | Vínculo `citizenid` ↔ grupo |
+| `mri_qadmin_masters` | Licenses com bypass total |
+| `mri_qadmin_chat` | Histórico do staff chat |
+| `mri_qadmin_settings` | Configurações alteradas pelo painel (têm precedência sobre o `Config`) |
+| `mri_qadmin_actions` | Ações customizadas criadas pelo painel |
+| `mri_qadmin_logs` | Logs persistidos |
+| `mri_qadmin_wall_colors` | Cor do ESP/wallhack por principal |
+| `player_warns` | Advertências aplicadas a jogadores |
+
+---
+
+## Integrações
+
+### qb-core / qbx_core
+
+Framework base. Jogadores online e offline, jobs, gangues, dinheiro, metadata e notificações.
+
+### Inventário
+
+Detectado sozinho no start (`ox_inventory`, `ps-inventory`, `lj-inventory` ou `qb-inventory`) e reavaliado sempre que um deles inicia. Sustenta a aba Itens e as ações de inventário na aba Jogadores.
+
+### Combustível
+
+`Config.Fuel` define qual recurso é chamado ao abastecer um veículo pelo painel: `cdn-fuel`, `ps-fuel`, `LegacyFuel` ou `ox_fuel`.
+
+### Concessionária
+
+Com `Config.Dealership = "mri"`, a aba Veículos gerencia o estoque do `qbx_vehicleshop`. `ps-dealerships` e `none` também são aceitos.
+
+### mri_Qsignaling
+
+Servidor de sinalização das telas ao vivo quando `Config.SignalingProvider = "websocket"`. O endereço vai em `Config.WebRTCUrl`.
+
+### ox_lib (logger)
+
+Qualquer recurso que use `lib.logger` pode mandar seus logs para o painel sem chamar `AddLog` diretamente. São dois passos, e o primeiro **você provavelmente já tem**.
+
+**Passo 1 — o patch (só para ox_lib vanilla).** Na ox_lib da MRI ele já está aplicado no fonte. Confira antes de editar qualquer coisa:
+
+```bash
+grep -n "mri_Qadmin" ox_lib/imports/logger/server.lua
+```
+
+Se aparecer o bloco `if service == 'mri_Qadmin'`, pule para o passo 2. Se não aparecer, o arquivo é `ox_lib/imports/logger/server.lua` — repare que é `imports/`, não `modules/`. Ele termina com um dispatcher que carrega um provider HTTP pelo nome; o bloco do Qadmin entra **antes** dessa checagem, logo depois da linha `local KNOWN = { ... }`, porque o Qadmin não é um provider HTTP: ele recebe o log por evento, dentro do próprio servidor.
+
+```lua
+if service == 'mri_Qadmin' or service == 'fivemerr' then
+    function lib.logger(source, event, message, ...)
+        TriggerEvent('mri_Qadmin:server:AddLog',
+            cache.resource,
+            event,
+            'info',
+            message,
+            {
+                tags = formatTags(source, ... and string.strjoin(',', string.tostringall(...)) or nil)
+            },
+            source
+        )
+    end
+
+    return lib.logger
+end
+```
+
+`fivemerr` continua aceito de propósito: o upstream removeu esse provider, e o alias evita que um servidor que já tinha `set ox:logger "fivemerr"` fique sem logger nenhum ao atualizar.
+
+**Passo 2 — o convar**, no `server.cfg` (ou `ox.cfg`):
+
+```
+set ox:logger "mri_Qadmin"
+```
+
+Remova ou comente qualquer `set ox:logger` anterior (`datadog`, `loki`, `fivemanage`, `fivemerr`).
+
+**O modo de falha aqui é silencioso**, então vale conhecer antes de precisar:
+
+| Sintoma | Causa |
+|---|---|
+| Nada chega ao painel, nada reclama no console | Convar não definido — o default é `datadog`, um serviço válido: a ox_lib manda os logs por HTTP para fora |
+| Idem | Valor fora de `mri_Qadmin` / `fivemerr` / `datadog` / `fivemanage` / `loki` — cai em `if not KNOWN[service] then return lib.logger end` e o `lib.logger` vira no-op |
+| Idem, mesmo com tudo certo | ox_lib não reiniciada depois de mexer no cfg — o `service` é lido uma vez, na carga do arquivo |
+
+> Versões antigas desta documentação diziam `set ox:logger "qadmin"`. Está **errado** e cai no segundo caso da tabela acima — falha em silêncio. O valor é `mri_Qadmin`.
+
+O campo `event` da ox_lib vira a **categoria** do log no painel. Só é preciso reaplicar o patch se você atualizar a ox_lib a partir do upstream vanilla substituindo aquele arquivo; num merge sobre o fork da MRI o bloco costuma sobreviver.
+
+### Fivemanage
+
+Destino opcional dos logs e, com o modo espelho, também a fonte do histórico exibido no painel. Configurável por `Config.Logs.Fivemanage` ou pela aba de configurações de logs. Ver [Logs](#logs).
+
+---
+
+## Entrypoints para outros recursos
+
+### `RegisterPlugin` / `UnregisterPlugin` — servidor
+
+Registram e removem uma aba do painel. Ver [Plugins](#plugins).
+
+```lua
+exports['mri_Qadmin']:RegisterPlugin({ id = 'spawns', label = 'Spawns', resource = 'mri_Qspawn', ... })
+exports['mri_Qadmin']:UnregisterPlugin('spawns')
+```
+
+### `OpenPlugin` / `ClosePlugin` / `TogglePlugin` / `IsPluginOpen` — cliente
+
+Abrem e fecham o painel na página do plugin. Ver [Plugins](#plugins).
+
+```lua
+local ok, reason = exports['mri_Qadmin']:OpenPlugin('spawns')
+```
+
+### `OpenPluginForPlayer` / `ClosePluginForPlayer` / `TogglePluginForPlayer` — servidor
+
+Mesma coisa, dirigido pelo servidor, com o gate de permissão rodando lá. Ver [Plugins](#plugins).
+
+```lua
+local ok, reason = exports['mri_Qadmin']:OpenPluginForPlayer(source, 'spawns')
+```
+
+### `RegisterPermissions` — servidor
+
+Adiciona permissões ao editor de grupos sem registrar uma aba. A categoria é opcional; se não existir, é criada.
+
+```lua
+exports['mri_Qadmin']:RegisterPermissions({
+    { id = 'meu_resource.admin', label = 'Administrador', desc = 'Acesso total' },
+    { id = 'meu_resource.view',  label = 'Visualizar' },
+}, { id = 'meu_resource', label = 'Meu Resource' })
+```
+
+### `AddLog` — servidor
+
+Envia um log para o painel. O buffer em memória sempre recebe; banco, Discord, relay e Fivemanage seguem o que estiver configurado em `Config.Logs` para aquela categoria e aquele recurso.
+
+```lua
+exports['mri_Qadmin']:AddLog(
+    'meu_resource',   -- resource
+    'players',        -- category (precisa existir em Config.Logs.Categories)
+    'info',           -- level
+    'Mensagem do log',
+    { extra = 'dados opcionais' },
+    source            -- opcional: admin responsável
+)
+```
+
+Equivalente por evento, para quem não quer depender do export:
+
+```lua
+TriggerEvent('mri_Qadmin:server:AddLog', resource, category, level, message, data, source)
+```
+
+Três chaves de `data` têm tratamento especial — elas identificam o **alvo** da ação, aparecem em campo próprio no embed do Discord e ficam fora do bloco de dados extras:
+
+| Chave | Efeito |
+|---|---|
+| `target_src` | Se informado sozinho, o nome e o citizenid do alvo são resolvidos automaticamente pelo QBCore |
+| `target_name` | Exibido no campo **Alvo** |
+| `target_citizenid` | Exibido no campo **Alvo** |
+
+Os níveis aceitos são `info`, `success`, `warn` e `error`.
+
+### `HasPerms` / `CheckPerms` — servidor
+
+`HasPerms` é o predicado silencioso; `CheckPerms` é o gate que **notifica o jogador** ao negar. Os dois aceitam uma permissão ou uma lista.
+
+```lua
+if not exports['mri_Qadmin']:HasPerms(source, 'qadmin.action.ban') then return end
+if not exports['mri_Qadmin']:CheckPerms(source, { 'meu_resource.admin', 'command' }) then return end
+```
+
+Os dois honram o Master Admin e conferem também contra os identifiers do jogador, o que contorna o atraso de cache do `IsPlayerAceAllowed` nativo.
+
+### `IsPlayerInPrincipal` — servidor
+
+Verifica se qualquer identifier do jogador pertence a um principal.
+
+```lua
+local ehAdmin = exports['mri_Qadmin']:IsPlayerInPrincipal(source, 'group.admin')
+```
+
+### `GeneratePlate` — servidor
+
+Gera uma placa no formato `AA AA 000`, garantindo que ainda não exista no banco.
+
+```lua
+local plate = exports['mri_Qadmin']:GeneratePlate()
+```
+
+### `ToggleUI` / `OpenUI` / `IsMenuVisible` — cliente
+
+Controlam a NUI do painel a partir de outro recurso.
+
+```lua
+exports['mri_Qadmin']:OpenUI()
+exports['mri_Qadmin']:ToggleUI(false)
+local aberto = exports['mri_Qadmin']:IsMenuVisible()
+```
+
+> `GetActions` está declarado no bloco `exports` do `fxmanifest.lua`, mas **não existe função global correspondente** — chamá-lo falha. Os dados de ações são obtidos pelo callback `mri_Qadmin:callback:GetActions`.
+
+### Eventos server → client
+
+| Evento | Descrição |
+|---|---|
+| `mri_Qadmin:client:OpenUI` | Força a abertura do painel no cliente |
+| `mri_Qadmin:client:pluginsUpdated` | Lista de plugins visíveis para aquele jogador (já filtrada por permissão) |
+| `mri_Qadmin:client:OpenPlugin` | Abre o painel na página do plugin (usado por `OpenPluginForPlayer`) |
+| `mri_Qadmin:client:ClosePlugin` | Fecha o painel (usado por `ClosePluginForPlayer`) |
+| `mri_Qadmin:client:TogglePlugin` | Alterna o painel na página do plugin (usado por `TogglePluginForPlayer`) |
+
+---
+
+## Localização
+
+As strings do recurso e da UI são traduzidas via `ox_lib` locale (`ox_lib "locale"` no `fxmanifest.lua`). Os arquivos ficam em `locales/`:
+
+- `pt-br.json` — português do Brasil
+- `en.json` — inglês
+- `es.json` — espanhol
+
+O locale ativo vem da convar do `ox_lib`:
+
+```
+setr ox:locale "pt-br"
+```
+
+Os idiomas oferecidos na UI são os listados em `Config.SupportedLanguages`. Para adicionar um novo, crie `locales/<codigo>.json` seguindo a estrutura dos existentes, adicione a entrada em `Config.SupportedLanguages` e reinicie o recurso.
+
+---
+
+## Estrutura de arquivos
+
+```
+mri_Qadmin/
+├── client/
+│   ├── main.lua              — bootstrap da NUI e roteamento de callbacks
+│   ├── utils.lua             — ToggleUI/OpenUI/IsMenuVisible, CheckPerms via callback
+│   ├── data.lua              — cache dos dados sincronizados do servidor
+│   ├── chat.lua              — staff chat
+│   ├── inventory.lua         — abertura e leitura de inventários
+│   ├── misc.lua              — keybinds do painel e do noclip
+│   ├── notify.lua            — notificações internas
+│   ├── noclip.lua            — noclip
+│   ├── players.lua           — vitais, coordenadas e ações sobre jogadores
+│   ├── spectate.lua          — espectar jogador
+│   ├── teleport.lua          — teleportes
+│   ├── toggle_laser.lua      — laser (dev mode)
+│   ├── troll.lua             — ações de troll
+│   ├── vehicles.lua          — spawn, conserto, mods e placa
+│   ├── wall.lua              — ESP/wallhack
+│   ├── world.lua             — clima e hora
+│   ├── key_capture.lua       — captura de tecla para as configurações
+│   ├── nearby_scanner.lua    — scanner de entidades próximas (dev mode)
+│   ├── logs.lua              — logs no cliente
+│   ├── webrtc.lua            — captura e envio da tela (telas ao vivo)
+│   └── plugins.lua           — recebe a lista de plugins visíveis
+├── server/
+│   ├── db.lua                — cria as tabelas lendo o database.sql
+│   ├── main.lua              — inicialização e core object
+│   ├── utils.lua             — HasPerms, CheckPerms, IsPlayerInPrincipal, GeneratePlate
+│   ├── permissions.lua       — definições de permissão, ACE, Master Admin, RegisterPermissions
+│   ├── groups.lua            — CRUD de grupos e vínculos
+│   ├── data_sync.lua         — envia definições e dados para a NUI
+│   ├── logs.lua              — buffer, banco, webhooks, Fivemanage, AddLog
+│   ├── chat.lua              — staff chat e menções
+│   ├── commands.lua          — comandos do painel
+│   ├── players.lua           — moderação, teleporte, dinheiro, job/gangue
+│   ├── inventory.lua         — operações de inventário
+│   ├── inventory_callback.lua— callbacks de inventário para a NUI
+│   ├── items.lua             — base de itens
+│   ├── vehicle.lua           — estoque, spawn e ações de veículo
+│   ├── locations.lua         — locais de teleporte
+│   ├── peds.lua              — troca de model
+│   ├── actions.lua           — ações customizadas e validação de payload
+│   ├── settings.lua          — configurações editáveis pelo painel
+│   ├── resources.lua         — start/stop/restart e gate de escrita do sandbox
+│   ├── resource_fs.js        — navegação no filesystem dos recursos
+│   ├── server_data.lua       — dados gerais do servidor
+│   ├── spectate.lua          — espectar
+│   ├── teleport.lua          — teleporte
+│   ├── trolls.lua            — trolls
+│   ├── wall.lua              — cores do ESP por principal
+│   ├── key_manager.lua       — keybinds
+│   ├── webrtc.lua            — sinalização das telas ao vivo
+│   ├── updates.lua           — verificação de atualização
+│   └── plugins.lua           — registry de plugins (RegisterPlugin/UnregisterPlugin)
+├── shared/
+│   └── config.lua            — Config, detecção de inventário, Debug e Notify
+├── data/
+│   ├── default_actions.lua   — ações padrão (lidas via LoadResourceFile)
+│   ├── object.lua            — hash → nome de objeto (usado pelo scanner e pelo laser)
+│   ├── ped.lua               — lista de peds
+│   └── weapons.lua           — lista de armas
+├── locales/
+│   ├── pt-br.json
+│   ├── en.json
+│   └── es.json
+├── web/build/                — UI compilada (ui_page) + tiles do mapa
+├── database.sql              — todas as tabelas do recurso
+├── PERMISSIONS.md            — referência completa de permissões
+└── fxmanifest.lua
+```
