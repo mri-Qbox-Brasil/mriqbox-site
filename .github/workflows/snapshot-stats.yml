@@ -32,10 +32,12 @@ jobs:
         with:
           node-version: 20
 
-      # O token so serve pra listar os repos da org (limite de requisicoes).
+      # O token so serve pra listar os repos da org. Precisa ser o GH_TOKEN da
+      # organizacao: o GITHUB_TOKEN automatico so enxerga repos publicos, e
+      # varios recursos mri_ (ex.: mri_Qobjects, mri_Qblips) sao privados.
       - name: Coletar snapshot
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
         run: node .release/snapshot-stats.js
 
       - name: Commit e push se houver mudancas
