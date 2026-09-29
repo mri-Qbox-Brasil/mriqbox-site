@@ -16,6 +16,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/sobre", priority: 0.6, changeFrequency: "monthly" },
     { path: "/discord", priority: 0.6, changeFrequency: "monthly" },
     { path: "/apoie", priority: 0.6, changeFrequency: "monthly" },
+    { path: "/servidores", priority: 0.7, changeFrequency: "weekly" },
     { path: "/privacidade", priority: 0.3, changeFrequency: "monthly" },
     { path: "/termos", priority: 0.3, changeFrequency: "monthly" },
   ]

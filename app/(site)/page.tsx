@@ -11,6 +11,7 @@ import parceiros from "@/config/parceiros"
 import statsHistory from "@/data/stats-history.json"
 import { getArtifactsDb } from "@/lib/artifacts-db"
 import { MriBotPromo } from "@/components/mri-bot-promo"
+import { totalPlayers, totalServers } from "@/lib/mri-servers"
 
 export const metadata: Metadata = {
   title: "MRI Qbox Brasil | Framework FiveM Open Source",
@@ -164,113 +165,8 @@ const TEAM_MEMBERS_FALLBACK: TeamMember[] = [
   { login: "xstells", avatar_url: "https://github.com/xstells.png?size=224", html_url: "https://github.com/xstells", kofi_username: "xstells" },
 ]
 
-// Server action RSC do 5metrics que devolve a lista de servidores (top ~25 por
-// rank) de um recurso — o unico jeito de ter dados POR SERVIDOR (a meta
-// description so tem agregado, que nao da pra deduplicar). O id do action muda
-// quando o 5metrics faz deploy; se quebrar, caimos no MAX da meta (lower bound)
-// e o site segue funcionando.
-const FIVEMETRICS_SERVERS_ACTION = "401578d09ec9acd55c5b3e73c7c382ca742415877d"
-
-async function fetchResourceServers(resource: string): Promise<{ id: string; players: number }[]> {
-  const res = await fetch(`https://5metrics.dev/resource/${resource}`, {
-    method: "POST",
-    next: { revalidate: 3600 },
-    headers: {
-      "next-action": FIVEMETRICS_SERVERS_ACTION,
-      "content-type": "text/plain;charset=UTF-8",
-      accept: "text/x-component",
-      "User-Agent": "MRIQbox-site/1.0",
-    },
-    body: JSON.stringify([{ order: "asc", locale: "$undefined", search: "", sort: "rank", page: 0, resource: [resource], owner: "$undefined" }]),
-  })
-  if (!res.ok) throw new Error(`${resource}: HTTP ${res.status}`)
-  const text = await res.text()
-  const out: { id: string; players: number }[] = []
-  for (const m of text.matchAll(/"id":"([^"]+)"[^}]*?"players":(\d+)/g)) {
-    out.push({ id: m[1], players: parseInt(m[2], 10) })
-  }
-  return out
-}
-
 export default async function HomePage() {
   const artifactsDb = await getArtifactsDb()
-  // Stats ao vivo do 5metrics — recursos mri_Q com presenca real (os demais tem
-  // 1 servidor ou nao estao indexados). 5metrics nao tem endpoint de listagem,
-  // entao enumeramos.
-  const MRI_RESOURCES = [
-    "mri_Qloadscreen",
-    "mri_Qobjects",
-    "mri_Qbox",
-    "mri_Qnitro",
-    "mri_Qadmin",
-    "mri_Qhud",
-    "mri_Qspawn",
-    "mri_Qblackout",
-    "mri_Qcarkeys",
-  ]
-
-  let totalServers = 173  // fallback: max de servidores (e.g. Qobjects)
-  let totalPlayers = 800  // fallback: uniao de jogadores deduplicada
-
-  try {
-    const results = await Promise.allSettled(
-      MRI_RESOURCES.map((r) =>
-        fetch(`https://5metrics.dev/resource/${r}`, {
-          next: { revalidate: 3600 },
-          headers: { "User-Agent": "MRIQbox-site/1.0" },
-        }).then((res) => res.text())
-      )
-    )
-
-    let maxServers = 0
-    let maxPlayers = 0
-    let anySucceeded = false
-
-    for (const result of results) {
-      if (result.status === "fulfilled") {
-        // Extract from the meta description: "used by X (...) servers and Y (...) players"
-        const match = result.value.match(/used by (\d+)[^<]+servers and (\d+)/)
-        if (match) {
-          const s = parseInt(match[1])
-          const p = parseInt(match[2])
-          if (s > maxServers) maxServers = s
-          if (p > maxPlayers) maxPlayers = p
-          anySucceeded = true
-        }
-      }
-    }
-
-    if (anySucceeded) {
-      totalServers = maxServers
-      totalPlayers = maxPlayers // base/fallback; sobrescrito pela uniao abaixo
-    }
-  } catch {
-    // keep fallback defaults
-  }
-
-  // "Jogadores utilizando neste momento": uniao dos servidores que rodam
-  // QUALQUER recurso MRI, deduplicada por servidor. Somar por recurso contaria
-  // o mesmo jogador varias vezes (um server roda varios mri_Q ao mesmo tempo);
-  // o MAX da meta subestima (ignora servers que rodam outro recurso). A uniao
-  // dedup e o numero honesto. Se o action do 5metrics falhar, fica o MAX.
-  try {
-    const lists = await Promise.allSettled(MRI_RESOURCES.map(fetchResourceServers))
-    const union = new Map<string, number>()
-    for (const r of lists) {
-      if (r.status === "fulfilled") {
-        for (const s of r.value) {
-          const prev = union.get(s.id) ?? 0
-          if (s.players > prev) union.set(s.id, s.players)
-        }
-      }
-    }
-    if (union.size > 0) {
-      totalPlayers = [...union.values()].reduce((a, b) => a + b, 0)
-    }
-  } catch {
-    // mantem o MAX da meta
-  }
-
   let teamMembers: TeamMember[] = TEAM_MEMBERS_FALLBACK
   try {
     const teamRes = await fetch("https://users.mriqbox.com.br/public/members.json", {

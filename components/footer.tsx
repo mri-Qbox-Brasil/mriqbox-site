@@ -27,6 +27,7 @@ export function Footer() {
             <Link href="/sobre" className={LINK}>Sobre nós</Link>
             <Link href="/comecar" className={LINK}>Artifacts DB</Link>
             <Link href="/docs" className={LINK}>Documentação</Link>
+            <Link href="/servidores" className={LINK}>Servidores</Link>
             <Link href="https://tela.mriqbox.com.br" target="_blank" rel="noopener noreferrer" className={LINK}>Compartilhar Tela</Link>
           </div>
           {/* Páginas de conteúdo/SEO — existiam desde o site antigo mas tinham

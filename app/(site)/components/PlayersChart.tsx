@@ -1,11 +1,15 @@
-// Card de "jogadores utilizando neste exato momento": lidera com o valor AO VIVO
-// (soma dos conectados agora nos servidores que rodam recursos MRI, buscado em
-// page.tsx via 5metrics) e mostra a tendencia dos ultimos dias como um grafico
-// de area.
+// Card de "jogadores utilizando neste exato momento": lidera com o valor atual
+// (soma, sem repetir servidor, dos conectados nos servidores que rodam algum
+// recurso MRI; vem de data/servers.json, gravado pela Action snapshot-stats)
+// e mostra a tendencia dos ultimos dias como um grafico de area.
 //
 // O grafico e SVG renderizado no servidor — nenhum JS vai pro cliente, entao
 // funciona no export estatico do GitHub Pages. A serie vem de
 // data/stats-history.json, alimentado pela Action snapshot-stats.yml.
+
+import Link from "next/link"
+import { ArrowRight } from "lucide-react"
+import { ServerAvatars } from "@/components/server-avatars"
 
 type Point = { t: string; servers: number; players: number }
 
@@ -43,7 +47,9 @@ export default function PlayersChart({ data, current, servers }: { data: Point[]
             <div className="w-2.5 h-2.5 shrink-0 rounded-full bg-primary animate-pulse shadow-[0_0_10px_rgba(0,230,153,0.6)]" />
             <div>
               <div className="text-3xl md:text-4xl font-black text-white leading-none">{servers.toLocaleString("pt-BR")}</div>
-              <div className="text-xs uppercase tracking-wider text-white/60 mt-1">servidores rodando</div>
+              <Link href="/servidores" className="text-xs uppercase tracking-wider text-white/60 mt-1 inline-flex items-center gap-1 hover:text-primary transition-colors">
+                servidores usando MRI <ArrowRight className="w-3 h-3" />
+              </Link>
             </div>
           </div>
 
@@ -61,7 +67,9 @@ export default function PlayersChart({ data, current, servers }: { data: Point[]
         </a>
       </div>
 
-      <div className="mt-4 flex justify-end">
+      {/* Logos dos servidores (esquerda) e pico do periodo (direita) */}
+      <div className="mt-5 flex flex-wrap items-center justify-between gap-3">
+        <ServerAvatars />
         {hasSeries && (
           <span className="text-xs text-muted-foreground/60 whitespace-nowrap">
             pico <span className="font-bold text-primary">{peak.toLocaleString("pt-BR")}</span>
@@ -91,7 +99,7 @@ export default function PlayersChart({ data, current, servers }: { data: Point[]
         </>
       ) : (
         <p className="mt-4 max-w-xl text-left text-[11px] leading-relaxed text-muted-foreground/60">
-          Dados reais de servidores FiveM que utilizam a MRI Qbox, atualizados periodicamente pelo 5metrics. O histórico de uso aparecerá nos próximos dias.
+          Dados reais de servidores FiveM que usam scripts da MRI Qbox, atualizados periodicamente pelo 5metrics. O histórico de uso aparecerá nos próximos dias.
         </p>
       )}
     </div>
