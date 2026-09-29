@@ -1,0 +1,3630 @@
+{
+ "updatedAt": "2026-09-29T02:49:33.859Z",
+ "resources": [
+  "mri_Qadmin",
+  "mri_Qairbags",
+  "mri_Qappearance",
+  "mri_Qautoshot",
+  "mri_Qblips",
+  "mri_Qbossmenu",
+  "mri_Qbox",
+  "mri_Qcarphotos",
+  "mri_Qcarplates",
+  "mri_Qchat",
+  "mri_Qcomputer",
+  "mri_Qdismantling",
+  "mri_Qdoorlock",
+  "mri_Qdraw_old",
+  "mri_Qemotemenu",
+  "mri_Qemotes",
+  "mri_Qfarm",
+  "mri_Qfleecaheist",
+  "mri_Qfps",
+  "mri_Qfuel",
+  "mri_Qfuel-props",
+  "mri_Qgarage",
+  "mri_Qhousing",
+  "mri_Qhud",
+  "mri_Qhud_v2",
+  "mri_Qjobslog",
+  "mri_Qloadscreen",
+  "mri_Qlogo",
+  "mri_Qmarkerplacer",
+  "mri_Qmedical",
+  "mri_Qmenu",
+  "mri_Qmultichar",
+  "mri_Qobjects",
+  "mri_Qphone",
+  "mri_Qregistervehicles",
+  "mri_Qreports",
+  "mri_Qspawn",
+  "mri_Qtyrecontrol",
+  "mri_Qunzip",
+  "mri_Qvehicles",
+  "mri_Qvip",
+  "mri_Qweather",
+  "mri_Qxiscord",
+  "mri_installer",
+  "mri_installer_download",
+  "mri_installer_rust",
+  "mri_lib",
+  "mri_updater"
+ ],
+ "servers": [
+  {
+   "id": "ameby5",
+   "name": "Bloodlines RP",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/ameby5/1057030550.png",
+   "locale": "pt-BR",
+   "players": 653,
+   "maxPlayers": 787,
+   "avgPlayers": 257,
+   "resources": [
+    "mri_Qloadscreen"
+   ]
+  },
+  {
+   "id": "7bbpd5v",
+   "name": "Racing Roleplay",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/7bbpd5v/-1782988813.png",
+   "locale": "pt-BR",
+   "players": 242,
+   "maxPlayers": 242,
+   "avgPlayers": 53,
+   "resources": [
+    "mri_Qadmin"
+   ]
+  },
+  {
+   "id": "y9967gk",
+   "name": "Vida Carioca Roleplay",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/y9967gk/-1617599944.png",
+   "locale": "pt-BR",
+   "players": 150,
+   "maxPlayers": 162,
+   "avgPlayers": 57,
+   "resources": [
+    "mri_Qblips",
+    "mri_Qbox",
+    "mri_Qchat",
+    "mri_Qfarm",
+    "mri_Qfps",
+    "mri_Qloadscreen",
+    "mri_Qobjects"
+   ]
+  },
+  {
+   "id": "zjj7y7d",
+   "name": "São Paulo Capital",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/zjj7y7d/1072631675.png",
+   "locale": "pt-BR",
+   "players": 94,
+   "maxPlayers": 112,
+   "avgPlayers": 34,
+   "resources": [
+    "mri_Qadmin",
+    "mri_Qblips",
+    "mri_Qbox",
+    "mri_Qchat",
+    "mri_Qdoorlock",
+    "mri_Qfarm",
+    "mri_Qfleecaheist",
+    "mri_Qfps",
+    "mri_Qmarkerplacer",
+    "mri_Qmedical",
+    "mri_Qobjects",
+    "mri_Qweather"
+   ]
+  },
+  {
+   "id": "a449l55",
+   "name": "REBAIXADOS TEMA SP < RP AUTOMOTIVO >",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/a449l55/-1842224938.png",
+   "locale": "pt-BR",
+   "players": 68,
+   "maxPlayers": 100,
+   "avgPlayers": 41,
+   "resources": [
+    "mri_Qobjects"
+   ]
+  },
+  {
+   "id": "dggobbj",
+   "name": "Mystic Falls: A Origem",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/dggobbj/1625875963.png",
+   "locale": "pt-BR",
+   "players": 53,
+   "maxPlayers": 53,
+   "avgPlayers": 14,
+   "resources": [
+    "mri_Qblips",
+    "mri_Qbox",
+    "mri_Qfps",
+    "mri_Qobjects"
+   ]
+  },
+  {
+   "id": "qxzb54",
+   "name": "ÉDEN",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/qxzb54/-1147033120.png",
+   "locale": "pt-br",
+   "players": 48,
+   "maxPlayers": 48,
+   "avgPlayers": 4,
+   "resources": [
+    "mri_Qadmin",
+    "mri_Qblips",
+    "mri_Qfarm"
+   ]
+  },
+  {
+   "id": "3yg6e9z",
+   "name": "ASCEND",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/3yg6e9z/2138702197.png",
+   "locale": "pt-BR",
+   "players": 40,
+   "maxPlayers": 40,
+   "avgPlayers": 13,
+   "resources": [
+    "mri_Qadmin",
+    "mri_Qblips",
+    "mri_Qmenu",
+    "mri_Qobjects"
+   ]
+  },
+  {
+   "id": "pm9mja",
+   "name": "IMAGINE RP",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/pm9mja/-1956073361.png",
+   "locale": "pt-BR",
+   "players": 30,
+   "maxPlayers": 46,
+   "avgPlayers": 13,
+   "resources": [
+    "mri_Qblips",
+    "mri_Qbox",
+    "mri_Qchat",
+    "mri_Qfarm",
+    "mri_Qfleecaheist",
+    "mri_Qhud",
+    "mri_Qmarkerplacer",
+    "mri_Qobjects"
+   ]
+  },
+  {
+   "id": "e6em8bd",
+   "name": "BELO HORIZONTE ⌠ MINAS GERAIS⌡❤",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/e6em8bd/-968540773.png",
+   "locale": "pt-BR",
+   "players": 25,
+   "maxPlayers": 53,
+   "avgPlayers": 17,
+   "resources": [
+    "mri_Qblips",
+    "mri_Qbox",
+    "mri_Qchat",
+    "mri_Qfleecaheist",
+    "mri_Qfps",
+    "mri_Qhud",
+    "mri_Qloadscreen",
+    "mri_Qmarkerplacer",
+    "mri_Qobjects"
+   ]
+  },
+  {
+   "id": "amyoj5",
+   "name": "Rustic RP",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/amyoj5/-451677061.png",
+   "locale": "pt-BR",
+   "players": 22,
+   "maxPlayers": 41,
+   "avgPlayers": 12,
+   "resources": [
+    "mri_Qadmin"
+   ]
+  },
+  {
+   "id": "aeyjvk",
+   "name": "ORIGINZ #SOBREVIVÊNCIA ZUMBI #APOCALIPSE",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/aeyjvk/517249784.png",
+   "locale": "pt-br",
+   "players": 21,
+   "maxPlayers": 56,
+   "avgPlayers": 25,
+   "resources": [
+    "mri_Qblips",
+    "mri_Qfps",
+    "mri_Qmarkerplacer",
+    "mri_Qobjects"
+   ]
+  },
+  {
+   "id": "vq399px",
+   "name": "West County",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/vq399px/2091505548.png",
+   "locale": "pt-BR",
+   "players": 16,
+   "maxPlayers": 16,
+   "avgPlayers": 4,
+   "resources": [
+    "mri_Qblips",
+    "mri_Qbox",
+    "mri_Qchat",
+    "mri_Qfarm",
+    "mri_Qfleecaheist",
+    "mri_Qfps",
+    "mri_Qmarkerplacer",
+    "mri_Qobjects"
+   ]
+  },
+  {
+   "id": "6aa5ad",
+   "name": "Central Roleplay",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/6aa5ad/332633811.png",
+   "locale": "pt-BR",
+   "players": 13,
+   "maxPlayers": 17,
+   "avgPlayers": 2,
+   "resources": [
+    "mri_Qadmin",
+    "mri_Qfarm",
+    "mri_Qmenu",
+    "mri_Qobjects"
+   ]
+  },
+  {
+   "id": "oaagk6j",
+   "name": "AMANHECER ROLEPLAY ABRIU AGORA",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/oaagk6j/329569570.png",
+   "locale": "pt-BR",
+   "players": 11,
+   "maxPlayers": 13,
+   "avgPlayers": 4,
+   "resources": [
+    "mri_Qloadscreen"
+   ]
+  },
+  {
+   "id": "4gb9ev5",
+   "name": "Los Santos Angeles Roleplay",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/4gb9ev5/-478207832.png",
+   "locale": "pt-BR",
+   "players": 10,
+   "maxPlayers": 10,
+   "avgPlayers": 4,
+   "resources": [
+    "mri_Qadmin",
+    "mri_Qfarm"
+   ]
+  },
+  {
+   "id": "e66gg7b",
+   "name": "West Valley Roleplay",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/e66gg7b/-239188966.png",
+   "locale": "pt-BR",
+   "players": 9,
+   "maxPlayers": 9,
+   "avgPlayers": 2,
+   "resources": [
+    "mri_Qblips",
+    "mri_Qbox",
+    "mri_Qfarm",
+    "mri_Qfleecaheist",
+    "mri_Qfps",
+    "mri_Qhud",
+    "mri_Qloadscreen",
+    "mri_Qmarkerplacer",
+    "mri_Qobjects"
+   ]
+  },
+  {
+   "id": "e6e9jom",
+   "name": "Renascer RP",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/e6e9jom/-894091610.png",
+   "locale": "pt-PT",
+   "players": 7,
+   "maxPlayers": 24,
+   "avgPlayers": 8,
+   "resources": [
+    "mri_Qmenu"
+   ]
+  },
+  {
+   "id": "a44bmm9",
+   "name": "🔥 LPZ CITY RP",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/a44bmm9/471333038.png",
+   "locale": "pt-BR",
+   "players": 6,
+   "maxPlayers": 7,
+   "avgPlayers": 3,
+   "resources": [
+    "mri_Qadmin",
+    "mri_Qfarm"
+   ]
+  },
+  {
+   "id": "j44q46l",
+   "name": "Valenwood ATO 2",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/j44q46l/1896175131.png",
+   "locale": "pt-BR",
+   "players": 4,
+   "maxPlayers": 17,
+   "avgPlayers": 2,
+   "resources": [
+    "mri_Qadmin",
+    "mri_Qblips",
+    "mri_Qbox",
+    "mri_Qfarm",
+    "mri_Qfps",
+    "mri_Qloadscreen",
+    "mri_Qmarkerplacer",
+    "mri_Qobjects"
+   ]
+  },
+  {
+   "id": "zjjaeg5",
+   "name": "Panóplia Roleplay [Fase Beta]",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/zjjaeg5/-1441998139.png",
+   "locale": "pt-PT",
+   "players": 3,
+   "maxPlayers": 6,
+   "avgPlayers": 2,
+   "resources": [
+    "mri_Qchat"
+   ]
+  },
+  {
+   "id": "lee3prv",
+   "name": "[RJ/RP] Boladão carioca",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/lee3prv/719922076.png",
+   "locale": "pt-BR",
+   "players": 3,
+   "maxPlayers": 3,
+   "avgPlayers": 0,
+   "resources": [
+    "mri_Qblips",
+    "mri_Qbox",
+    "mri_Qchat",
+    "mri_Qfarm",
+    "mri_Qfleecaheist",
+    "mri_Qfps",
+    "mri_Qhud",
+    "mri_Qmarkerplacer",
+    "mri_Qobjects"
+   ]
+  },
+  {
+   "id": "vqqe3qr",
+   "name": "Regresso RP [BETA]",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/vqqe3qr/1310033322.png",
+   "locale": "pt-PT",
+   "players": 2,
+   "maxPlayers": 8,
+   "avgPlayers": 3,
+   "resources": [
+    "mri_Qmenu"
+   ]
+  },
+  {
+   "id": "m44mam9",
+   "name": "[MRI Qbox] Mrl Dev",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/m44mam9/209523675.png",
+   "locale": "pt-BR",
+   "players": 2,
+   "maxPlayers": 2,
+   "avgPlayers": 1,
+   "resources": [
+    "mri_Qblips",
+    "mri_Qbox",
+    "mri_Qchat",
+    "mri_Qfarm",
+    "mri_Qfleecaheist",
+    "mri_Qfps",
+    "mri_Qhud",
+    "mri_Qloadscreen",
+    "mri_Qmarkerplacer",
+    "mri_Qobjects"
+   ]
+  },
+  {
+   "id": "leejp54",
+   "name": "Nova Grécia",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/leejp54/308989967.png",
+   "locale": "pt-BR",
+   "players": 2,
+   "maxPlayers": 2,
+   "avgPlayers": 1,
+   "resources": [
+    "mri_Qblips",
+    "mri_Qbox",
+    "mri_Qchat",
+    "mri_Qfarm",
+    "mri_Qfleecaheist",
+    "mri_Qfps",
+    "mri_Qhud",
+    "mri_Qloadscreen",
+    "mri_Qmarkerplacer",
+    "mri_Qobjects"
+   ]
+  },
+  {
+   "id": "y99vxa5",
+   "name": "TMJ ROLEPLAY",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/y99vxa5/1380828232.png",
+   "locale": "pt-BR",
+   "players": 2,
+   "maxPlayers": 4,
+   "avgPlayers": 1,
+   "resources": [
+    "mri_Qblips",
+    "mri_Qbox",
+    "mri_Qchat",
+    "mri_Qfarm",
+    "mri_Qfleecaheist",
+    "mri_Qfps",
+    "mri_Qloadscreen",
+    "mri_Qmarkerplacer",
+    "mri_Qobjects"
+   ]
+  },
+  {
+   "id": "dggkdjj",
+   "name": "ARQUIVO X ROLEPLAY",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/dggkdjj/-1690918641.png",
+   "locale": "pt-BR",
+   "players": 1,
+   "maxPlayers": 2,
+   "avgPlayers": 2,
+   "resources": [
+    "mri_Qadmin",
+    "mri_Qfarm"
+   ]
+  },
+  {
+   "id": "leel3r4",
+   "name": "SOBERANA",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/leel3r4/993566326.png",
+   "locale": "pt-BR",
+   "players": 1,
+   "maxPlayers": 6,
+   "avgPlayers": 2,
+   "resources": [
+    "mri_Qbox",
+    "mri_Qchat",
+    "mri_Qfleecaheist",
+    "mri_Qfps",
+    "mri_Qloadscreen",
+    "mri_Qobjects"
+   ]
+  },
+  {
+   "id": "pml998",
+   "name": "[CINE] CINELÂNDIA RP",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/pml998/959542328.png",
+   "locale": "pt-BR",
+   "players": 1,
+   "maxPlayers": 1,
+   "avgPlayers": 1,
+   "resources": [
+    "mri_Qblips",
+    "mri_Qbox",
+    "mri_Qchat",
+    "mri_Qfarm",
+    "mri_Qfleecaheist",
+    "mri_Qfps",
+    "mri_Qloadscreen",
+    "mri_Qmarkerplacer",
+    "mri_Qobjects"
+   ]
+  },
+  {
+   "id": "pggrop7",
+   "name": "[MRI Qbox] AMERICA RP-BR",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/pggrop7/209523675.png",
+   "locale": "pt-BR",
+   "players": 1,
+   "maxPlayers": 1,
+   "avgPlayers": 1,
+   "resources": [
+    "mri_Qbox",
+    "mri_Qchat",
+    "mri_Qfleecaheist",
+    "mri_Qfps",
+    "mri_Qhud",
+    "mri_Qloadscreen",
+    "mri_Qobjects"
+   ]
+  },
+  {
+   "id": "qqakmp4",
+   "name": "[MRI Qbox] Base de testes West County",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/qqakmp4/209523675.png",
+   "locale": "pt-BR",
+   "players": 1,
+   "maxPlayers": 1,
+   "avgPlayers": 1,
+   "resources": [
+    "mri_Qblips",
+    "mri_Qbox",
+    "mri_Qchat",
+    "mri_Qfarm",
+    "mri_Qfleecaheist",
+    "mri_Qfps",
+    "mri_Qhud",
+    "mri_Qloadscreen",
+    "mri_Qmarkerplacer",
+    "mri_Qobjects"
+   ]
+  },
+  {
+   "id": "oojpvr",
+   "name": "[MRI Qbox] Capital Curitiba",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/oojpvr/-376505630.png",
+   "locale": "pt-BR",
+   "players": 1,
+   "maxPlayers": 1,
+   "avgPlayers": 1,
+   "resources": [
+    "mri_Qblips",
+    "mri_Qbox",
+    "mri_Qchat",
+    "mri_Qfarm",
+    "mri_Qfleecaheist",
+    "mri_Qfps",
+    "mri_Qloadscreen",
+    "mri_Qmarkerplacer",
+    "mri_Qobjects"
+   ]
+  },
+  {
+   "id": "6ebpr8",
+   "name": "[MRI Qbox] Housing System",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/6ebpr8/209523675.png",
+   "locale": "pt-BR",
+   "players": 1,
+   "maxPlayers": 1,
+   "avgPlayers": 1,
+   "resources": [
+    "mri_Qautoshot",
+    "mri_Qblips",
+    "mri_Qbox",
+    "mri_Qchat",
+    "mri_Qemotemenu",
+    "mri_Qfarm",
+    "mri_Qfleecaheist",
+    "mri_Qfps",
+    "mri_Qhousing",
+    "mri_Qhud",
+    "mri_Qloadscreen",
+    "mri_Qmarkerplacer",
+    "mri_Qobjects"
+   ]
+  },
+  {
+   "id": "axxl89",
+   "name": "[MRI Qbox] IlhaSATeste",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/axxl89/209523675.png",
+   "locale": "pt-BR",
+   "players": 1,
+   "maxPlayers": 1,
+   "avgPlayers": 1,
+   "resources": [
+    "mri_Qblips",
+    "mri_Qbox",
+    "mri_Qchat",
+    "mri_Qfarm",
+    "mri_Qfleecaheist",
+    "mri_Qfps",
+    "mri_Qmarkerplacer",
+    "mri_Qobjects"
+   ]
+  },
+  {
+   "id": "mrva4q",
+   "name": "[MRI Qbox] Meu Servidor TESTE",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/mrva4q/209523675.png",
+   "locale": "pt-BR",
+   "players": 1,
+   "maxPlayers": 1,
+   "avgPlayers": 1,
+   "resources": [
+    "mri_Qadmin",
+    "mri_Qappearance",
+    "mri_Qblips",
+    "mri_Qbox",
+    "mri_Qchat",
+    "mri_Qdoorlock",
+    "mri_Qemotes",
+    "mri_Qfarm",
+    "mri_Qfleecaheist",
+    "mri_Qfps",
+    "mri_Qhud",
+    "mri_Qloadscreen",
+    "mri_Qmarkerplacer",
+    "mri_Qmultichar",
+    "mri_Qobjects",
+    "mri_Qspawn",
+    "mri_Qvehicles"
+   ]
+  },
+  {
+   "id": "y99vam9",
+   "name": "[MRI Qbox] oNext Development",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/y99vam9/209523675.png",
+   "locale": "pt-BR",
+   "players": 1,
+   "maxPlayers": 1,
+   "avgPlayers": 1,
+   "resources": [
+    "mri_Qblips",
+    "mri_Qbox",
+    "mri_Qchat",
+    "mri_Qfarm",
+    "mri_Qfleecaheist",
+    "mri_Qfps",
+    "mri_Qhud",
+    "mri_Qloadscreen",
+    "mri_Qmarkerplacer",
+    "mri_Qobjects"
+   ]
+  },
+  {
+   "id": "dm7lbq",
+   "name": "[MRI Qbox] PandoraZ",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/dm7lbq/-462989817.png",
+   "locale": "pt-BR",
+   "players": 1,
+   "maxPlayers": 1,
+   "avgPlayers": 1,
+   "resources": [
+    "mri_Qadmin",
+    "mri_Qblips",
+    "mri_Qbox",
+    "mri_Qchat",
+    "mri_Qfarm",
+    "mri_Qfleecaheist",
+    "mri_Qfps",
+    "mri_Qhud",
+    "mri_Qloadscreen",
+    "mri_Qmarkerplacer",
+    "mri_Qobjects"
+   ]
+  },
+  {
+   "id": "z8e87y",
+   "name": "[mri_Qbox] Imagine_dev",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/z8e87y/209523675.png",
+   "locale": "pt-BR",
+   "players": 1,
+   "maxPlayers": 1,
+   "avgPlayers": 1,
+   "resources": [
+    "mri_Qblips",
+    "mri_Qbox",
+    "mri_Qchat",
+    "mri_Qfarm",
+    "mri_Qfleecaheist",
+    "mri_Qhud",
+    "mri_Qmarkerplacer",
+    "mri_Qobjects"
+   ]
+  },
+  {
+   "id": "bdxzmkp",
+   "name": "[QBCore Framework] GC CFW",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/bdxzmkp/-493701130.png",
+   "locale": "root-AQ",
+   "players": 1,
+   "maxPlayers": 1,
+   "avgPlayers": 1,
+   "resources": [
+    "mri_Qbox"
+   ]
+  },
+  {
+   "id": "e6evpdp",
+   "name": "BorderLand RP",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/e6evpdp/209523675.png",
+   "locale": "pt-BR",
+   "players": 1,
+   "maxPlayers": 1,
+   "avgPlayers": 1,
+   "resources": [
+    "mri_Qblips",
+    "mri_Qbox",
+    "mri_Qchat",
+    "mri_Qfarm",
+    "mri_Qfleecaheist",
+    "mri_Qfps",
+    "mri_Qhud",
+    "mri_Qloadscreen",
+    "mri_Qmarkerplacer",
+    "mri_Qobjects"
+   ]
+  },
+  {
+   "id": "oegljj",
+   "name": "CARIOCA CITY",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/oegljj/138828974.png",
+   "locale": "pt-BR",
+   "players": 1,
+   "maxPlayers": 1,
+   "avgPlayers": 1,
+   "resources": [
+    "mri_Qblips",
+    "mri_Qbox",
+    "mri_Qchat",
+    "mri_Qfarm",
+    "mri_Qfleecaheist",
+    "mri_Qfps",
+    "mri_Qhud",
+    "mri_Qloadscreen",
+    "mri_Qmarkerplacer",
+    "mri_Qobjects"
+   ]
+  },
+  {
+   "id": "lqlpz4",
+   "name": "Foe RP",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/lqlpz4/2034334528.png",
+   "locale": "pt-PT",
+   "players": 1,
+   "maxPlayers": 3,
+   "avgPlayers": 1,
+   "resources": [
+    "mri_Qadmin",
+    "mri_Qfleecaheist",
+    "mri_Qfps",
+    "mri_Qvehicles"
+   ]
+  },
+  {
+   "id": "7zkp8b",
+   "name": "GRP City",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/7zkp8b/1031616321.png",
+   "locale": "pt-BR",
+   "players": 1,
+   "maxPlayers": 1,
+   "avgPlayers": 1,
+   "resources": [
+    "mri_Qblips",
+    "mri_Qbox",
+    "mri_Qchat",
+    "mri_Qloadscreen"
+   ]
+  },
+  {
+   "id": "leed7dj",
+   "name": "HEAT",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/leed7dj/-58513444.png",
+   "locale": "pt-BR",
+   "players": 1,
+   "maxPlayers": 1,
+   "avgPlayers": 1,
+   "resources": [
+    "mri_Qblips",
+    "mri_Qbox",
+    "mri_Qchat",
+    "mri_Qfarm",
+    "mri_Qfps",
+    "mri_Qhud",
+    "mri_Qloadscreen",
+    "mri_Qmarkerplacer",
+    "mri_Qobjects"
+   ]
+  },
+  {
+   "id": "qx6x7z",
+   "name": "IMAGINE",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/qx6x7z/-1956073361.png",
+   "locale": "pt-BR",
+   "players": 1,
+   "maxPlayers": 1,
+   "avgPlayers": 1,
+   "resources": [
+    "mri_Qblips",
+    "mri_Qbox",
+    "mri_Qchat",
+    "mri_Qfarm",
+    "mri_Qfleecaheist",
+    "mri_Qhud",
+    "mri_Qmarkerplacer",
+    "mri_Qobjects"
+   ]
+  },
+  {
+   "id": "oaagrzv",
+   "name": "Kurtt",
+   "logo": null,
+   "locale": "pt-BR",
+   "players": 1,
+   "maxPlayers": 1,
+   "avgPlayers": 1,
+   "resources": [
+    "mri_Qadmin",
+    "mri_Qfarm"
+   ]
+  },
+  {
+   "id": "gaavazm",
+   "name": "NEBULOSA ROLEPLAY",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/gaavazm/-1727145360.png",
+   "locale": "pt-BR",
+   "players": 1,
+   "maxPlayers": 1,
+   "avgPlayers": 1,
+   "resources": [
+    "mri_Qadmin",
+    "mri_Qblips",
+    "mri_Qbox",
+    "mri_Qchat",
+    "mri_Qfarm",
+    "mri_Qfleecaheist",
+    "mri_Qfps",
+    "mri_Qhud",
+    "mri_Qloadscreen",
+    "mri_Qmarkerplacer",
+    "mri_Qmultichar",
+    "mri_Qobjects",
+    "mri_Qspawn",
+    "mri_Qvehicles"
+   ]
+  },
+  {
+   "id": "5ook4r6",
+   "name": "NOCTEM HOLLOW",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/5ook4r6/-767138445.png",
+   "locale": "pt-BR",
+   "players": 1,
+   "maxPlayers": 2,
+   "avgPlayers": 1,
+   "resources": [
+    "mri_Qadmin",
+    "mri_Qblips",
+    "mri_Qbox",
+    "mri_Qchat",
+    "mri_Qfarm",
+    "mri_Qfleecaheist",
+    "mri_Qfps",
+    "mri_Qhud",
+    "mri_Qmarkerplacer",
+    "mri_Qmultichar",
+    "mri_Qobjects",
+    "mri_Qspawn"
+   ]
+  },
+  {
+   "id": "967y7b",
+   "name": "Panóplia Roleplay",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/967y7b/2034334528.png",
+   "locale": "root-AQ",
+   "players": 1,
+   "maxPlayers": 1,
+   "avgPlayers": 1,
+   "resources": [
+    "mri_Qchat"
+   ]
+  },
+  {
+   "id": "gadmbbq",
+   "name": "Projeto E.C.H.O.",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/gadmbbq/209523675.png",
+   "locale": "pt-BR",
+   "players": 1,
+   "maxPlayers": 1,
+   "avgPlayers": 1,
+   "resources": [
+    "mri_Qbox",
+    "mri_Qchat",
+    "mri_Qhud",
+    "mri_Qloadscreen"
+   ]
+  },
+  {
+   "id": "4gg4pk9",
+   "name": "República Roleplay",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/4gg4pk9/-1888454479.png",
+   "locale": "pt-BR",
+   "players": 1,
+   "maxPlayers": 1,
+   "avgPlayers": 1,
+   "resources": [
+    "mri_Qblips",
+    "mri_Qbox",
+    "mri_Qchat",
+    "mri_Qfarm",
+    "mri_Qfleecaheist",
+    "mri_Qfps",
+    "mri_Qloadscreen",
+    "mri_Qmarkerplacer",
+    "mri_Qobjects"
+   ]
+  },
+  {
+   "id": "e3r483",
+   "name": "Sudeste Roleplay",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/e3r483/-1289048299.png",
+   "locale": "pt-BR",
+   "players": 1,
+   "maxPlayers": 1,
+   "avgPlayers": 1,
+   "resources": [
+    "mri_Qblips",
+    "mri_Qbox",
+    "mri_Qchat",
+    "mri_Qfarm",
+    "mri_Qfleecaheist",
+    "mri_Qfps",
+    "mri_Qmarkerplacer",
+    "mri_Qobjects"
+   ]
+  },
+  {
+   "id": "7gzmye",
+   "name": "TRAP",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/7gzmye/-1341738964.png",
+   "locale": "pt-BR",
+   "players": 1,
+   "maxPlayers": 1,
+   "avgPlayers": 1,
+   "resources": [
+    "mri_Qblips",
+    "mri_Qbox",
+    "mri_Qchat",
+    "mri_Qfarm",
+    "mri_Qfleecaheist",
+    "mri_Qfps",
+    "mri_Qmarkerplacer",
+    "mri_Qobjects"
+   ]
+  },
+  {
+   "id": "8emv6vv",
+   "name": "West County",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/8emv6vv/2091505548.png",
+   "locale": "pt-BR",
+   "players": 1,
+   "maxPlayers": 1,
+   "avgPlayers": 1,
+   "resources": [
+    "mri_Qblips",
+    "mri_Qbox",
+    "mri_Qchat",
+    "mri_Qfarm",
+    "mri_Qfleecaheist",
+    "mri_Qfps",
+    "mri_Qmarkerplacer",
+    "mri_Qobjects"
+   ]
+  },
+  {
+   "id": "leea477",
+   "name": "[MRI Qbox] OZRolePlayCity",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/leea477/209523675.png",
+   "locale": "pt-BR",
+   "players": 1,
+   "maxPlayers": 1,
+   "avgPlayers": 0,
+   "resources": [
+    "mri_Qadmin",
+    "mri_Qappearance",
+    "mri_Qblips",
+    "mri_Qbox",
+    "mri_Qchat",
+    "mri_Qfarm",
+    "mri_Qfleecaheist",
+    "mri_Qfps",
+    "mri_Qloadscreen",
+    "mri_Qmarkerplacer",
+    "mri_Qmultichar",
+    "mri_Qobjects",
+    "mri_Qspawn"
+   ]
+  },
+  {
+   "id": "l3epp4",
+   "name": "BOOST",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/l3epp4/1159323371.png",
+   "locale": "pt-BR",
+   "players": 1,
+   "maxPlayers": 2,
+   "avgPlayers": 0,
+   "resources": [
+    "mri_Qblips",
+    "mri_Qbox",
+    "mri_Qchat",
+    "mri_Qfarm",
+    "mri_Qfleecaheist",
+    "mri_Qfps",
+    "mri_Qhud",
+    "mri_Qloadscreen",
+    "mri_Qmarkerplacer",
+    "mri_Qobjects"
+   ]
+  },
+  {
+   "id": "zjj7m6y",
+   "name": "CARBURADOS & FORJADOS",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/zjj7m6y/209523675.png",
+   "locale": "pt-BR",
+   "players": 1,
+   "maxPlayers": 1,
+   "avgPlayers": 0,
+   "resources": [
+    "mri_Qadmin",
+    "mri_Qblips",
+    "mri_Qbox",
+    "mri_Qchat",
+    "mri_Qfarm",
+    "mri_Qfleecaheist",
+    "mri_Qfps",
+    "mri_Qloadscreen",
+    "mri_Qmarkerplacer",
+    "mri_Qmultichar",
+    "mri_Qobjects",
+    "mri_Qspawn"
+   ]
+  },
+  {
+   "id": "e6ejvbm",
+   "name": "Cidade Life",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/e6ejvbm/-1523117780.png",
+   "locale": "pt-BR",
+   "players": 1,
+   "maxPlayers": 1,
+   "avgPlayers": 0,
+   "resources": [
+    "mri_Qadmin",
+    "mri_Qfarm"
+   ]
+  },
+  {
+   "id": "ovgl97",
+   "name": "MadrugadaRP",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/ovgl97/2034334528.png",
+   "locale": "pt-BR",
+   "players": 1,
+   "maxPlayers": 1,
+   "avgPlayers": 0,
+   "resources": [
+    "mri_Qdoorlock"
+   ]
+  },
+  {
+   "id": "735dka",
+   "name": "NationZ SEASON 2",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/735dka/794581446.png",
+   "locale": "pt-BR",
+   "players": 1,
+   "maxPlayers": 2,
+   "avgPlayers": 0,
+   "resources": [
+    "mri_Qadmin"
+   ]
+  },
+  {
+   "id": "3med7y",
+   "name": "Nova Mooca Roleplay",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/3med7y/-179577070.png",
+   "locale": "pt-BR",
+   "players": 1,
+   "maxPlayers": 2,
+   "avgPlayers": 0,
+   "resources": [
+    "mri_Qadmin",
+    "mri_Qfarm"
+   ]
+  },
+  {
+   "id": "ler69x7",
+   "name": "Ordem Roleplay",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/ler69x7/-1766360112.png",
+   "locale": "pt-BR",
+   "players": 1,
+   "maxPlayers": 1,
+   "avgPlayers": 0,
+   "resources": [
+    "mri_Qadmin",
+    "mri_Qblips",
+    "mri_Qbox",
+    "mri_Qfarm",
+    "mri_Qfleecaheist",
+    "mri_Qfps",
+    "mri_Qloadscreen",
+    "mri_Qmarkerplacer",
+    "mri_Qobjects"
+   ]
+  },
+  {
+   "id": "p3qk55",
+   "name": "Tatuapé Roleplay",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/p3qk55/1319697396.png",
+   "locale": "pt-BR",
+   "players": 1,
+   "maxPlayers": 3,
+   "avgPlayers": 0,
+   "resources": [
+    "mri_Qadmin",
+    "mri_Qfarm"
+   ]
+  },
+  {
+   "id": "y38xp9",
+   "name": "UNDERWORLDS",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/y38xp9/-983352729.png",
+   "locale": "pt-BR",
+   "players": 1,
+   "maxPlayers": 1,
+   "avgPlayers": 0,
+   "resources": [
+    "mri_Qblips",
+    "mri_Qbox",
+    "mri_Qchat",
+    "mri_Qfarm",
+    "mri_Qfleecaheist",
+    "mri_Qfps",
+    "mri_Qhud",
+    "mri_Qloadscreen",
+    "mri_Qmarkerplacer",
+    "mri_Qobjects"
+   ]
+  },
+  {
+   "id": "vggdgr",
+   "name": "Veridian City",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/vggdgr/-658925668.png",
+   "locale": "pt-BR",
+   "players": 1,
+   "maxPlayers": 2,
+   "avgPlayers": 0,
+   "resources": [
+    "mri_Qadmin",
+    "mri_Qblips",
+    "mri_Qbox",
+    "mri_Qchat",
+    "mri_Qfarm",
+    "mri_Qfleecaheist",
+    "mri_Qmarkerplacer",
+    "mri_Qobjects",
+    "mri_Qspawn"
+   ]
+  },
+  {
+   "id": "89rrvv",
+   "name": "Vida Nova Paulista",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/89rrvv/-2137211286.png",
+   "locale": "pt-BR",
+   "players": 1,
+   "maxPlayers": 1,
+   "avgPlayers": 0,
+   "resources": [
+    "mri_Qadmin",
+    "mri_Qblips",
+    "mri_Qbox",
+    "mri_Qchat",
+    "mri_Qfarm",
+    "mri_Qfleecaheist",
+    "mri_Qmarkerplacer",
+    "mri_Qobjects"
+   ]
+  },
+  {
+   "id": "9p4adm",
+   "name": "VIDA PAULISTA",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/9p4adm/436507098.png",
+   "locale": "pt-BR",
+   "players": 1,
+   "maxPlayers": 3,
+   "avgPlayers": 0,
+   "resources": [
+    "mri_Qadmin"
+   ]
+  },
+  {
+   "id": "dg3m5dq",
+   "name": "SunnyValley",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/dg3m5dq/209523675.png",
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 3,
+   "avgPlayers": 2,
+   "resources": [
+    "mri_Qblips",
+    "mri_Qbox",
+    "mri_Qchat",
+    "mri_Qfarm",
+    "mri_Qfps",
+    "mri_Qloadscreen",
+    "mri_Qmarkerplacer",
+    "mri_Qobjects"
+   ]
+  },
+  {
+   "id": "y9vraq9",
+   "name": "VibeCity RP 🡺 ABRIU HOJE 28-SET",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/y9vraq9/-192619389.png",
+   "locale": "pt-PT",
+   "players": 0,
+   "maxPlayers": 6,
+   "avgPlayers": 2,
+   "resources": [
+    "mri_Qfarm"
+   ]
+  },
+  {
+   "id": "98y44je",
+   "name": "[MRI Qbox] Distrito Paulista",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/98y44je/209523675.png",
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 2,
+   "avgPlayers": 1,
+   "resources": [
+    "mri_Qadmin",
+    "mri_Qblips",
+    "mri_Qbox",
+    "mri_Qchat",
+    "mri_Qfarm",
+    "mri_Qfps",
+    "mri_Qloadscreen",
+    "mri_Qmarkerplacer",
+    "mri_Qmultichar",
+    "mri_Qobjects",
+    "mri_Qspawn"
+   ]
+  },
+  {
+   "id": "3yg3lez",
+   "name": "[MRI Qbox] Origens_2.0",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/3yg3lez/209523675.png",
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 2,
+   "avgPlayers": 1,
+   "resources": [
+    "mri_Qblips",
+    "mri_Qbox",
+    "mri_Qchat",
+    "mri_Qfarm",
+    "mri_Qfleecaheist",
+    "mri_Qfps",
+    "mri_Qmarkerplacer",
+    "mri_Qobjects"
+   ]
+  },
+  {
+   "id": "qldmd6",
+   "name": "[Qbox Project] Server de Testes",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/qldmd6/2034334528.png",
+   "locale": "root-AQ",
+   "players": 0,
+   "maxPlayers": 2,
+   "avgPlayers": 1,
+   "resources": [
+    "mri_Qchat"
+   ]
+  },
+  {
+   "id": "5oyda87",
+   "name": "[Zumbie Survival] Levi Survival",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/5oyda87/-998753169.png",
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 1,
+   "avgPlayers": 1,
+   "resources": [
+    "mri_Qblips",
+    "mri_Qbox",
+    "mri_Qchat",
+    "mri_Qfps",
+    "mri_Qloadscreen",
+    "mri_Qmarkerplacer",
+    "mri_Qobjects"
+   ]
+  },
+  {
+   "id": "rmabq3j",
+   "name": "❤️ Los Santos City RP",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/rmabq3j/20922116.png",
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 1,
+   "avgPlayers": 1,
+   "resources": [
+    "mri_Qblips",
+    "mri_Qbox",
+    "mri_Qchat",
+    "mri_Qfarm",
+    "mri_Qfleecaheist",
+    "mri_Qfps",
+    "mri_Qhud",
+    "mri_Qloadscreen",
+    "mri_Qmarkerplacer",
+    "mri_Qobjects"
+   ]
+  },
+  {
+   "id": "r5q8vp",
+   "name": "Base Reborn",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/r5q8vp/-1483058565.png",
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 3,
+   "avgPlayers": 1,
+   "resources": [
+    "mri_Qadmin",
+    "mri_Qfarm"
+   ]
+  },
+  {
+   "id": "kqqg73v",
+   "name": "BeiraMar Roleplay",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/kqqg73v/209523675.png",
+   "locale": "pt-PT",
+   "players": 0,
+   "maxPlayers": 3,
+   "avgPlayers": 1,
+   "resources": [
+    "mri_Qadmin",
+    "mri_Qblips",
+    "mri_Qbox",
+    "mri_Qchat",
+    "mri_Qfarm",
+    "mri_Qfps",
+    "mri_Qmarkerplacer",
+    "mri_Qmultichar",
+    "mri_Qobjects",
+    "mri_Qspawn",
+    "mri_Qvehicles"
+   ]
+  },
+  {
+   "id": "kqqo9dv",
+   "name": "Eclipse Roleplay",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/kqqo9dv/2034334528.png",
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 3,
+   "avgPlayers": 1,
+   "resources": [
+    "mri_Qloadscreen"
+   ]
+  },
+  {
+   "id": "9z97jy",
+   "name": "Ilha de San Andreas",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/9z97jy/209523675.png",
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 1,
+   "avgPlayers": 1,
+   "resources": [
+    "mri_Qblips",
+    "mri_Qbox",
+    "mri_Qchat",
+    "mri_Qfarm",
+    "mri_Qfleecaheist",
+    "mri_Qfps",
+    "mri_Qmarkerplacer",
+    "mri_Qobjects"
+   ]
+  },
+  {
+   "id": "pb7j6y",
+   "name": "Laços RP",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/pb7j6y/-892819377.png",
+   "locale": "pt-PT",
+   "players": 0,
+   "maxPlayers": 3,
+   "avgPlayers": 1,
+   "resources": [
+    "mri_Qmenu"
+   ]
+  },
+  {
+   "id": "bdxq6dd",
+   "name": "LittleCool",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/bdxq6dd/209523675.png",
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 1,
+   "avgPlayers": 1,
+   "resources": [
+    "mri_Qblips",
+    "mri_Qbox",
+    "mri_Qchat",
+    "mri_Qfarm",
+    "mri_Qfleecaheist",
+    "mri_Qfps",
+    "mri_Qhud",
+    "mri_Qloadscreen",
+    "mri_Qmarkerplacer",
+    "mri_Qobjects"
+   ]
+  },
+  {
+   "id": "7bbod9r",
+   "name": "LULU CORE",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/7bbod9r/-507562576.png",
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 1,
+   "avgPlayers": 1,
+   "resources": [
+    "mri_Qblips",
+    "mri_Qbox",
+    "mri_Qchat",
+    "mri_Qfarm",
+    "mri_Qfleecaheist",
+    "mri_Qfps",
+    "mri_Qloadscreen",
+    "mri_Qmarkerplacer",
+    "mri_Qobjects"
+   ]
+  },
+  {
+   "id": "xlldqr5",
+   "name": "No Pulse RP",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/xlldqr5/-571242627.png",
+   "locale": "en-AU",
+   "players": 0,
+   "maxPlayers": 3,
+   "avgPlayers": 1,
+   "resources": [
+    "mri_Qadmin",
+    "mri_Qdoorlock"
+   ]
+  },
+  {
+   "id": "4gbz94o",
+   "name": "Oakside",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/4gbz94o/512794419.png",
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 4,
+   "avgPlayers": 1,
+   "resources": [
+    "mri_Qadmin",
+    "mri_Qblips",
+    "mri_Qbox",
+    "mri_Qchat",
+    "mri_Qfarm",
+    "mri_Qfleecaheist",
+    "mri_Qfps",
+    "mri_Qloadscreen",
+    "mri_Qmarkerplacer",
+    "mri_Qobjects"
+   ]
+  },
+  {
+   "id": "e66yoba",
+   "name": "Periferia Paulista",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/e66yoba/350261084.png",
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 2,
+   "avgPlayers": 1,
+   "resources": [
+    "mri_Qblips",
+    "mri_Qbox",
+    "mri_Qchat",
+    "mri_Qfarm",
+    "mri_Qfleecaheist",
+    "mri_Qfps",
+    "mri_Qhud",
+    "mri_Qloadscreen",
+    "mri_Qmarkerplacer",
+    "mri_Qobjects"
+   ]
+  },
+  {
+   "id": "a4zgm5k",
+   "name": "PRIME ROLEPLAY #WIPOU HOJE 🌈🌈",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/a4zgm5k/-532165883.png",
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 1,
+   "avgPlayers": 1,
+   "resources": [
+    "mri_Qadmin",
+    "mri_Qfarm"
+   ]
+  },
+  {
+   "id": "dggja93",
+   "name": "Prime SP Roleplay",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/dggja93/1485231108.png",
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 4,
+   "avgPlayers": 1,
+   "resources": [
+    "mri_Qadmin",
+    "mri_Qblips",
+    "mri_Qbox",
+    "mri_Qchat",
+    "mri_Qfarm",
+    "mri_Qfleecaheist",
+    "mri_Qfps",
+    "mri_Qloadscreen",
+    "mri_Qmarkerplacer",
+    "mri_Qmultichar",
+    "mri_Qobjects",
+    "mri_Qspawn",
+    "mri_Qvehicles"
+   ]
+  },
+  {
+   "id": "z5ov7y",
+   "name": "Projeto",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/z5ov7y/209523675.png",
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 1,
+   "avgPlayers": 1,
+   "resources": [
+    "mri_Qblips",
+    "mri_Qbox",
+    "mri_Qchat",
+    "mri_Qfarm",
+    "mri_Qfleecaheist",
+    "mri_Qfps",
+    "mri_Qhud",
+    "mri_Qloadscreen",
+    "mri_Qmarkerplacer",
+    "mri_Qobjects"
+   ]
+  },
+  {
+   "id": "gadgv3m",
+   "name": "Tears Falls",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/gadgv3m/1026338216.png",
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 1,
+   "avgPlayers": 1,
+   "resources": [
+    "mri_Qadmin",
+    "mri_Qblips",
+    "mri_Qbox",
+    "mri_Qfarm",
+    "mri_Qfleecaheist",
+    "mri_Qfps",
+    "mri_Qloadscreen",
+    "mri_Qmarkerplacer",
+    "mri_Qobjects"
+   ]
+  },
+  {
+   "id": "3lz3lr",
+   "name": "",
+   "logo": null,
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 0,
+   "avgPlayers": 0,
+   "resources": [
+    "mri_Qblips",
+    "mri_Qbox",
+    "mri_Qcarplates",
+    "mri_Qchat",
+    "mri_Qfarm",
+    "mri_Qfleecaheist",
+    "mri_Qfps",
+    "mri_Qhud",
+    "mri_Qmarkerplacer",
+    "mri_Qobjects"
+   ]
+  },
+  {
+   "id": "ov535v",
+   "name": "",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/ov535v/1597416284.png",
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 0,
+   "avgPlayers": 0,
+   "resources": [
+    "mri_Qfarm"
+   ]
+  },
+  {
+   "id": "ak99me",
+   "name": "[BR] FiveSP",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/ak99me/1223574950.png",
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 0,
+   "avgPlayers": 0,
+   "resources": [
+    "mri_Qadmin",
+    "mri_Qblips",
+    "mri_Qbox",
+    "mri_Qcarplates",
+    "mri_Qfarm",
+    "mri_Qmarkerplacer",
+    "mri_Qobjects"
+   ]
+  },
+  {
+   "id": "zyqe34",
+   "name": "[BR/RJ] Avenida Brasil",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/zyqe34/1007646776.png",
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 1,
+   "avgPlayers": 0,
+   "resources": [
+    "mri_Qblips",
+    "mri_Qbox",
+    "mri_Qchat",
+    "mri_Qfarm",
+    "mri_Qfleecaheist",
+    "mri_Qfps",
+    "mri_Qhud",
+    "mri_Qmarkerplacer",
+    "mri_Qobjects"
+   ]
+  },
+  {
+   "id": "qqqjl8v",
+   "name": "[BRASIL] Stambuly",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/qqqjl8v/1457070877.png",
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 0,
+   "avgPlayers": 0,
+   "resources": [
+    "mri_Qblips",
+    "mri_Qbox",
+    "mri_Qchat",
+    "mri_Qfarm",
+    "mri_Qfleecaheist",
+    "mri_Qfps",
+    "mri_Qmarkerplacer",
+    "mri_Qobjects"
+   ]
+  },
+  {
+   "id": "oaa7rbj",
+   "name": "[DREAM STORE] 011 Paulista",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/oaa7rbj/-194606587.png",
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 1,
+   "avgPlayers": 0,
+   "resources": [
+    "mri_Qblips",
+    "mri_Qbox",
+    "mri_Qchat",
+    "mri_Qfarm",
+    "mri_Qfleecaheist",
+    "mri_Qfps",
+    "mri_Qhud",
+    "mri_Qloadscreen",
+    "mri_Qmarkerplacer",
+    "mri_Qobjects"
+   ]
+  },
+  {
+   "id": "8eeaqd3",
+   "name": "[MRI Qbox] Burnout Automotiva RP",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/8eeaqd3/104458160.png",
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 0,
+   "avgPlayers": 0,
+   "resources": [
+    "mri_Qblips",
+    "mri_Qbox",
+    "mri_Qchat",
+    "mri_Qfarm",
+    "mri_Qfleecaheist",
+    "mri_Qfps",
+    "mri_Qloadscreen",
+    "mri_Qmarkerplacer",
+    "mri_Qobjects"
+   ]
+  },
+  {
+   "id": "kqqdxya",
+   "name": "[MRI Qbox] Costa Leste",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/kqqdxya/517022408.png",
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 2,
+   "avgPlayers": 0,
+   "resources": [
+    "mri_Qadmin",
+    "mri_Qappearance",
+    "mri_Qblips",
+    "mri_Qbox",
+    "mri_Qchat",
+    "mri_Qemotemenu",
+    "mri_Qfarm",
+    "mri_Qfleecaheist",
+    "mri_Qfps",
+    "mri_Qloadscreen",
+    "mri_Qmarkerplacer",
+    "mri_Qmultichar",
+    "mri_Qobjects",
+    "mri_Qspawn",
+    "mri_Qvehicles"
+   ]
+  },
+  {
+   "id": "gaaq86o",
+   "name": "[MRI Qbox] er1",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/gaaq86o/209523675.png",
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 1,
+   "avgPlayers": 0,
+   "resources": [
+    "mri_Qblips",
+    "mri_Qbox",
+    "mri_Qchat",
+    "mri_Qfarm",
+    "mri_Qfleecaheist",
+    "mri_Qfps",
+    "mri_Qhud",
+    "mri_Qloadscreen",
+    "mri_Qmarkerplacer",
+    "mri_Qobjects"
+   ]
+  },
+  {
+   "id": "j44x5ga",
+   "name": "[MRI Qbox] Meu Servidor FiveM",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/j44x5ga/209523675.png",
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 0,
+   "avgPlayers": 0,
+   "resources": [
+    "mri_Qadmin",
+    "mri_Qblips",
+    "mri_Qbox",
+    "mri_Qchat",
+    "mri_Qfarm",
+    "mri_Qfleecaheist",
+    "mri_Qfps",
+    "mri_Qhud",
+    "mri_Qloadscreen",
+    "mri_Qmarkerplacer",
+    "mri_Qmultichar",
+    "mri_Qobjects",
+    "mri_Qspawn"
+   ]
+  },
+  {
+   "id": "aradle",
+   "name": "[MRI Qbox] Meu Servidor FiveM",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/aradle/209523675.png",
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 0,
+   "avgPlayers": 0,
+   "resources": [
+    "mri_Qblips",
+    "mri_Qbox",
+    "mri_Qchat",
+    "mri_Qfarm",
+    "mri_Qfleecaheist",
+    "mri_Qfps",
+    "mri_Qhud",
+    "mri_Qloadscreen",
+    "mri_Qmarkerplacer",
+    "mri_Qobjects"
+   ]
+  },
+  {
+   "id": "gzq47z",
+   "name": "[MRI Qbox] Mri Test Server",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/gzq47z/209523675.png",
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 0,
+   "avgPlayers": 0,
+   "resources": [
+    "mri_Qadmin",
+    "mri_Qblips",
+    "mri_Qbox",
+    "mri_Qchat",
+    "mri_Qfarm",
+    "mri_Qfleecaheist",
+    "mri_Qfps",
+    "mri_Qhud",
+    "mri_Qloadscreen",
+    "mri_Qmultichar",
+    "mri_Qobjects",
+    "mri_Qspawn",
+    "mri_Qvehicles"
+   ]
+  },
+  {
+   "id": "zzexjp",
+   "name": "[MRI Qbox] NP CITY",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/zzexjp/209523675.png",
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 1,
+   "avgPlayers": 0,
+   "resources": [
+    "mri_Qadmin",
+    "mri_Qblips",
+    "mri_Qbox",
+    "mri_Qchat",
+    "mri_Qfarm",
+    "mri_Qfleecaheist",
+    "mri_Qfps",
+    "mri_Qhud",
+    "mri_Qloadscreen",
+    "mri_Qmarkerplacer",
+    "mri_Qmultichar",
+    "mri_Qobjects",
+    "mri_Qspawn",
+    "mri_Qvehicles"
+   ]
+  },
+  {
+   "id": "8ll6ym",
+   "name": "[MRI Qbox] Sc Lab",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/8ll6ym/209523675.png",
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 0,
+   "avgPlayers": 0,
+   "resources": [
+    "mri_Qblips",
+    "mri_Qbox",
+    "mri_Qchat",
+    "mri_Qfarm",
+    "mri_Qfleecaheist",
+    "mri_Qfps",
+    "mri_Qhud",
+    "mri_Qloadscreen",
+    "mri_Qmarkerplacer",
+    "mri_Qobjects"
+   ]
+  },
+  {
+   "id": "v8l37e",
+   "name": "[MRI Qbox] Shadown_Valley",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/v8l37e/209523675.png",
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 1,
+   "avgPlayers": 0,
+   "resources": [
+    "mri_Qblips",
+    "mri_Qbox",
+    "mri_Qchat",
+    "mri_Qfarm",
+    "mri_Qfleecaheist",
+    "mri_Qfps",
+    "mri_Qloadscreen",
+    "mri_Qmarkerplacer",
+    "mri_Qobjects"
+   ]
+  },
+  {
+   "id": "6jbdz6",
+   "name": "[MRI Qbox] TesteServer",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/6jbdz6/209523675.png",
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 1,
+   "avgPlayers": 0,
+   "resources": [
+    "mri_Qblips",
+    "mri_Qbox",
+    "mri_Qchat",
+    "mri_Qfarm",
+    "mri_Qfleecaheist",
+    "mri_Qfps",
+    "mri_Qhud",
+    "mri_Qloadscreen",
+    "mri_Qmarkerplacer",
+    "mri_Qobjects"
+   ]
+  },
+  {
+   "id": "3m6lqz",
+   "name": "[MRI Qbox] Undeground",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/3m6lqz/209523675.png",
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 0,
+   "avgPlayers": 0,
+   "resources": [
+    "mri_Qblips",
+    "mri_Qbox",
+    "mri_Qchat",
+    "mri_Qfarm",
+    "mri_Qfleecaheist",
+    "mri_Qfps",
+    "mri_Qhud",
+    "mri_Qloadscreen",
+    "mri_Qmarkerplacer",
+    "mri_Qobjects"
+   ]
+  },
+  {
+   "id": "3ygd768",
+   "name": "[MRI Qbox] Underground RP Hard Core",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/3ygd768/-637525747.png",
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 1,
+   "avgPlayers": 0,
+   "resources": [
+    "mri_Qadmin",
+    "mri_Qblips",
+    "mri_Qbox",
+    "mri_Qchat",
+    "mri_Qfarm",
+    "mri_Qfleecaheist",
+    "mri_Qfps",
+    "mri_Qhud",
+    "mri_Qloadscreen",
+    "mri_Qmarkerplacer",
+    "mri_Qmultichar",
+    "mri_Qobjects",
+    "mri_Qspawn",
+    "mri_Qvehicles"
+   ]
+  },
+  {
+   "id": "p8y5o7",
+   "name": "[MRI Qbox] Volts CFX",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/p8y5o7/209523675.png",
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 0,
+   "avgPlayers": 0,
+   "resources": [
+    "mri_Qblips",
+    "mri_Qbox",
+    "mri_Qchat",
+    "mri_Qfarm",
+    "mri_Qfleecaheist",
+    "mri_Qfps",
+    "mri_Qhud",
+    "mri_Qloadscreen",
+    "mri_Qmarkerplacer",
+    "mri_Qobjects"
+   ]
+  },
+  {
+   "id": "zjjlmv9",
+   "name": "[MRI Qbox] Vook Store",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/zjjlmv9/209523675.png",
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 1,
+   "avgPlayers": 0,
+   "resources": [
+    "mri_Qchat",
+    "mri_Qfps",
+    "mri_Qloadscreen"
+   ]
+  },
+  {
+   "id": "r4mxkp",
+   "name": "[mri_Qbox] Republica",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/r4mxkp/209523675.png",
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 0,
+   "avgPlayers": 0,
+   "resources": [
+    "mri_Qblips",
+    "mri_Qbox",
+    "mri_Qchat",
+    "mri_Qfarm",
+    "mri_Qfleecaheist",
+    "mri_Qfps",
+    "mri_Qhud",
+    "mri_Qloadscreen",
+    "mri_Qmarkerplacer",
+    "mri_Qobjects"
+   ]
+  },
+  {
+   "id": "lkq6oj",
+   "name": "[PVE] PROJETOZ BRASIL",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/lkq6oj/-1648543658.png",
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 1,
+   "avgPlayers": 0,
+   "resources": [
+    "mri_Qblips",
+    "mri_Qbox",
+    "mri_Qchat",
+    "mri_Qfps",
+    "mri_Qmarkerplacer",
+    "mri_Qobjects"
+   ]
+  },
+  {
+   "id": "leeo687",
+   "name": "[Qbox] Tree House",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/leeo687/-269882067.png",
+   "locale": "ro-RO",
+   "players": 0,
+   "maxPlayers": 0,
+   "avgPlayers": 0,
+   "resources": [
+    "mri_Qadmin",
+    "mri_Qairbags",
+    "mri_Qbox",
+    "mri_Qfps",
+    "mri_Qloadscreen",
+    "mri_Qmarkerplacer",
+    "mri_Qspawn",
+    "mri_Qtyrecontrol"
+   ]
+  },
+  {
+   "id": "p3eoem",
+   "name": "🚧 [DEV]Ambiente de Testes 🚧",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/p3eoem/1370153254.png",
+   "locale": "pt-br",
+   "players": 0,
+   "maxPlayers": 0,
+   "avgPlayers": 0,
+   "resources": [
+    "mri_Qblips",
+    "mri_Qfps",
+    "mri_Qmarkerplacer",
+    "mri_Qobjects"
+   ]
+  },
+  {
+   "id": "8eezrbv",
+   "name": "ACAPULCO ROLEPLAY",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/8eezrbv/-798450229.png",
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 0,
+   "avgPlayers": 0,
+   "resources": [
+    "mri_Qblips",
+    "mri_Qbox",
+    "mri_Qchat",
+    "mri_Qfarm",
+    "mri_Qfleecaheist",
+    "mri_Qfps",
+    "mri_Qmarkerplacer",
+    "mri_Qobjects"
+   ]
+  },
+  {
+   "id": "xmkpbm",
+   "name": "Alley City 🌈| 💻 PINGBR 150+",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/xmkpbm/-1828623157.png",
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 1,
+   "avgPlayers": 0,
+   "resources": [
+    "mri_Qadmin",
+    "mri_Qfarm"
+   ]
+  },
+  {
+   "id": "e66kppd",
+   "name": "Alma Urbana RP",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/e66kppd/658487008.png",
+   "locale": "pt-PT",
+   "players": 0,
+   "maxPlayers": 2,
+   "avgPlayers": 0,
+   "resources": [
+    "mri_Qadmin",
+    "mri_Qblips",
+    "mri_Qbox",
+    "mri_Qchat",
+    "mri_Qfarm",
+    "mri_Qfleecaheist",
+    "mri_Qfps",
+    "mri_Qloadscreen",
+    "mri_Qmarkerplacer",
+    "mri_Qobjects",
+    "mri_Qspawn"
+   ]
+  },
+  {
+   "id": "jj54pa",
+   "name": "AOSAOSEISHORASDAMANHAEASNOVINHATAONOCLIMA_BOM_DIA",
+   "logo": null,
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 0,
+   "avgPlayers": 0,
+   "resources": [
+    "mri_Qblips",
+    "mri_Qbox",
+    "mri_Qchat",
+    "mri_Qfarm",
+    "mri_Qfleecaheist",
+    "mri_Qfps",
+    "mri_Qhud",
+    "mri_Qmarkerplacer",
+    "mri_Qobjects"
+   ]
+  },
+  {
+   "id": "8eey7am",
+   "name": "APEX",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/8eey7am/-689542051.png",
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 1,
+   "avgPlayers": 0,
+   "resources": [
+    "mri_Qblips",
+    "mri_Qbox",
+    "mri_Qchat",
+    "mri_Qfarm",
+    "mri_Qfleecaheist",
+    "mri_Qfps",
+    "mri_Qhud",
+    "mri_Qmarkerplacer",
+    "mri_Qobjects"
+   ]
+  },
+  {
+   "id": "d7l645",
+   "name": "APOCALIPSE Z-[SERVIDOR EM MANUTENÇÃO]| Aguarde nos",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/d7l645/-228780924.png",
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 2,
+   "avgPlayers": 0,
+   "resources": [
+    "mri_Qadmin",
+    "mri_Qfarm"
+   ]
+  },
+  {
+   "id": "zx5p8p",
+   "name": "ARX Roleplay",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/zx5p8p/2125316455.png",
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 0,
+   "avgPlayers": 0,
+   "resources": [
+    "mri_Qblips",
+    "mri_Qbox",
+    "mri_Qcarplates",
+    "mri_Qchat",
+    "mri_Qfarm",
+    "mri_Qfleecaheist",
+    "mri_Qfps",
+    "mri_Qhud",
+    "mri_Qloadscreen",
+    "mri_Qmarkerplacer",
+    "mri_Qobjects"
+   ]
+  },
+  {
+   "id": "zjv36j5",
+   "name": "ASCEND",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/zjv36j5/2138702197.png",
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 1,
+   "avgPlayers": 0,
+   "resources": [
+    "mri_Qadmin",
+    "mri_Qblips",
+    "mri_Qmenu",
+    "mri_Qobjects"
+   ]
+  },
+  {
+   "id": "b7kr3l",
+   "name": "Athena RP",
+   "logo": null,
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 0,
+   "avgPlayers": 0,
+   "resources": [
+    "mri_Qadmin",
+    "mri_Qfarm"
+   ]
+  },
+  {
+   "id": "vzopq5",
+   "name": "Base de testes.",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/vzopq5/209523675.png",
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 1,
+   "avgPlayers": 0,
+   "resources": [
+    "mri_Qblips",
+    "mri_Qbox",
+    "mri_Qchat",
+    "mri_Qfarm",
+    "mri_Qfleecaheist",
+    "mri_Qfps",
+    "mri_Qhud",
+    "mri_Qloadscreen",
+    "mri_Qmarkerplacer",
+    "mri_Qobjects"
+   ]
+  },
+  {
+   "id": "rmmv3gj",
+   "name": "Base do Alano",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/rmmv3gj/209523675.png",
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 1,
+   "avgPlayers": 0,
+   "resources": [
+    "mri_Qblips",
+    "mri_Qbox",
+    "mri_Qchat",
+    "mri_Qfarm",
+    "mri_Qfleecaheist",
+    "mri_Qfps",
+    "mri_Qhud",
+    "mri_Qloadscreen",
+    "mri_Qmarkerplacer",
+    "mri_Qobjects"
+   ]
+  },
+  {
+   "id": "r7zkyg",
+   "name": "Base Reborn",
+   "logo": null,
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 0,
+   "avgPlayers": 0,
+   "resources": [
+    "mri_Qadmin",
+    "mri_Qfarm"
+   ]
+  },
+  {
+   "id": "x964xm",
+   "name": "Belmonte Roleplay",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/x964xm/209523675.png",
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 1,
+   "avgPlayers": 0,
+   "resources": [
+    "mri_Qblips",
+    "mri_Qbox",
+    "mri_Qchat",
+    "mri_Qfarm",
+    "mri_Qfleecaheist",
+    "mri_Qfps",
+    "mri_Qloadscreen",
+    "mri_Qmarkerplacer",
+    "mri_Qobjects"
+   ]
+  },
+  {
+   "id": "e66kxvp",
+   "name": "BOPE",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/e66kxvp/-142472279.png",
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 0,
+   "avgPlayers": 0,
+   "resources": [
+    "mri_Qblips",
+    "mri_Qbox",
+    "mri_Qfarm",
+    "mri_Qfleecaheist",
+    "mri_Qfps",
+    "mri_Qloadscreen",
+    "mri_Qmarkerplacer",
+    "mri_Qobjects"
+   ]
+  },
+  {
+   "id": "xlll3jx",
+   "name": "BURNOUT CITY!",
+   "logo": null,
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 0,
+   "avgPlayers": 0,
+   "resources": [
+    "mri_Qblips",
+    "mri_Qbox",
+    "mri_Qchat",
+    "mri_Qfarm",
+    "mri_Qfleecaheist",
+    "mri_Qfps",
+    "mri_Qhud",
+    "mri_Qloadscreen",
+    "mri_Qmarkerplacer",
+    "mri_Qobjects"
+   ]
+  },
+  {
+   "id": "4ggpjj5",
+   "name": "California Stories",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/4ggpjj5/613751350.png",
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 0,
+   "avgPlayers": 0,
+   "resources": [
+    "mri_Qbox",
+    "mri_Qfarm",
+    "mri_Qfps",
+    "mri_Qobjects"
+   ]
+  },
+  {
+   "id": "zxx53p",
+   "name": "Celestial RP",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/zxx53p/209523675.png",
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 0,
+   "avgPlayers": 0,
+   "resources": [
+    "mri_Qadmin",
+    "mri_Qblips",
+    "mri_Qbox",
+    "mri_Qchat",
+    "mri_Qfarm",
+    "mri_Qfleecaheist",
+    "mri_Qfps",
+    "mri_Qhud",
+    "mri_Qloadscreen",
+    "mri_Qmarkerplacer",
+    "mri_Qmultichar",
+    "mri_Qobjects",
+    "mri_Qspawn"
+   ]
+  },
+  {
+   "id": "3yyyy5b",
+   "name": "Central City RP",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/3yyyy5b/-63118129.png",
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 1,
+   "avgPlayers": 0,
+   "resources": [
+    "mri_Qblips",
+    "mri_Qbox",
+    "mri_Qchat",
+    "mri_Qfarm",
+    "mri_Qfleecaheist",
+    "mri_Qfps",
+    "mri_Qloadscreen",
+    "mri_Qmarkerplacer",
+    "mri_Qobjects"
+   ]
+  },
+  {
+   "id": "3b79qy",
+   "name": "Chiraq Trenches",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/3b79qy/-1197132020.png",
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 1,
+   "avgPlayers": 0,
+   "resources": [
+    "mri_Qblips",
+    "mri_Qbox",
+    "mri_Qfarm",
+    "mri_Qfleecaheist",
+    "mri_Qfps",
+    "mri_Qmarkerplacer",
+    "mri_Qobjects"
+   ]
+  },
+  {
+   "id": "7gk9jd",
+   "name": "CircuitoRP",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/7gk9jd/197516474.png",
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 0,
+   "avgPlayers": 0,
+   "resources": [
+    "mri_Qblips",
+    "mri_Qbox",
+    "mri_Qchat",
+    "mri_Qfarm",
+    "mri_Qfleecaheist",
+    "mri_Qfps",
+    "mri_Qhud",
+    "mri_Qloadscreen",
+    "mri_Qmarkerplacer",
+    "mri_Qobjects",
+    "mri_Qspawn"
+   ]
+  },
+  {
+   "id": "5oog7qd",
+   "name": "CITY-X",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/5oog7qd/-780719800.png",
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 1,
+   "avgPlayers": 0,
+   "resources": [
+    "mri_Qadmin",
+    "mri_Qfarm"
+   ]
+  },
+  {
+   "id": "4gbedko",
+   "name": "Conecta valley",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/4gbedko/1546181941.png",
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 0,
+   "avgPlayers": 0,
+   "resources": [
+    "mri_Qadmin",
+    "mri_Qappearance",
+    "mri_Qblips",
+    "mri_Qbox",
+    "mri_Qchat",
+    "mri_Qfarm",
+    "mri_Qfleecaheist",
+    "mri_Qfps",
+    "mri_Qhud",
+    "mri_Qloadscreen",
+    "mri_Qmarkerplacer",
+    "mri_Qmultichar",
+    "mri_Qobjects",
+    "mri_Qspawn"
+   ]
+  },
+  {
+   "id": "ma7al9",
+   "name": "Continental",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/ma7al9/-733058898.png",
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 1,
+   "avgPlayers": 0,
+   "resources": [
+    "mri_Qblips",
+    "mri_Qbossmenu",
+    "mri_Qbox",
+    "mri_Qcarplates",
+    "mri_Qchat",
+    "mri_Qfarm",
+    "mri_Qfleecaheist",
+    "mri_Qfps",
+    "mri_Qhud",
+    "mri_Qloadscreen",
+    "mri_Qmarkerplacer",
+    "mri_Qobjects"
+   ]
+  },
+  {
+   "id": "leea8d5",
+   "name": "Creative Sp v7",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/leea8d5/-1483058565.png",
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 0,
+   "avgPlayers": 0,
+   "resources": [
+    "mri_Qadmin"
+   ]
+  },
+  {
+   "id": "5oogbad",
+   "name": "Dayz Test Server",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/5oogbad/209523675.png",
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 0,
+   "avgPlayers": 0,
+   "resources": [
+    "mri_Qbox",
+    "mri_Qfps",
+    "mri_Qloadscreen"
+   ]
+  },
+  {
+   "id": "j44o64m",
+   "name": "DeathZone 2.0",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/j44o64m/58749518.png",
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 1,
+   "avgPlayers": 0,
+   "resources": [
+    "mri_Qblips",
+    "mri_Qbox",
+    "mri_Qchat",
+    "mri_Qfps",
+    "mri_Qmarkerplacer",
+    "mri_Qobjects"
+   ]
+  },
+  {
+   "id": "mxd36q",
+   "name": "DOOM",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/mxd36q/-1954905432.png",
+   "locale": "es-ES",
+   "players": 0,
+   "maxPlayers": 1,
+   "avgPlayers": 0,
+   "resources": [
+    "mri_Qadmin"
+   ]
+  },
+  {
+   "id": "zjjklg5",
+   "name": "DRJ Roleplay",
+   "logo": null,
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 1,
+   "avgPlayers": 0,
+   "resources": [
+    "mri_Qadmin",
+    "mri_Qfarm"
+   ]
+  },
+  {
+   "id": "eby9la",
+   "name": "Elemental Portugal",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/eby9la/1767864112.png",
+   "locale": "pt-PT",
+   "players": 0,
+   "maxPlayers": 0,
+   "avgPlayers": 0,
+   "resources": [
+    "mri_Qblips",
+    "mri_Qbox",
+    "mri_Qchat",
+    "mri_Qfarm",
+    "mri_Qfps",
+    "mri_Qmarkerplacer",
+    "mri_Qobjects"
+   ]
+  },
+  {
+   "id": "7b988ra",
+   "name": "Elysium RP",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/7b988ra/209523675.png",
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 0,
+   "avgPlayers": 0,
+   "resources": [
+    "mri_Qblips",
+    "mri_Qbox",
+    "mri_Qchat",
+    "mri_Qfarm",
+    "mri_Qfleecaheist",
+    "mri_Qfps",
+    "mri_Qloadscreen",
+    "mri_Qmarkerplacer",
+    "mri_Qmultichar",
+    "mri_Qobjects"
+   ]
+  },
+  {
+   "id": "xjqg65",
+   "name": "Epic",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/xjqg65/1430376527.png",
+   "locale": "root-AQ",
+   "players": 0,
+   "maxPlayers": 1,
+   "avgPlayers": 0,
+   "resources": [
+    "mri_Qfarm",
+    "mri_Qmenu",
+    "mri_Qobjects"
+   ]
+  },
+  {
+   "id": "bddgv84",
+   "name": "FarroupilhaRP",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/bddgv84/712354519.png",
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 0,
+   "avgPlayers": 0,
+   "resources": [
+    "mri_Qadmin",
+    "mri_Qfarm"
+   ]
+  },
+  {
+   "id": "g7m5lo",
+   "name": "Fifth Amendment Roleplay",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/g7m5lo/1267388330.png",
+   "locale": "en-GB",
+   "players": 0,
+   "maxPlayers": 2,
+   "avgPlayers": 0,
+   "resources": [
+    "mri_Qobjects"
+   ]
+  },
+  {
+   "id": "555e66",
+   "name": "FLY ROLEPLAY",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/555e66/912201250.png",
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 0,
+   "avgPlayers": 0,
+   "resources": [
+    "mri_Qadmin",
+    "mri_Qblips",
+    "mri_Qbox",
+    "mri_Qcarphotos",
+    "mri_Qcarplates",
+    "mri_Qchat",
+    "mri_Qdoorlock",
+    "mri_Qfarm",
+    "mri_Qfleecaheist",
+    "mri_Qfps",
+    "mri_Qjobslog",
+    "mri_Qloadscreen",
+    "mri_Qlogo",
+    "mri_Qmarkerplacer",
+    "mri_Qobjects",
+    "mri_Qtyrecontrol",
+    "mri_Qweather"
+   ]
+  },
+  {
+   "id": "boy3dp",
+   "name": "Fronteira Roleplay",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/boy3dp/-1197137131.png",
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 0,
+   "avgPlayers": 0,
+   "resources": [
+    "mri_Qblips",
+    "mri_Qbox",
+    "mri_Qchat",
+    "mri_Qfleecaheist",
+    "mri_Qfps",
+    "mri_Qloadscreen",
+    "mri_Qmarkerplacer",
+    "mri_Qobjects"
+   ]
+  },
+  {
+   "id": "y9v3zjk",
+   "name": "Grande SP Roleplay",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/y9v3zjk/1969397769.png",
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 0,
+   "avgPlayers": 0,
+   "resources": [
+    "mri_Qadmin",
+    "mri_Qblips",
+    "mri_Qbox",
+    "mri_Qcarplates",
+    "mri_Qchat",
+    "mri_Qfarm",
+    "mri_Qfleecaheist",
+    "mri_Qfps",
+    "mri_Qloadscreen",
+    "mri_Qlogo",
+    "mri_Qmarkerplacer",
+    "mri_Qobjects"
+   ]
+  },
+  {
+   "id": "qqq7kxp",
+   "name": "HadesRP",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/qqq7kxp/209523675.png",
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 0,
+   "avgPlayers": 0,
+   "resources": [
+    "mri_Qadmin",
+    "mri_Qblips",
+    "mri_Qbox",
+    "mri_Qchat",
+    "mri_Qfarm",
+    "mri_Qfleecaheist",
+    "mri_Qfps",
+    "mri_Qhud",
+    "mri_Qloadscreen",
+    "mri_Qmarkerplacer",
+    "mri_Qmultichar",
+    "mri_Qobjects",
+    "mri_Qspawn",
+    "mri_Qvehicles"
+   ]
+  },
+  {
+   "id": "93g3xa",
+   "name": "Housme",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/93g3xa/-1070658145.png",
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 1,
+   "avgPlayers": 0,
+   "resources": [
+    "mri_Qblips",
+    "mri_Qbox",
+    "mri_Qchat",
+    "mri_Qfarm",
+    "mri_Qfleecaheist",
+    "mri_Qfps",
+    "mri_Qhud",
+    "mri_Qloadscreen",
+    "mri_Qmarkerplacer",
+    "mri_Qobjects"
+   ]
+  },
+  {
+   "id": "oaxdzqv",
+   "name": "Hylex Roleplay",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/oaxdzqv/-275247368.png",
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 1,
+   "avgPlayers": 0,
+   "resources": [
+    "mri_Qblips",
+    "mri_Qbox",
+    "mri_Qchat",
+    "mri_Qfarm",
+    "mri_Qfleecaheist",
+    "mri_Qfps",
+    "mri_Qmarkerplacer",
+    "mri_Qobjects"
+   ]
+  },
+  {
+   "id": "5oop6e6",
+   "name": "Iconics Studio",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/5oop6e6/-1062458122.png",
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 1,
+   "avgPlayers": 0,
+   "resources": [
+    "mri_Qblips",
+    "mri_Qbox",
+    "mri_Qchat",
+    "mri_Qfarm",
+    "mri_Qfleecaheist",
+    "mri_Qfps",
+    "mri_Qloadscreen",
+    "mri_Qmarkerplacer",
+    "mri_Qobjects"
+   ]
+  },
+  {
+   "id": "5oo6m3r",
+   "name": "ILHA VITORIA ROLEPLAY",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/5oo6m3r/82255874.png",
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 2,
+   "avgPlayers": 0,
+   "resources": [
+    "mri_Qadmin",
+    "mri_Qappearance",
+    "mri_Qbox",
+    "mri_Qdoorlock",
+    "mri_Qfarm",
+    "mri_Qfleecaheist",
+    "mri_Qfps",
+    "mri_Qmarkerplacer",
+    "mri_Qobjects",
+    "mri_Qspawn",
+    "mri_Qweather"
+   ]
+  },
+  {
+   "id": "x88adx",
+   "name": "Ipiranga SP",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/x88adx/-1613054006.png",
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 5,
+   "avgPlayers": 0,
+   "resources": [
+    "mri_Qcarplates",
+    "mri_Qfps"
+   ]
+  },
+  {
+   "id": "bddy3b8",
+   "name": "ITAJAÍ ROLEPLAY",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/bddy3b8/-1975229856.png",
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 0,
+   "avgPlayers": 0,
+   "resources": [
+    "mri_Qblips",
+    "mri_Qbox",
+    "mri_Qfarm",
+    "mri_Qfleecaheist",
+    "mri_Qfps",
+    "mri_Qmarkerplacer",
+    "mri_Qobjects"
+   ]
+  },
+  {
+   "id": "666do4",
+   "name": "JAMP Roleplay",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/666do4/209523675.png",
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 0,
+   "avgPlayers": 0,
+   "resources": [
+    "mri_Qblips",
+    "mri_Qbox",
+    "mri_Qchat",
+    "mri_Qfarm",
+    "mri_Qfleecaheist",
+    "mri_Qfps",
+    "mri_Qhud",
+    "mri_Qloadscreen",
+    "mri_Qmarkerplacer",
+    "mri_Qobjects"
+   ]
+  },
+  {
+   "id": "6my9dz4",
+   "name": "Karmesin",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/6my9dz4/1397632277.png",
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 0,
+   "avgPlayers": 0,
+   "resources": [
+    "mri_Qblips",
+    "mri_Qbox"
+   ]
+  },
+  {
+   "id": "7q7jda",
+   "name": "Last Tale",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/7q7jda/142582201.png",
+   "locale": "pt-PT",
+   "players": 0,
+   "maxPlayers": 1,
+   "avgPlayers": 0,
+   "resources": [
+    "mri_Qadmin",
+    "mri_Qblips",
+    "mri_Qbox",
+    "mri_Qfarm",
+    "mri_Qfps",
+    "mri_Qmarkerplacer",
+    "mri_Qobjects"
+   ]
+  },
+  {
+   "id": "a448pok",
+   "name": "LatinosRoleplay",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/a448pok/-1381424617.png",
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 0,
+   "avgPlayers": 0,
+   "resources": [
+    "mri_Qadmin",
+    "mri_Qblips",
+    "mri_Qbox",
+    "mri_Qchat",
+    "mri_Qcomputer",
+    "mri_Qfarm",
+    "mri_Qfleecaheist",
+    "mri_Qfps",
+    "mri_Qhud",
+    "mri_Qloadscreen",
+    "mri_Qmarkerplacer",
+    "mri_Qobjects",
+    "mri_Qspawn",
+    "mri_Qvehicles",
+    "mri_Qvip"
+   ]
+  },
+  {
+   "id": "bdxxv8l",
+   "name": "Legado Paulista",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/bdxxv8l/-14454461.png",
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 1,
+   "avgPlayers": 0,
+   "resources": [
+    "mri_Qadmin",
+    "mri_Qfarm"
+   ]
+  },
+  {
+   "id": "a44jzle",
+   "name": "LegiaoRP",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/a44jzle/2034334528.png",
+   "locale": "pt-PT",
+   "players": 0,
+   "maxPlayers": 0,
+   "avgPlayers": 0,
+   "resources": [
+    "mri_Qadmin"
+   ]
+  },
+  {
+   "id": "e6erk6a",
+   "name": "lordjc cinematics",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/e6erk6a/209523675.png",
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 2,
+   "avgPlayers": 0,
+   "resources": [
+    "mri_Qblips",
+    "mri_Qbox",
+    "mri_Qchat",
+    "mri_Qfarm",
+    "mri_Qfleecaheist",
+    "mri_Qfps",
+    "mri_Qhud",
+    "mri_Qloadscreen",
+    "mri_Qmarkerplacer",
+    "mri_Qobjects"
+   ]
+  },
+  {
+   "id": "85xexv",
+   "name": "Magnatas Roleplay",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/85xexv/-922468174.png",
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 0,
+   "avgPlayers": 0,
+   "resources": [
+    "mri_Qadmin",
+    "mri_Qfarm"
+   ]
+  },
+  {
+   "id": "9vqyze",
+   "name": "Magnatas Roleplay",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/9vqyze/-922468174.png",
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 0,
+   "avgPlayers": 0,
+   "resources": [
+    "mri_Qadmin",
+    "mri_Qfarm"
+   ]
+  },
+  {
+   "id": "r478q7",
+   "name": "Maralto",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/r478q7/-1724483343.png",
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 4,
+   "avgPlayers": 0,
+   "resources": [
+    "mri_Qblips",
+    "mri_Qbox",
+    "mri_Qcarplates",
+    "mri_Qchat",
+    "mri_Qfarm",
+    "mri_Qfleecaheist",
+    "mri_Qfps",
+    "mri_Qmarkerplacer",
+    "mri_Qobjects"
+   ]
+  },
+  {
+   "id": "lee6kv5",
+   "name": "MIRAGE",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/lee6kv5/-1386827502.png",
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 0,
+   "avgPlayers": 0,
+   "resources": [
+    "mri_Qblips",
+    "mri_Qbox",
+    "mri_Qchat",
+    "mri_Qfarm",
+    "mri_Qfleecaheist",
+    "mri_Qfps",
+    "mri_Qloadscreen",
+    "mri_Qmarkerplacer",
+    "mri_Qobjects"
+   ]
+  },
+  {
+   "id": "lkyaao",
+   "name": "Mystic Falls",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/lkyaao/1702926087.png",
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 1,
+   "avgPlayers": 0,
+   "resources": [
+    "mri_Qblips",
+    "mri_Qbox",
+    "mri_Qchat",
+    "mri_Qfarm",
+    "mri_Qfleecaheist",
+    "mri_Qfps",
+    "mri_Qmarkerplacer",
+    "mri_Qobjects"
+   ]
+  },
+  {
+   "id": "7b9bblb",
+   "name": "NationZ Dev Server",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/7b9bblb/794581446.png",
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 1,
+   "avgPlayers": 0,
+   "resources": [
+    "mri_Qadmin"
+   ]
+  },
+  {
+   "id": "6mmzpy4",
+   "name": "New Republic",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/6mmzpy4/-289665898.png",
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 0,
+   "avgPlayers": 0,
+   "resources": [
+    "mri_Qblips",
+    "mri_Qbox",
+    "mri_Qchat",
+    "mri_Qfleecaheist",
+    "mri_Qfps",
+    "mri_Qloadscreen",
+    "mri_Qmarkerplacer",
+    "mri_Qobjects"
+   ]
+  },
+  {
+   "id": "3mrjqy",
+   "name": "Norte Paulista",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/3mrjqy/-432226453.png",
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 4,
+   "avgPlayers": 0,
+   "resources": [
+    "mri_Qblips",
+    "mri_Qbox",
+    "mri_Qchat",
+    "mri_Qfarm",
+    "mri_Qfleecaheist",
+    "mri_Qhud",
+    "mri_Qmarkerplacer",
+    "mri_Qobjects"
+   ]
+  },
+  {
+   "id": "3mdzaz",
+   "name": "North Studio",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/3mdzaz/2018827675.png",
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 2,
+   "avgPlayers": 0,
+   "resources": [
+    "mri_Qloadscreen"
+   ]
+  },
+  {
+   "id": "3yydb8z",
+   "name": "Olympus",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/3yydb8z/-1148812396.png",
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 0,
+   "avgPlayers": 0,
+   "resources": [
+    "mri_Qadmin",
+    "mri_Qblips",
+    "mri_Qbox",
+    "mri_Qchat",
+    "mri_Qfarm",
+    "mri_Qfleecaheist",
+    "mri_Qfps",
+    "mri_Qhud",
+    "mri_Qloadscreen",
+    "mri_Qmarkerplacer",
+    "mri_Qmultichar",
+    "mri_Qobjects",
+    "mri_Qspawn",
+    "mri_Qvehicles"
+   ]
+  },
+  {
+   "id": "arzom3",
+   "name": "Orion Roleplay",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/arzom3/101317378.png",
+   "locale": "pt-PT",
+   "players": 0,
+   "maxPlayers": 1,
+   "avgPlayers": 0,
+   "resources": [
+    "mri_Qblips",
+    "mri_Qbox",
+    "mri_Qfps",
+    "mri_Qmarkerplacer",
+    "mri_Qobjects"
+   ]
+  },
+  {
+   "id": "rmad74x",
+   "name": "Pandora Bay",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/rmad74x/-1084644320.png",
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 0,
+   "avgPlayers": 0,
+   "resources": [
+    "mri_Qloadscreen"
+   ]
+  },
+  {
+   "id": "lva64v",
+   "name": "Paraná Roleplay",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/lva64v/1875899007.png",
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 2,
+   "avgPlayers": 0,
+   "resources": [
+    "mri_Qblips",
+    "mri_Qbox",
+    "mri_Qchat",
+    "mri_Qfleecaheist",
+    "mri_Qfps",
+    "mri_Qobjects"
+   ]
+  },
+  {
+   "id": "k57pbv",
+   "name": "Paris",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/k57pbv/1330676098.png",
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 0,
+   "avgPlayers": 0,
+   "resources": [
+    "mri_Qblips",
+    "mri_Qbox",
+    "mri_Qchat",
+    "mri_Qfarm",
+    "mri_Qfleecaheist",
+    "mri_Qfps",
+    "mri_Qhud",
+    "mri_Qloadscreen",
+    "mri_Qmarkerplacer",
+    "mri_Qobjects"
+   ]
+  },
+  {
+   "id": "mlevma",
+   "name": "POA RP",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/mlevma/-865789306.png",
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 3,
+   "avgPlayers": 0,
+   "resources": [
+    "mri_Qadmin"
+   ]
+  },
+  {
+   "id": "8eevaav",
+   "name": "Projeto Desenvolvimento",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/8eevaav/2034334528.png",
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 0,
+   "avgPlayers": 0,
+   "resources": [
+    "mri_Qloadscreen"
+   ]
+  },
+  {
+   "id": "vqq8dkx",
+   "name": "REAL VALLEY",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/vqq8dkx/360038608.png",
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 1,
+   "avgPlayers": 0,
+   "resources": [
+    "mri_Qadmin",
+    "mri_Qfarm"
+   ]
+  },
+  {
+   "id": "dm8p65",
+   "name": "Real-Wrld RP",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/dm8p65/924158984.png",
+   "locale": "en-US",
+   "players": 0,
+   "maxPlayers": 1,
+   "avgPlayers": 0,
+   "resources": [
+    "mri_Qobjects"
+   ]
+  },
+  {
+   "id": "xyk7rg",
+   "name": "Resurrection RP 2.0",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/xyk7rg/1148341976.png",
+   "locale": "en-US",
+   "players": 0,
+   "maxPlayers": 0,
+   "avgPlayers": 0,
+   "resources": [
+    "mri_Qobjects"
+   ]
+  },
+  {
+   "id": "eg7m8b",
+   "name": "SAINODA RP QBrasilX",
+   "logo": null,
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 0,
+   "avgPlayers": 0,
+   "resources": [
+    "mri_Qblips",
+    "mri_Qbox",
+    "mri_Qchat",
+    "mri_Qfarm",
+    "mri_Qfleecaheist",
+    "mri_Qfps",
+    "mri_Qhud",
+    "mri_Qloadscreen",
+    "mri_Qmarkerplacer",
+    "mri_Qobjects"
+   ]
+  },
+  {
+   "id": "ame4yz",
+   "name": "San Vellaro RP",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/ame4yz/172335048.png",
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 2,
+   "avgPlayers": 0,
+   "resources": [
+    "mri_Qblips",
+    "mri_Qbox",
+    "mri_Qchat",
+    "mri_Qfarm",
+    "mri_Qfleecaheist",
+    "mri_Qfps",
+    "mri_Qmarkerplacer",
+    "mri_Qobjects"
+   ]
+  },
+  {
+   "id": "xlldxex",
+   "name": "Santa Vellora RP",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/xlldxex/-474457482.png",
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 0,
+   "avgPlayers": 0,
+   "resources": [
+    "mri_Qblips",
+    "mri_Qbox",
+    "mri_Qfleecaheist",
+    "mri_Qfps",
+    "mri_Qloadscreen",
+    "mri_Qmarkerplacer",
+    "mri_Qobjects"
+   ]
+  },
+  {
+   "id": "6er8j6",
+   "name": "São Paulo Metrópole Roleplay 2026",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/6er8j6/-2085613285.png",
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 0,
+   "avgPlayers": 0,
+   "resources": [
+    "mri_Qblips",
+    "mri_Qbox",
+    "mri_Qfarm",
+    "mri_Qfleecaheist",
+    "mri_Qfps",
+    "mri_Qmarkerplacer",
+    "mri_Qobjects"
+   ]
+  },
+  {
+   "id": "y9vppdj",
+   "name": "Sim City",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/y9vppdj/65066221.png",
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 3,
+   "avgPlayers": 0,
+   "resources": [
+    "mri_Qblips",
+    "mri_Qbox",
+    "mri_Qchat",
+    "mri_Qfarm",
+    "mri_Qfleecaheist",
+    "mri_Qfps",
+    "mri_Qhud",
+    "mri_Qloadscreen",
+    "mri_Qmarkerplacer",
+    "mri_Qobjects"
+   ]
+  },
+  {
+   "id": "37gm4r",
+   "name": "SouthSide RP",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/37gm4r/209523675.png",
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 0,
+   "avgPlayers": 0,
+   "resources": [
+    "mri_Qadmin",
+    "mri_Qblips",
+    "mri_Qbox",
+    "mri_Qchat",
+    "mri_Qfarm",
+    "mri_Qfps",
+    "mri_Qloadscreen",
+    "mri_Qmarkerplacer",
+    "mri_Qobjects"
+   ]
+  },
+  {
+   "id": "5gvqmr",
+   "name": "Street Roleplay",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/5gvqmr/-2004568467.png",
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 1,
+   "avgPlayers": 0,
+   "resources": [
+    "mri_Qadmin",
+    "mri_Qappearance",
+    "mri_Qblips",
+    "mri_Qbox",
+    "mri_Qchat",
+    "mri_Qfarm",
+    "mri_Qfleecaheist",
+    "mri_Qfps",
+    "mri_Qhud",
+    "mri_Qloadscreen",
+    "mri_Qmarkerplacer",
+    "mri_Qmultichar",
+    "mri_Qobjects",
+    "mri_Qspawn",
+    "mri_Qvehicles"
+   ]
+  },
+  {
+   "id": "9klgxk",
+   "name": "Sunville RP",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/9klgxk/-1285905157.png",
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 0,
+   "avgPlayers": 0,
+   "resources": [
+    "mri_Qblips",
+    "mri_Qbox",
+    "mri_Qchat",
+    "mri_Qfarm",
+    "mri_Qfleecaheist",
+    "mri_Qfps",
+    "mri_Qhud",
+    "mri_Qloadscreen",
+    "mri_Qmarkerplacer",
+    "mri_Qobjects"
+   ]
+  },
+  {
+   "id": "oaaypkj",
+   "name": "TESTERP",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/oaaypkj/1072631675.png",
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 3,
+   "avgPlayers": 0,
+   "resources": [
+    "mri_Qadmin",
+    "mri_Qblips",
+    "mri_Qbox",
+    "mri_Qchat",
+    "mri_Qdoorlock",
+    "mri_Qfarm",
+    "mri_Qfleecaheist",
+    "mri_Qfps",
+    "mri_Qmarkerplacer",
+    "mri_Qmedical",
+    "mri_Qobjects",
+    "mri_Qweather"
+   ]
+  },
+  {
+   "id": "m44y5g9",
+   "name": "THE CLOSED",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/m44y5g9/1262387957.png",
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 1,
+   "avgPlayers": 0,
+   "resources": [
+    "mri_Qblips",
+    "mri_Qbox",
+    "mri_Qchat",
+    "mri_Qfarm",
+    "mri_Qfleecaheist",
+    "mri_Qhud",
+    "mri_Qloadscreen",
+    "mri_Qmarkerplacer",
+    "mri_Qobjects"
+   ]
+  },
+  {
+   "id": "ym774y",
+   "name": "THE LAST SURVIVAL",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/ym774y/-2095058696.png",
+   "locale": "pt-br",
+   "players": 0,
+   "maxPlayers": 0,
+   "avgPlayers": 0,
+   "resources": [
+    "mri_Qobjects"
+   ]
+  },
+  {
+   "id": "6gbpzj",
+   "name": "Thelassia Roleplay",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/6gbpzj/-1447874016.png",
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 1,
+   "avgPlayers": 0,
+   "resources": [
+    "mri_Qblips",
+    "mri_Qobjects"
+   ]
+  },
+  {
+   "id": "dggzyd5",
+   "name": "Triade",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/dggzyd5/-1047635191.png",
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 1,
+   "avgPlayers": 0,
+   "resources": [
+    "mri_Qadmin"
+   ]
+  },
+  {
+   "id": "zjjdp85",
+   "name": "True Blood",
+   "logo": null,
+   "locale": "pt-br",
+   "players": 0,
+   "maxPlayers": 1,
+   "avgPlayers": 0,
+   "resources": [
+    "mri_Qblips",
+    "mri_Qbox",
+    "mri_Qchat",
+    "mri_Qfps",
+    "mri_Qloadscreen",
+    "mri_Qmarkerplacer",
+    "mri_Qobjects"
+   ]
+  },
+  {
+   "id": "53amja",
+   "name": "US Chronicles",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/53amja/-379013239.png",
+   "locale": "pt-br",
+   "players": 0,
+   "maxPlayers": 1,
+   "avgPlayers": 0,
+   "resources": [
+    "mri_Qbox",
+    "mri_Qloadscreen",
+    "mri_Qobjects",
+    "mri_Qtyrecontrol"
+   ]
+  },
+  {
+   "id": "e66edlm",
+   "name": "VILA MADA VIP GRATIS ORGS LIVRES",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/e66edlm/-184311707.png",
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 0,
+   "avgPlayers": 0,
+   "resources": [
+    "mri_Qadmin",
+    "mri_Qfarm"
+   ]
+  },
+  {
+   "id": "dv9b6d",
+   "name": "Vila Paulista RP",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/dv9b6d/996334525.png",
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 0,
+   "avgPlayers": 0,
+   "resources": [
+    "mri_Qadmin",
+    "mri_Qfarm"
+   ]
+  },
+  {
+   "id": "bddmb58",
+   "name": "WORLD RP",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/bddmb58/-267466854.png",
+   "locale": "root-AQ",
+   "players": 0,
+   "maxPlayers": 0,
+   "avgPlayers": 0,
+   "resources": [
+    "mri_Qadmin"
+   ]
+  },
+  {
+   "id": "lv88lv",
+   "name": "Zona-Leste-RP INAUGURACION Dia 03-Jul",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/lv88lv/448048386.png",
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 1,
+   "avgPlayers": 0,
+   "resources": [
+    "mri_Qadmin",
+    "mri_Qblips",
+    "mri_Qbox",
+    "mri_Qfarm",
+    "mri_Qfleecaheist",
+    "mri_Qfps",
+    "mri_Qloadscreen",
+    "mri_Qmarkerplacer",
+    "mri_Qobjects"
+   ]
+  }
+ ]
+}

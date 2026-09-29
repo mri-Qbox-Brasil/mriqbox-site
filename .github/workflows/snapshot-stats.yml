@@ -1,7 +1,8 @@
 name: Snapshot Stats
 
-# Amostra o uso atual dos recursos MRI (via 5metrics) e acumula a serie em
-# data/stats-history.json. A home renderiza o grafico a partir desse arquivo.
+# Amostra o uso atual dos recursos MRI (via 5metrics): acumula a serie em
+# data/stats-history.json e grava a lista atual em data/servers.json. A home e
+# a pagina /servidores renderizam a partir desses arquivos.
 #
 # Cada commit dispara um redeploy (Vercel / GitHub Pages), entao o intervalo e
 # um equilibrio entre frescor do grafico e numero de builds. A cada 3h -> 8
@@ -31,14 +32,17 @@ jobs:
         with:
           node-version: 20
 
+      # O token so serve pra listar os repos da org (limite de requisicoes).
       - name: Coletar snapshot
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: node .release/snapshot-stats.js
 
       - name: Commit e push se houver mudancas
         run: |
           git config user.name 'github-actions'
           git config user.email 'github-actions@github.com'
-          git add data/stats-history.json
+          git add data/stats-history.json data/servers.json
 
           if git diff --cached --quiet; then
             echo "Sem mudancas para commitar."
