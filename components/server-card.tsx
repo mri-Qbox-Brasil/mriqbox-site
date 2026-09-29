@@ -3,11 +3,8 @@ import Link from "next/link"
 import { ArrowUpRight } from "lucide-react"
 import { joinUrl, type MriServer } from "@/lib/mri-servers"
 
-const MAX_CHIPS = 3
-
 export function ServerCard({ server }: { server: MriServer }) {
   const online = server.players > 0
-  const extra = server.resources.length - MAX_CHIPS
 
   return (
     <div className="flex flex-col gap-4 rounded-2xl border border-white/5 bg-card p-5 transition-colors hover:border-primary/40">
@@ -43,19 +40,6 @@ export function ServerCard({ server }: { server: MriServer }) {
           </div>
         </div>
       </div>
-
-      <ul className="flex flex-wrap gap-1.5">
-        {server.resources.slice(0, MAX_CHIPS).map((r) => (
-          <li key={r} className="rounded-md bg-white/5 px-2 py-0.5 font-mono text-[11px] text-white/70">
-            {r}
-          </li>
-        ))}
-        {extra > 0 && (
-          <li className="rounded-md bg-white/5 px-2 py-0.5 text-[11px] text-white/50" title={server.resources.slice(MAX_CHIPS).join(", ")}>
-            +{extra}
-          </li>
-        )}
-      </ul>
 
       <Link
         href={joinUrl(server.id)}

@@ -138,9 +138,7 @@ async function main() {
             players: s.players || 0,
             maxPlayers: s.maxPlayers || 0,
             avgPlayers: s.avgPlayers || 0,
-            resources: [],
           }
-          if (!entry.resources.includes(resource)) entry.resources.push(resource)
           servers.set(s.id, entry)
         }
       } catch (err) {
@@ -160,7 +158,6 @@ async function main() {
   }
 
   const list = [...servers.values()]
-    .map((s) => ({ ...s, resources: s.resources.sort() }))
     .sort((a, b) => b.players - a.players || b.avgPlayers - a.avgPlayers || a.name.localeCompare(b.name))
   const players = list.reduce((sum, s) => sum + s.players, 0)
 

@@ -58,10 +58,7 @@
    "locale": "pt-BR",
    "players": 653,
    "maxPlayers": 787,
-   "avgPlayers": 257,
-   "resources": [
-    "mri_Qloadscreen"
-   ]
+   "avgPlayers": 257
   },
   {
    "id": "7bbpd5v",
@@ -70,10 +67,7 @@
    "locale": "pt-BR",
    "players": 242,
    "maxPlayers": 242,
-   "avgPlayers": 53,
-   "resources": [
-    "mri_Qadmin"
-   ]
+   "avgPlayers": 53
   },
   {
    "id": "y9967gk",
@@ -82,16 +76,7 @@
    "locale": "pt-BR",
    "players": 150,
    "maxPlayers": 162,
-   "avgPlayers": 57,
-   "resources": [
-    "mri_Qblips",
-    "mri_Qbox",
-    "mri_Qchat",
-    "mri_Qfarm",
-    "mri_Qfps",
-    "mri_Qloadscreen",
-    "mri_Qobjects"
-   ]
+   "avgPlayers": 57
   },
   {
    "id": "zjj7y7d",
@@ -100,21 +85,7 @@
    "locale": "pt-BR",
    "players": 94,
    "maxPlayers": 112,
-   "avgPlayers": 34,
-   "resources": [
-    "mri_Qadmin",
-    "mri_Qblips",
-    "mri_Qbox",
-    "mri_Qchat",
-    "mri_Qdoorlock",
-    "mri_Qfarm",
-    "mri_Qfleecaheist",
-    "mri_Qfps",
-    "mri_Qmarkerplacer",
-    "mri_Qmedical",
-    "mri_Qobjects",
-    "mri_Qweather"
-   ]
+   "avgPlayers": 34
   },
   {
    "id": "a449l55",
@@ -123,10 +94,7 @@
    "locale": "pt-BR",
    "players": 68,
    "maxPlayers": 100,
-   "avgPlayers": 41,
-   "resources": [
-    "mri_Qobjects"
-   ]
+   "avgPlayers": 41
   },
   {
    "id": "dggobbj",
@@ -135,13 +103,7 @@
    "locale": "pt-BR",
    "players": 53,
    "maxPlayers": 53,
-   "avgPlayers": 14,
-   "resources": [
-    "mri_Qblips",
-    "mri_Qbox",
-    "mri_Qfps",
-    "mri_Qobjects"
-   ]
+   "avgPlayers": 14
   },
   {
    "id": "qxzb54",
@@ -150,12 +112,7 @@
    "locale": "pt-br",
    "players": 48,
    "maxPlayers": 48,
-   "avgPlayers": 4,
-   "resources": [
-    "mri_Qadmin",
-    "mri_Qblips",
-    "mri_Qfarm"
-   ]
+   "avgPlayers": 4
   },
   {
    "id": "3yg6e9z",
@@ -164,13 +121,7 @@
    "locale": "pt-BR",
    "players": 40,
    "maxPlayers": 40,
-   "avgPlayers": 13,
-   "resources": [
-    "mri_Qadmin",
-    "mri_Qblips",
-    "mri_Qmenu",
-    "mri_Qobjects"
-   ]
+   "avgPlayers": 13
   },
   {
    "id": "pm9mja",
@@ -179,17 +130,7 @@
    "locale": "pt-BR",
    "players": 30,
    "maxPlayers": 46,
-   "avgPlayers": 13,
-   "resources": [
-    "mri_Qblips",
-    "mri_Qbox",
-    "mri_Qchat",
-    "mri_Qfarm",
-    "mri_Qfleecaheist",
-    "mri_Qhud",
-    "mri_Qmarkerplacer",
-    "mri_Qobjects"
-   ]
+   "avgPlayers": 13
   },
   {
    "id": "e6em8bd",
@@ -198,18 +139,7 @@
    "locale": "pt-BR",
    "players": 25,
    "maxPlayers": 53,
-   "avgPlayers": 17,
-   "resources": [
-    "mri_Qblips",
-    "mri_Qbox",
-    "mri_Qchat",
-    "mri_Qfleecaheist",
-    "mri_Qfps",
-    "mri_Qhud",
-    "mri_Qloadscreen",
-    "mri_Qmarkerplacer",
-    "mri_Qobjects"
-   ]
+   "avgPlayers": 17
   },
   {
    "id": "amyoj5",
@@ -218,10 +148,7 @@
    "locale": "pt-BR",
    "players": 22,
    "maxPlayers": 41,
-   "avgPlayers": 12,
-   "resources": [
-    "mri_Qadmin"
-   ]
+   "avgPlayers": 12
   },
   {
    "id": "aeyjvk",
@@ -230,13 +157,7 @@
    "locale": "pt-br",
    "players": 21,
    "maxPlayers": 56,
-   "avgPlayers": 25,
-   "resources": [
-    "mri_Qblips",
-    "mri_Qfps",
-    "mri_Qmarkerplacer",
-    "mri_Qobjects"
-   ]
+   "avgPlayers": 25
   },
   {
    "id": "vq399px",
@@ -245,17 +166,7 @@
    "locale": "pt-BR",
    "players": 16,
    "maxPlayers": 16,
-   "avgPlayers": 4,
-   "resources": [
-    "mri_Qblips",
-    "mri_Qbox",
-    "mri_Qchat",
-    "mri_Qfarm",
-    "mri_Qfleecaheist",
-    "mri_Qfps",
-    "mri_Qmarkerplacer",
-    "mri_Qobjects"
-   ]
+   "avgPlayers": 4
   },
   {
    "id": "6aa5ad",
@@ -264,13 +175,7 @@
    "locale": "pt-BR",
    "players": 13,
    "maxPlayers": 17,
-   "avgPlayers": 2,
-   "resources": [
-    "mri_Qadmin",
-    "mri_Qfarm",
-    "mri_Qmenu",
-    "mri_Qobjects"
-   ]
+   "avgPlayers": 2
   },
   {
    "id": "oaagk6j",
@@ -279,10 +184,7 @@
    "locale": "pt-BR",
    "players": 11,
    "maxPlayers": 13,
-   "avgPlayers": 4,
-   "resources": [
-    "mri_Qloadscreen"
-   ]
+   "avgPlayers": 4
   },
   {
    "id": "4gb9ev5",
@@ -291,11 +193,7 @@
    "locale": "pt-BR",
    "players": 10,
    "maxPlayers": 10,
-   "avgPlayers": 4,
-   "resources": [
-    "mri_Qadmin",
-    "mri_Qfarm"
-   ]
+   "avgPlayers": 4
   },
   {
    "id": "e66gg7b",
@@ -304,18 +202,7 @@
    "locale": "pt-BR",
    "players": 9,
    "maxPlayers": 9,
-   "avgPlayers": 2,
-   "resources": [
-    "mri_Qblips",
-    "mri_Qbox",
-    "mri_Qfarm",
-    "mri_Qfleecaheist",
-    "mri_Qfps",
-    "mri_Qhud",
-    "mri_Qloadscreen",
-    "mri_Qmarkerplacer",
-    "mri_Qobjects"
-   ]
+   "avgPlayers": 2
   },
   {
    "id": "e6e9jom",
@@ -324,10 +211,7 @@
    "locale": "pt-PT",
    "players": 7,
    "maxPlayers": 24,
-   "avgPlayers": 8,
-   "resources": [
-    "mri_Qmenu"
-   ]
+   "avgPlayers": 8
   },
   {
    "id": "a44bmm9",
@@ -336,11 +220,7 @@
    "locale": "pt-BR",
    "players": 6,
    "maxPlayers": 7,
-   "avgPlayers": 3,
-   "resources": [
-    "mri_Qadmin",
-    "mri_Qfarm"
-   ]
+   "avgPlayers": 3
   },
   {
    "id": "j44q46l",
@@ -349,17 +229,7 @@
    "locale": "pt-BR",
    "players": 4,
    "maxPlayers": 17,
-   "avgPlayers": 2,
-   "resources": [
-    "mri_Qadmin",
-    "mri_Qblips",
-    "mri_Qbox",
-    "mri_Qfarm",
-    "mri_Qfps",
-    "mri_Qloadscreen",
-    "mri_Qmarkerplacer",
-    "mri_Qobjects"
-   ]
+   "avgPlayers": 2
   },
   {
    "id": "zjjaeg5",
@@ -368,10 +238,7 @@
    "locale": "pt-PT",
    "players": 3,
    "maxPlayers": 6,
-   "avgPlayers": 2,
-   "resources": [
-    "mri_Qchat"
-   ]
+   "avgPlayers": 2
   },
   {
    "id": "lee3prv",
@@ -380,18 +247,7 @@
    "locale": "pt-BR",
    "players": 3,
    "maxPlayers": 3,
-   "avgPlayers": 0,
-   "resources": [
-    "mri_Qblips",
-    "mri_Qbox",
-    "mri_Qchat",
-    "mri_Qfarm",
-    "mri_Qfleecaheist",
-    "mri_Qfps",
-    "mri_Qhud",
-    "mri_Qmarkerplacer",
-    "mri_Qobjects"
-   ]
+   "avgPlayers": 0
   },
   {
    "id": "vqqe3qr",
@@ -400,10 +256,7 @@
    "locale": "pt-PT",
    "players": 2,
    "maxPlayers": 8,
-   "avgPlayers": 3,
-   "resources": [
-    "mri_Qmenu"
-   ]
+   "avgPlayers": 3
   },
   {
    "id": "m44mam9",
@@ -412,19 +265,7 @@
    "locale": "pt-BR",
    "players": 2,
    "maxPlayers": 2,
-   "avgPlayers": 1,
-   "resources": [
-    "mri_Qblips",
-    "mri_Qbox",
-    "mri_Qchat",
-    "mri_Qfarm",
-    "mri_Qfleecaheist",
-    "mri_Qfps",
-    "mri_Qhud",
-    "mri_Qloadscreen",
-    "mri_Qmarkerplacer",
-    "mri_Qobjects"
-   ]
+   "avgPlayers": 1
   },
   {
    "id": "leejp54",
@@ -433,19 +274,7 @@
    "locale": "pt-BR",
    "players": 2,
    "maxPlayers": 2,
-   "avgPlayers": 1,
-   "resources": [
-    "mri_Qblips",
-    "mri_Qbox",
-    "mri_Qchat",
-    "mri_Qfarm",
-    "mri_Qfleecaheist",
-    "mri_Qfps",
-    "mri_Qhud",
-    "mri_Qloadscreen",
-    "mri_Qmarkerplacer",
-    "mri_Qobjects"
-   ]
+   "avgPlayers": 1
   },
   {
    "id": "y99vxa5",
@@ -454,18 +283,7 @@
    "locale": "pt-BR",
    "players": 2,
    "maxPlayers": 4,
-   "avgPlayers": 1,
-   "resources": [
-    "mri_Qblips",
-    "mri_Qbox",
-    "mri_Qchat",
-    "mri_Qfarm",
-    "mri_Qfleecaheist",
-    "mri_Qfps",
-    "mri_Qloadscreen",
-    "mri_Qmarkerplacer",
-    "mri_Qobjects"
-   ]
+   "avgPlayers": 1
   },
   {
    "id": "dggkdjj",
@@ -474,11 +292,7 @@
    "locale": "pt-BR",
    "players": 1,
    "maxPlayers": 2,
-   "avgPlayers": 2,
-   "resources": [
-    "mri_Qadmin",
-    "mri_Qfarm"
-   ]
+   "avgPlayers": 2
   },
   {
    "id": "leel3r4",
@@ -487,15 +301,7 @@
    "locale": "pt-BR",
    "players": 1,
    "maxPlayers": 6,
-   "avgPlayers": 2,
-   "resources": [
-    "mri_Qbox",
-    "mri_Qchat",
-    "mri_Qfleecaheist",
-    "mri_Qfps",
-    "mri_Qloadscreen",
-    "mri_Qobjects"
-   ]
+   "avgPlayers": 2
   },
   {
    "id": "pml998",
@@ -504,18 +310,7 @@
    "locale": "pt-BR",
    "players": 1,
    "maxPlayers": 1,
-   "avgPlayers": 1,
-   "resources": [
-    "mri_Qblips",
-    "mri_Qbox",
-    "mri_Qchat",
-    "mri_Qfarm",
-    "mri_Qfleecaheist",
-    "mri_Qfps",
-    "mri_Qloadscreen",
-    "mri_Qmarkerplacer",
-    "mri_Qobjects"
-   ]
+   "avgPlayers": 1
   },
   {
    "id": "pggrop7",
@@ -524,16 +319,7 @@
    "locale": "pt-BR",
    "players": 1,
    "maxPlayers": 1,
-   "avgPlayers": 1,
-   "resources": [
-    "mri_Qbox",
-    "mri_Qchat",
-    "mri_Qfleecaheist",
-    "mri_Qfps",
-    "mri_Qhud",
-    "mri_Qloadscreen",
-    "mri_Qobjects"
-   ]
+   "avgPlayers": 1
   },
   {
    "id": "qqakmp4",
@@ -542,19 +328,7 @@
    "locale": "pt-BR",
    "players": 1,
    "maxPlayers": 1,
-   "avgPlayers": 1,
-   "resources": [
-    "mri_Qblips",
-    "mri_Qbox",
-    "mri_Qchat",
-    "mri_Qfarm",
-    "mri_Qfleecaheist",
-    "mri_Qfps",
-    "mri_Qhud",
-    "mri_Qloadscreen",
-    "mri_Qmarkerplacer",
-    "mri_Qobjects"
-   ]
+   "avgPlayers": 1
   },
   {
    "id": "oojpvr",
@@ -563,18 +337,7 @@
    "locale": "pt-BR",
    "players": 1,
    "maxPlayers": 1,
-   "avgPlayers": 1,
-   "resources": [
-    "mri_Qblips",
-    "mri_Qbox",
-    "mri_Qchat",
-    "mri_Qfarm",
-    "mri_Qfleecaheist",
-    "mri_Qfps",
-    "mri_Qloadscreen",
-    "mri_Qmarkerplacer",
-    "mri_Qobjects"
-   ]
+   "avgPlayers": 1
   },
   {
    "id": "6ebpr8",
@@ -583,22 +346,7 @@
    "locale": "pt-BR",
    "players": 1,
    "maxPlayers": 1,
-   "avgPlayers": 1,
-   "resources": [
-    "mri_Qautoshot",
-    "mri_Qblips",
-    "mri_Qbox",
-    "mri_Qchat",
-    "mri_Qemotemenu",
-    "mri_Qfarm",
-    "mri_Qfleecaheist",
-    "mri_Qfps",
-    "mri_Qhousing",
-    "mri_Qhud",
-    "mri_Qloadscreen",
-    "mri_Qmarkerplacer",
-    "mri_Qobjects"
-   ]
+   "avgPlayers": 1
   },
   {
    "id": "axxl89",
@@ -607,17 +355,7 @@
    "locale": "pt-BR",
    "players": 1,
    "maxPlayers": 1,
-   "avgPlayers": 1,
-   "resources": [
-    "mri_Qblips",
-    "mri_Qbox",
-    "mri_Qchat",
-    "mri_Qfarm",
-    "mri_Qfleecaheist",
-    "mri_Qfps",
-    "mri_Qmarkerplacer",
-    "mri_Qobjects"
-   ]
+   "avgPlayers": 1
   },
   {
    "id": "mrva4q",
@@ -626,26 +364,7 @@
    "locale": "pt-BR",
    "players": 1,
    "maxPlayers": 1,
-   "avgPlayers": 1,
-   "resources": [
-    "mri_Qadmin",
-    "mri_Qappearance",
-    "mri_Qblips",
-    "mri_Qbox",
-    "mri_Qchat",
-    "mri_Qdoorlock",
-    "mri_Qemotes",
-    "mri_Qfarm",
-    "mri_Qfleecaheist",
-    "mri_Qfps",
-    "mri_Qhud",
-    "mri_Qloadscreen",
-    "mri_Qmarkerplacer",
-    "mri_Qmultichar",
-    "mri_Qobjects",
-    "mri_Qspawn",
-    "mri_Qvehicles"
-   ]
+   "avgPlayers": 1
   },
   {
    "id": "y99vam9",
@@ -654,19 +373,7 @@
    "locale": "pt-BR",
    "players": 1,
    "maxPlayers": 1,
-   "avgPlayers": 1,
-   "resources": [
-    "mri_Qblips",
-    "mri_Qbox",
-    "mri_Qchat",
-    "mri_Qfarm",
-    "mri_Qfleecaheist",
-    "mri_Qfps",
-    "mri_Qhud",
-    "mri_Qloadscreen",
-    "mri_Qmarkerplacer",
-    "mri_Qobjects"
-   ]
+   "avgPlayers": 1
   },
   {
    "id": "dm7lbq",
@@ -675,20 +382,7 @@
    "locale": "pt-BR",
    "players": 1,
    "maxPlayers": 1,
-   "avgPlayers": 1,
-   "resources": [
-    "mri_Qadmin",
-    "mri_Qblips",
-    "mri_Qbox",
-    "mri_Qchat",
-    "mri_Qfarm",
-    "mri_Qfleecaheist",
-    "mri_Qfps",
-    "mri_Qhud",
-    "mri_Qloadscreen",
-    "mri_Qmarkerplacer",
-    "mri_Qobjects"
-   ]
+   "avgPlayers": 1
   },
   {
    "id": "z8e87y",
@@ -697,17 +391,7 @@
    "locale": "pt-BR",
    "players": 1,
    "maxPlayers": 1,
-   "avgPlayers": 1,
-   "resources": [
-    "mri_Qblips",
-    "mri_Qbox",
-    "mri_Qchat",
-    "mri_Qfarm",
-    "mri_Qfleecaheist",
-    "mri_Qhud",
-    "mri_Qmarkerplacer",
-    "mri_Qobjects"
-   ]
+   "avgPlayers": 1
   },
   {
    "id": "bdxzmkp",
@@ -716,10 +400,7 @@
    "locale": "root-AQ",
    "players": 1,
    "maxPlayers": 1,
-   "avgPlayers": 1,
-   "resources": [
-    "mri_Qbox"
-   ]
+   "avgPlayers": 1
   },
   {
    "id": "e6evpdp",
@@ -728,19 +409,7 @@
    "locale": "pt-BR",
    "players": 1,
    "maxPlayers": 1,
-   "avgPlayers": 1,
-   "resources": [
-    "mri_Qblips",
-    "mri_Qbox",
-    "mri_Qchat",
-    "mri_Qfarm",
-    "mri_Qfleecaheist",
-    "mri_Qfps",
-    "mri_Qhud",
-    "mri_Qloadscreen",
-    "mri_Qmarkerplacer",
-    "mri_Qobjects"
-   ]
+   "avgPlayers": 1
   },
   {
    "id": "oegljj",
@@ -749,19 +418,7 @@
    "locale": "pt-BR",
    "players": 1,
    "maxPlayers": 1,
-   "avgPlayers": 1,
-   "resources": [
-    "mri_Qblips",
-    "mri_Qbox",
-    "mri_Qchat",
-    "mri_Qfarm",
-    "mri_Qfleecaheist",
-    "mri_Qfps",
-    "mri_Qhud",
-    "mri_Qloadscreen",
-    "mri_Qmarkerplacer",
-    "mri_Qobjects"
-   ]
+   "avgPlayers": 1
   },
   {
    "id": "lqlpz4",
@@ -770,13 +427,7 @@
    "locale": "pt-PT",
    "players": 1,
    "maxPlayers": 3,
-   "avgPlayers": 1,
-   "resources": [
-    "mri_Qadmin",
-    "mri_Qfleecaheist",
-    "mri_Qfps",
-    "mri_Qvehicles"
-   ]
+   "avgPlayers": 1
   },
   {
    "id": "7zkp8b",
@@ -785,13 +436,7 @@
    "locale": "pt-BR",
    "players": 1,
    "maxPlayers": 1,
-   "avgPlayers": 1,
-   "resources": [
-    "mri_Qblips",
-    "mri_Qbox",
-    "mri_Qchat",
-    "mri_Qloadscreen"
-   ]
+   "avgPlayers": 1
   },
   {
    "id": "leed7dj",
@@ -800,18 +445,7 @@
    "locale": "pt-BR",
    "players": 1,
    "maxPlayers": 1,
-   "avgPlayers": 1,
-   "resources": [
-    "mri_Qblips",
-    "mri_Qbox",
-    "mri_Qchat",
-    "mri_Qfarm",
-    "mri_Qfps",
-    "mri_Qhud",
-    "mri_Qloadscreen",
-    "mri_Qmarkerplacer",
-    "mri_Qobjects"
-   ]
+   "avgPlayers": 1
   },
   {
    "id": "qx6x7z",
@@ -820,17 +454,7 @@
    "locale": "pt-BR",
    "players": 1,
    "maxPlayers": 1,
-   "avgPlayers": 1,
-   "resources": [
-    "mri_Qblips",
-    "mri_Qbox",
-    "mri_Qchat",
-    "mri_Qfarm",
-    "mri_Qfleecaheist",
-    "mri_Qhud",
-    "mri_Qmarkerplacer",
-    "mri_Qobjects"
-   ]
+   "avgPlayers": 1
   },
   {
    "id": "oaagrzv",
@@ -839,11 +463,7 @@
    "locale": "pt-BR",
    "players": 1,
    "maxPlayers": 1,
-   "avgPlayers": 1,
-   "resources": [
-    "mri_Qadmin",
-    "mri_Qfarm"
-   ]
+   "avgPlayers": 1
   },
   {
    "id": "gaavazm",
@@ -852,23 +472,7 @@
    "locale": "pt-BR",
    "players": 1,
    "maxPlayers": 1,
-   "avgPlayers": 1,
-   "resources": [
-    "mri_Qadmin",
-    "mri_Qblips",
-    "mri_Qbox",
-    "mri_Qchat",
-    "mri_Qfarm",
-    "mri_Qfleecaheist",
-    "mri_Qfps",
-    "mri_Qhud",
-    "mri_Qloadscreen",
-    "mri_Qmarkerplacer",
-    "mri_Qmultichar",
-    "mri_Qobjects",
-    "mri_Qspawn",
-    "mri_Qvehicles"
-   ]
+   "avgPlayers": 1
   },
   {
    "id": "5ook4r6",
@@ -877,21 +481,7 @@
    "locale": "pt-BR",
    "players": 1,
    "maxPlayers": 2,
-   "avgPlayers": 1,
-   "resources": [
-    "mri_Qadmin",
-    "mri_Qblips",
-    "mri_Qbox",
-    "mri_Qchat",
-    "mri_Qfarm",
-    "mri_Qfleecaheist",
-    "mri_Qfps",
-    "mri_Qhud",
-    "mri_Qmarkerplacer",
-    "mri_Qmultichar",
-    "mri_Qobjects",
-    "mri_Qspawn"
-   ]
+   "avgPlayers": 1
   },
   {
    "id": "967y7b",
@@ -900,10 +490,7 @@
    "locale": "root-AQ",
    "players": 1,
    "maxPlayers": 1,
-   "avgPlayers": 1,
-   "resources": [
-    "mri_Qchat"
-   ]
+   "avgPlayers": 1
   },
   {
    "id": "gadmbbq",
@@ -912,13 +499,7 @@
    "locale": "pt-BR",
    "players": 1,
    "maxPlayers": 1,
-   "avgPlayers": 1,
-   "resources": [
-    "mri_Qbox",
-    "mri_Qchat",
-    "mri_Qhud",
-    "mri_Qloadscreen"
-   ]
+   "avgPlayers": 1
   },
   {
    "id": "4gg4pk9",
@@ -927,18 +508,7 @@
    "locale": "pt-BR",
    "players": 1,
    "maxPlayers": 1,
-   "avgPlayers": 1,
-   "resources": [
-    "mri_Qblips",
-    "mri_Qbox",
-    "mri_Qchat",
-    "mri_Qfarm",
-    "mri_Qfleecaheist",
-    "mri_Qfps",
-    "mri_Qloadscreen",
-    "mri_Qmarkerplacer",
-    "mri_Qobjects"
-   ]
+   "avgPlayers": 1
   },
   {
    "id": "e3r483",
@@ -947,17 +517,7 @@
    "locale": "pt-BR",
    "players": 1,
    "maxPlayers": 1,
-   "avgPlayers": 1,
-   "resources": [
-    "mri_Qblips",
-    "mri_Qbox",
-    "mri_Qchat",
-    "mri_Qfarm",
-    "mri_Qfleecaheist",
-    "mri_Qfps",
-    "mri_Qmarkerplacer",
-    "mri_Qobjects"
-   ]
+   "avgPlayers": 1
   },
   {
    "id": "7gzmye",
@@ -966,17 +526,7 @@
    "locale": "pt-BR",
    "players": 1,
    "maxPlayers": 1,
-   "avgPlayers": 1,
-   "resources": [
-    "mri_Qblips",
-    "mri_Qbox",
-    "mri_Qchat",
-    "mri_Qfarm",
-    "mri_Qfleecaheist",
-    "mri_Qfps",
-    "mri_Qmarkerplacer",
-    "mri_Qobjects"
-   ]
+   "avgPlayers": 1
   },
   {
    "id": "8emv6vv",
@@ -985,17 +535,7 @@
    "locale": "pt-BR",
    "players": 1,
    "maxPlayers": 1,
-   "avgPlayers": 1,
-   "resources": [
-    "mri_Qblips",
-    "mri_Qbox",
-    "mri_Qchat",
-    "mri_Qfarm",
-    "mri_Qfleecaheist",
-    "mri_Qfps",
-    "mri_Qmarkerplacer",
-    "mri_Qobjects"
-   ]
+   "avgPlayers": 1
   },
   {
    "id": "leea477",
@@ -1004,22 +544,7 @@
    "locale": "pt-BR",
    "players": 1,
    "maxPlayers": 1,
-   "avgPlayers": 0,
-   "resources": [
-    "mri_Qadmin",
-    "mri_Qappearance",
-    "mri_Qblips",
-    "mri_Qbox",
-    "mri_Qchat",
-    "mri_Qfarm",
-    "mri_Qfleecaheist",
-    "mri_Qfps",
-    "mri_Qloadscreen",
-    "mri_Qmarkerplacer",
-    "mri_Qmultichar",
-    "mri_Qobjects",
-    "mri_Qspawn"
-   ]
+   "avgPlayers": 0
   },
   {
    "id": "l3epp4",
@@ -1028,19 +553,7 @@
    "locale": "pt-BR",
    "players": 1,
    "maxPlayers": 2,
-   "avgPlayers": 0,
-   "resources": [
-    "mri_Qblips",
-    "mri_Qbox",
-    "mri_Qchat",
-    "mri_Qfarm",
-    "mri_Qfleecaheist",
-    "mri_Qfps",
-    "mri_Qhud",
-    "mri_Qloadscreen",
-    "mri_Qmarkerplacer",
-    "mri_Qobjects"
-   ]
+   "avgPlayers": 0
   },
   {
    "id": "zjj7m6y",
@@ -1049,21 +562,7 @@
    "locale": "pt-BR",
    "players": 1,
    "maxPlayers": 1,
-   "avgPlayers": 0,
-   "resources": [
-    "mri_Qadmin",
-    "mri_Qblips",
-    "mri_Qbox",
-    "mri_Qchat",
-    "mri_Qfarm",
-    "mri_Qfleecaheist",
-    "mri_Qfps",
-    "mri_Qloadscreen",
-    "mri_Qmarkerplacer",
-    "mri_Qmultichar",
-    "mri_Qobjects",
-    "mri_Qspawn"
-   ]
+   "avgPlayers": 0
   },
   {
    "id": "e6ejvbm",
@@ -1072,11 +571,7 @@
    "locale": "pt-BR",
    "players": 1,
    "maxPlayers": 1,
-   "avgPlayers": 0,
-   "resources": [
-    "mri_Qadmin",
-    "mri_Qfarm"
-   ]
+   "avgPlayers": 0
   },
   {
    "id": "ovgl97",
@@ -1085,10 +580,7 @@
    "locale": "pt-BR",
    "players": 1,
    "maxPlayers": 1,
-   "avgPlayers": 0,
-   "resources": [
-    "mri_Qdoorlock"
-   ]
+   "avgPlayers": 0
   },
   {
    "id": "735dka",
@@ -1097,10 +589,7 @@
    "locale": "pt-BR",
    "players": 1,
    "maxPlayers": 2,
-   "avgPlayers": 0,
-   "resources": [
-    "mri_Qadmin"
-   ]
+   "avgPlayers": 0
   },
   {
    "id": "3med7y",
@@ -1109,11 +598,7 @@
    "locale": "pt-BR",
    "players": 1,
    "maxPlayers": 2,
-   "avgPlayers": 0,
-   "resources": [
-    "mri_Qadmin",
-    "mri_Qfarm"
-   ]
+   "avgPlayers": 0
   },
   {
    "id": "ler69x7",
@@ -1122,18 +607,7 @@
    "locale": "pt-BR",
    "players": 1,
    "maxPlayers": 1,
-   "avgPlayers": 0,
-   "resources": [
-    "mri_Qadmin",
-    "mri_Qblips",
-    "mri_Qbox",
-    "mri_Qfarm",
-    "mri_Qfleecaheist",
-    "mri_Qfps",
-    "mri_Qloadscreen",
-    "mri_Qmarkerplacer",
-    "mri_Qobjects"
-   ]
+   "avgPlayers": 0
   },
   {
    "id": "p3qk55",
@@ -1142,11 +616,7 @@
    "locale": "pt-BR",
    "players": 1,
    "maxPlayers": 3,
-   "avgPlayers": 0,
-   "resources": [
-    "mri_Qadmin",
-    "mri_Qfarm"
-   ]
+   "avgPlayers": 0
   },
   {
    "id": "y38xp9",
@@ -1155,19 +625,7 @@
    "locale": "pt-BR",
    "players": 1,
    "maxPlayers": 1,
-   "avgPlayers": 0,
-   "resources": [
-    "mri_Qblips",
-    "mri_Qbox",
-    "mri_Qchat",
-    "mri_Qfarm",
-    "mri_Qfleecaheist",
-    "mri_Qfps",
-    "mri_Qhud",
-    "mri_Qloadscreen",
-    "mri_Qmarkerplacer",
-    "mri_Qobjects"
-   ]
+   "avgPlayers": 0
   },
   {
    "id": "vggdgr",
@@ -1176,18 +634,7 @@
    "locale": "pt-BR",
    "players": 1,
    "maxPlayers": 2,
-   "avgPlayers": 0,
-   "resources": [
-    "mri_Qadmin",
-    "mri_Qblips",
-    "mri_Qbox",
-    "mri_Qchat",
-    "mri_Qfarm",
-    "mri_Qfleecaheist",
-    "mri_Qmarkerplacer",
-    "mri_Qobjects",
-    "mri_Qspawn"
-   ]
+   "avgPlayers": 0
   },
   {
    "id": "89rrvv",
@@ -1196,17 +643,7 @@
    "locale": "pt-BR",
    "players": 1,
    "maxPlayers": 1,
-   "avgPlayers": 0,
-   "resources": [
-    "mri_Qadmin",
-    "mri_Qblips",
-    "mri_Qbox",
-    "mri_Qchat",
-    "mri_Qfarm",
-    "mri_Qfleecaheist",
-    "mri_Qmarkerplacer",
-    "mri_Qobjects"
-   ]
+   "avgPlayers": 0
   },
   {
    "id": "9p4adm",
@@ -1215,10 +652,7 @@
    "locale": "pt-BR",
    "players": 1,
    "maxPlayers": 3,
-   "avgPlayers": 0,
-   "resources": [
-    "mri_Qadmin"
-   ]
+   "avgPlayers": 0
   },
   {
    "id": "dg3m5dq",
@@ -1227,17 +661,7 @@
    "locale": "pt-BR",
    "players": 0,
    "maxPlayers": 3,
-   "avgPlayers": 2,
-   "resources": [
-    "mri_Qblips",
-    "mri_Qbox",
-    "mri_Qchat",
-    "mri_Qfarm",
-    "mri_Qfps",
-    "mri_Qloadscreen",
-    "mri_Qmarkerplacer",
-    "mri_Qobjects"
-   ]
+   "avgPlayers": 2
   },
   {
    "id": "y9vraq9",
@@ -1246,10 +670,7 @@
    "locale": "pt-PT",
    "players": 0,
    "maxPlayers": 6,
-   "avgPlayers": 2,
-   "resources": [
-    "mri_Qfarm"
-   ]
+   "avgPlayers": 2
   },
   {
    "id": "98y44je",
@@ -1258,20 +679,7 @@
    "locale": "pt-BR",
    "players": 0,
    "maxPlayers": 2,
-   "avgPlayers": 1,
-   "resources": [
-    "mri_Qadmin",
-    "mri_Qblips",
-    "mri_Qbox",
-    "mri_Qchat",
-    "mri_Qfarm",
-    "mri_Qfps",
-    "mri_Qloadscreen",
-    "mri_Qmarkerplacer",
-    "mri_Qmultichar",
-    "mri_Qobjects",
-    "mri_Qspawn"
-   ]
+   "avgPlayers": 1
   },
   {
    "id": "3yg3lez",
@@ -1280,17 +688,7 @@
    "locale": "pt-BR",
    "players": 0,
    "maxPlayers": 2,
-   "avgPlayers": 1,
-   "resources": [
-    "mri_Qblips",
-    "mri_Qbox",
-    "mri_Qchat",
-    "mri_Qfarm",
-    "mri_Qfleecaheist",
-    "mri_Qfps",
-    "mri_Qmarkerplacer",
-    "mri_Qobjects"
-   ]
+   "avgPlayers": 1
   },
   {
    "id": "qldmd6",
@@ -1299,10 +697,7 @@
    "locale": "root-AQ",
    "players": 0,
    "maxPlayers": 2,
-   "avgPlayers": 1,
-   "resources": [
-    "mri_Qchat"
-   ]
+   "avgPlayers": 1
   },
   {
    "id": "5oyda87",
@@ -1311,16 +706,7 @@
    "locale": "pt-BR",
    "players": 0,
    "maxPlayers": 1,
-   "avgPlayers": 1,
-   "resources": [
-    "mri_Qblips",
-    "mri_Qbox",
-    "mri_Qchat",
-    "mri_Qfps",
-    "mri_Qloadscreen",
-    "mri_Qmarkerplacer",
-    "mri_Qobjects"
-   ]
+   "avgPlayers": 1
   },
   {
    "id": "rmabq3j",
@@ -1329,19 +715,7 @@
    "locale": "pt-BR",
    "players": 0,
    "maxPlayers": 1,
-   "avgPlayers": 1,
-   "resources": [
-    "mri_Qblips",
-    "mri_Qbox",
-    "mri_Qchat",
-    "mri_Qfarm",
-    "mri_Qfleecaheist",
-    "mri_Qfps",
-    "mri_Qhud",
-    "mri_Qloadscreen",
-    "mri_Qmarkerplacer",
-    "mri_Qobjects"
-   ]
+   "avgPlayers": 1
   },
   {
    "id": "r5q8vp",
@@ -1350,11 +724,7 @@
    "locale": "pt-BR",
    "players": 0,
    "maxPlayers": 3,
-   "avgPlayers": 1,
-   "resources": [
-    "mri_Qadmin",
-    "mri_Qfarm"
-   ]
+   "avgPlayers": 1
   },
   {
    "id": "kqqg73v",
@@ -1363,20 +733,7 @@
    "locale": "pt-PT",
    "players": 0,
    "maxPlayers": 3,
-   "avgPlayers": 1,
-   "resources": [
-    "mri_Qadmin",
-    "mri_Qblips",
-    "mri_Qbox",
-    "mri_Qchat",
-    "mri_Qfarm",
-    "mri_Qfps",
-    "mri_Qmarkerplacer",
-    "mri_Qmultichar",
-    "mri_Qobjects",
-    "mri_Qspawn",
-    "mri_Qvehicles"
-   ]
+   "avgPlayers": 1
   },
   {
    "id": "kqqo9dv",
@@ -1385,10 +742,7 @@
    "locale": "pt-BR",
    "players": 0,
    "maxPlayers": 3,
-   "avgPlayers": 1,
-   "resources": [
-    "mri_Qloadscreen"
-   ]
+   "avgPlayers": 1
   },
   {
    "id": "9z97jy",
@@ -1397,17 +751,7 @@
    "locale": "pt-BR",
    "players": 0,
    "maxPlayers": 1,
-   "avgPlayers": 1,
-   "resources": [
-    "mri_Qblips",
-    "mri_Qbox",
-    "mri_Qchat",
-    "mri_Qfarm",
-    "mri_Qfleecaheist",
-    "mri_Qfps",
-    "mri_Qmarkerplacer",
-    "mri_Qobjects"
-   ]
+   "avgPlayers": 1
   },
   {
    "id": "pb7j6y",
@@ -1416,10 +760,7 @@
    "locale": "pt-PT",
    "players": 0,
    "maxPlayers": 3,
-   "avgPlayers": 1,
-   "resources": [
-    "mri_Qmenu"
-   ]
+   "avgPlayers": 1
   },
   {
    "id": "bdxq6dd",
@@ -1428,19 +769,7 @@
    "locale": "pt-BR",
    "players": 0,
    "maxPlayers": 1,
-   "avgPlayers": 1,
-   "resources": [
-    "mri_Qblips",
-    "mri_Qbox",
-    "mri_Qchat",
-    "mri_Qfarm",
-    "mri_Qfleecaheist",
-    "mri_Qfps",
-    "mri_Qhud",
-    "mri_Qloadscreen",
-    "mri_Qmarkerplacer",
-    "mri_Qobjects"
-   ]
+   "avgPlayers": 1
   },
   {
    "id": "7bbod9r",
@@ -1449,18 +778,7 @@
    "locale": "pt-BR",
    "players": 0,
    "maxPlayers": 1,
-   "avgPlayers": 1,
-   "resources": [
-    "mri_Qblips",
-    "mri_Qbox",
-    "mri_Qchat",
-    "mri_Qfarm",
-    "mri_Qfleecaheist",
-    "mri_Qfps",
-    "mri_Qloadscreen",
-    "mri_Qmarkerplacer",
-    "mri_Qobjects"
-   ]
+   "avgPlayers": 1
   },
   {
    "id": "xlldqr5",
@@ -1469,11 +787,7 @@
    "locale": "en-AU",
    "players": 0,
    "maxPlayers": 3,
-   "avgPlayers": 1,
-   "resources": [
-    "mri_Qadmin",
-    "mri_Qdoorlock"
-   ]
+   "avgPlayers": 1
   },
   {
    "id": "4gbz94o",
@@ -1482,19 +796,7 @@
    "locale": "pt-BR",
    "players": 0,
    "maxPlayers": 4,
-   "avgPlayers": 1,
-   "resources": [
-    "mri_Qadmin",
-    "mri_Qblips",
-    "mri_Qbox",
-    "mri_Qchat",
-    "mri_Qfarm",
-    "mri_Qfleecaheist",
-    "mri_Qfps",
-    "mri_Qloadscreen",
-    "mri_Qmarkerplacer",
-    "mri_Qobjects"
-   ]
+   "avgPlayers": 1
   },
   {
    "id": "e66yoba",
@@ -1503,19 +805,7 @@
    "locale": "pt-BR",
    "players": 0,
    "maxPlayers": 2,
-   "avgPlayers": 1,
-   "resources": [
-    "mri_Qblips",
-    "mri_Qbox",
-    "mri_Qchat",
-    "mri_Qfarm",
-    "mri_Qfleecaheist",
-    "mri_Qfps",
-    "mri_Qhud",
-    "mri_Qloadscreen",
-    "mri_Qmarkerplacer",
-    "mri_Qobjects"
-   ]
+   "avgPlayers": 1
   },
   {
    "id": "a4zgm5k",
@@ -1524,11 +814,7 @@
    "locale": "pt-BR",
    "players": 0,
    "maxPlayers": 1,
-   "avgPlayers": 1,
-   "resources": [
-    "mri_Qadmin",
-    "mri_Qfarm"
-   ]
+   "avgPlayers": 1
   },
   {
    "id": "dggja93",
@@ -1537,22 +823,7 @@
    "locale": "pt-BR",
    "players": 0,
    "maxPlayers": 4,
-   "avgPlayers": 1,
-   "resources": [
-    "mri_Qadmin",
-    "mri_Qblips",
-    "mri_Qbox",
-    "mri_Qchat",
-    "mri_Qfarm",
-    "mri_Qfleecaheist",
-    "mri_Qfps",
-    "mri_Qloadscreen",
-    "mri_Qmarkerplacer",
-    "mri_Qmultichar",
-    "mri_Qobjects",
-    "mri_Qspawn",
-    "mri_Qvehicles"
-   ]
+   "avgPlayers": 1
   },
   {
    "id": "z5ov7y",
@@ -1561,19 +832,7 @@
    "locale": "pt-BR",
    "players": 0,
    "maxPlayers": 1,
-   "avgPlayers": 1,
-   "resources": [
-    "mri_Qblips",
-    "mri_Qbox",
-    "mri_Qchat",
-    "mri_Qfarm",
-    "mri_Qfleecaheist",
-    "mri_Qfps",
-    "mri_Qhud",
-    "mri_Qloadscreen",
-    "mri_Qmarkerplacer",
-    "mri_Qobjects"
-   ]
+   "avgPlayers": 1
   },
   {
    "id": "gadgv3m",
@@ -1582,18 +841,7 @@
    "locale": "pt-BR",
    "players": 0,
    "maxPlayers": 1,
-   "avgPlayers": 1,
-   "resources": [
-    "mri_Qadmin",
-    "mri_Qblips",
-    "mri_Qbox",
-    "mri_Qfarm",
-    "mri_Qfleecaheist",
-    "mri_Qfps",
-    "mri_Qloadscreen",
-    "mri_Qmarkerplacer",
-    "mri_Qobjects"
-   ]
+   "avgPlayers": 1
   },
   {
    "id": "3lz3lr",
@@ -1602,19 +850,7 @@
    "locale": "pt-BR",
    "players": 0,
    "maxPlayers": 0,
-   "avgPlayers": 0,
-   "resources": [
-    "mri_Qblips",
-    "mri_Qbox",
-    "mri_Qcarplates",
-    "mri_Qchat",
-    "mri_Qfarm",
-    "mri_Qfleecaheist",
-    "mri_Qfps",
-    "mri_Qhud",
-    "mri_Qmarkerplacer",
-    "mri_Qobjects"
-   ]
+   "avgPlayers": 0
   },
   {
    "id": "ov535v",
@@ -1623,10 +859,7 @@
    "locale": "pt-BR",
    "players": 0,
    "maxPlayers": 0,
-   "avgPlayers": 0,
-   "resources": [
-    "mri_Qfarm"
-   ]
+   "avgPlayers": 0
   },
   {
    "id": "ak99me",
@@ -1635,16 +868,7 @@
    "locale": "pt-BR",
    "players": 0,
    "maxPlayers": 0,
-   "avgPlayers": 0,
-   "resources": [
-    "mri_Qadmin",
-    "mri_Qblips",
-    "mri_Qbox",
-    "mri_Qcarplates",
-    "mri_Qfarm",
-    "mri_Qmarkerplacer",
-    "mri_Qobjects"
-   ]
+   "avgPlayers": 0
   },
   {
    "id": "zyqe34",
@@ -1653,18 +877,7 @@
    "locale": "pt-BR",
    "players": 0,
    "maxPlayers": 1,
-   "avgPlayers": 0,
-   "resources": [
-    "mri_Qblips",
-    "mri_Qbox",
-    "mri_Qchat",
-    "mri_Qfarm",
-    "mri_Qfleecaheist",
-    "mri_Qfps",
-    "mri_Qhud",
-    "mri_Qmarkerplacer",
-    "mri_Qobjects"
-   ]
+   "avgPlayers": 0
   },
   {
    "id": "qqqjl8v",
@@ -1673,17 +886,7 @@
    "locale": "pt-BR",
    "players": 0,
    "maxPlayers": 0,
-   "avgPlayers": 0,
-   "resources": [
-    "mri_Qblips",
-    "mri_Qbox",
-    "mri_Qchat",
-    "mri_Qfarm",
-    "mri_Qfleecaheist",
-    "mri_Qfps",
-    "mri_Qmarkerplacer",
-    "mri_Qobjects"
-   ]
+   "avgPlayers": 0
   },
   {
    "id": "oaa7rbj",
@@ -1692,19 +895,7 @@
    "locale": "pt-BR",
    "players": 0,
    "maxPlayers": 1,
-   "avgPlayers": 0,
-   "resources": [
-    "mri_Qblips",
-    "mri_Qbox",
-    "mri_Qchat",
-    "mri_Qfarm",
-    "mri_Qfleecaheist",
-    "mri_Qfps",
-    "mri_Qhud",
-    "mri_Qloadscreen",
-    "mri_Qmarkerplacer",
-    "mri_Qobjects"
-   ]
+   "avgPlayers": 0
   },
   {
    "id": "8eeaqd3",
@@ -1713,18 +904,7 @@
    "locale": "pt-BR",
    "players": 0,
    "maxPlayers": 0,
-   "avgPlayers": 0,
-   "resources": [
-    "mri_Qblips",
-    "mri_Qbox",
-    "mri_Qchat",
-    "mri_Qfarm",
-    "mri_Qfleecaheist",
-    "mri_Qfps",
-    "mri_Qloadscreen",
-    "mri_Qmarkerplacer",
-    "mri_Qobjects"
-   ]
+   "avgPlayers": 0
   },
   {
    "id": "kqqdxya",
@@ -1733,24 +913,7 @@
    "locale": "pt-BR",
    "players": 0,
    "maxPlayers": 2,
-   "avgPlayers": 0,
-   "resources": [
-    "mri_Qadmin",
-    "mri_Qappearance",
-    "mri_Qblips",
-    "mri_Qbox",
-    "mri_Qchat",
-    "mri_Qemotemenu",
-    "mri_Qfarm",
-    "mri_Qfleecaheist",
-    "mri_Qfps",
-    "mri_Qloadscreen",
-    "mri_Qmarkerplacer",
-    "mri_Qmultichar",
-    "mri_Qobjects",
-    "mri_Qspawn",
-    "mri_Qvehicles"
-   ]
+   "avgPlayers": 0
   },
   {
    "id": "gaaq86o",
@@ -1759,19 +922,7 @@
    "locale": "pt-BR",
    "players": 0,
    "maxPlayers": 1,
-   "avgPlayers": 0,
-   "resources": [
-    "mri_Qblips",
-    "mri_Qbox",
-    "mri_Qchat",
-    "mri_Qfarm",
-    "mri_Qfleecaheist",
-    "mri_Qfps",
-    "mri_Qhud",
-    "mri_Qloadscreen",
-    "mri_Qmarkerplacer",
-    "mri_Qobjects"
-   ]
+   "avgPlayers": 0
   },
   {
    "id": "j44x5ga",
@@ -1780,22 +931,7 @@
    "locale": "pt-BR",
    "players": 0,
    "maxPlayers": 0,
-   "avgPlayers": 0,
-   "resources": [
-    "mri_Qadmin",
-    "mri_Qblips",
-    "mri_Qbox",
-    "mri_Qchat",
-    "mri_Qfarm",
-    "mri_Qfleecaheist",
-    "mri_Qfps",
-    "mri_Qhud",
-    "mri_Qloadscreen",
-    "mri_Qmarkerplacer",
-    "mri_Qmultichar",
-    "mri_Qobjects",
-    "mri_Qspawn"
-   ]
+   "avgPlayers": 0
   },
   {
    "id": "aradle",
@@ -1804,19 +940,7 @@
    "locale": "pt-BR",
    "players": 0,
    "maxPlayers": 0,
-   "avgPlayers": 0,
-   "resources": [
-    "mri_Qblips",
-    "mri_Qbox",
-    "mri_Qchat",
-    "mri_Qfarm",
-    "mri_Qfleecaheist",
-    "mri_Qfps",
-    "mri_Qhud",
-    "mri_Qloadscreen",
-    "mri_Qmarkerplacer",
-    "mri_Qobjects"
-   ]
+   "avgPlayers": 0
   },
   {
    "id": "gzq47z",
@@ -1825,22 +949,7 @@
    "locale": "pt-BR",
    "players": 0,
    "maxPlayers": 0,
-   "avgPlayers": 0,
-   "resources": [
-    "mri_Qadmin",
-    "mri_Qblips",
-    "mri_Qbox",
-    "mri_Qchat",
-    "mri_Qfarm",
-    "mri_Qfleecaheist",
-    "mri_Qfps",
-    "mri_Qhud",
-    "mri_Qloadscreen",
-    "mri_Qmultichar",
-    "mri_Qobjects",
-    "mri_Qspawn",
-    "mri_Qvehicles"
-   ]
+   "avgPlayers": 0
   },
   {
    "id": "zzexjp",
@@ -1849,23 +958,7 @@
    "locale": "pt-BR",
    "players": 0,
    "maxPlayers": 1,
-   "avgPlayers": 0,
-   "resources": [
-    "mri_Qadmin",
-    "mri_Qblips",
-    "mri_Qbox",
-    "mri_Qchat",
-    "mri_Qfarm",
-    "mri_Qfleecaheist",
-    "mri_Qfps",
-    "mri_Qhud",
-    "mri_Qloadscreen",
-    "mri_Qmarkerplacer",
-    "mri_Qmultichar",
-    "mri_Qobjects",
-    "mri_Qspawn",
-    "mri_Qvehicles"
-   ]
+   "avgPlayers": 0
   },
   {
    "id": "8ll6ym",
@@ -1874,19 +967,7 @@
    "locale": "pt-BR",
    "players": 0,
    "maxPlayers": 0,
-   "avgPlayers": 0,
-   "resources": [
-    "mri_Qblips",
-    "mri_Qbox",
-    "mri_Qchat",
-    "mri_Qfarm",
-    "mri_Qfleecaheist",
-    "mri_Qfps",
-    "mri_Qhud",
-    "mri_Qloadscreen",
-    "mri_Qmarkerplacer",
-    "mri_Qobjects"
-   ]
+   "avgPlayers": 0
   },
   {
    "id": "v8l37e",
@@ -1895,18 +976,7 @@
    "locale": "pt-BR",
    "players": 0,
    "maxPlayers": 1,
-   "avgPlayers": 0,
-   "resources": [
-    "mri_Qblips",
-    "mri_Qbox",
-    "mri_Qchat",
-    "mri_Qfarm",
-    "mri_Qfleecaheist",
-    "mri_Qfps",
-    "mri_Qloadscreen",
-    "mri_Qmarkerplacer",
-    "mri_Qobjects"
-   ]
+   "avgPlayers": 0
   },
   {
    "id": "6jbdz6",
@@ -1915,19 +985,7 @@
    "locale": "pt-BR",
    "players": 0,
    "maxPlayers": 1,
-   "avgPlayers": 0,
-   "resources": [
-    "mri_Qblips",
-    "mri_Qbox",
-    "mri_Qchat",
-    "mri_Qfarm",
-    "mri_Qfleecaheist",
-    "mri_Qfps",
-    "mri_Qhud",
-    "mri_Qloadscreen",
-    "mri_Qmarkerplacer",
-    "mri_Qobjects"
-   ]
+   "avgPlayers": 0
   },
   {
    "id": "3m6lqz",
@@ -1936,19 +994,7 @@
    "locale": "pt-BR",
    "players": 0,
    "maxPlayers": 0,
-   "avgPlayers": 0,
-   "resources": [
-    "mri_Qblips",
-    "mri_Qbox",
-    "mri_Qchat",
-    "mri_Qfarm",
-    "mri_Qfleecaheist",
-    "mri_Qfps",
-    "mri_Qhud",
-    "mri_Qloadscreen",
-    "mri_Qmarkerplacer",
-    "mri_Qobjects"
-   ]
+   "avgPlayers": 0
   },
   {
    "id": "3ygd768",
@@ -1957,23 +1003,7 @@
    "locale": "pt-BR",
    "players": 0,
    "maxPlayers": 1,
-   "avgPlayers": 0,
-   "resources": [
-    "mri_Qadmin",
-    "mri_Qblips",
-    "mri_Qbox",
-    "mri_Qchat",
-    "mri_Qfarm",
-    "mri_Qfleecaheist",
-    "mri_Qfps",
-    "mri_Qhud",
-    "mri_Qloadscreen",
-    "mri_Qmarkerplacer",
-    "mri_Qmultichar",
-    "mri_Qobjects",
-    "mri_Qspawn",
-    "mri_Qvehicles"
-   ]
+   "avgPlayers": 0
   },
   {
    "id": "p8y5o7",
@@ -1982,19 +1012,7 @@
    "locale": "pt-BR",
    "players": 0,
    "maxPlayers": 0,
-   "avgPlayers": 0,
-   "resources": [
-    "mri_Qblips",
-    "mri_Qbox",
-    "mri_Qchat",
-    "mri_Qfarm",
-    "mri_Qfleecaheist",
-    "mri_Qfps",
-    "mri_Qhud",
-    "mri_Qloadscreen",
-    "mri_Qmarkerplacer",
-    "mri_Qobjects"
-   ]
+   "avgPlayers": 0
   },
   {
    "id": "zjjlmv9",
@@ -2003,12 +1021,7 @@
    "locale": "pt-BR",
    "players": 0,
    "maxPlayers": 1,
-   "avgPlayers": 0,
-   "resources": [
-    "mri_Qchat",
-    "mri_Qfps",
-    "mri_Qloadscreen"
-   ]
+   "avgPlayers": 0
   },
   {
    "id": "r4mxkp",
@@ -2017,19 +1030,7 @@
    "locale": "pt-BR",
    "players": 0,
    "maxPlayers": 0,
-   "avgPlayers": 0,
-   "resources": [
-    "mri_Qblips",
-    "mri_Qbox",
-    "mri_Qchat",
-    "mri_Qfarm",
-    "mri_Qfleecaheist",
-    "mri_Qfps",
-    "mri_Qhud",
-    "mri_Qloadscreen",
-    "mri_Qmarkerplacer",
-    "mri_Qobjects"
-   ]
+   "avgPlayers": 0
   },
   {
    "id": "lkq6oj",
@@ -2038,15 +1039,7 @@
    "locale": "pt-BR",
    "players": 0,
    "maxPlayers": 1,
-   "avgPlayers": 0,
-   "resources": [
-    "mri_Qblips",
-    "mri_Qbox",
-    "mri_Qchat",
-    "mri_Qfps",
-    "mri_Qmarkerplacer",
-    "mri_Qobjects"
-   ]
+   "avgPlayers": 0
   },
   {
    "id": "leeo687",
@@ -2055,17 +1048,7 @@
    "locale": "ro-RO",
    "players": 0,
    "maxPlayers": 0,
-   "avgPlayers": 0,
-   "resources": [
-    "mri_Qadmin",
-    "mri_Qairbags",
-    "mri_Qbox",
-    "mri_Qfps",
-    "mri_Qloadscreen",
-    "mri_Qmarkerplacer",
-    "mri_Qspawn",
-    "mri_Qtyrecontrol"
-   ]
+   "avgPlayers": 0
   },
   {
    "id": "p3eoem",
@@ -2074,13 +1057,7 @@
    "locale": "pt-br",
    "players": 0,
    "maxPlayers": 0,
-   "avgPlayers": 0,
-   "resources": [
-    "mri_Qblips",
-    "mri_Qfps",
-    "mri_Qmarkerplacer",
-    "mri_Qobjects"
-   ]
+   "avgPlayers": 0
   },
   {
    "id": "8eezrbv",
@@ -2089,17 +1066,7 @@
    "locale": "pt-BR",
    "players": 0,
    "maxPlayers": 0,
-   "avgPlayers": 0,
-   "resources": [
-    "mri_Qblips",
-    "mri_Qbox",
-    "mri_Qchat",
-    "mri_Qfarm",
-    "mri_Qfleecaheist",
-    "mri_Qfps",
-    "mri_Qmarkerplacer",
-    "mri_Qobjects"
-   ]
+   "avgPlayers": 0
   },
   {
    "id": "xmkpbm",
@@ -2108,11 +1075,7 @@
    "locale": "pt-BR",
    "players": 0,
    "maxPlayers": 1,
-   "avgPlayers": 0,
-   "resources": [
-    "mri_Qadmin",
-    "mri_Qfarm"
-   ]
+   "avgPlayers": 0
   },
   {
    "id": "e66kppd",
@@ -2121,20 +1084,7 @@
    "locale": "pt-PT",
    "players": 0,
    "maxPlayers": 2,
-   "avgPlayers": 0,
-   "resources": [
-    "mri_Qadmin",
-    "mri_Qblips",
-    "mri_Qbox",
-    "mri_Qchat",
-    "mri_Qfarm",
-    "mri_Qfleecaheist",
-    "mri_Qfps",
-    "mri_Qloadscreen",
-    "mri_Qmarkerplacer",
-    "mri_Qobjects",
-    "mri_Qspawn"
-   ]
+   "avgPlayers": 0
   },
   {
    "id": "jj54pa",
@@ -2143,18 +1093,7 @@
    "locale": "pt-BR",
    "players": 0,
    "maxPlayers": 0,
-   "avgPlayers": 0,
-   "resources": [
-    "mri_Qblips",
-    "mri_Qbox",
-    "mri_Qchat",
-    "mri_Qfarm",
-    "mri_Qfleecaheist",
-    "mri_Qfps",
-    "mri_Qhud",
-    "mri_Qmarkerplacer",
-    "mri_Qobjects"
-   ]
+   "avgPlayers": 0
   },
   {
    "id": "8eey7am",
@@ -2163,18 +1102,7 @@
    "locale": "pt-BR",
    "players": 0,
    "maxPlayers": 1,
-   "avgPlayers": 0,
-   "resources": [
-    "mri_Qblips",
-    "mri_Qbox",
-    "mri_Qchat",
-    "mri_Qfarm",
-    "mri_Qfleecaheist",
-    "mri_Qfps",
-    "mri_Qhud",
-    "mri_Qmarkerplacer",
-    "mri_Qobjects"
-   ]
+   "avgPlayers": 0
   },
   {
    "id": "d7l645",
@@ -2183,11 +1111,7 @@
    "locale": "pt-BR",
    "players": 0,
    "maxPlayers": 2,
-   "avgPlayers": 0,
-   "resources": [
-    "mri_Qadmin",
-    "mri_Qfarm"
-   ]
+   "avgPlayers": 0
   },
   {
    "id": "zx5p8p",
@@ -2196,20 +1120,7 @@
    "locale": "pt-BR",
    "players": 0,
    "maxPlayers": 0,
-   "avgPlayers": 0,
-   "resources": [
-    "mri_Qblips",
-    "mri_Qbox",
-    "mri_Qcarplates",
-    "mri_Qchat",
-    "mri_Qfarm",
-    "mri_Qfleecaheist",
-    "mri_Qfps",
-    "mri_Qhud",
-    "mri_Qloadscreen",
-    "mri_Qmarkerplacer",
-    "mri_Qobjects"
-   ]
+   "avgPlayers": 0
   },
   {
    "id": "zjv36j5",
@@ -2218,13 +1129,7 @@
    "locale": "pt-BR",
    "players": 0,
    "maxPlayers": 1,
-   "avgPlayers": 0,
-   "resources": [
-    "mri_Qadmin",
-    "mri_Qblips",
-    "mri_Qmenu",
-    "mri_Qobjects"
-   ]
+   "avgPlayers": 0
   },
   {
    "id": "b7kr3l",
@@ -2233,11 +1138,7 @@
    "locale": "pt-BR",
    "players": 0,
    "maxPlayers": 0,
-   "avgPlayers": 0,
-   "resources": [
-    "mri_Qadmin",
-    "mri_Qfarm"
-   ]
+   "avgPlayers": 0
   },
   {
    "id": "vzopq5",
@@ -2246,19 +1147,7 @@
    "locale": "pt-BR",
    "players": 0,
    "maxPlayers": 1,
-   "avgPlayers": 0,
-   "resources": [
-    "mri_Qblips",
-    "mri_Qbox",
-    "mri_Qchat",
-    "mri_Qfarm",
-    "mri_Qfleecaheist",
-    "mri_Qfps",
-    "mri_Qhud",
-    "mri_Qloadscreen",
-    "mri_Qmarkerplacer",
-    "mri_Qobjects"
-   ]
+   "avgPlayers": 0
   },
   {
    "id": "rmmv3gj",
@@ -2267,19 +1156,7 @@
    "locale": "pt-BR",
    "players": 0,
    "maxPlayers": 1,
-   "avgPlayers": 0,
-   "resources": [
-    "mri_Qblips",
-    "mri_Qbox",
-    "mri_Qchat",
-    "mri_Qfarm",
-    "mri_Qfleecaheist",
-    "mri_Qfps",
-    "mri_Qhud",
-    "mri_Qloadscreen",
-    "mri_Qmarkerplacer",
-    "mri_Qobjects"
-   ]
+   "avgPlayers": 0
   },
   {
    "id": "r7zkyg",
@@ -2288,11 +1165,7 @@
    "locale": "pt-BR",
    "players": 0,
    "maxPlayers": 0,
-   "avgPlayers": 0,
-   "resources": [
-    "mri_Qadmin",
-    "mri_Qfarm"
-   ]
+   "avgPlayers": 0
   },
   {
    "id": "x964xm",
@@ -2301,18 +1174,7 @@
    "locale": "pt-BR",
    "players": 0,
    "maxPlayers": 1,
-   "avgPlayers": 0,
-   "resources": [
-    "mri_Qblips",
-    "mri_Qbox",
-    "mri_Qchat",
-    "mri_Qfarm",
-    "mri_Qfleecaheist",
-    "mri_Qfps",
-    "mri_Qloadscreen",
-    "mri_Qmarkerplacer",
-    "mri_Qobjects"
-   ]
+   "avgPlayers": 0
   },
   {
    "id": "e66kxvp",
@@ -2321,17 +1183,7 @@
    "locale": "pt-BR",
    "players": 0,
    "maxPlayers": 0,
-   "avgPlayers": 0,
-   "resources": [
-    "mri_Qblips",
-    "mri_Qbox",
-    "mri_Qfarm",
-    "mri_Qfleecaheist",
-    "mri_Qfps",
-    "mri_Qloadscreen",
-    "mri_Qmarkerplacer",
-    "mri_Qobjects"
-   ]
+   "avgPlayers": 0
   },
   {
    "id": "xlll3jx",
@@ -2340,19 +1192,7 @@
    "locale": "pt-BR",
    "players": 0,
    "maxPlayers": 0,
-   "avgPlayers": 0,
-   "resources": [
-    "mri_Qblips",
-    "mri_Qbox",
-    "mri_Qchat",
-    "mri_Qfarm",
-    "mri_Qfleecaheist",
-    "mri_Qfps",
-    "mri_Qhud",
-    "mri_Qloadscreen",
-    "mri_Qmarkerplacer",
-    "mri_Qobjects"
-   ]
+   "avgPlayers": 0
   },
   {
    "id": "4ggpjj5",
@@ -2361,13 +1201,7 @@
    "locale": "pt-BR",
    "players": 0,
    "maxPlayers": 0,
-   "avgPlayers": 0,
-   "resources": [
-    "mri_Qbox",
-    "mri_Qfarm",
-    "mri_Qfps",
-    "mri_Qobjects"
-   ]
+   "avgPlayers": 0
   },
   {
    "id": "zxx53p",
@@ -2376,22 +1210,7 @@
    "locale": "pt-BR",
    "players": 0,
    "maxPlayers": 0,
-   "avgPlayers": 0,
-   "resources": [
-    "mri_Qadmin",
-    "mri_Qblips",
-    "mri_Qbox",
-    "mri_Qchat",
-    "mri_Qfarm",
-    "mri_Qfleecaheist",
-    "mri_Qfps",
-    "mri_Qhud",
-    "mri_Qloadscreen",
-    "mri_Qmarkerplacer",
-    "mri_Qmultichar",
-    "mri_Qobjects",
-    "mri_Qspawn"
-   ]
+   "avgPlayers": 0
   },
   {
    "id": "3yyyy5b",
@@ -2400,18 +1219,7 @@
    "locale": "pt-BR",
    "players": 0,
    "maxPlayers": 1,
-   "avgPlayers": 0,
-   "resources": [
-    "mri_Qblips",
-    "mri_Qbox",
-    "mri_Qchat",
-    "mri_Qfarm",
-    "mri_Qfleecaheist",
-    "mri_Qfps",
-    "mri_Qloadscreen",
-    "mri_Qmarkerplacer",
-    "mri_Qobjects"
-   ]
+   "avgPlayers": 0
   },
   {
    "id": "3b79qy",
@@ -2420,16 +1228,7 @@
    "locale": "pt-BR",
    "players": 0,
    "maxPlayers": 1,
-   "avgPlayers": 0,
-   "resources": [
-    "mri_Qblips",
-    "mri_Qbox",
-    "mri_Qfarm",
-    "mri_Qfleecaheist",
-    "mri_Qfps",
-    "mri_Qmarkerplacer",
-    "mri_Qobjects"
-   ]
+   "avgPlayers": 0
   },
   {
    "id": "7gk9jd",
@@ -2438,20 +1237,7 @@
    "locale": "pt-BR",
    "players": 0,
    "maxPlayers": 0,
-   "avgPlayers": 0,
-   "resources": [
-    "mri_Qblips",
-    "mri_Qbox",
-    "mri_Qchat",
-    "mri_Qfarm",
-    "mri_Qfleecaheist",
-    "mri_Qfps",
-    "mri_Qhud",
-    "mri_Qloadscreen",
-    "mri_Qmarkerplacer",
-    "mri_Qobjects",
-    "mri_Qspawn"
-   ]
+   "avgPlayers": 0
   },
   {
    "id": "5oog7qd",
@@ -2460,11 +1246,7 @@
    "locale": "pt-BR",
    "players": 0,
    "maxPlayers": 1,
-   "avgPlayers": 0,
-   "resources": [
-    "mri_Qadmin",
-    "mri_Qfarm"
-   ]
+   "avgPlayers": 0
   },
   {
    "id": "4gbedko",
@@ -2473,23 +1255,7 @@
    "locale": "pt-BR",
    "players": 0,
    "maxPlayers": 0,
-   "avgPlayers": 0,
-   "resources": [
-    "mri_Qadmin",
-    "mri_Qappearance",
-    "mri_Qblips",
-    "mri_Qbox",
-    "mri_Qchat",
-    "mri_Qfarm",
-    "mri_Qfleecaheist",
-    "mri_Qfps",
-    "mri_Qhud",
-    "mri_Qloadscreen",
-    "mri_Qmarkerplacer",
-    "mri_Qmultichar",
-    "mri_Qobjects",
-    "mri_Qspawn"
-   ]
+   "avgPlayers": 0
   },
   {
    "id": "ma7al9",
@@ -2498,21 +1264,7 @@
    "locale": "pt-BR",
    "players": 0,
    "maxPlayers": 1,
-   "avgPlayers": 0,
-   "resources": [
-    "mri_Qblips",
-    "mri_Qbossmenu",
-    "mri_Qbox",
-    "mri_Qcarplates",
-    "mri_Qchat",
-    "mri_Qfarm",
-    "mri_Qfleecaheist",
-    "mri_Qfps",
-    "mri_Qhud",
-    "mri_Qloadscreen",
-    "mri_Qmarkerplacer",
-    "mri_Qobjects"
-   ]
+   "avgPlayers": 0
   },
   {
    "id": "leea8d5",
@@ -2521,10 +1273,7 @@
    "locale": "pt-BR",
    "players": 0,
    "maxPlayers": 0,
-   "avgPlayers": 0,
-   "resources": [
-    "mri_Qadmin"
-   ]
+   "avgPlayers": 0
   },
   {
    "id": "5oogbad",
@@ -2533,12 +1282,7 @@
    "locale": "pt-BR",
    "players": 0,
    "maxPlayers": 0,
-   "avgPlayers": 0,
-   "resources": [
-    "mri_Qbox",
-    "mri_Qfps",
-    "mri_Qloadscreen"
-   ]
+   "avgPlayers": 0
   },
   {
    "id": "j44o64m",
@@ -2547,15 +1291,7 @@
    "locale": "pt-BR",
    "players": 0,
    "maxPlayers": 1,
-   "avgPlayers": 0,
-   "resources": [
-    "mri_Qblips",
-    "mri_Qbox",
-    "mri_Qchat",
-    "mri_Qfps",
-    "mri_Qmarkerplacer",
-    "mri_Qobjects"
-   ]
+   "avgPlayers": 0
   },
   {
    "id": "mxd36q",
@@ -2564,10 +1300,7 @@
    "locale": "es-ES",
    "players": 0,
    "maxPlayers": 1,
-   "avgPlayers": 0,
-   "resources": [
-    "mri_Qadmin"
-   ]
+   "avgPlayers": 0
   },
   {
    "id": "zjjklg5",
@@ -2576,11 +1309,7 @@
    "locale": "pt-BR",
    "players": 0,
    "maxPlayers": 1,
-   "avgPlayers": 0,
-   "resources": [
-    "mri_Qadmin",
-    "mri_Qfarm"
-   ]
+   "avgPlayers": 0
   },
   {
    "id": "eby9la",
@@ -2589,16 +1318,7 @@
    "locale": "pt-PT",
    "players": 0,
    "maxPlayers": 0,
-   "avgPlayers": 0,
-   "resources": [
-    "mri_Qblips",
-    "mri_Qbox",
-    "mri_Qchat",
-    "mri_Qfarm",
-    "mri_Qfps",
-    "mri_Qmarkerplacer",
-    "mri_Qobjects"
-   ]
+   "avgPlayers": 0
   },
   {
    "id": "7b988ra",
@@ -2607,19 +1327,7 @@
    "locale": "pt-BR",
    "players": 0,
    "maxPlayers": 0,
-   "avgPlayers": 0,
-   "resources": [
-    "mri_Qblips",
-    "mri_Qbox",
-    "mri_Qchat",
-    "mri_Qfarm",
-    "mri_Qfleecaheist",
-    "mri_Qfps",
-    "mri_Qloadscreen",
-    "mri_Qmarkerplacer",
-    "mri_Qmultichar",
-    "mri_Qobjects"
-   ]
+   "avgPlayers": 0
   },
   {
    "id": "xjqg65",
@@ -2628,12 +1336,7 @@
    "locale": "root-AQ",
    "players": 0,
    "maxPlayers": 1,
-   "avgPlayers": 0,
-   "resources": [
-    "mri_Qfarm",
-    "mri_Qmenu",
-    "mri_Qobjects"
-   ]
+   "avgPlayers": 0
   },
   {
    "id": "bddgv84",
@@ -2642,11 +1345,7 @@
    "locale": "pt-BR",
    "players": 0,
    "maxPlayers": 0,
-   "avgPlayers": 0,
-   "resources": [
-    "mri_Qadmin",
-    "mri_Qfarm"
-   ]
+   "avgPlayers": 0
   },
   {
    "id": "g7m5lo",
@@ -2655,10 +1354,7 @@
    "locale": "en-GB",
    "players": 0,
    "maxPlayers": 2,
-   "avgPlayers": 0,
-   "resources": [
-    "mri_Qobjects"
-   ]
+   "avgPlayers": 0
   },
   {
    "id": "555e66",
@@ -2667,26 +1363,7 @@
    "locale": "pt-BR",
    "players": 0,
    "maxPlayers": 0,
-   "avgPlayers": 0,
-   "resources": [
-    "mri_Qadmin",
-    "mri_Qblips",
-    "mri_Qbox",
-    "mri_Qcarphotos",
-    "mri_Qcarplates",
-    "mri_Qchat",
-    "mri_Qdoorlock",
-    "mri_Qfarm",
-    "mri_Qfleecaheist",
-    "mri_Qfps",
-    "mri_Qjobslog",
-    "mri_Qloadscreen",
-    "mri_Qlogo",
-    "mri_Qmarkerplacer",
-    "mri_Qobjects",
-    "mri_Qtyrecontrol",
-    "mri_Qweather"
-   ]
+   "avgPlayers": 0
   },
   {
    "id": "boy3dp",
@@ -2695,17 +1372,7 @@
    "locale": "pt-BR",
    "players": 0,
    "maxPlayers": 0,
-   "avgPlayers": 0,
-   "resources": [
-    "mri_Qblips",
-    "mri_Qbox",
-    "mri_Qchat",
-    "mri_Qfleecaheist",
-    "mri_Qfps",
-    "mri_Qloadscreen",
-    "mri_Qmarkerplacer",
-    "mri_Qobjects"
-   ]
+   "avgPlayers": 0
   },
   {
    "id": "y9v3zjk",
@@ -2714,21 +1381,7 @@
    "locale": "pt-BR",
    "players": 0,
    "maxPlayers": 0,
-   "avgPlayers": 0,
-   "resources": [
-    "mri_Qadmin",
-    "mri_Qblips",
-    "mri_Qbox",
-    "mri_Qcarplates",
-    "mri_Qchat",
-    "mri_Qfarm",
-    "mri_Qfleecaheist",
-    "mri_Qfps",
-    "mri_Qloadscreen",
-    "mri_Qlogo",
-    "mri_Qmarkerplacer",
-    "mri_Qobjects"
-   ]
+   "avgPlayers": 0
   },
   {
    "id": "qqq7kxp",
@@ -2737,23 +1390,7 @@
    "locale": "pt-BR",
    "players": 0,
    "maxPlayers": 0,
-   "avgPlayers": 0,
-   "resources": [
-    "mri_Qadmin",
-    "mri_Qblips",
-    "mri_Qbox",
-    "mri_Qchat",
-    "mri_Qfarm",
-    "mri_Qfleecaheist",
-    "mri_Qfps",
-    "mri_Qhud",
-    "mri_Qloadscreen",
-    "mri_Qmarkerplacer",
-    "mri_Qmultichar",
-    "mri_Qobjects",
-    "mri_Qspawn",
-    "mri_Qvehicles"
-   ]
+   "avgPlayers": 0
   },
   {
    "id": "93g3xa",
@@ -2762,19 +1399,7 @@
    "locale": "pt-BR",
    "players": 0,
    "maxPlayers": 1,
-   "avgPlayers": 0,
-   "resources": [
-    "mri_Qblips",
-    "mri_Qbox",
-    "mri_Qchat",
-    "mri_Qfarm",
-    "mri_Qfleecaheist",
-    "mri_Qfps",
-    "mri_Qhud",
-    "mri_Qloadscreen",
-    "mri_Qmarkerplacer",
-    "mri_Qobjects"
-   ]
+   "avgPlayers": 0
   },
   {
    "id": "oaxdzqv",
@@ -2783,17 +1408,7 @@
    "locale": "pt-BR",
    "players": 0,
    "maxPlayers": 1,
-   "avgPlayers": 0,
-   "resources": [
-    "mri_Qblips",
-    "mri_Qbox",
-    "mri_Qchat",
-    "mri_Qfarm",
-    "mri_Qfleecaheist",
-    "mri_Qfps",
-    "mri_Qmarkerplacer",
-    "mri_Qobjects"
-   ]
+   "avgPlayers": 0
   },
   {
    "id": "5oop6e6",
@@ -2802,18 +1417,7 @@
    "locale": "pt-BR",
    "players": 0,
    "maxPlayers": 1,
-   "avgPlayers": 0,
-   "resources": [
-    "mri_Qblips",
-    "mri_Qbox",
-    "mri_Qchat",
-    "mri_Qfarm",
-    "mri_Qfleecaheist",
-    "mri_Qfps",
-    "mri_Qloadscreen",
-    "mri_Qmarkerplacer",
-    "mri_Qobjects"
-   ]
+   "avgPlayers": 0
   },
   {
    "id": "5oo6m3r",
@@ -2822,20 +1426,7 @@
    "locale": "pt-BR",
    "players": 0,
    "maxPlayers": 2,
-   "avgPlayers": 0,
-   "resources": [
-    "mri_Qadmin",
-    "mri_Qappearance",
-    "mri_Qbox",
-    "mri_Qdoorlock",
-    "mri_Qfarm",
-    "mri_Qfleecaheist",
-    "mri_Qfps",
-    "mri_Qmarkerplacer",
-    "mri_Qobjects",
-    "mri_Qspawn",
-    "mri_Qweather"
-   ]
+   "avgPlayers": 0
   },
   {
    "id": "x88adx",
@@ -2844,11 +1435,7 @@
    "locale": "pt-BR",
    "players": 0,
    "maxPlayers": 5,
-   "avgPlayers": 0,
-   "resources": [
-    "mri_Qcarplates",
-    "mri_Qfps"
-   ]
+   "avgPlayers": 0
   },
   {
    "id": "bddy3b8",
@@ -2857,16 +1444,7 @@
    "locale": "pt-BR",
    "players": 0,
    "maxPlayers": 0,
-   "avgPlayers": 0,
-   "resources": [
-    "mri_Qblips",
-    "mri_Qbox",
-    "mri_Qfarm",
-    "mri_Qfleecaheist",
-    "mri_Qfps",
-    "mri_Qmarkerplacer",
-    "mri_Qobjects"
-   ]
+   "avgPlayers": 0
   },
   {
    "id": "666do4",
@@ -2875,19 +1453,7 @@
    "locale": "pt-BR",
    "players": 0,
    "maxPlayers": 0,
-   "avgPlayers": 0,
-   "resources": [
-    "mri_Qblips",
-    "mri_Qbox",
-    "mri_Qchat",
-    "mri_Qfarm",
-    "mri_Qfleecaheist",
-    "mri_Qfps",
-    "mri_Qhud",
-    "mri_Qloadscreen",
-    "mri_Qmarkerplacer",
-    "mri_Qobjects"
-   ]
+   "avgPlayers": 0
   },
   {
    "id": "6my9dz4",
@@ -2896,11 +1462,7 @@
    "locale": "pt-BR",
    "players": 0,
    "maxPlayers": 0,
-   "avgPlayers": 0,
-   "resources": [
-    "mri_Qblips",
-    "mri_Qbox"
-   ]
+   "avgPlayers": 0
   },
   {
    "id": "7q7jda",
@@ -2909,16 +1471,7 @@
    "locale": "pt-PT",
    "players": 0,
    "maxPlayers": 1,
-   "avgPlayers": 0,
-   "resources": [
-    "mri_Qadmin",
-    "mri_Qblips",
-    "mri_Qbox",
-    "mri_Qfarm",
-    "mri_Qfps",
-    "mri_Qmarkerplacer",
-    "mri_Qobjects"
-   ]
+   "avgPlayers": 0
   },
   {
    "id": "a448pok",
@@ -2927,24 +1480,7 @@
    "locale": "pt-BR",
    "players": 0,
    "maxPlayers": 0,
-   "avgPlayers": 0,
-   "resources": [
-    "mri_Qadmin",
-    "mri_Qblips",
-    "mri_Qbox",
-    "mri_Qchat",
-    "mri_Qcomputer",
-    "mri_Qfarm",
-    "mri_Qfleecaheist",
-    "mri_Qfps",
-    "mri_Qhud",
-    "mri_Qloadscreen",
-    "mri_Qmarkerplacer",
-    "mri_Qobjects",
-    "mri_Qspawn",
-    "mri_Qvehicles",
-    "mri_Qvip"
-   ]
+   "avgPlayers": 0
   },
   {
    "id": "bdxxv8l",
@@ -2953,11 +1489,7 @@
    "locale": "pt-BR",
    "players": 0,
    "maxPlayers": 1,
-   "avgPlayers": 0,
-   "resources": [
-    "mri_Qadmin",
-    "mri_Qfarm"
-   ]
+   "avgPlayers": 0
   },
   {
    "id": "a44jzle",
@@ -2966,10 +1498,7 @@
    "locale": "pt-PT",
    "players": 0,
    "maxPlayers": 0,
-   "avgPlayers": 0,
-   "resources": [
-    "mri_Qadmin"
-   ]
+   "avgPlayers": 0
   },
   {
    "id": "e6erk6a",
@@ -2978,19 +1507,7 @@
    "locale": "pt-BR",
    "players": 0,
    "maxPlayers": 2,
-   "avgPlayers": 0,
-   "resources": [
-    "mri_Qblips",
-    "mri_Qbox",
-    "mri_Qchat",
-    "mri_Qfarm",
-    "mri_Qfleecaheist",
-    "mri_Qfps",
-    "mri_Qhud",
-    "mri_Qloadscreen",
-    "mri_Qmarkerplacer",
-    "mri_Qobjects"
-   ]
+   "avgPlayers": 0
   },
   {
    "id": "85xexv",
@@ -2999,11 +1516,7 @@
    "locale": "pt-BR",
    "players": 0,
    "maxPlayers": 0,
-   "avgPlayers": 0,
-   "resources": [
-    "mri_Qadmin",
-    "mri_Qfarm"
-   ]
+   "avgPlayers": 0
   },
   {
    "id": "9vqyze",
@@ -3012,11 +1525,7 @@
    "locale": "pt-BR",
    "players": 0,
    "maxPlayers": 0,
-   "avgPlayers": 0,
-   "resources": [
-    "mri_Qadmin",
-    "mri_Qfarm"
-   ]
+   "avgPlayers": 0
   },
   {
    "id": "r478q7",
@@ -3025,18 +1534,7 @@
    "locale": "pt-BR",
    "players": 0,
    "maxPlayers": 4,
-   "avgPlayers": 0,
-   "resources": [
-    "mri_Qblips",
-    "mri_Qbox",
-    "mri_Qcarplates",
-    "mri_Qchat",
-    "mri_Qfarm",
-    "mri_Qfleecaheist",
-    "mri_Qfps",
-    "mri_Qmarkerplacer",
-    "mri_Qobjects"
-   ]
+   "avgPlayers": 0
   },
   {
    "id": "lee6kv5",
@@ -3045,18 +1543,7 @@
    "locale": "pt-BR",
    "players": 0,
    "maxPlayers": 0,
-   "avgPlayers": 0,
-   "resources": [
-    "mri_Qblips",
-    "mri_Qbox",
-    "mri_Qchat",
-    "mri_Qfarm",
-    "mri_Qfleecaheist",
-    "mri_Qfps",
-    "mri_Qloadscreen",
-    "mri_Qmarkerplacer",
-    "mri_Qobjects"
-   ]
+   "avgPlayers": 0
   },
   {
    "id": "lkyaao",
@@ -3065,17 +1552,7 @@
    "locale": "pt-BR",
    "players": 0,
    "maxPlayers": 1,
-   "avgPlayers": 0,
-   "resources": [
-    "mri_Qblips",
-    "mri_Qbox",
-    "mri_Qchat",
-    "mri_Qfarm",
-    "mri_Qfleecaheist",
-    "mri_Qfps",
-    "mri_Qmarkerplacer",
-    "mri_Qobjects"
-   ]
+   "avgPlayers": 0
   },
   {
    "id": "7b9bblb",
@@ -3084,10 +1561,7 @@
    "locale": "pt-BR",
    "players": 0,
    "maxPlayers": 1,
-   "avgPlayers": 0,
-   "resources": [
-    "mri_Qadmin"
-   ]
+   "avgPlayers": 0
   },
   {
    "id": "6mmzpy4",
@@ -3096,17 +1570,7 @@
    "locale": "pt-BR",
    "players": 0,
    "maxPlayers": 0,
-   "avgPlayers": 0,
-   "resources": [
-    "mri_Qblips",
-    "mri_Qbox",
-    "mri_Qchat",
-    "mri_Qfleecaheist",
-    "mri_Qfps",
-    "mri_Qloadscreen",
-    "mri_Qmarkerplacer",
-    "mri_Qobjects"
-   ]
+   "avgPlayers": 0
   },
   {
    "id": "3mrjqy",
@@ -3115,17 +1579,7 @@
    "locale": "pt-BR",
    "players": 0,
    "maxPlayers": 4,
-   "avgPlayers": 0,
-   "resources": [
-    "mri_Qblips",
-    "mri_Qbox",
-    "mri_Qchat",
-    "mri_Qfarm",
-    "mri_Qfleecaheist",
-    "mri_Qhud",
-    "mri_Qmarkerplacer",
-    "mri_Qobjects"
-   ]
+   "avgPlayers": 0
   },
   {
    "id": "3mdzaz",
@@ -3134,10 +1588,7 @@
    "locale": "pt-BR",
    "players": 0,
    "maxPlayers": 2,
-   "avgPlayers": 0,
-   "resources": [
-    "mri_Qloadscreen"
-   ]
+   "avgPlayers": 0
   },
   {
    "id": "3yydb8z",
@@ -3146,23 +1597,7 @@
    "locale": "pt-BR",
    "players": 0,
    "maxPlayers": 0,
-   "avgPlayers": 0,
-   "resources": [
-    "mri_Qadmin",
-    "mri_Qblips",
-    "mri_Qbox",
-    "mri_Qchat",
-    "mri_Qfarm",
-    "mri_Qfleecaheist",
-    "mri_Qfps",
-    "mri_Qhud",
-    "mri_Qloadscreen",
-    "mri_Qmarkerplacer",
-    "mri_Qmultichar",
-    "mri_Qobjects",
-    "mri_Qspawn",
-    "mri_Qvehicles"
-   ]
+   "avgPlayers": 0
   },
   {
    "id": "arzom3",
@@ -3171,14 +1606,7 @@
    "locale": "pt-PT",
    "players": 0,
    "maxPlayers": 1,
-   "avgPlayers": 0,
-   "resources": [
-    "mri_Qblips",
-    "mri_Qbox",
-    "mri_Qfps",
-    "mri_Qmarkerplacer",
-    "mri_Qobjects"
-   ]
+   "avgPlayers": 0
   },
   {
    "id": "rmad74x",
@@ -3187,10 +1615,7 @@
    "locale": "pt-BR",
    "players": 0,
    "maxPlayers": 0,
-   "avgPlayers": 0,
-   "resources": [
-    "mri_Qloadscreen"
-   ]
+   "avgPlayers": 0
   },
   {
    "id": "lva64v",
@@ -3199,15 +1624,7 @@
    "locale": "pt-BR",
    "players": 0,
    "maxPlayers": 2,
-   "avgPlayers": 0,
-   "resources": [
-    "mri_Qblips",
-    "mri_Qbox",
-    "mri_Qchat",
-    "mri_Qfleecaheist",
-    "mri_Qfps",
-    "mri_Qobjects"
-   ]
+   "avgPlayers": 0
   },
   {
    "id": "k57pbv",
@@ -3216,19 +1633,7 @@
    "locale": "pt-BR",
    "players": 0,
    "maxPlayers": 0,
-   "avgPlayers": 0,
-   "resources": [
-    "mri_Qblips",
-    "mri_Qbox",
-    "mri_Qchat",
-    "mri_Qfarm",
-    "mri_Qfleecaheist",
-    "mri_Qfps",
-    "mri_Qhud",
-    "mri_Qloadscreen",
-    "mri_Qmarkerplacer",
-    "mri_Qobjects"
-   ]
+   "avgPlayers": 0
   },
   {
    "id": "mlevma",
@@ -3237,10 +1642,7 @@
    "locale": "pt-BR",
    "players": 0,
    "maxPlayers": 3,
-   "avgPlayers": 0,
-   "resources": [
-    "mri_Qadmin"
-   ]
+   "avgPlayers": 0
   },
   {
    "id": "8eevaav",
@@ -3249,10 +1651,7 @@
    "locale": "pt-BR",
    "players": 0,
    "maxPlayers": 0,
-   "avgPlayers": 0,
-   "resources": [
-    "mri_Qloadscreen"
-   ]
+   "avgPlayers": 0
   },
   {
    "id": "vqq8dkx",
@@ -3261,11 +1660,7 @@
    "locale": "pt-BR",
    "players": 0,
    "maxPlayers": 1,
-   "avgPlayers": 0,
-   "resources": [
-    "mri_Qadmin",
-    "mri_Qfarm"
-   ]
+   "avgPlayers": 0
   },
   {
    "id": "dm8p65",
@@ -3274,10 +1669,7 @@
    "locale": "en-US",
    "players": 0,
    "maxPlayers": 1,
-   "avgPlayers": 0,
-   "resources": [
-    "mri_Qobjects"
-   ]
+   "avgPlayers": 0
   },
   {
    "id": "xyk7rg",
@@ -3286,10 +1678,7 @@
    "locale": "en-US",
    "players": 0,
    "maxPlayers": 0,
-   "avgPlayers": 0,
-   "resources": [
-    "mri_Qobjects"
-   ]
+   "avgPlayers": 0
   },
   {
    "id": "eg7m8b",
@@ -3298,19 +1687,7 @@
    "locale": "pt-BR",
    "players": 0,
    "maxPlayers": 0,
-   "avgPlayers": 0,
-   "resources": [
-    "mri_Qblips",
-    "mri_Qbox",
-    "mri_Qchat",
-    "mri_Qfarm",
-    "mri_Qfleecaheist",
-    "mri_Qfps",
-    "mri_Qhud",
-    "mri_Qloadscreen",
-    "mri_Qmarkerplacer",
-    "mri_Qobjects"
-   ]
+   "avgPlayers": 0
   },
   {
    "id": "ame4yz",
@@ -3319,17 +1696,7 @@
    "locale": "pt-BR",
    "players": 0,
    "maxPlayers": 2,
-   "avgPlayers": 0,
-   "resources": [
-    "mri_Qblips",
-    "mri_Qbox",
-    "mri_Qchat",
-    "mri_Qfarm",
-    "mri_Qfleecaheist",
-    "mri_Qfps",
-    "mri_Qmarkerplacer",
-    "mri_Qobjects"
-   ]
+   "avgPlayers": 0
   },
   {
    "id": "xlldxex",
@@ -3338,16 +1705,7 @@
    "locale": "pt-BR",
    "players": 0,
    "maxPlayers": 0,
-   "avgPlayers": 0,
-   "resources": [
-    "mri_Qblips",
-    "mri_Qbox",
-    "mri_Qfleecaheist",
-    "mri_Qfps",
-    "mri_Qloadscreen",
-    "mri_Qmarkerplacer",
-    "mri_Qobjects"
-   ]
+   "avgPlayers": 0
   },
   {
    "id": "6er8j6",
@@ -3356,16 +1714,7 @@
    "locale": "pt-BR",
    "players": 0,
    "maxPlayers": 0,
-   "avgPlayers": 0,
-   "resources": [
-    "mri_Qblips",
-    "mri_Qbox",
-    "mri_Qfarm",
-    "mri_Qfleecaheist",
-    "mri_Qfps",
-    "mri_Qmarkerplacer",
-    "mri_Qobjects"
-   ]
+   "avgPlayers": 0
   },
   {
    "id": "y9vppdj",
@@ -3374,19 +1723,7 @@
    "locale": "pt-BR",
    "players": 0,
    "maxPlayers": 3,
-   "avgPlayers": 0,
-   "resources": [
-    "mri_Qblips",
-    "mri_Qbox",
-    "mri_Qchat",
-    "mri_Qfarm",
-    "mri_Qfleecaheist",
-    "mri_Qfps",
-    "mri_Qhud",
-    "mri_Qloadscreen",
-    "mri_Qmarkerplacer",
-    "mri_Qobjects"
-   ]
+   "avgPlayers": 0
   },
   {
    "id": "37gm4r",
@@ -3395,18 +1732,7 @@
    "locale": "pt-BR",
    "players": 0,
    "maxPlayers": 0,
-   "avgPlayers": 0,
-   "resources": [
-    "mri_Qadmin",
-    "mri_Qblips",
-    "mri_Qbox",
-    "mri_Qchat",
-    "mri_Qfarm",
-    "mri_Qfps",
-    "mri_Qloadscreen",
-    "mri_Qmarkerplacer",
-    "mri_Qobjects"
-   ]
+   "avgPlayers": 0
   },
   {
    "id": "5gvqmr",
@@ -3415,24 +1741,7 @@
    "locale": "pt-BR",
    "players": 0,
    "maxPlayers": 1,
-   "avgPlayers": 0,
-   "resources": [
-    "mri_Qadmin",
-    "mri_Qappearance",
-    "mri_Qblips",
-    "mri_Qbox",
-    "mri_Qchat",
-    "mri_Qfarm",
-    "mri_Qfleecaheist",
-    "mri_Qfps",
-    "mri_Qhud",
-    "mri_Qloadscreen",
-    "mri_Qmarkerplacer",
-    "mri_Qmultichar",
-    "mri_Qobjects",
-    "mri_Qspawn",
-    "mri_Qvehicles"
-   ]
+   "avgPlayers": 0
   },
   {
    "id": "9klgxk",
@@ -3441,19 +1750,7 @@
    "locale": "pt-BR",
    "players": 0,
    "maxPlayers": 0,
-   "avgPlayers": 0,
-   "resources": [
-    "mri_Qblips",
-    "mri_Qbox",
-    "mri_Qchat",
-    "mri_Qfarm",
-    "mri_Qfleecaheist",
-    "mri_Qfps",
-    "mri_Qhud",
-    "mri_Qloadscreen",
-    "mri_Qmarkerplacer",
-    "mri_Qobjects"
-   ]
+   "avgPlayers": 0
   },
   {
    "id": "oaaypkj",
@@ -3462,21 +1759,7 @@
    "locale": "pt-BR",
    "players": 0,
    "maxPlayers": 3,
-   "avgPlayers": 0,
-   "resources": [
-    "mri_Qadmin",
-    "mri_Qblips",
-    "mri_Qbox",
-    "mri_Qchat",
-    "mri_Qdoorlock",
-    "mri_Qfarm",
-    "mri_Qfleecaheist",
-    "mri_Qfps",
-    "mri_Qmarkerplacer",
-    "mri_Qmedical",
-    "mri_Qobjects",
-    "mri_Qweather"
-   ]
+   "avgPlayers": 0
   },
   {
    "id": "m44y5g9",
@@ -3485,18 +1768,7 @@
    "locale": "pt-BR",
    "players": 0,
    "maxPlayers": 1,
-   "avgPlayers": 0,
-   "resources": [
-    "mri_Qblips",
-    "mri_Qbox",
-    "mri_Qchat",
-    "mri_Qfarm",
-    "mri_Qfleecaheist",
-    "mri_Qhud",
-    "mri_Qloadscreen",
-    "mri_Qmarkerplacer",
-    "mri_Qobjects"
-   ]
+   "avgPlayers": 0
   },
   {
    "id": "ym774y",
@@ -3505,10 +1777,7 @@
    "locale": "pt-br",
    "players": 0,
    "maxPlayers": 0,
-   "avgPlayers": 0,
-   "resources": [
-    "mri_Qobjects"
-   ]
+   "avgPlayers": 0
   },
   {
    "id": "6gbpzj",
@@ -3517,11 +1786,7 @@
    "locale": "pt-BR",
    "players": 0,
    "maxPlayers": 1,
-   "avgPlayers": 0,
-   "resources": [
-    "mri_Qblips",
-    "mri_Qobjects"
-   ]
+   "avgPlayers": 0
   },
   {
    "id": "dggzyd5",
@@ -3530,10 +1795,7 @@
    "locale": "pt-BR",
    "players": 0,
    "maxPlayers": 1,
-   "avgPlayers": 0,
-   "resources": [
-    "mri_Qadmin"
-   ]
+   "avgPlayers": 0
   },
   {
    "id": "zjjdp85",
@@ -3542,16 +1804,7 @@
    "locale": "pt-br",
    "players": 0,
    "maxPlayers": 1,
-   "avgPlayers": 0,
-   "resources": [
-    "mri_Qblips",
-    "mri_Qbox",
-    "mri_Qchat",
-    "mri_Qfps",
-    "mri_Qloadscreen",
-    "mri_Qmarkerplacer",
-    "mri_Qobjects"
-   ]
+   "avgPlayers": 0
   },
   {
    "id": "53amja",
@@ -3560,13 +1813,7 @@
    "locale": "pt-br",
    "players": 0,
    "maxPlayers": 1,
-   "avgPlayers": 0,
-   "resources": [
-    "mri_Qbox",
-    "mri_Qloadscreen",
-    "mri_Qobjects",
-    "mri_Qtyrecontrol"
-   ]
+   "avgPlayers": 0
   },
   {
    "id": "e66edlm",
@@ -3575,11 +1822,7 @@
    "locale": "pt-BR",
    "players": 0,
    "maxPlayers": 0,
-   "avgPlayers": 0,
-   "resources": [
-    "mri_Qadmin",
-    "mri_Qfarm"
-   ]
+   "avgPlayers": 0
   },
   {
    "id": "dv9b6d",
@@ -3588,11 +1831,7 @@
    "locale": "pt-BR",
    "players": 0,
    "maxPlayers": 0,
-   "avgPlayers": 0,
-   "resources": [
-    "mri_Qadmin",
-    "mri_Qfarm"
-   ]
+   "avgPlayers": 0
   },
   {
    "id": "bddmb58",
@@ -3601,10 +1840,7 @@
    "locale": "root-AQ",
    "players": 0,
    "maxPlayers": 0,
-   "avgPlayers": 0,
-   "resources": [
-    "mri_Qadmin"
-   ]
+   "avgPlayers": 0
   },
   {
    "id": "lv88lv",
@@ -3613,18 +1849,7 @@
    "locale": "pt-BR",
    "players": 0,
    "maxPlayers": 1,
-   "avgPlayers": 0,
-   "resources": [
-    "mri_Qadmin",
-    "mri_Qblips",
-    "mri_Qbox",
-    "mri_Qfarm",
-    "mri_Qfleecaheist",
-    "mri_Qfps",
-    "mri_Qloadscreen",
-    "mri_Qmarkerplacer",
-    "mri_Qobjects"
-   ]
+   "avgPlayers": 0
   }
  ]
 }

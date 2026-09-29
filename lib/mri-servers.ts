@@ -11,7 +11,6 @@ export type MriServer = {
   players: number
   maxPlayers: number
   avgPlayers: number
-  resources: string[]
 }
 
 export const mriServers = serversData.servers as MriServer[]

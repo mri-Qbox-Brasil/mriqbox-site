@@ -12,7 +12,6 @@ import statsHistory from "@/data/stats-history.json"
 import { getArtifactsDb } from "@/lib/artifacts-db"
 import { MriBotPromo } from "@/components/mri-bot-promo"
 import { totalPlayers, totalServers } from "@/lib/mri-servers"
-import { ServersPreview } from "@/components/servers-preview"
 
 export const metadata: Metadata = {
   title: "MRI Qbox Brasil | Framework FiveM Open Source",
@@ -284,9 +283,6 @@ export default async function HomePage() {
           </div>
         </div>
       </section>
-
-      {/* Servidores que usam MRI */}
-      <ServersPreview />
 
       {/* Chamada do MRI BOT */}
       <MriBotPromo />

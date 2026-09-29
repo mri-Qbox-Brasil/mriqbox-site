@@ -9,6 +9,7 @@
 
 import Link from "next/link"
 import { ArrowRight } from "lucide-react"
+import { ServerAvatars } from "@/components/server-avatars"
 
 type Point = { t: string; servers: number; players: number }
 
@@ -66,7 +67,9 @@ export default function PlayersChart({ data, current, servers }: { data: Point[]
         </a>
       </div>
 
-      <div className="mt-4 flex justify-end">
+      {/* Logos dos servidores (esquerda) e pico do periodo (direita) */}
+      <div className="mt-5 flex flex-wrap items-center justify-between gap-3">
+        <ServerAvatars />
         {hasSeries && (
           <span className="text-xs text-muted-foreground/60 whitespace-nowrap">
             pico <span className="font-bold text-primary">{peak.toLocaleString("pt-BR")}</span>
