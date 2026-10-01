@@ -309,5 +309,3 @@ Dentro de `web/`:
 
 O CEF do FiveM é Chrome 103: nada de `color-mix` nem `translate`/`scale` como
 propriedades soltas no CSS.
-
-Licença MIT.
