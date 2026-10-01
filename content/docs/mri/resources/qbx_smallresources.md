@@ -76,7 +76,6 @@ O `fxmanifest` carrega **todos** os `*/client.lua` e `*/server.lua` por glob (`*
 | `qbx_tackle` | Client + servidor | Derruba outro jogador com um carrinho, correndo |
 | `qbx_teleports` | Client | Elevadores e passagens: menu de andares em pontos do mapa |
 | `qbx_vehiclepush` | Client + servidor | Empurrar veículo quebrado ou sem combustível, com direção |
-| `qbx_vehicleradio` | Client | Liga e desliga o rádio do veículo |
 
 ---
 
@@ -210,14 +209,6 @@ Cada andar vira uma esfera de 2 metros de raio. O jogador entra na esfera, apert
 
 Um veículo também fica empurrável quando o statebag `fuel` dele cai abaixo de 3, independentemente da saúde do motor. O assento do motorista precisa estar vazio.
 
-### qbx_vehicleradio (`config.json`)
-
-| Campo | Tipo | Obrigatório | Descrição |
-|---|---|---|---|
-| `disableRadioByDefault` | bool | Sim | `true` começa com o rádio desligado em todo veículo em que o jogador entrar |
-| `toggleCommand` | string | Sim | Nome do comando que alterna o rádio. Padrão: `togglevehradio` |
-| `toggleKey` | string | Não | Tecla mapeada sobre o comando. Padrão: `F9` |
-
 ---
 
 ## Comandos
@@ -231,7 +222,6 @@ Nenhum comando do recurso é restrito por permissão.
 | `/saveclip` | Qualquer jogador | Para e salva o clipe |
 | `/delclip` | Qualquer jogador | Para e descarta o clipe |
 | `/editor` | Qualquer jogador | Sai da sessão e abre o Rockstar Editor |
-| `/togglevehradio` | Qualquer jogador | Liga e desliga o rádio do veículo. Só funciona dentro de um. O nome vem de `toggleCommand` |
 
 ---
 
@@ -244,7 +234,6 @@ Nenhum comando do recurso é restrito por permissão.
 | `E` + `LSHIFT` | `push_vehicle_e` e `push_vehicle` | qbx_vehiclepush | Segure as duas para empurrar o veículo. `A` e `D` viram as rodas |
 | `Y` | `toggle_cruise_control` | qbx_cruise | Liga o controle de cruzeiro na velocidade atual |
 | `O` | `shuffleSeat` | qbx_noshuff | Troca para o próximo assento do veículo |
-| `F9` | (mapeada sobre `/togglevehradio`) | qbx_vehicleradio | Liga e desliga o rádio |
 
 As três teclas `E` coexistem porque os contextos são mutuamente exclusivos: correndo a pé perto de um jogador, parado numa esfera de elevador, ou agarrado a um carro com Shift. Ainda assim, todas são remapeáveis pelo jogador em **Configurações > Controles > FiveM**.
 
@@ -470,9 +459,6 @@ qbx_smallresources/
 │   ├── server.lua        — sincroniza a direção no statebag do veículo
 │   ├── config.json       — dano necessário e classes bloqueadas
 │   └── readme.md
-├── qbx_vehicleradio/
-│   ├── client.lua        — liga e desliga o rádio do veículo (F9)
-│   └── config.json       — comando, tecla e estado inicial
 ├── locales/              — 12 idiomas (.json)
 └── fxmanifest.lua        — carrega todo */client.lua e */server.lua por glob
 ```
