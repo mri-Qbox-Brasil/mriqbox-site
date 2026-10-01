@@ -72,12 +72,14 @@ add_ace group.admin mri_Qinteract.admin allow
   zonas registrados, e veículos, peds, objetos e jogadores que tenham opções
   (pela entidade, pelo modelo ou globais). Opções com `bones` viram um alvo no
   osso; com `offset`, um alvo no offset; o resto fica no centro do modelo.
-- **Marcador distante.** Alvos dentro da distância máxima com alguma opção
-  liberada (grupo, item e `canInteract`) mostram um marcador.
-- **Foco.** Entre os alvos com opção no alcance (`distance` da opção), o
+- **Marcador distante.** Alvos dentro da distância do marcador com alguma
+  opção liberada (grupo, item e `canInteract`) mostram um marcador. Alvo mais
+  longe que isso aparece só quando já está no alcance de alguma opção.
+- **Foco.** Entre os alvos com opção no alcance (`distance` da opção ou, sem
+  ela, o alcance padrão do painel), o
   prompt abre no que estiver mais perto do centro da tela. Com "exigir olhar
   pro alvo", ele só conta dentro da **área de mira do marcador**: um círculo
-  em volta do marcador na tela, em fração da altura da tela (20% no padrão).
+  em volta do marcador na tela, em fração da altura da tela (10% no padrão).
   A área é medida na tela, então tem o mesmo tamanho com o alvo perto ou longe.
 - **Zonas.** Esfera, caixa e polígono contam a distância até a borda (dentro
   da zona é zero); o prompt fica no centro.
@@ -85,6 +87,8 @@ add_ace group.admin mri_Qinteract.admin allow
   alvo esconde o que estiver atrás de parede ou objeto.
 - **Dentro de veículo** nada aparece, a não ser opções com
   `allowInVehicle = true`.
+- **Com tela aberta** (inventário, celular, menu, qualquer NUI com foco) ou
+  no menu de pausa, prompt e marcadores somem com o fade e voltam ao fechar.
 - **Confirmar.** A tecla de interagir escolhe a opção ativa (a roda do mouse
   e as setas trocam). Opções com `holdTime` pedem segurar a tecla. Depois de
   confirmar, a tecla espera 750ms antes de aceitar outra (um loader aparece
@@ -103,7 +107,7 @@ os padrões de `shared/settings.lua`.
 |---|---|
 | Visual do prompt | tema (vidro, bloco, contorno, circular), cor própria ou a da suíte, ícones, tamanho |
 | Comportamento | modo compacto e tempo pra fechar, tecla de interagir, tecla de mostrar/esconder (alternar ou segurar), som ao confirmar |
-| Alcance e mira | distância máxima, marcadores de longe ao mesmo tempo, exigir olhar pro alvo, área de mira do marcador, exigir linha de visão |
+| Alcance e mira | distância do marcador, alcance padrão das opções, marcadores de longe ao mesmo tempo, exigir olhar pro alvo, área de mira do marcador, exigir linha de visão |
 | Marcadores | marcador distante e ponto central: ligado, forma (alvo, ponto, anel, diamante, losango vazado, quadrado, olho, mão, seta, mira em cruz), cor própria ou a de destaque, opacidade, tamanho; pulso no marcador distante; reagir ao alvo no ponto central |
 
 Padrões da base:
@@ -113,11 +117,12 @@ Padrões da base:
 | Tema | bloco |
 | Cor de destaque | `#FFFFFF` |
 | Modo compacto | desligado |
-| Distância máxima | 3 m |
+| Distância do marcador | 5 m |
+| Alcance padrão | 3 m |
 | Marcadores de longe | 2 |
-| Exigir olhar pro alvo | ligado, área de 20% |
+| Exigir olhar pro alvo | ligado, área de 10% |
 | Exigir linha de visão | desligado |
-| Marcador distante | alvo, branco, 86% de opacidade |
+| Marcador distante | alvo, branco, 80% de opacidade, com pulso |
 | Ponto central | desligado |
 
 A letra das teclas no painel é o padrão do keybind: vale depois de reiniciar
@@ -163,8 +168,8 @@ Os exports abaixo respondem com o nome do resource original
 uma lista, e devolve o id ou a lista de ids), `removeCoords`, os
 `addGlobal*`/`removeGlobal*` (Ped, Vehicle, Object, Player), `addModel`,
 `removeModel`, `addEntity`, `removeEntity`, `addLocalEntity` e
-`removeLocalEntity`. Nesse formato, `offsetAbsolute` é a posição (vector3);
-aqui ele vira `offset` com `offsetAbsolute = true`. `hideWhenEmpty` na opção
+`removeLocalEntity`. Nesse formato, `offset` é em metros a partir da
+entidade e `offsetAbsolute` é em metros nos eixos do mundo; a compat converte. `hideWhenEmpty` na opção
 não tem efeito: o marcador só aparece com opção liberada.
 
 Em todos, remover sem nomes tira só as opções do resource que chamou, e com
@@ -200,14 +205,14 @@ O mesmo do ox_target, com alguns campos do prompt:
 | `name` | string | Identificador para remover; padrão é o `label` |
 | `icon` | string | Ícone do Font Awesome (`fa-solid fa-car` ou só `car`) |
 | `iconColor` | string | Cor do ícone |
-| `distance` | number | Alcance da opção; padrão é a distância máxima do painel |
+| `distance` | number | Alcance da opção; padrão é o alcance padrão do painel |
 | `groups` | string, lista ou `{ [grupo] = nota }` | Grupos que podem usar |
 | `items` | string, lista ou `{ [item] = quantidade }` | Itens necessários |
 | `anyItem` | boolean | Basta um dos itens |
 | `canInteract` | `fun(entity, distance, coords, name, bone): boolean` | Filtro próprio |
 | `bones` | string ou lista | Ossos da entidade onde a opção aparece |
-| `offset` | vector3 | Posição relativa à entidade |
-| `offsetAbsolute` | boolean | `offset` em coordenadas do mundo, sem girar com a entidade |
+| `offset` | vector3 | Ponto na caixa do modelo, em proporção de 0 a 1 por eixo (`0.5, 0.5, 0.5` é o centro; `0.5, 0.0, 0.5` é o meio da frente) |
+| `offsetAbsolute` | vector3 | Metros a partir da origem da entidade, girando com ela |
 | `allowInVehicle` | boolean | Aparece também com o jogador dentro de um veículo |
 | `holdTime` | number | Milissegundos segurando a tecla para confirmar |
 | `anim` | `{ dict, clip, flag }` | Animação enquanto segura |
@@ -301,7 +306,7 @@ data/config.json   Settings salvos pelo painel (estado do servidor)
 Dentro de `web/`:
 
 - `pnpm dev`: `/` mostra o prompt com opções de exemplo (`E` interage, a roda
-  troca, `?compact` liga o modo compacto, `?v=bloco|vidro|contorno|circular`
+  troca, `?compact` liga o modo compacto, `?v=block|glass|outline|round`
   troca o tema); `/admin.html` mostra o painel.
 - `pnpm build`: gera `web/build`, que é o que o resource carrega.
 - `pnpm markers`: gera `web/markers/*.png` a partir de
