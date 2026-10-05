@@ -2,6 +2,12 @@
 title: mri_Qvehicles-source
 ---
 
+> **Descontinuado.** Desde o mri_Qbox 2.2.0 o cadastro e o estoque de veículos fazem parte da
+> base, no módulo Veículos do [mri_Qbox](https://github.com/mri-Qbox-Brasil/mri_Qbox), com a mesma
+> tabela `vehicles_data`, a mesma permissão (`mri_Qvehicles.admin`), a mesma aba no mri_Qadmin e
+> os mesmos exports. Para migrar: atualize o mri_Qbox e tire o mri_Qvehicles do servidor (pasta e
+> `ensure`). Nada se perde: o mri_Qbox lê a mesma tabela.
+
 Cadastro, edição e estoque de veículos em tempo real, sem editar o `shared/vehicles.lua` do qbx_core e sem reiniciar o servidor. Funciona como aba do **mri_Qadmin**.
 
 ## Principais recursos
