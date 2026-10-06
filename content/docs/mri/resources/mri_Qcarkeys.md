@@ -46,7 +46,7 @@ Se nenhum framework ou nenhum inventário for detectado, `Shared.Ready` fica `fa
    ```
    ensure mri_Qcarkeys
    ```
-3. Cadastre os itens `vehiclekey`, `keybag`, `lockpick` e `advancedlockpick` no seu inventário (veja [Itens de inventário](#itens-de-inventário)).
+3. Cadastre os itens `vehiclekey`, `keyring`, `lockpick` e `advancedlockpick` no seu inventário (veja [Itens de inventário](#itens-de-inventário)).
 4. **Remova ou desabilite o `qb-vehiclekeys`** — o `mri_Qcarkeys` já registra os eventos de compatibilidade `qb-vehiclekeys:server:AcquireVehicleKeys` e `qb-vehiclekeys:client:AddKeys`, e os dois recursos rodando juntos duplicam as chaves.
 5. Se você **não** usa `ox_core`, mantenha as linhas `'@ox_core/imports/*.lua'` comentadas no `fxmanifest.lua` (é o padrão do repo) para evitar warning no startup.
 
@@ -58,12 +58,39 @@ O recurso não cria itens; ele espera que estes nomes existam no seu inventário
 
 | Item | Uso | Metadata gravada pelo recurso |
 |---|---|---|
-| `vehiclekey` | Chave permanente de um veículo | `plate` (placa sem caracteres especiais, maiúscula) e `label` (`CHAVE-<placa>`) |
-| `keybag` | Chaveiro que consolida várias chaves | `plates` (lista de `{plate, label}`) e `platestxt` (placas concatenadas) |
+| `vehiclekey` | Chave permanente de um veículo | `plate` (placa sem caracteres especiais, maiúscula), `model` (nome do modelo, quando o carro está por perto) e `label` (`Chave do <modelo>` ou `Chave <placa>`) |
+| `keyring` | Molho de chaves (container) que guarda várias chaves | `container` e `size` (do ox_inventory), `plates` (placas guardadas) e `description` |
 | `lockpick` | Consumido ao arrombar porta/ignição | — |
 | `advancedlockpick` | Igual ao `lockpick`, com chance de quebra menor | — |
 
 O item de lockpick precisa disparar o evento client `lockpicks:UseLockpick(isAdvanced)` quando usado — é assim que o minigame é iniciado.
+
+### Molho de chaves
+
+Com o ox_inventory, o `keyring` é um container: usar o molho abre um painel onde só entram `vehiclekey` (20 slots). O recurso registra o container e um hook de `swapItems` sozinho, sem mexer no ox_inventory, e repete o registro quando o ox_inventory reinicia. As chaves dentro do molho contam como chave permanente. No tooltip, a chave mostra o modelo e a placa (`displayMetadata` do ox_inventory) e o molho lista as chaves que tem.
+
+Quando uma chave entra ou sai do molho, o recurso grava as placas no metadata do `keyring` (`plates` e `description`), então o molho leva as chaves junto se mudar de dono. O molho que fica sem nenhuma chave some. Com outro inventário (qb e derivados), o molho não tem função.
+
+Os botões de botão direito ficam no `data/items.lua` do ox_inventory e chamam o export do recurso:
+
+```lua
+['vehiclekey'] = {
+    -- ...
+    buttons = {
+        { label = 'Juntar chaves', action = function() client.closeInventory() exports.mri_Qcarkeys:StackKeys() end },
+    },
+},
+['keyring'] = {
+    -- ...
+    buttons = {
+        { label = 'Juntar chaves soltas', action = function(slot) client.closeInventory() exports.mri_Qcarkeys:StackKeys(slot) end },
+    },
+},
+```
+
+- **Juntar chaves / Juntar chaves soltas** coloca todas as `vehiclekey` soltas dentro do molho (o clicado, ou o primeiro; sem molho, cria um). As que não couberem ficam de fora.
+- Para tirar uma chave, abra o molho e arraste. Tirou a última, o molho some.
+- Ao ligar o motor com `keepKeysInVehicle`, a chave sai do molho e volta como `vehiclekey` solta ao desligar.
 
 ---
 
@@ -128,8 +155,6 @@ Arquivo: `shared/shared.lua`.
 | `/removetempkeys [target] [plate]` | ACE `command.removetempkeys` | Remove a chave temporária. Mesmos defaults do comando acima |
 | `/givekeys` | Job `police`, job `cardealer` ou ACE `admin` | Abre uma progressBar de 5 s e entrega o item `vehiclekey` do veículo em que o jogador está |
 | `/removekeys` | Job `police`, job `cardealer` ou ACE `admin` | Remove o item `vehiclekey` do veículo em que o jogador está |
-| `/stackkeys` | Todos | Junta todos os `vehiclekey` do inventário em um `keybag` |
-| `/unstackkeys` | Todos | Desfaz o `keybag`, devolvendo um `vehiclekey` por placa |
 
 ---
 
@@ -147,7 +172,7 @@ Arquivo: `shared/shared.lua`.
 
 ## Chaves permanentes vs. temporárias
 
-- **Permanente** — é o item `vehiclekey` (ou uma placa dentro do `keybag`). Persiste no inventário, sobrevive a logout e é verificada lendo o inventário do jogador.
+- **Permanente** — é o item `vehiclekey` (ou uma chave dentro do `keyring`). Persiste no inventário, sobrevive a logout e é verificada lendo o inventário do jogador.
 - **Temporária** — vive na tabela `VehicleList[citizenid]` em memória no servidor (`server/server.lua`). É perdida no restart do recurso. É o que o hotwire, o lockpick de ignição e o grab concedem.
 
 Com `keepKeysInVehicle = true`:
@@ -199,6 +224,7 @@ exports.mri_Qcarkeys:GiveKeyItem(plate)
 exports.mri_Qcarkeys:RemoveKeyItem(plate)
 exports.mri_Qcarkeys:HaveTemporaryKey(plate)   --> boolean
 exports.mri_Qcarkeys:HavePermanentKey(plate)   --> boolean
+exports.mri_Qcarkeys:StackKeys(ringSlot)       -- progressBar + junta as chaves soltas no molho (ringSlot opcional)
 ```
 
 ### Eventos de servidor
@@ -209,8 +235,7 @@ TriggerServerEvent('mm_carkeys:server:removevehiclekeys', plate)      -- remove 
 TriggerServerEvent('mm_carkeys:server:acquiretempvehiclekeys', plate)
 TriggerServerEvent('mm_carkeys:server:removetempvehiclekeys', plate)
 TriggerServerEvent('mm_carkeys:server:setVehLockState', vehNetId, state) -- state: 1 destrancado, 2 trancado
-TriggerServerEvent('mm_carkeys:server:stackkeys')
-TriggerServerEvent('mm_carkeys:server:unstackkeys')
+TriggerServerEvent('mm_carkeys:server:stackkeys', ringSlot)  -- junta as chaves soltas no molho (ox_inventory)
 TriggerServerEvent('mm_carkeys:server:removelockpick', 'lockpick')
 ```
 
@@ -223,8 +248,6 @@ TriggerClientEvent('mm_carkeys:client:setplayerkey', src, plate, netId)
 TriggerClientEvent('mm_carkeys:client:removeplayerkey', src, plate)
 TriggerClientEvent('mm_carkeys:client:givekeyitem', src)   -- progressBar + entrega a chave do veículo atual
 TriggerClientEvent('mm_carkeys:client:removekeyitem', src)
-TriggerClientEvent('mm_carkeys:client:stackkeys', src)
-TriggerClientEvent('mm_carkeys:client:unstackkeys', src)
 
 TriggerEvent('lockpicks:UseLockpick', isAdvanced)  -- client; dispare no "use" do item de lockpick
 ```
@@ -275,6 +298,7 @@ mri_Qcarkeys/
 ├── server/
 │   ├── server.lua        — chaves temporárias em memória, itens, exports e eventos
 │   ├── commands.lua      — comandos de chave
+│   ├── keyring.lua       — molho de chaves como container do ox_inventory (container, hook e placas)
 │   └── bridge.lua        — bridge de framework e inventário (server)
 └── fxmanifest.lua
 ```
