@@ -1,5 +1,7 @@
 ---
 title: Server
+upstream_path: content/docs/ox_inventory/Functions/Server/index.mdx
+upstream_sha: 328e36feb5b0486d6214971f53c6d2626193cc28
 ---
 
 ## setPlayerInventory
@@ -55,6 +57,7 @@ exports.ox_inventory:forceOpenInventory(playerId, invType, data)
         exports.ox_inventory:forceOpenInventory(source, 'player', tonumber(args[1]))
     end, true)
     ```
+
   </Tabs.Tab>
   <Tabs.Tab>
 
@@ -69,6 +72,7 @@ exports.ox_inventory:forceOpenInventory(playerId, invType, data)
     ```lua
     exports.ox_inventory:forceOpenInventory(1, 'stash', { id = 'police_locker', owner = 'license:xxxxxxxx' })
     ```
+
   </Tabs.Tab>
 </Tabs>
 
@@ -102,11 +106,11 @@ local itemNames
 
 ESX.RegisterServerCallback('crafting:itemNames', function(source, cb)
     if not itemNames then
-    itemNames = {}
-    for item, data in pairs(exports.ox_inventory:Items()) do
-        itemNames[item] = data.label
+        itemNames = {}
+        for item, data in pairs(exports.ox_inventory:Items()) do
+            itemNames[item] = data.label
+        end
     end
-end
     cb(itemNames)
 end)
 ```
@@ -177,7 +181,7 @@ print(json.encode(response, {indent=true}))
 Remove o item especificado do inventário indicado.
 
 ```lua
-exports.ox_inventory:RemoveItem(inv, item, count, metadata, slot, ignoreTotal)
+exports.ox_inventory:RemoveItem(inv, item, count, metadata, slot, ignoreTotal, strict)
 ```
 
 - inv: `table` ou `string` ou `number`
@@ -195,6 +199,8 @@ exports.ox_inventory:RemoveItem(inv, item, count, metadata, slot, ignoreTotal)
   - Slot específico para remover o item. Se o slot for inválido, o primeiro slot disponível será usado.
 - ignoreTotal?: `boolean`
   - Remove os itens sem se preocupar com o total.
+- strict?: `boolean`
+  - Se `true` (padrão), exige correspondência exata do item + metadados; se `false`, permite correspondências parciais/mais flexíveis.
 
 Retorna `success: boolean`, `response: string?`.
 
@@ -402,6 +408,7 @@ exports.ox_inventory:GetItemCount(inv, itemName, metadata, strict)
   - Analisa os metadados estritamente. Caso contrário, usará análise parcial.
 
 Retorno:
+
 - itemCount: `number`
 
 ## GetItemSlots
@@ -462,6 +469,7 @@ exports.ox_inventory:GetSlotForItem(inv, itemName, metadata)
 - metadata: `table?`
 
 Retorno:
+
 - slotId: `number?`
 
 ## GetSlotIdWithItem
@@ -479,6 +487,7 @@ exports.ox_inventory:GetSlotIdWithItem(inv, itemName, metadata, strict)
   - Strictly match metadata properties, otherwise use partial matching.
 
 Retorno:
+
 - slotId: `number?`
 
 ## GetSlotIdsWithItem
@@ -496,6 +505,7 @@ exports.ox_inventory:GetSlotIdsWithItem(inv, itemName, metadata, strict)
   - Strictly match metadata properties, otherwise use partial matching.
 
 Retorno:
+
 - slotIds: `number[]?`
 
 ## GetSlotWithItem
@@ -513,6 +523,7 @@ exports.ox_inventory:GetSlotWithItem(inv, itemName, metadata, strict)
   - Strictly match metadata properties, otherwise use partial matching.
 
 Retorno:
+
 - slotData: `table?`
 
 ## GetSlotsWithItem
@@ -530,6 +541,7 @@ exports.ox_inventory:GetSlotsWithItem(inv, itemName, metadata, strict)
   - Strictly match metadata properties, otherwise use partial matching.
 
 Retorno:
+
 - slotsData: `table[]?`
 
 ## GetEmptySlot
@@ -543,6 +555,7 @@ exports.ox_inventory:GetEmptySlot(inv)
 - inv: `table` ou `string` ou `number`
 
 Retorno:
+
 - slotId: `number?`
 
 ## GetContainerFromSlot
@@ -557,6 +570,7 @@ exports.ox_inventory:GetContainerFromSlot(inv, slotId)
 - slotId: `number`
 
 Retorno:
+
 - containerData: `table?`
 
 ## SetSlotCount
@@ -611,6 +625,98 @@ print(json.encode(inventory, {indent = true}))
 ]]
 ```
 
+## GetInventories
+
+Retorna os IDs de todos os inventários carregados que correspondem ao type informado. Se `detailed` for `true`, retorna os data completos do inventário em vez de apenas o ID do inventário.
+
+```lua
+exports.ox_inventory:GetInventories(invType, detailed)
+```
+
+- invType: `string`
+- detailed?: `boolean` retorna os data completos do inventário em vez de apenas o ID do inventário
+
+<br />
+<u>**Exemplo**</u>
+
+```lua
+local inventories = exports.ox_inventory:GetInventories('glovebox')
+
+print(json.encode(inventories, {indent = true}))
+
+--[[
+    [
+        "gloveK7M2Q9X4",
+        "gloveP3L8V1ZN"
+    ]
+]]
+```
+
+Com `detailed` ativado, a função retorna os data completos do inventário:
+
+```lua
+local inventories = exports.ox_inventory:GetInventories('glovebox', true)
+
+print(json.encode(inventories, {indent = true}))
+
+--[[
+    [
+        {
+            "entityId": 184732,
+            "weight": 12500,
+            "netid": 73421,
+            "get": {
+                "__cfx_functionReference": "ox_inventory:48291:127"
+            },
+            "maxWeight": 88000,
+            "slots": 11,
+            "open": false,
+            "openedBy": [],
+            "id": "gloveK7M2Q9X4",
+            "dbId": "K7M2Q9X4",
+            "type": "glovebox",
+            "label": "K7M2Q9X4",
+            "owner": false,
+            "minimal": {
+                "__cfx_functionReference": "ox_inventory:48291:126"
+            },
+            "changed": false,
+            "set": {
+                "__cfx_functionReference": "ox_inventory:48291:125"
+            },
+            "items": [],
+            "time": 1787604127
+        },
+        {
+            "entityId": 192845,
+            "weight": 3200,
+            "netid": 73435,
+            "get": {
+                "__cfx_functionReference": "ox_inventory:48291:130"
+            },
+            "maxWeight": 88000,
+            "slots": 11,
+            "open": true,
+            "openedBy": [12],
+            "id": "gloveP3L8V1ZN",
+            "dbId": "P3L8V1ZN",
+            "type": "glovebox",
+            "label": "P3L8V1ZN",
+            "owner": false,
+            "minimal": {
+                "__cfx_functionReference": "ox_inventory:48291:129"
+            },
+            "changed": true,
+            "set": {
+                "__cfx_functionReference": "ox_inventory:48291:128"
+            },
+            "items": [],
+            "time": 1787603984
+        }
+    ]
+]]
+```
+
 ## GetInventoryItems
 
 Returns all slots with items in a inventory.
@@ -636,6 +742,7 @@ Inspect the player their inventory. You will not be able to modify the inventory
 ```lua
 exports.ox_inventory:InspectInventory(target, source)
 ```
+
 - target: `number`
 - source: `number`
 
@@ -675,6 +782,16 @@ exports.ox_inventory:ClearInventory(inv, keep)
 - inv: `table` ou `string` ou `number`
 - keep?: `string` ou `string[]`
 
+## RemoveInventory
+
+Remove um inventário da execução e salva se não for um stash temporário, dumpster ou drop.
+
+```lua
+exports.ox_inventory:RemoveInventory(inv)
+```
+
+- inv: `table` ou `string` ou `number`
+
 ## Search
 
 Searches an inventory for a specified item.
@@ -706,21 +823,27 @@ exports.ox_inventory:RegisterStash(id, label, slots, maxWeight, owner, groups, c
 - slots: `number`
 - maxWeight: `number`
 - owner: `string` ou `boolean` ou `nil`
-  - `string`: Can only access the stash linked to the owner.
-  - `true`: Each player has a unique stash but can request other player's stashes.
+  - `string`: Vincula o stash a um identificador específico no banco de dados, usado para buscas e exclusão.
+  - `true`: Cada jogador tem um stash único, mas pode solicitar os stashes de outros jogadores (ou seja, lockers pessoais).
   - `nil`: Always shared.
 - groups: `table`
   - Table of player groups (jobs) able to access the stash.
   - Table of group names where the numeric value is the minimum grade required.
   - `{['police'] = 0, ['ambulance'] = 2}`
 - coords?: `vector3` ou `vector3[]`
+- instance?: `number` | `string`
+  - Restringe o acesso ao stash com base na instância do jogador.
 
-<Callout>
-  This function needs to be triggered before a player can open the stash.
+<Callout>Esta função precisa ser triggered antes que um jogador possa abrir o stash.</Callout>
+
+<Callout type="error">
+  O parâmetro owner não serve para controle de acesso ao stash, use o
+  hook [`openInventory`](./Server/Hooks.mdx#openinventory) para controle de acesso.
 </Callout>
 
 <br />
-<u>**Exemplo**</u><br />
+<u>**Exemplo**</u>
+<br />
 Para um caso de uso desta função, consulte o [Guia](../Guides/stashes).
 
 ## CreateTemporaryStash
@@ -748,6 +871,7 @@ exports.ox_inventory:CreateTemporaryStash(properties)
     - An array of tables, containing a sequence of itemName, count, metadata.
 
 Retorno:
+
 - inventoryId: `string`
 
 <br />
@@ -812,6 +936,7 @@ exports.ox_inventory:CreateDropFromPlayer(playerId)
 - playerId: `number`
 
 Retorno:
+
 - dropId: `string`
 
 <br />
@@ -892,4 +1017,37 @@ end
 water.metadata.type = 'clean'
 ox_inventory:SetMetadata(source, water.slot, water.metadata)
 print(('modified %sx water in slot %s with new metadata'):format(water.count, water.slot))
+```
+
+## setContainerProperties
+
+Define o item como um container e configura suas propriedades.
+
+```lua
+exports.ox_inventory:setContainerProperties(itemName, properties)
+```
+
+- itemName: `string`
+- properties: `table`
+  - slots: `number`
+    - Número de slots disponíveis no container.
+  - maxWeight: `number`
+    - Peso máximo que o container pode armazenar.
+  - whitelist?: `table<string, true> | string[]`
+    - Uma tabela com os nomes dos itens permitidos no container.
+    - Se não informado, todos os itens são permitidos, exceto os da blacklist.
+  - blacklist?: `table<string, true> | string[]`
+    - Uma tabela com os nomes dos itens não permitidos no container.
+    - Se não informado, nenhum item entra na blacklist, a menos que uma whitelist seja fornecida.
+
+<br />
+<u>**Exemplo**</u>
+
+```lua
+-- Sets pizzabox as a container with 1 slot, maximum weight of 1000 grams and whitelists only the pizza item.
+exports.ox_inventory:setContainerProperties('pizzabox', {
+    slots = 1,
+    maxWeight = 1000,
+    whitelist = { 'pizza' },
+})
 ```
