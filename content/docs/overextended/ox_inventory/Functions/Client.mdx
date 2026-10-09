@@ -1,5 +1,7 @@
 ---
 title: Cliente
+upstream_path: content/docs/ox_inventory/Functions/Client.mdx
+upstream_sha: 328e36feb5b0486d6214971f53c6d2626193cc28
 ---
 
 ## openInventory
@@ -25,13 +27,14 @@ exports.ox_inventory:openInventory(invType, data)
 <br />
 <u>**Exemplos**</u>
 
-<Tabs items={['Player', 'Shop', 'Stash']}>
+<Tabs items={['Player', 'Shop', 'Stash', 'Crafting', 'Police Evidence', 'Glovebox / Trunk']}>
   <Tabs.Tab>
     Abre o inventário do jogador alvo.
 
     ```lua
     exports.ox_inventory:openInventory('player', 3)
     ```
+
   </Tabs.Tab>
   <Tabs.Tab>
     Abre a quarta localização "General Store" [location](https://github.com/overextended/ox_inventory/blob/main/data/shops.lua#L14).
@@ -39,6 +42,7 @@ exports.ox_inventory:openInventory(invType, data)
     ```lua
     exports.ox_inventory:openInventory('shop', { type = 'General', id = 4 })
     ```
+
   </Tabs.Tab>
   <Tabs.Tab>
     Abre o primeiro stash em [data/stashes](https://github.com/overextended/ox_inventory/blob/main/data/stashes.lua#L2-L19).
@@ -58,50 +62,48 @@ exports.ox_inventory:openInventory(invType, data)
     ```lua
     exports.ox_inventory:openInventory('stash', { id = 'police_locker', owner = 'license:xxxxxxxx' })
     ```
+
+  </Tabs.Tab>
+  <Tabs.Tab>
+    Abre a [second location](https://github.com/overextended/ox_inventory/blob/main/data/crafting.lua#L17) da receita debug_crafting.
+
+    ```lua
+    exports.ox_inventory:openInventory('crafting', { id = 'debug_crafting', id = 2 })
+    ```
+
+  </Tabs.Tab>
+  <Tabs.Tab>
+    Abre o armário de evidências número 1.
+
+    ```lua
+    exports.ox_inventory:openInventory('policeevidence', 1)
+    ```
+
+
+    Abre um diálogo para selecionar o armário de evidências.
+
+    ```lua
+    exports.ox_inventory:openInventory('policeevidence')
+    ```
+
+  </Tabs.Tab>
+  <Tabs.Tab>
+    Abre o glovebox de um veículo.
+
+    ```lua
+    local netid = NetworkGetNetworkIdFromEntity(cache.vehicle)
+    exports.ox_inventory:openInventory('glovebox', { netid = netid })
+    ```
+
+    Abre o trunk de um veículo.
+
+    ```lua
+    local netid = NetworkGetNetworkIdFromEntity(cache.vehicle)
+    exports.ox_inventory:openInventory('trunk', { netid = netid })
+    ```
+
   </Tabs.Tab>
 </Tabs>
-
-## openNearbyInventory
-
-Abre, quando possível, o inventário do jogador próximo.
-
-O jogador que tenta abrir o inventário deve ter permissão para abrir o próprio inventário e,
-se não tiver trabalho de polícia, o jogador alvo deve estar gravemente ferido ou
-executando uma das animações de morte.
-
-```lua
-exports.ox_inventory:openNearbyInventory()
-```
-
-## closeInventory
-
-Fecha o inventário do jogador.
-
-```lua
-exports.ox_inventory:closeInventory()
-```
-
-## Items
-
-Retorna uma tabela com todos os itens registrados. O formato é o definido em [data/items.lua](https://github.com/overextended/ox_inventory/blob/main/data/items.lua).
-
-Opcionalmente recebe o nome de um item, retornando apenas os dados daquele item (não é recomendado obter todos os dados).
-
-```lua
-exports.ox_inventory:Items(itemName)
-```
-
-- itemName?: `string`
-
-O snippet abaixo pode ser usado em recursos de crafting como `okokCrafting` ou `core_crafting`, ao invés de recuperar informações do servidor.
-
-```lua
-local itemNames = {}
-
-for item, data in pairs(exports.ox_inventory:Items()) do
-  itemNames[item] = data.label
-end
-```
 
 ## useItem
 
@@ -214,7 +216,7 @@ exports.ox_inventory:displayMetadata(metadata, value)
 - value?: `string`
   - Rótulo para a propriedade de metadado do tipo string a ser exibida.
 
-<br/>
+<br />
 <u>**Exemplo**</u>
 
 ```lua
@@ -242,6 +244,7 @@ exports.ox_inventory:giveItemToTarget(serverId, slotId, count)
   - O slotId do item a ser transferido.
 - count?: `number`
   - Quantidade do item a ser transferida; `nil`, `0` ou valor maior que a contagem do slot enviará a pilha inteira.
+
 ## weaponWheel
 
 Habilita a roda de armas (weapon wheel), mas desabilita o uso de armas via inventário.
@@ -289,6 +292,7 @@ exports.ox_inventory:Search(search, item, metadata)
         end
     end
     ```
+
   </Tabs.Tab>
 </Tabs>
 
@@ -307,6 +311,7 @@ exports.ox_inventory:Search(search, item, metadata)
 
     print('You have '..count..' water')
     ```
+
   </Tabs.Tab>
   <Tabs.Tab>
     ```lua
@@ -327,6 +332,7 @@ exports.ox_inventory:Search(search, item, metadata)
         end
     end
     ```
+
   </Tabs.Tab>
 </Tabs>
 
@@ -344,6 +350,7 @@ exports.ox_inventory:GetItemCount(itemName, metadata, strict)
   - Faz correspondência estrita das propriedades de metadados; caso contrário, usa correspondência parcial.
 
 Retorno:
+
 - count: `number`
 
 ## GetPlayerItems
@@ -355,6 +362,7 @@ exports.ox_inventory:GetPlayerItems()
 ```
 
 Retorno:
+
 - items: `table`
 
 ## GetPlayerWeight
@@ -366,6 +374,7 @@ exports.ox_inventory:GetPlayerWeight()
 ```
 
 Retorno:
+
 - totalWeight: `number`
 
 ## GetPlayerMaxWeight
@@ -377,6 +386,7 @@ exports.ox_inventory:GetPlayerMaxWeight()
 ```
 
 Retorno:
+
 - maxWeight: `number`
 
 ## GetSlotIdWithItem
@@ -393,6 +403,7 @@ exports.ox_inventory:GetSlotIdWithItem(itemName, metadata, strict)
   - Faz correspondência estrita das propriedades de metadados; caso contrário, usa correspondência parcial.
 
 Retorno:
+
 - slotId: `number?`
 
 ## GetSlotsIdWithItem
@@ -409,6 +420,7 @@ exports.ox_inventory:GetSlotIdsWithItem(itemName, metadata, strict)
   - Faz correspondência estrita das propriedades de metadados; caso contrário, usa correspondência parcial.
 
 Retorno:
+
 - slotIds: `number[]?`
 
 ## GetSlotWithItem
@@ -425,6 +437,7 @@ exports.ox_inventory:GetSlotWithItem(itemName, metadata, strict)
   - Faz correspondência estrita das propriedades de metadados; caso contrário, usa correspondência parcial.
 
 Retorno:
+
 - slotData: `table?`
 
 ## GetSlotsWithItem
@@ -441,7 +454,29 @@ exports.ox_inventory:GetSlotsWithItem(itemName, metadata, strict)
   - Faz correspondência estrita das propriedades de metadados; caso contrário, usa correspondência parcial.
 
 Retorno:
+
 - slotsData: `table[]?`
+
+## supressItemNotifications
+
+Permite habilitar ou desabilitar as notificações de item do NUI.
+
+```lua
+exports.ox_inventory:suppressItemNotifications(value)
+```
+
+- value: `boolean`
+
+## setGetPlayerNameMethod
+
+Permite definir uma função personalizada para exibir o nome do jogador ao entregar com a playerlist.
+
+```lua
+exports.ox_inventory:setGetPlayerNameMethod(function (serverId --[[ @as number ]])
+  local playerName = GetPlayerName(serverID)
+  return ('[%d] %s'):format(serverID, playerName)
+end)
+```
 
 ## Statebags
 
@@ -492,6 +527,16 @@ if invOpen then
 else
   -- Do stuff when closed
 end
+```
+
+### instance
+
+É usado para definir se um jogador está em uma instance específica (ou seja, property, arena) onde os drops devem ser isolados.
+
+- instance: `string` | `number` | `nil`
+
+```lua
+LocalPlayer.state.instance = "property_1"
 ```
 
 ### canUseWeapons
