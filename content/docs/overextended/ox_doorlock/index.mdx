@@ -1,5 +1,7 @@
 ---
 title: Ox Doorlock
+upstream_path: content/docs/ox_doorlock/index.mdx
+upstream_sha: 328e36feb5b0486d6214971f53c6d2626193cc28
 ---
 
 <ResourceLinks repo="https://github.com/overextended/ox_doorlock" />
@@ -10,7 +12,7 @@ Um recurso de gerenciamento de portas que pode ser usado de forma independente o
 
 <Callout type="info">
 
-Recomendamos **fortemente** que consulte os [Guias](../guides) para configurar Git, Node.js e pnpm.
+Recomendamos **fortemente** que consulte os [Guias](../guides) para configurar Git, Node.js e bun.
 
 </Callout>
 
@@ -22,11 +24,13 @@ Recomendamos **fortemente** que consulte os [Guias](../guides) para configurar G
 
 ### Baixe uma [release](https://github.com/overextended/ox_doorlock/releases) ou compile o código-fonte.
 
+- Baixe a [release mais recente](https://github.com/overextended/ox_doorlock/releases/latest).
+
 ```bash
 git clone https://github.com/overextended/ox_doorlock.git
 cd ox_doorlock/web
-pnpm i
-pnpm build
+bun i
+bun run build
 ```
 
 ### Instale dependências opcionais.
