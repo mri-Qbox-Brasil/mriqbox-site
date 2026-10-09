@@ -1,5 +1,7 @@
 ---
 title: Shared
+upstream_path: content/docs/ox_lib/Class/Shared.mdx
+upstream_sha: 328e36feb5b0486d6214971f53c6d2626193cc28
 ---
 
 ## Classes
@@ -35,6 +37,7 @@ OxClass é um modelo base usado para todas as classes criadas com `lib.class`. E
 - private?: `table`
   - Um campo protegido que contém todos os dados privados da classe.
   - Dados privados não podem ser acessados fora dos métodos da classe, garantindo segurança e integridade.
+  - É sempre definido no `constructor`, mas precisa ser definido explicitamente se nenhuma propriedade privada for definida.
 - super?: `class`
   - Referência ao construtor da superclasse.
   - Deve ser chamado dentro do construtor da subclasse ao instanciar a classe.
