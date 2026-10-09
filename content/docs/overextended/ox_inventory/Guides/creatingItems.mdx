@@ -1,5 +1,7 @@
 ---
 title: Creating Items
+upstream_path: content/docs/ox_inventory/Guides/creatingItems.mdx
+upstream_sha: 328e36feb5b0486d6214971f53c6d2626193cc28
 ---
 
 ## Definindo dados do item
@@ -181,80 +183,45 @@ exports('bandage', function(data, slot)
 end)
 ```
 
-### Callbacks do servidor
-
-Uma função de retorno (callback) pode ser definida no servidor para lidar com vários eventos (usingItem, usedItem, buyItem).
-Isso pode ser um export (recomendado) ou adicionado ao final de [items/server.lua](https://github.com/overextended/ox_inventory/blob/main/modules/items/server.lua).
-Ao definir os [dados do item](https://github.com/overextended/ox_inventory/blob/main/data/items.lua#L14), adicionar server.export acionará um evento para as ações acima.
-A formatação correta é `export = resourceName.exportName`.
-
-```lua
-exports('bandage', function(event, item, inventory, slot, data)
-    -- O jogador está tentando usar o item.
-    if event == 'usingItem' then
-        local playerPed = GetPlayerPed(inventory.id)
-        local maxHealth = GetEntityMaxHealth(playerPed)
-        local health = GetEntityHealth(playerPed)
-
-        -- Verifica se o jogador precisa ser curado.
-        if health >= maxHealth then
-            TriggerClientEvent('ox_lib:notify', inventory.id, {type = 'error', description = 'You don\'t need a bandage right now'})
-
-            -- Retornar 'false' impedirá que o item seja usado
-            return false
-        end
-
-        return
-    end
-
-    -- O jogador terminou de usar o item.
-    if event == 'usedItem' then
-        return TriggerClientEvent('ox_lib:notify', inventory.id, {description = 'You feel better already'})
-    end
-
-    -- O jogador está tentando comprar o item.
-    if event == 'buying' then
-        return TriggerClientEvent('ox_lib:notify', inventory.id, {type = 'success', description = 'You bought a bandage'})
-    end
-end)
-```
-
 ## Criando itens de contêiner
 
 Assim como outros itens, o item deve primeiro ser registrado.
 
-Quando registrado, você pode definir o item como um contêiner em `/modules/items/containers.lua`
-A chave do contêiner é o `nome` que você deu ao registrar o item.
-Você também pode definir o número de slots, o peso máximo, itens na lista negra (blacklist) e lista branca (whitelist).
+Quando registrado, você pode definir o item como um contêiner em `/modules/items/containers.lua` ou usando o export de servidor [`setContainerProperties`](../Functions/Server#setcontainerproperties).
+A chave do contêiner é o `name` que você deu ao registrar o item.  
+Você também pode definir o número de slots, o peso máximo, itens na blacklist e na whitelist.
 
-- itemName:
-  - slots: number
-    - O número representa a quantidade de slots.
-  - maxWeight: number
-    - O número representa o peso máximo dentro do contêiner.
-  - blacklist:
-    - Suporta itens únicos e múltiplos.
-    - `{ 'testburger', 'testburger2' }`
-  - whitelist:
-    - Suporta itens únicos e múltiplos.
-    - `{ 'testburger', 'testburger2' }`
+<br />
+
+- itemName: `string`
+- properties: `table`
+  - slots: `number`
+    - Número de slots disponíveis no contêiner.
+  - maxWeight: `number`
+    - Peso máximo que o contêiner pode conter.
+  - whitelist?: `table<string, true> | string[]`
+    - Tabela com os nomes dos itens permitidos no contêiner.
+    - Se não informado, todos os itens são permitidos, exceto os da blacklist.
+  - blacklist?: `table<string, true> | string[]`
+    - Tabela com os nomes dos itens que não são permitidos no contêiner.
+    - Se não informado, nenhum item é bloqueado, a menos que uma whitelist seja informada.
 
 ### Exemplo
 
 ```lua filename="Register Example"
-['paperbag'] = {
-    label = 'Paper Bag',
-    weight = 1,
+['pizzabox'] = {
+    label = 'Pizza Box',
+    weight = 50,
     stack = false,
     close = false,
-    consume = 0
+    consume = 0,
 },
 ```
 
 ```lua filename="Properties Example"
-setContainerProperties('paperbag', {
-	slots = 5,
-	maxWeight = 1000,
-	blacklist = { 'testburger' }
+setContainerProperties('pizzabox', {
+    slots = 1,
+    maxWeight = 1000,
+    whitelist = { 'pizza' },
 })
 ```
