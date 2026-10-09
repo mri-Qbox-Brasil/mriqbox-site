@@ -1,5 +1,7 @@
 ---
 title: Cliente
+upstream_path: content/docs/ox_lib/Cache/Client.mdx
+upstream_sha: 328e36feb5b0486d6214971f53c6d2626193cc28
 ---
 
 Valores e funcionalidades de cache disponíveis no cliente, além dos valores [shared](../Shared).
@@ -31,7 +33,7 @@ Registra um manipulador de evento acionado quando um valor em cache é atualizad
 <Tabs items={["Lua", "JS"]}>
   <Tabs.Tab>
     ```lua
-    lib.onCache(key, function(value) end)
+    lib.onCache(key, function(value, oldValue) end)
     ```
 
     - key: `string`
@@ -43,7 +45,7 @@ Registra um manipulador de evento acionado quando um valor em cache é atualizad
     - value: `any`
 
     ```lua
-    lib.onCache('vehicle', function(value)
+    lib.onCache('vehicle', function(value, oldValue)
         print('old vehicle:', cache.vehicle)
         print('new vehicle:', value)
     end)
