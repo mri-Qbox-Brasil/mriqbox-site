@@ -1,5 +1,7 @@
 ---
 title: Client
+upstream_path: content/docs/ox_target/Functions/Client.mdx
+upstream_sha: 328e36feb5b0486d6214971f53c6d2626193cc28
 ---
 
 All exports with the `options` argument expect a table with the targeting properties [here](../TargetOptions).
@@ -248,6 +250,23 @@ exports.ox_target:addPolyZone(parameters)
 
 Retorno:
 - id: `number`
+
+## zoneExists
+
+Verifica se existe uma zone com o ID fornecido.
+
+```lua
+exports.ox_target:zoneExists(id)
+```
+
+- id: `number` ou `string`
+  - O id `number` retornado por [addSphereZone](#addspherezone), [addBoxZone](#addboxzone) ou [addPolyZone](#addpolyzone)
+    **OR**
+  - O nome `string` dado à zone.
+
+Retorno:
+
+- `boolean` - Retorna `true` se a zone existir, caso contrário `false`.
 
 ## removeZone
 
