@@ -1,19 +1,34 @@
 ---
 title: Shared
+upstream_path: content/docs/ox_lib/Zones/Shared.mdx
+upstream_sha: 328e36feb5b0486d6214971f53c6d2626193cc28
 ---
 
-Alternativa mais rápida ao PolyZone, utilizando [glm.polygon](https://github.com/citizenfx/lua/blob/luaglm-dev/cfx/EXTENDED.md).
+Um sistema de verificação espacial de alta performance para o mundo do jogo. Zones definem uma área 3D (sphere, box ou polygon) e avaliam se uma posição está dentro ou fora daquela região — semelhante a um [colshape](https://wiki.multitheftauto.com/wiki/Element/Collision_shape).
+
+Internamente, as Zones utilizam um [spatial grid](docs/ox_lib/Grid/Shared) para restringir com eficiência as zones relevantes antes de executar testes precisos de posição.
+
+Para Lua, isto substitui o [PolyZone](https://github.com/mkafrin/PolyZone) e aproveita a biblioteca [GLM](https://github.com/citizenfx/lua/blob/luaglm-dev/cfx/README.md) para alta performance e eficiência de memória.
+
+As Zones também estão disponíveis em JS, utilizando nossa [biblioteca de utilidades](https://github.com/overextended/ox) para operações de geometria, grid e espaciais.
 
 <Callout>
-  Atualmente as zones possuem apenas suporte básico no lado do servidor. Algumas funcionalidades não funcionarão, como `onEnter`, `onExit` e `inside`.
+  Zones do lado do servidor não suportam eventos de trigger do jogador. Os manipuladores `onEnter`, `onExit` e `inside` estão indisponíveis.
 </Callout>
 
-## lib.zones.poly
+<Callout>
+  As zones em Lua e JavaScript não são compatíveis em termos de API. As definições TypeScript e os comentários TSDoc no pacote npm servem como referência oficial para a JavaScript API.
+</Callout>
 
+## Polygon/Prism Zone
+
+Cria um polígono a partir dos vértices fornecidos, que é então colocado no mundo e extrudado até a altura fornecida para formar uma forma 3D.
+
+<Tabs groupId="language" items={['Lua', 'TypeScript']}>
+<Tab>
 ```lua
 lib.zones.poly(data)
 ```
-
 - data: `table`
   - points: `vector3[]`
     - Um array de pontos 3D que definem a forma do polígono.
@@ -23,13 +38,24 @@ lib.zones.poly(data)
   - onExit?: `function(self: table)`
   - inside?: `function(self: table)`
   - debug?: `boolean`
+</Tab>
+<Tab>
+```ts
+import { Zone } from "@overextended/ox_lib";
+import { Vector2 } from "@overextended/core/vector";
 
-## lib.zones.box
+Zone.Prism(vertices: Vector2[], height: number, z: number)
+```
+</Tab>
+</Tabs>
 
+## Box Zone
+
+<Tabs groupId="language" items={['Lua', 'TypeScript']}>
+<Tab>
 ```lua
 lib.zones.box(data)
 ```
-
 - data: `table`
   - coords: `vector3`
   - size?: `vector3`
@@ -40,13 +66,24 @@ lib.zones.box(data)
   - onExit?: `function(self: table)`
   - inside?: `function(self: table)`
   - debug?: `boolean`
+</Tab>
+<Tab>
+```ts
+import { Zone } from "@overextended/ox_lib";
+import { Vector3 } from "@overextended/core/vector";
 
-## lib.zones.sphere
+Zone.Cuboid(origin: Vector3, width: number, depth: number, height: number, heading?: number)
+```
+</Tab>
+</Tabs>
 
+## Sphere Zone
+
+<Tabs groupId="language" items={['Lua', 'TypeScript']}>
+<Tab>
 ```lua
 lib.zones.sphere(data)
 ```
-
 - data: `table`
   - coords: `vector3`
   - radius?: `number`
@@ -55,37 +92,231 @@ lib.zones.sphere(data)
   - onExit?: `function(self: table)`
   - inside?: `function(self: table)`
   - debug?: `boolean`
+</Tab>
+<Tab>
+```ts
+import { Zone } from "@overextended/ox_lib";
+import { Vector3 } from "@overextended/core/vector";
 
-## Métodos
+Zone.Sphere(coords: Vector3, radius: number)
+```
+</Tab>
+</Tabs>
+
+## Methods
+
+### onEnter
+
+Uma função chamada quando o jogador entra na zone. Ela pode ser anexada à zone após a instanciação, ou na tabela `data` se estiver usando Lua.
+
+<Tabs groupId="language" items={['Lua', 'TypeScript']}>
+<Tab>
+```lua
+local function onEnter(self)
+    print('entered zone', self.id)
+end
+
+zone.onEnter = onEnter
+```
+</Tab>
+<Tab>
+```ts
+function onEnter(this: Zone) {
+  console.log(`entered zone ${this.id}`)
+}
+
+zone.onEnter = onEnter;
+```
+</Tab>
+</Tabs>
+
+### onExit
+
+Uma função chamada quando o jogador sai da zone. Ela pode ser anexada à zone após a instanciação, ou na tabela `data` se estiver usando Lua.
+
+<Tabs groupId="language" items={['Lua', 'TypeScript']}>
+<Tab>
+```lua
+local function onExit(self)
+    print('exited zone', self.id)
+end
+
+zone.onExit = onExit
+```
+</Tab>
+<Tab>
+```ts
+function onExit(this: Zone) {
+  console.log(`exited zone ${this.id}`)
+}
+
+zone.onExit = onExit;
+```
+</Tab>
+</Tabs>
+
+### inside
+
+Uma função chamada quando o jogador sai da zone. Ela pode ser anexada à zone após a instanciação, ou na tabela `data` se estiver usando Lua.
+
+<Tabs groupId="language" items={['Lua', 'TypeScript']}>
+<Tab>
+```lua
+local function inside(self)
+    print('you are inside zone', self.id)
+end
+
+zone.inside = inside
+```
+</Tab>
+<Tab>
+```ts
+function inside(this: Zone) {
+  console.log(`you are inside zone ${this.id}`)
+}
+
+zone.inside = inside;
+```
+</Tab>
+</Tabs>
 
 ### remove
 
-Zones podem ser deletadas usando o método `remove`. Os dados não serão removidos do script, e podem ser usados para recriar a zone mais tarde.
+Zones podem ser excluídas usando o método remove.
 
+<Tabs groupId="language" items={['Lua', 'TypeScript']}>
+<Tab>
 ```lua
-local zone = lib.zones.box({...})
-
 zone:remove()
-
-SetTimeout(500, function()
-    lib.zones.poly(zone)
-end)
 ```
+</Tab>
+<Tab>
+```ts
+zone.remove()
+// or
+Zone.delete(zone.id)
+```
+</Tab>
+</Tabs>
 
 ### contains
 
-Testa se um ponto existe dentro da zone, retornando um `boolean`.
+Avalia se um ponto está dentro da zone.
+
+<Tabs groupId="language" items={['Lua', 'TypeScript']}>
+<Tab>
+```lua
+zone:contains(vec3(1, 1, 1))
+```
+</Tab>
+<Tab>
+```ts
+import { Vector3 } from "@overextended/ox_lib";
+
+zone.contains(new Vector3(1, 1, 1))
+```
+</Tab>
+</Tabs>
+
+**Retorna:** `boolean`
+
+### setDebug
+
+Ativa ou desativa o modo debug para uma zone, opcionalmente com cores personalizadas.
+
+Para JavaScript, defina `zone.shouldDraw` ou chame manualmente `zone.draw(...args)`.
 
 ```lua
 local zone = lib.zones.box({...})
 
-if zone:contains(vec3(1, 1, 1)) then
-    print('point is inside zone!')
-end
+-- Enable debug with default colors
+zone:setDebug(true)
+
+-- Enable debug with custom colors
+zone:setDebug(true, vec4(255, 0, 0, 100))
+
+-- Disable debug
+zone:setDebug(false)
 ```
 
-## Exemplos de uso
+## Utility Functions
 
+### getAllZones
+
+Retorna todas as zones registradas.
+
+<Tabs groupId="language" items={['Lua', 'TypeScript']}>
+<Tab>
+```lua
+lib.zones.getAllZones()
+```
+
+**Retorna:** `CZone[]`
+</Tab>
+<Tab>
+```ts
+import { Zone } from "@overextended/ox_lib";
+
+Zone.getAll();
+```
+
+**Retorna:** `Set<Zone>`
+</Tab>
+</Tabs>
+
+### getCurrentZones
+
+Retorna todas as zones nas quais o jogador está atualmente.
+
+<Tabs groupId="language" items={['Lua', 'TypeScript']}>
+<Tab>
+```lua
+lib.zones.getCurrentZones()
+```
+
+**Retorna:** `CZone[]`
+</Tab>
+<Tab>
+```ts
+import { Zone } from "@overextended/ox_lib";
+
+Zone.getCurrent();
+```
+
+**Retorna:** `Set<Zone>`
+</Tab>
+</Tabs>
+
+### getNearbyZones
+
+Retorna todas as zones próximas ao jogador.
+
+<Tabs groupId="language" items={['Lua', 'TypeScript']}>
+<Tab>
+```lua
+lib.zones.getNearbyZones()
+```
+
+**Retorna:** `CZone[]`
+</Tab>
+<Tab>
+```ts
+import { Zone } from "@overextended/ox_lib";
+
+Zone.getNearby(point);
+```
+
+- point?: `Vector2` | `Vector3`
+  - O padrão é a posição atual do jogador.
+
+**Retorna:** `Set<Zone>`
+</Tab>
+</Tabs>
+
+## Examples
+
+<Tabs groupId="language" items={['Lua', 'TypeScript']}>
+<Tab>
 ```lua
 function onEnter(self)
     print('entered zone', self.id)
@@ -140,8 +371,56 @@ local box = lib.zones.box({
     onExit = onExit
 })
 ```
+</Tab>
+<Tab>
+```ts
+import { Zone } from "@overextended/ox_lib";
+import { Vector2, Vector3 } from "@overextended/core/vector";
 
-## Script de criação de Zones
+function onEnter(this: Zone) {
+  console.log(`entered ${this.id}`)
+}
+
+function onExit(this: Zone) {
+  console.log(`exited ${this.id}`)
+}
+
+function inside(this: Zone) {
+  console.log(`inside ${this.id}`)
+}
+
+const shouldDraw = true;
+
+Zone.Prism([
+  new Vector2(413.8, -1026.1),
+  new Vector2(411.6, -1023.1),
+  new Vector2(412.2, -1018.0),
+  new Vector2(417.2, -1016.3),
+  new Vector2(422.3, -1020.0),
+  new Vector2(426.8, -1015.9),
+  new Vector2(431.8, -1013.0),
+  new Vector2(437.3, -1018.4),
+  new Vector2(432.4, -1027.2),
+  new Vector2(424.7, -1023.5),
+  new Vector2(420.0, -1030.2),
+  new Vector2(409.8, -1028.4)
+], 2, 29)
+
+Zone.Sphere(new Vector3(442.5363, -1017.666, 28.65637), 1)
+
+Zone.Cuboid(new Vector3(442.5363, -1017.666, 28.65637), 1, 1, 1)
+
+Zone.map.forEach((zone) => {
+  zone.inside = inside;
+  zone.onEnter = onEnter;
+  zone.onExit = onExit;
+  zone.shouldDraw = shouldDraw;
+})
+```
+</Tab>
+</Tabs>
+
+## Zone creation script
 
 Você pode usar nosso criador de zones embutido com `/zone` — passando `poly`, `box` ou `sphere` como argumento.
 Os controles disponíveis serão exibidos no lado direito.
@@ -149,7 +428,7 @@ Os controles disponíveis serão exibidos no lado direito.
 As zones serão salvas em `ox_lib/created_zones.lua` no formato escolhido.
 
 <Tabs items={["function", "array", "ox_target"]}>
-  <Tabs.Tab>
+  <Tab>
     ```lua
     local poly = lib.zones.poly({
         name = poly,
@@ -163,8 +442,8 @@ As zones serão salvas em `ox_lib/created_zones.lua` no formato escolhido.
         thickness = 2,
     })
     ```
-  </Tabs.Tab>
-  <Tabs.Tab>
+  </Tab>
+  <Tab>
     ```lua
     {
         name = poly,
@@ -178,8 +457,8 @@ As zones serão salvas em `ox_lib/created_zones.lua` no formato escolhido.
         thickness = 2,
     },
     ```
-  </Tabs.Tab>
-  <Tabs.Tab>
+  </Tab>
+  <Tab>
     ```lua
     exports.ox_target:addPolyZone({
         name = poly,
@@ -193,5 +472,5 @@ As zones serão salvas em `ox_lib/created_zones.lua` no formato escolhido.
         thickness = 2,
     })
     ```
-  </Tabs.Tab>
+  </Tab>
 </Tabs>
