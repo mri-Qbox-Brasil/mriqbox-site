@@ -1,5 +1,7 @@
 ---
 title: Crafting
+upstream_path: content/docs/ox_inventory/Guides/crafting.mdx
+upstream_sha: 328e36feb5b0486d6214971f53c6d2626193cc28
 ---
 
 Locais de criação, itens e seus ingredientes são definidos em [data/crafting.lua](https://github.com/overextended/ox_inventory/blob/main/data/crafting.lua).
@@ -41,6 +43,7 @@ Locais de criação, itens e seus ingredientes são definidos em [data/crafting.
         },
     },
     blip = { id = 566, colour = 31, scale = 0.8 },
+    name = 'crafting-bench',
 },
 ```
 
@@ -76,3 +79,5 @@ Locais de criação, itens e seus ingredientes são definidos em [data/crafting.
     - Número do sprite do blip.
   - colour: `number`
   - scale: `number`
+- name: `string`
+  - Nome opcional que pode ser usado como id ao usar o export openInventory.
