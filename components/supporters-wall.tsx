@@ -1,4 +1,5 @@
 import Image from "next/image"
+import type { SupportDictionary } from "@/components/support/dictionary"
 
 // Lista pública de apoiadores servida pelo mri-qbot (GET /public/supporters):
 // quem tem cargo de apoiador no Discord. Busca no servidor e revalida a cada
@@ -22,17 +23,17 @@ async function getSupporters(): Promise<Supporter[]> {
   }
 }
 
-export async function SupportersWall() {
+export async function SupportersWall({ t }: { t: SupportDictionary["supporters"] }) {
   const supporters = await getSupporters()
   if (!supporters.length) return null
 
   return (
     <section className="mt-16">
-      <h2 className="text-2xl font-bold text-foreground mb-2">Quem já apoia</h2>
+      <h2 className="text-2xl font-bold text-foreground mb-2">{t.title}</h2>
       <p className="text-sm text-muted-foreground mb-6">
         {supporters.length === 1
-          ? "1 pessoa mantém o projeto vivo. Obrigado!"
-          : `${supporters.length} pessoas mantêm o projeto vivo. Obrigado!`}
+          ? t.countOne
+          : t.countMany(supporters.length)}
       </p>
       <ul className="flex flex-wrap gap-3">
         {supporters.map((s, i) => (
@@ -53,7 +54,7 @@ export async function SupportersWall() {
         ))}
       </ul>
       <p className="text-xs text-muted-foreground/70 mt-4">
-        Apoiadores aparecem aqui pelo nome e avatar do Discord.
+        {t.note}
       </p>
     </section>
   )
