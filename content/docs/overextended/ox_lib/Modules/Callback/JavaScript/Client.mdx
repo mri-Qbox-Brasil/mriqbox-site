@@ -1,5 +1,7 @@
 ---
 title: Client
+upstream_path: content/docs/ox_lib/Callback/JavaScript/Client.mdx
+upstream_sha: 328e36feb5b0486d6214971f53c6d2626193cc28
 ---
 
 ## Trigger Server Callback
@@ -7,7 +9,7 @@ title: Client
 ### triggerServerCallback
 
 ```ts
-triggerServerCallback(eventName, delay, ...args)
+triggerServerCallback(eventName, delay, ...args);
 ```
 
 - eventName: `string`
@@ -20,7 +22,7 @@ triggerServerCallback(eventName, delay, ...args)
 ### onServerCallback
 
 ```ts
-onServerCallback(eventName, cb)
+onServerCallback(eventName, cb);
 ```
 
 - eventName: `string`
@@ -31,14 +33,14 @@ onServerCallback(eventName, cb)
 Para que este exemplo faça sentido por completo, veja o exemplo na página do [server](./Server#usage-example) para os callbacks.
 
 ```ts
-import { onServerCallback, triggerServerCallback } from '@overextended/ox_lib/client'
+import { onServerCallback, triggerServerCallback } from "@overextended/ox_lib/client";
 ```
 
 ```ts
-onServerCallback('test:client', (...args: [number, number, string]) => {
+onServerCallback("test:client", (...args: [number, number, string]) => {
   console.log(args);
   return {
-    clientValue: 'Value from the client',
+    clientValue: "Value from the client",
   };
 });
 ```
@@ -46,8 +48,8 @@ onServerCallback('test:client', (...args: [number, number, string]) => {
 ```ts
 setTimeout(async () => {
   const args = [1, null, 3, null, null, 6];
-  const response = await triggerServerCallback<{ serverValue: number }>('test:server', 1, args);
+  const response = await triggerServerCallback<{ serverValue: number }>("test:server", 1, args);
   if (!response) return;
-  console.log('Response from server', response);
+  console.log("Response from server", response);
 }, 100);
 ```
