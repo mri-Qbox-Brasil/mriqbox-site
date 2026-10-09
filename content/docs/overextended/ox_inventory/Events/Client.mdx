@@ -1,5 +1,7 @@
 ---
 title: Client
+upstream_path: content/docs/ox_inventory/Events/Client.mdx
+upstream_sha: 328e36feb5b0486d6214971f53c6d2626193cc28
 ---
 
 Esta não é uma lista completa de eventos e alguns eventos destinados ao uso interno foram omitidos.
@@ -21,6 +23,17 @@ TriggerClientEvent('ox_inventory:disarm', playerId, noAnim)
 - playerId: `number`
 - noAnim: `boolean`
   - Se `true`, a animação de desarme será ignorada
+
+### ox_inventory:suppressItemNotifications
+
+Pode ser triggered para habilitar ou desabilitar as notificações de item da NUI
+
+```lua
+TriggerClientEvent('ox_inventory:suppressItemNotifications', playerId, value)
+```
+
+- playerId: `number`
+- value: `boolean`
 
 ## Event Handlers
 
