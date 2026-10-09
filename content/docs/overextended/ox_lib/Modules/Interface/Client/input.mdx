@@ -1,5 +1,7 @@
 ---
 title: Diálogo de Entrada
+upstream_path: content/docs/ox_lib/Interface/Client/input.mdx
+upstream_sha: 328e36feb5b0486d6214971f53c6d2626193cc28
 ---
 
 A janela de diálogo de entrada permite coletar dados do usuário através de campos de input.
@@ -28,6 +30,7 @@ A janela de diálogo de entrada permite coletar dados do usuário através de ca
   - allowCancel: `boolean`
     - Se `false`, o usuário não poderá cancelar e fechar o diálogo de entrada até submetê-lo.
     - Se não definido, o usuário poderá cancelar e fechar o diálogo de entrada.
+  - size?: `"xs"` | `"sm"` | `"md"` | `"lg"` | `"xl"`;
 
 ### Propriedades dos Tipos de Campo
 
@@ -164,6 +167,8 @@ A janela de diálogo de entrada permite coletar dados do usuário através de ca
     - Quantidade máxima de linhas que a área de texto pode ocupar; quando excedido, entra em overflow.
   - autosize?: `boolean`
     - Se `true`, a área de texto crescerá com o conteúdo até atingir o máximo de linhas.
+  - minLength?: `number`
+  - maxLength?: `number`
 
 Os dados de retorno são baseados em promessas, o que significa que a execução não continuará até que o usuário envie os dados ou feche o popup.
 
