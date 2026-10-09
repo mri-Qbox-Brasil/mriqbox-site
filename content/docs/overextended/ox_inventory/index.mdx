@@ -1,49 +1,50 @@
 ---
 title: Ox Inventory
+upstream_path: content/docs/ox_inventory/index.mdx
+upstream_sha: 328e36feb5b0486d6214971f53c6d2626193cc28
 ---
 
 <ResourceLinks repo="https://github.com/overextended/ox_inventory" />
 
-A slot-based inventory with item metadata for "item uniqueness".
+Um inventário baseado em slot com metadados de item para "item uniqueness".
 
-<Callout type="warning">
-
-If you are replacing a built-in framework inventory there will be compatibility errors.
-If you are unwilling or incapable of resolving incompatibilities, do not install this resource.
-
+<Callout type="info">
+Explore mais de 24.000 imagens estilizadas e fiéis ao lore em [Artwork Inventory](https://artwork-inventory.tebex.io/) e use o código `ox10` para 10% de desconto.
 </Callout>
 
-## Installation
+## Instalação
 
 <Callout type="info">
 
-We **strongly** recommend referring to [Guides](../guides) for setting up Git, Node.js, and pnpm.
+Recomendamos **fortemente** consultar [Guides](../docs/guides) para configurar Git, Node.js e bun.
 
 </Callout>
 
-<Steps>
-### Install all resource dependencies
+### Instale todas as dependências do resource [step]
+
 - [oxmysql](../oxmysql)
 - [ox_lib](../ox_lib/)
 
-### Download a [release](https://github.com/overextended/ox_inventory/releases) or build the source code.
+### Baixe uma release ou compile o código-fonte. [step]
+
+- Baixe a [latest release](https://github.com/overextended/ox_inventory/releases/latest).
 
 ```bash
 git clone https://github.com/overextended/ox_inventory.git
 cd ox_inventory/web
-pnpm i
-pnpm build
+bun i
+bun run build
 ```
 
-### Install optional dependencies
+### Instale as dependências opcionais [step]
 
-These resources aren't required but provide additional functionality.
+Estes resources não são obrigatórios, mas fornecem funcionalidades adicionais.
 
 - [ox_target](../ox_target/)
 
-### Resource start order
+### Ordem de start dos resources [step]
 
-It's important for your resources to start in a logical order to prevent errors from missing dependencies.
+É importante que seus resources iniciem em uma ordem lógica para evitar erros por dependências ausentes.
 
 ```bash
 start oxmysql   # this should be one of the first resources
@@ -53,9 +54,9 @@ start ox_target
 start ox_inventory
 ```
 
-### Config
+### Configuração [step]
 
-Resource configuration is handled using [convars](https://docs.fivem.net/docs/scripting-reference/convars/).
+A configuração do resource é feita usando [convars](https://docs.fivem.net/docs/scripting-reference/convars/).
 
 ```bash
 ### Shared
@@ -81,6 +82,9 @@ setr inventory:target false
 
 # Jobs with access to police armoury, evidence lockers, etc
 setr inventory:police ["police", "sheriff"]
+
+# Set dumpsters as networked entities. Not recommended due to CNetObj limits and entity lockdown.
+setr inventory:networkdumpsters 0
 
 ### Client
 
@@ -132,6 +136,12 @@ setr inventory:suppresspickups 1
 # Disables weapons for all players
 setr inventory:disableweapons 0
 
+# Enable /steal command registration
+setr inventory:enablestealcommand 1
+
+# Disable inventory setup notification (Inventory is ready to use)
+setr inventory:disablesetupnotification 0
+
 ### Server
 
 # Compare current version to latest release on GitHub
@@ -180,43 +190,80 @@ set inventory:dumpsterloot [
     ["burger", 1, 1]
 ]
 
+# Used to enforce custom item images set in item metadata
+# Only enforced when inventory:webhook is set to a valid discord webhook url
+set inventory:validhosts {
+    "r2.fivemanage.com": true,
+    "i.fmfile.com": true
+}
+
+# Set the markers for the various drops, stashes, shops
+# These all follow the same strucutre, if the json strings are invalid it will fallback to a generic marker
+setr inventory:dropmarker {
+    "type": 2,
+    "colour": [150, 30, 30],
+    "scale": [0.3, 0.2, 0.15]
+}
+
+setr inventory:shopmarker {
+    "type": 29,
+    "colour": [30, 150, 30],
+    "scale": [0.5, 0.5, 0.5]
+}
+
+setr inventory:evidencemarker {
+    "type": 2,
+    "colour": [30, 30, 150],
+    "scale": [0.3, 0.2, 0.15]
+}
+
+setr inventory:craftingmarker {
+    "type": 2,
+    "colour": [150, 150, 30],
+    "scale": [0.3, 0.2, 0.15]
+}
+
 # Set items to sync with framework accounts
 set inventory:accounts ["money"]
 ```
 
-</Steps>
+## Incompatibilidades de framework
 
-## Framework incompatibilities
+<Callout type="warning">
 
-- Any frameworks with their own built-in inventory, item, or weapon systems are expected to have compatibility issues.
-- Money as an item may conflict with banking/account systems.
-  - You can sync these values with [server.syncInventory](https://github.com/overextended/ox_inventory/blob/aff8ef9e9ee3f93f177ce03b3f37895ff5781800/modules/bridge/nd/server.lua#L64-L77).
+Se você estiver substituindo um inventário embutido do framework, haverá erros de compatibilidade.  
+Se você não quiser ou não for capaz de resolver incompatibilidades, não instale este resource.
 
-Refer to issue [#1297](https://github.com/overextended/ox_inventory/issues/1297) for known compatibility issues.
+</Callout>
 
-## Using an unsupported framework
+- Qualquer framework com sistema próprio de inventário, item ou weapon deve apresentar problemas de compatibilidade.
+- Money como item pode entrar em conflito com sistemas bancários/de contas.
+  - Você pode sincronizar esses valores com [server.syncInventory](https://github.com/overextended/ox_inventory/blob/aff8ef9e9ee3f93f177ce03b3f37895ff5781800/modules/bridge/nd/server.lua#L64-L77).
 
-If your framework does not have official support you'll have to implement it yourself.
-If you're replacing an existing/built-in inventory system this may be complicated, but is a fairly simple task otherwise.
+Consulte a issue [#1297](https://github.com/overextended/ox_inventory/issues/1297) para problemas de compatibilidade conhecidos.
 
-This setup is highly opinionated and rigid, so it's up to your own ability as a developer to make it work.
+## Usando um framework sem suporte
 
-<Steps>
-### Setup a bridge submodule
+Se seu framework não tem suporte oficial, você terá que implementá-lo por conta própria.  
+Se você estiver substituindo um sistema de inventário existente/embutido, isso pode ser complicado, mas caso contrário é uma tarefa bem simples.
 
-You'll want to set the target framework first - this could be the name, an acronym, or just "custom".
+Esta configuração é altamente opinativa e rígida, então depende da sua própria habilidade como desenvolvedor para fazê-la funcionar.
+
+### Configure um submódulo bridge [step]
+
+Defina o framework target primeiro — pode ser o nome, um acrônimo ou apenas "custom".
 
 ```bash
 setr inventory:framework "custom"
 ```
 
-Copy the `ox` directory from the [bridge](https://github.com/overextended/ox_inventory/tree/main/modules/bridge) directory and give it the name you used above.
+Copie o diretório `ox` do diretório [bridge](https://github.com/overextended/ox_inventory/tree/main/modules/bridge) e dê a ele o nome que você usou acima.
 
-The bare minimum functions and event handlers are added here, but you'll need to change them to match your framework; we can't provide any help here. You can refer to the other framework bridges if you need inspiration.
+As funções e os manipuladores de eventos mínimos já estão adicionados aqui, mas você precisará alterá-los para corresponder ao seu framework; não podemos ajudar aqui. Você pode consultar os outros bridges de framework se precisar de inspiração.
 
-### Setup database references
+### Configure as referências do banco de dados [step]
 
-Take a look at the [mysql](https://github.com/overextended/ox_inventory/blob/main/modules/mysql/server.lua) module. You'll need to reference your player/vehicle tables and id columns.
+Dê uma olhada no módulo [mysql](https://github.com/overextended/ox_inventory/blob/main/modules/mysql/server.lua). Você precisará referenciar suas tabelas de jogador/veículo e colunas de id.
 
 ```lua
 elseif shared.framework == 'custom' then
@@ -226,5 +273,3 @@ elseif shared.framework == 'custom' then
     vehicleColumn = 'id'       -- primary key for identifying the vehicle (i.e. plate, vin, id)
 end
 ```
-
-</Steps>
