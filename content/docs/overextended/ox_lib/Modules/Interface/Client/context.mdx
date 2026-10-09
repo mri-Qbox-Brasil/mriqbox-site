@@ -1,5 +1,7 @@
 ---
 title: Menu de Contexto
+upstream_path: content/docs/ox_lib/Interface/Client/context.mdx
+upstream_sha: 328e36feb5b0486d6214971f53c6d2626193cc28
 ---
 
 ## lib.registerContext
@@ -26,6 +28,8 @@ Usado para registrar um menu de contexto.
   - Identificador único do menu, usado para abrir o menu.
 - title: `string`
   - Título exibido no menu; suporta markdown.
+- position?: `'top-left'` ou `'top-right'` ou `'bottom-left'` ou `'bottom-right'`
+  - Padrão: `'top-right'`
 - menu?: `string`
   - Identificador do menu — se definido, haverá uma seta de voltar ao lado do título que leva ao menu especificado.
 - canClose: `boolean`
@@ -165,6 +169,7 @@ Primeiro registramos o menu com as opções especificadas e depois chamamos a fu
     lib.registerContext({
       id = 'some_menu',
       title = 'Some context menu',
+      position = 'top-right',
       options = {
         {
           title = 'Empty button',
@@ -214,6 +219,7 @@ Primeiro registramos o menu com as opções especificadas e depois chamamos a fu
     lib.registerContext({
       id: 'some_menu',
       title: 'Some context menu',
+      position: 'top-right',
       options: [
         {
           title: 'Empty button',
