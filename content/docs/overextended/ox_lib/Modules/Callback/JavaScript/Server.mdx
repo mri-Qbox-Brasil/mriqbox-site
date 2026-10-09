@@ -1,5 +1,7 @@
 ---
 title: Server
+upstream_path: content/docs/ox_lib/Callback/JavaScript/Server.mdx
+upstream_sha: 328e36feb5b0486d6214971f53c6d2626193cc28
 ---
 
 ## Acionar Callback no Cliente
@@ -7,7 +9,7 @@ title: Server
 ### triggerClientCallback
 
 ```ts
-triggerClientCallback(eventName, playerId, ...args)
+triggerClientCallback(eventName, playerId, ...args);
 ```
 
 - eventName: `string`
@@ -19,7 +21,7 @@ triggerClientCallback(eventName, playerId, ...args)
 ### onClientCallback
 
 ```ts
-onClientCallback(eventName, cb)
+onClientCallback(eventName, cb);
 ```
 
 * eventName: `string`
@@ -30,12 +32,12 @@ onClientCallback(eventName, cb)
 Para que este exemplo faça sentido por completo, veja o exemplo na página do [client](./Client#usage-example) para os callbacks.
 
 ```ts
-import { onClientCallback, triggerClientCallback } from '@overextended/ox_lib/server';
+import { onClientCallback, triggerClientCallback } from "@overextended/ox_lib/server";
 ```
 
 ```ts
-onClientCallback('test:server', (playerId, ...args: [number, null, number, null, null, number]) => {
-  console.log('onClientCallback', playerId, ...args);
+onClientCallback("test:server", (playerId, ...args: [number, null, number, null, null, number]) => {
+  console.log("onClientCallback", playerId, ...args);
   return {
     serverValue: 3000,
   };
@@ -44,9 +46,16 @@ onClientCallback('test:server', (playerId, ...args: [number, null, number, null,
 
 ```ts
 setTimeout(async () => {
-  const response = await triggerClientCallback<{ clientValue: string }>('test:client', 1, [1, null, 3, null, null, 6])
+  const response = await triggerClientCallback<{ clientValue: string }>("test:client", 1, [
+    1,
+    null,
+    3,
+    null,
+    null,
+    6,
+  ]);
   if (!response) return;
   console.log(response.clientValue);
-  console.log('Response from client', response);
+  console.log("Response from client", response);
 }, 100);
 ```
