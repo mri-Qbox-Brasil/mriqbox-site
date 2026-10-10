@@ -1,0 +1,60 @@
+---
+title: Hooks
+upstream_path: content/docs/ox_doorlock/Server/functions/Hooks.mdx
+upstream_sha: 328e36feb5b0486d6214971f53c6d2626193cc28
+---
+
+Eventos de hook permitem que resources de terceiros definam novos comportamentos sem modificar diretamente o código do sistema de doorlock.
+
+## registerHook
+
+```lua
+exports.ox_doorlock:registerHook(eventName, function(payload) end, options)
+```
+
+- eventName: `string`
+- payload: `table`
+- options?: `table`
+  - print?: `boolean`
+    - Imprime no console ao disparar o evento.
+  - nameFilter?: `string`
+    - O evento dispara apenas para portas específicas
+
+Retorno:
+
+- hookId: `number`
+
+### doorAuthorization
+
+Disparado ao abrir/fechar porta.  
+Ao retornar `false`, você pode substituir a autorização da porta permitindo usar sua própria lógica.
+
+- Payload: `table`
+  - source: `number`
+  - door: `DoorData`
+  - lockpick: boolean
+  - authorised: boolean
+
+**Exemplo**
+
+Permite que o dono do quarto de hotel abra/feche a porta
+
+```lua
+local hookId = exports.ox_doorlock:registerHook('doorAuthorization', function(payload)
+    local hotel, apartment = payload.door.name:match("HotelDoor_(%w+)_([%d]+)")
+    return IsAuthorized(payload.source, hotel, apartment)
+end, {
+    nameFilter = "HotelDoor_%w+_[%d]+"
+})
+```
+
+## removeHooks
+
+Remove um hook criado pelo resource que chama com o id especificado.  
+Se nenhum id for especificado então todos os hooks registrados pelo resource são removidos.
+
+```lua
+exports.ox_doorlock:removeHooks(id)
+```
+
+- id?: `number`
