@@ -25,13 +25,13 @@ exports.ox_inventory:registerHook(eventName, function(payload) end, options)
 - callback: `function(payload: table)`
 - options?: `table`
   - print?: `boolean`
-    - Print to the console when triggering the event.
+    - Imprime no console ao disparar o evento.
   - itemFilter?: `{ [string]: true }`
-    - The event will only trigger for items defined as keys in a set.
+    - O evento dispara apenas para itens definidos como chaves em um conjunto.
   - inventoryFilter?: `string[]`
-    - The event will only trigger for inventories that match one of the [patterns](<http://www.easyuo.com/openeuo/wiki/index.php/Lua_Patterns_and_Captures_(Regular_Expressions)>) in the array.
+    - O evento dispara apenas para inventários que correspondam a um dos [patterns](<http://www.easyuo.com/openeuo/wiki/index.php/Lua_Patterns_and_Captures_(Regular_Expressions)>) no array.
   - typeFilter?: `{ [string]: true }`
-    - The event will only trigger for inventories with one of the provided types (e.g. 'player', 'stash')
+    - O evento dispara apenas para inventários com um dos tipos fornecidos (ex.: 'player', 'stash')
 
   Retorno:
 
@@ -39,7 +39,7 @@ exports.ox_inventory:registerHook(eventName, function(payload) end, options)
 
 ### swapItems
 
-Triggered when moving any item from one slot to another, or when "giving" an item.  
+Disparado ao mover qualquer item de um slot para outro, ou ao "dar" um item.  
 By returning `false`, you can cancel the action and revert the inventory state.
 
 - Payload: `table`
@@ -83,7 +83,7 @@ end, {
   - inventoryId: `number` or `string`
   - inventoryType: `string`
 
-Triggered when a player tries to open a secondary inventory.  
+Disparado quando um jogador tenta abrir um inventário secundário.  
 By returning `false`, you can cancel the action and keep the player's inventory closed.
 
 <details>
@@ -119,7 +119,7 @@ end, {
   - coords?: `vector3`
   - distance?: `number` or `false`
 
-Triggered quando um jogador tenta abrir um inventário de loja.  
+Disparado quando um jogador tenta abrir um inventário de loja.  
 Ao retornar `false`, você pode cancelar a ação e manter o inventário da loja fechado.
 
 <details>
@@ -149,7 +149,7 @@ end, {
   - item: `table`
   - count: `number`
 
-Triggered when an item is created, either by buying it, using AddItem, or when converting inventory data.  
+Disparado quando um item é criado, seja ao comprá-lo, usando AddItem, ou ao converter dados de inventário.  
 By returning a table you can modify or replace the metadata given to an item.
 
 Eventos post-hook não são necessários para este evento, mas ainda são recomendados
@@ -190,7 +190,7 @@ end, {
   - totalPrice: `number`
   - currency?: `string`
 
-Triggered when an item is about to be purchased and can return `false` to prevent the transaction.
+Disparado quando um item está prestes a ser comprado e pode retornar `false` para impedir a transação.
 
 <details>
 <summary><b>Example</b></summary>
@@ -250,7 +250,7 @@ end, {
 
 ### usingItem
 
-Triggered quando um item está prestes a ser usado.
+Disparado quando um item está prestes a ser usado.
 Ao retornar `false`, você pode impedir completamente que ele seja usado.
 
 - Payload: `table`
