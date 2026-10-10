@@ -1,0 +1,72 @@
+---
+title: Ped
+upstream_path: content/docs/ox_lib/Ped.mdx
+upstream_sha: 328e36feb5b0486d6214971f53c6d2626193cc28
+---
+
+Uma classe para entidades de ped implementando uma interface customizada de statebag e operações comuns de entidade.
+
+## Construtor
+
+<Tabs groupId="language" items={['Lua', 'TypeScript']}>
+<Tab>
+```lua
+lib.ped:new(handle)
+```
+</Tab>
+<Tab>
+```ts
+import { Ped } from "@overextended/ox_lib";
+
+new Ped(handle)
+```
+</Tab>
+</Tabs>
+
+- handle: `number` O [script handle](https://docs.fivem.net/docs/scripting-manual/networking/ids/#entity-handle) da entidade.
+
+**Retorna:** `Ped`
+
+## Métodos
+<section id="pedmethods">
+
+### getArmour
+
+Obtém a blindagem atual da entidade.
+
+<Tabs groupId="language" items={['Lua', 'TypeScript']}>
+<Tab>
+```lua
+entity:getArmour()
+```
+</Tab>
+<Tab>
+```ts
+entity.getArmour()
+```
+</Tab>
+</Tabs>
+
+**Retorna:** `number`
+
+### setArmour
+
+Define a blindagem da entidade.
+
+<Tabs groupId="language" items={['Lua', 'TypeScript']}>
+<Tab>
+```lua
+entity:setArmour(amount)
+```
+</Tab>
+<Tab>
+```ts
+entity.setArmour(amount)
+```
+</Tab>
+</Tabs>
+
+- amount: `number`
+
+<include>GameEntity.mdx</include>
+</section>
