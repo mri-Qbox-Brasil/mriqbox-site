@@ -30,16 +30,16 @@ A table representing a keybind with the following properties.
 - secondaryMapper?: `string`
   - An optional mapper for the secondary key, otherwise using the default mapper.
 - allowInPauseMenu?: `boolean`
-  - Permite que a keybind faça trigger enquanto o menu de pausa/frontend estiver ativo.
+  - Permite que a keybind dispare enquanto o menu de pausa/frontend estiver ativo.
   - Padrão: `false`
 - disable: `function(self: CKeybind, disable: boolean)`
   - Built-in function to enable / disable a keybind
 - isControlPressed: `function(self: CKeybind)`
   - Built-in function to get the current pressed state for the keybind
 - onPressed?: `function(self: CKeybind)`
-  - User-defined function triggered on keybind press
+  - Função definida pelo usuário disparada ao pressionar a keybind
 - onReleased?: `function(self: CKeybind)`
-  - User-defined function triggered on keybind release
+  - Função definida pelo usuário disparada ao soltar a keybind
 
 ## lib.addKeybind
 
@@ -65,9 +65,9 @@ lib.addKeybind(data)
   - disabled?: `boolean`
     - Se a keybind deve começar desabilitada por padrão
   - onPressed?: `function(self: CKeybind)`
-    - Function triggered on keybind press
+    - Função disparada ao pressionar a keybind
   - onReleased?: `function(self: CKeybind)`
-    - Function triggered on keybind release
+    - Função disparada ao soltar a keybind
 
 ```lua
 local keybind = lib.addKeybind({
