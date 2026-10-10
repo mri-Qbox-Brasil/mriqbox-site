@@ -1,0 +1,396 @@
+---
+title: Shared
+upstream_path: content/docs/ox_lib/Selector/Shared.mdx
+upstream_sha: 328e36feb5b0486d6214971f53c6d2626193cc28
+---
+
+Uma classe utilitária de seleção aleatória ponderada que suporta múltiplos conjuntos nomeados de itens com seleção opcional de probabilidade baseada em peso.
+
+## Classe OxSelector
+
+A classe `OxSelector` fornece métodos para gerenciar e selecionar itens de um ou mais conjuntos, com suporte tanto para seleção aleatória uniforme quanto para seleção aleatória ponderada.
+
+### OxSelectorItem
+
+Cada item em um conjunto do selector é definido como uma tupla contendo um peso e um valor.
+
+- `[1]`: `number`
+  - O peso do item (deve ser 0 ou maior).
+- `[2]`: `any`
+  - O valor a retornar quando selecionado.
+
+## lib.selector
+
+Cria uma nova instância de OxSelector.
+
+```lua
+local selector = lib.selector:new(sets)
+```
+
+### Parâmetros
+
+- sets: `OxSelectorItem[]` ou `table<string, OxSelectorItem[]>`
+  - Um único array de itens (usa o conjunto padrão), ou uma tabela de conjuntos nomeados.
+
+### Retorna
+
+- `OxSelector`
+  - A nova instância de selector criada.
+
+### Exemplo
+
+```lua
+-- Single set (default)
+local selector = lib.selector:new({
+    { 10, 'common_item' },
+    { 5, 'uncommon_item' },
+    { 1, 'rare_item' },
+})
+
+-- Multiple named sets
+local selector = lib.selector:new({
+    weapons = {
+        { 50, 'WEAPON_PISTOL' },
+        { 30, 'WEAPON_SMG' },
+        { 10, 'WEAPON_RIFLE' },
+        { 5, 'WEAPON_RPG' },
+    },
+    vehicles = {
+        { 60, 'sultan' },
+        { 30, 'elegy2' },
+        { 10, 'zentorno' },
+    },
+})
+```
+
+## OxSelector:getRandom
+
+Obtém um item aleatório de um conjunto usando probabilidade uniforme (ignora pesos).
+
+```lua
+selector:getRandom(setName)
+```
+
+### Parâmetros
+
+- setName?: `string`
+  - O nome do conjunto de onde selecionar. Padrão `'default'` se não fornecido.
+
+### Retorna
+
+- `any` ou `nil`
+  - O valor do item selecionado, ou `nil` se o conjunto não existir.
+
+### Exemplo
+
+```lua
+local selector = lib.selector:new({
+    { 100, 'apple' },
+    { 1, 'banana' },
+})
+
+-- Each item has equal chance of being selected (50/50)
+local item = selector:getRandom()
+print(item) -- 'apple' or 'banana'
+```
+
+## OxSelector:getRandomWeighted
+
+Obtém um item aleatório de um conjunto usando probabilidade ponderada.
+
+```lua
+selector:getRandomWeighted(setName)
+```
+
+### Parâmetros
+
+- setName?: `string`
+  - O nome do conjunto de onde selecionar. Padrão `'default'` se não fornecido.
+
+### Retorna
+
+- `any` ou `nil`
+  - O valor do item selecionado, ou `nil` se o conjunto não existir ou o peso total for 0.
+
+### Exemplo
+
+```lua
+local selector = lib.selector:new({
+    { 100, 'apple' },  -- ~99% chance
+    { 1, 'banana' },   -- ~1% chance
+})
+
+-- Items are selected based on their weight
+local item = selector:getRandomWeighted()
+print(item) -- Most likely 'apple'
+```
+
+## OxSelector:getRandomAmount
+
+Obtém múltiplos itens aleatórios de um conjunto usando probabilidade uniforme.
+
+```lua
+selector:getRandomAmount(setName, count)
+```
+
+### Parâmetros
+
+- setName?: `string`
+  - O nome do conjunto de onde selecionar. Padrão `'default'` se não fornecido.
+- count: `number`
+  - A quantidade de itens a selecionar (deve ser um número positivo).
+
+### Retorna
+
+- `any[]`
+  - Um array com os valores dos itens selecionados.
+
+### Exemplo
+
+```lua
+local selector = lib.selector:new({
+    { 10, 'item_a' },
+    { 10, 'item_b' },
+    { 10, 'item_c' },
+})
+
+local items = selector:getRandomAmount(nil, 5)
+-- Returns 5 randomly selected items with equal probability
+```
+
+## OxSelector:getRandomWeightedAmount
+
+Obtém múltiplos itens aleatórios de um conjunto usando probabilidade ponderada.
+
+```lua
+selector:getRandomWeightedAmount(setName, count)
+```
+
+### Parâmetros
+
+- setName?: `string`
+  - O nome do conjunto de onde selecionar. Padrão `'default'` se não fornecido.
+- count: `number`
+  - A quantidade de itens a selecionar (deve ser um número positivo).
+
+### Retorna
+
+- `any[]`
+  - Um array com os valores dos itens selecionados.
+
+### Exemplo
+
+```lua
+local selector = lib.selector:new({
+    loot = {
+        { 70, 'common_loot' },
+        { 25, 'rare_loot' },
+        { 5, 'legendary_loot' },
+    },
+})
+
+local items = selector:getRandomWeightedAmount('loot', 3)
+-- Returns 3 items selected based on their weights
+```
+
+## OxSelector:getSet
+
+Obtém todos os itens de um conjunto específico.
+
+```lua
+selector:getSet(setName)
+```
+
+### Parâmetros
+
+- setName?: `string`
+  - O nome do conjunto a obter. Padrão `'default'` se não fornecido.
+
+### Retorna
+
+- `OxSelectorItem[]`
+  - Um clone profundo dos itens do conjunto.
+
+### Exemplo
+
+```lua
+local selector = lib.selector:new({
+    { 10, 'item_a' },
+    { 20, 'item_b' },
+})
+
+local items = selector:getSet()
+-- Returns: { { 10, 'item_a' }, { 20, 'item_b' } }
+```
+
+## OxSelector:getAllSets
+
+Obtém todos os conjuntos do selector.
+
+```lua
+selector:getAllSets()
+```
+
+### Retorna
+
+- `table<string, OxSelectorItem[]>`
+  - Um clone profundo de todos os conjuntos.
+
+### Exemplo
+
+```lua
+local selector = lib.selector:new({
+    weapons = {
+        { 50, 'WEAPON_PISTOL' },
+    },
+    vehicles = {
+        { 60, 'sultan' },
+    },
+})
+
+local allSets = selector:getAllSets()
+-- Returns: { weapons = { { 50, 'WEAPON_PISTOL' } }, vehicles = { { 60, 'sultan' } } }
+```
+
+## OxSelector:addSet
+
+Adiciona um novo conjunto ao selector.
+
+```lua
+selector:addSet(setName, items)
+```
+
+### Parâmetros
+
+- setName: `string`
+  - O nome do novo conjunto.
+- items: `OxSelectorItem[]`
+  - Um array de itens a adicionar (deve conter ao menos um item).
+
+### Exemplo
+
+```lua
+local selector = lib.selector:new({
+    { 10, 'existing_item' },
+})
+
+selector:addSet('newSet', {
+    { 50, 'new_item_a' },
+    { 30, 'new_item_b' },
+})
+```
+
+## OxSelector:updateSet
+
+Atualiza um conjunto existente com novos itens.
+
+```lua
+selector:updateSet(setName, newItems)
+```
+
+### Parâmetros
+
+- setName: `string`
+  - O nome do conjunto a atualizar.
+- newItems: `OxSelectorItem[]`
+  - Um array de itens para substituir o conjunto existente (deve conter ao menos um item).
+
+### Exemplo
+
+```lua
+local selector = lib.selector:new({
+    rewards = {
+        { 100, 'old_reward' },
+    },
+})
+
+selector:updateSet('rewards', {
+    { 50, 'new_reward_a' },
+    { 50, 'new_reward_b' },
+})
+```
+
+## OxSelector:removeSet
+
+Remove um conjunto do selector.
+
+```lua
+selector:removeSet(setName)
+```
+
+### Parâmetros
+
+- setName: `string`
+  - O nome do conjunto a remover.
+
+### Exemplo
+
+```lua
+local selector = lib.selector:new({
+    temporary = {
+        { 10, 'temp_item' },
+    },
+})
+
+selector:removeSet('temporary')
+```
+
+## Exemplo de uso
+
+Um exemplo completo demonstrando gerenciamento de tabela de loot para um sistema de jogo.
+
+```lua
+-- Create a loot selector with different rarity tiers
+local lootSelector = lib.selector:new({
+    common = {
+        { 40, { name = 'bread', count = 1 } },
+        { 30, { name = 'water', count = 1 } },
+        { 20, { name = 'bandage', count = 2 } },
+        { 10, { name = 'lockpick', count = 1 } },
+    },
+    rare = {
+        { 50, { name = 'medkit', count = 1 } },
+        { 30, { name = 'armor', count = 1 } },
+        { 15, { name = 'weapon_parts', count = 3 } },
+        { 5, { name = 'keycard', count = 1 } },
+    },
+    legendary = {
+        { 60, { name = 'WEAPON_CARBINERIFLE', ammo = 60 } },
+        { 30, { name = 'WEAPON_PUMPSHOTGUN', ammo = 24 } },
+        { 10, { name = 'WEAPON_SNIPERRIFLE', ammo = 10 } },
+    },
+})
+
+-- Simulate opening a loot crate
+local function openLootCrate(crateType)
+    local tierRoll = math.random(100)
+    local tier
+
+    if crateType == 'basic' then
+        tier = tierRoll <= 80 and 'common' or 'rare'
+    elseif crateType == 'military' then
+        if tierRoll <= 40 then
+            tier = 'common'
+        elseif tierRoll <= 85 then
+            tier = 'rare'
+        else
+            tier = 'legendary'
+        end
+    end
+
+    -- Get 1-3 items from the selected tier
+    local itemCount = math.random(1, 3)
+    local loot = lootSelector:getRandomWeightedAmount(tier, itemCount)
+
+    return loot
+end
+
+-- Example usage
+RegisterCommand('openloot', function()
+    local loot = openLootCrate('military')
+
+    for i = 1, #loot do
+        print(('Received: %s'):format(json.encode(loot[i])))
+    end
+end)
+```
