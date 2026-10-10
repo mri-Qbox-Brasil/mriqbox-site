@@ -1,24 +1,26 @@
 ---
 title: ESX
+upstream_path: content/docs/ox_inventory/Frameworks/esx.mdx
+upstream_sha: 328e36feb5b0486d6214971f53c6d2626193cc28
 ---
 
-- You will need a [compatible version of ESX Legacy](https://github.com/esx-framework/esx_core) (1.6.0 or higher).
-- You can convert player inventories with `convertinventory esx`.
-- All items in the database will be migrated to the internal item data.
-  - Always restart the resource when items are migrated!
+- Você vai precisar de uma [versão compatível do ESX Legacy](https://github.com/esx-framework/esx_core) (1.6.0 ou superior).
+- Você pode converter inventários de jogadores com `convertinventory esx`.
+- Todos os itens no banco de dados serão migrados para os dados internos de item.
+  - Sempre reinicie o resource quando os itens forem migrados!
 
-## Compatibility
+## Compatibilidade
 
-Ox Inventory is a complete replacement for existing item, inventory, and weapon systems; it is inherently incompatible with ESX and any resources that rely on default behaviour.
+Ox Inventory é um substituto completo para os sistemas existentes de item, inventário e armas; é inerentemente incompatível com ESX e quaisquer resources que dependam do comportamento padrão.
 
-- Loadouts do not exist and weapons are treated as items.
-- Standard shops and stashes (i.e. esx_shops, esx_weaponshop, and esx_policejob).
-- Resources that alter the default esx inventory or provide a ui (i.e. esx_trunkinventory, esx_inventoryhud).
+- Loadouts não existem e armas são tratadas como itens.
+- Lojas e stashes padrão (ex.: esx_shops, esx_weaponshop e esx_policejob).
+- Resources que alteram o inventário padrão do esx ou fornecem uma ui (ex.: esx_trunkinventory, esx_inventoryhud).
 
-## Installation
+## Instalação
 
-- Use a compatible version of [ESX Legacy](https://github.com/esx-framework/esx-legacy) (1.6.0+).
-- Modify your `server.cfg`, starting ox_inventory immediately after es_extended.
+- Use uma versão compatível do [ESX Legacy](https://github.com/esx-framework/esx-legacy) (1.6.0+).
+- Modifique seu `server.cfg`, iniciando ox_inventory imediatamente após es_extended.
 
 ```yaml
 start oxmysql
@@ -28,19 +30,19 @@ start qtarget
 start ox_inventory
 ```
 
-## Convert ESX inventory data
+## Converter dados de inventário ESX
 
-- Start the server and type `convertinventory esx` into the server console.
-- Optionally, type `convertinventory esxproperty` into the server console.
-- Restart the server once conversion is complete.
+- Inicie o servidor e digite `convertinventory esx` no console do servidor.
+- Opcionalmente, digite `convertinventory esxproperty` no console do servidor.
+- Reinicie o servidor quando a conversão estiver completa.
 
-## Optional Optimisation
+## Otimização opcional
 
-All item related functions from xPlayer, such as `xPlayer.getInventoryItem`, have been modified for compatibility purposes; however they are considered deprecated.
+Todas as funções relacionadas a itens do xPlayer, como `xPlayer.getInventoryItem`, foram modificadas para fins de compatibilidade; porém são consideradas depreciadas.
 
-The reasoning is fairly simple - there's now additional function references and overhead to consider. Fortunately, the new Inventory functions can be used directly and offer a great deal of improvements over the old ones.
+O raciocínio é bem simples - agora há referências adicionais de função e overhead a considerar. Felizmente, as novas funções de Inventário podem ser usadas diretamente e oferecem muitas melhorias sobre as antigas.
 
-You should read through the functions section for further information, but the following should give you a decent idea.
+Você deve ler a seção de funções para mais informações, mas o seguinte deve dar uma boa ideia.
 
 <Tabs items={["ESX", "Ox Inventory"]}>
   <Tabs.Tab>
@@ -53,13 +55,13 @@ You should read through the functions section for further information, but the f
     ```
   </Tabs.Tab>
   <Tabs.Tab>
-    Add the following code somewhere in your resource to cache the exports metatable.
+    Adicione o código a seguir em algum lugar do seu resource para armazenar em cache a metatable de exports.
 
     ```lua
     local ox_inventory = exports.ox_inventory
     ```
 
-    You will be able to reference any functions exposed through the export.
+    Você poderá referenciar quaisquer funções expostas através do export.
 
     ```lua
     local items = ox_inventory:Search(source, 'count', {'acetone', 'antifreeze', 'sudo'})
