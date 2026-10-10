@@ -1,0 +1,228 @@
+---
+title: Hooks
+upstream_path: content/docs/ox_lib/Hooks.mdx
+upstream_sha: 328e36feb5b0486d6214971f53c6d2626193cc28
+---
+
+Hooks permitem que resources adicionem lógica customizada a ações existentes sem modificar o código original. Eles funcionam executando um conjunto de callbacks (eventos de hook) através de um pipeline sempre que uma ação específica ocorre. Cada hook pode inspecionar os dados e rejeitar a ação se necessário.
+
+Após a conclusão do pipeline, um evento post-hook pode ser executado para lidar com o resultado final, como registro ou limpeza, sem afetar o resultado.
+
+Este recurso expande a ideia de hooks introduzida pelo [ox_inventory](../../ox_inventory/Functions/Server/Hooks).
+
+Veja nossos [hooks registrados internamente](https://github.com/overextended/ox_lib/blob/main/resource/state/server.lua) para exemplos.
+
+# HookPipeline
+
+Cria um pipeline de hook para um evento específico, que gerencia uma coleção de hooks registrados e controla o fluxo de execução através de filtragem, rejeição e disparo.
+
+<Tabs groupId="language" items={['Lua', 'TypeScript']}>
+<Tab>
+```lua
+lib.hook:new(event, filter)
+```
+</Tab>
+<Tab>
+```ts
+import { HookPipeline } from "@overextended/ox_lib/hooks";
+
+new HookPipeline(event, filter)
+```
+</Tab>
+</Tabs>
+
+- event: `string`
+- filter?: `function(hook, payload): boolean`
+  - Usado para filtrar hooks registrados com base em passarem ou não em uma função de predicado.
+
+**Retorna:** `HookPipeline`
+
+## Métodos
+
+### registerHook
+
+Um hook é um callback registrado executado durante um pipeline de hook. Ele pode inspecionar o payload, realizar validação e opcionalmente rejeitar a operação.
+
+<Tabs groupId="language" items={['Lua', 'TypeScript']}>
+<Tab>
+```lua
+pipeline:registerHook(handler, options)
+```
+</Tab>
+<Tab>
+```ts
+pipeline.registerHook(handler, options)
+```
+</Tab>
+</Tabs>
+
+- handler: `function(payload: unknown): boolean`
+- options?: `table`
+  - Metadados opcionais para anexar ao hook.
+
+### remove
+
+Remove hooks do pipeline.
+
+<Tabs groupId="language" items={['Lua', 'TypeScript']}>
+<Tab>
+```lua
+pipeline:remove(hookId)
+```
+</Tab>
+<Tab>
+```ts
+pipeline.remove(hookId)
+```
+</Tab>
+</Tabs>
+
+- hookId?: `string`
+  - Se definido, apenas o hook especificado é removido - caso contrário todos os hooks do resource que chama são removidos.
+
+### dispatch
+
+Executa cada hook registrado por ordem de registro, verificando o payload contra um filtro fornecido usando as opções do hook e executando o callback do hook.
+
+Um hook pode bloquear a execução retornando `false` a partir de um manipulador registrado.
+
+Se algum hook rejeitar a execução, o dispatch é cancelado e `result.ok` é definido como `false`.
+
+O objeto retornado atua como um manipulador de finalização e emite resultados para manipuladores registrados uma vez fechado.
+
+<Tabs groupId="language" items={['Lua', 'TypeScript']}>
+<Tab>
+```lua
+local hook <close> = pipeline:dispatch(payload)
+```
+</Tab>
+<Tab>
+```ts
+using hook = pipeline.dispatch(payload)
+```
+</Tab>
+</Tabs>
+
+- payload: `unknown`
+
+# EventHook
+
+Permite que resources chamem [`pipeline.registerHook`](#registerhook) usando exports.
+
+<Tabs groupId="language" items={['Lua', 'TypeScript']}>
+<Tab>
+```lua
+lib.registerHook(eventName, handler, options)
+```
+</Tab>
+<Tab>
+```ts
+import { registerHook } from "@overextended/ox_lib/hooks";
+
+registerHook(eventName, handler, options)
+```
+</Tab>
+</Tabs>
+
+- eventName: `string`
+- handler?: `function(payload: unknown): boolean`
+- options?: Metadados opcionais para anexar ao hook.
+
+## Métodos
+
+### on
+
+Anexa um manipulador de evento ao hook que é executado após todos os hooks terem sido disparados, permitindo lógica de acompanhamento para eventos bem-sucedidos ou rejeitados.
+
+<Tabs groupId="language" items={['Lua', 'TypeScript']}>
+<Tab>
+```lua
+hook:on(handler)
+```
+</Tab>
+<Tab>
+```ts
+hook.on(handler)
+```
+</Tab>
+</Tabs>
+
+- handler: `function(ok: boolean, payload: unknown)`
+
+### off
+
+Desanexa o manipulador de evento post-hook atualmente registrado, se existir.
+
+<Tabs groupId="language" items={['Lua', 'TypeScript']}>
+<Tab>
+```lua
+hook:off()
+```
+</Tab>
+<Tab>
+```ts
+hook.off()
+```
+</Tab>
+</Tabs>
+
+### remove
+
+Remove totalmente este hook tanto do sistema de eventos local quanto do pipeline de hook externo fornecido pelo resource de origem.
+
+<Tabs groupId="language" items={['Lua', 'TypeScript']}>
+<Tab>
+```lua
+hook:remove()
+```
+</Tab>
+<Tab>
+```ts
+hook.remove()
+```
+</Tab>
+</Tabs>
+
+# Hooks Registrados
+
+Estes pipelines de hook são registrados e gerenciados pelo ox_lib para outros resources interagirem.
+
+Veja [EventHook](Hooks#eventhook) para mais informações.
+
+## ox_lib:setPlayerState
+
+Ao usar `sv_stateBagStrictMode` jogadores não podem modificar arbitrariamente seus próprios estados, e mudanças serão rejeitadas por padrão.
+
+<Tabs groupId="language" items={['Lua', 'TypeScript']}>
+<Tab>
+```lua
+lib.registerHook('ox_lib:setPlayerState', predicate, { key: state })
+```
+</Tab>
+<Tab>
+```ts
+import { registerHook } from "@overextended/ox_lib/hooks";
+
+registerHook('ox_lib:setPlayerState', predicate, { key: state })
+```
+</Tab>
+</Tabs>
+
+## ox_lib:setEntityState
+
+Ao usar `sv_stateBagStrictMode` jogadores não podem modificar arbitrariamente estados de entidade, e mudanças serão rejeitadas por padrão.
+
+<Tabs groupId="language" items={['Lua', 'TypeScript']}>
+<Tab>
+```lua
+lib.registerHook('ox_lib:setEntityState', predicate, { key: state })
+```
+</Tab>
+<Tab>
+```ts
+import { registerHook } from "@overextended/ox_lib/hooks";
+
+registerHook('ox_lib:setEntityState', predicate, { key: state })
+```
+</Tab>
+</Tabs>
