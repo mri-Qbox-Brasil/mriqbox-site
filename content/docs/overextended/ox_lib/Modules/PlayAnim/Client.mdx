@@ -1,0 +1,45 @@
+---
+title: Client
+upstream_path: content/docs/ox_lib/PlayAnim/Client.mdx
+upstream_sha: 328e36feb5b0486d6214971f53c6d2626193cc28
+---
+
+## lib.playAnim
+
+Toca uma animação com os argumentos fornecidos. Esta função também carrega e descarrega automaticamente o dicionário de animação fornecido, então você não precisa gerenciar isso.
+Esta função pode substituir diretamente TaskPlayAnim.
+
+```lua
+lib.playAnim(ped, animDictionary, animationName, blendInSpeed, blendOutSpeed, duration, animFlags, startPhase, phaseControlled, controlFlags, overrideCloneUpdate)
+```
+
+- ped: `number`
+  - O ped que vai tocar a animação
+- animDictionary: `string`
+  - O dicionário de animação.
+- animationName: `string`
+  - O nome da animação dentro do dicionário.
+- blendInSpeed?: `number`
+  - A velocidade para mesclar a animação na entrada.
+  - Padrão: `8.0`
+- blendOutSpeed?: `number`
+  - A velocidade para mesclar a animação na saída.
+  - Padrão: `8.0`
+- duration?: `number`
+  - A quantidade de milissegundos que as animações vão durar. -1 para tocar até ser cancelada.
+  - Padrão: `-1`
+- animFlags?: `AnimationFlags`
+  - As flags de animação. Você pode encontrá-las [aqui](https://github.com/overextended/ox_lib/blob/master/imports/playAnim/client.lua#L1-L33)
+  - Padrão: `0`
+- startPhase?: `number`
+  - Em qual porcentagem da animação ela deve começar. (Número entre 0.0 e 1.0)
+  - Padrão: `0.0`
+- phaseControlled?: `boolean`
+  - Se o startPhase é usado.
+  - Padrão: `false`
+- controlFlags?: `ControlFlags`
+  - Flags para manipular como o personagem é controlado pela animação. Você pode encontrá-las [aqui](https://github.com/overextended/ox_lib/blob/master/imports/playAnim/client.lua#L35-L50)
+  - Padrão: `0`
+- overrideCloneUpdate?: `boolean`
+  - Quando true, outros clientes não conseguem ver a animação tocando no ped, mesmo que o ped não seja o do próprio cliente.
+  - Padrão: `false`
