@@ -1,12 +1,14 @@
 ---
 title: Client
+upstream_path: content/docs/ox_lib/DisableControls/Client.mdx
+upstream_sha: 328e36feb5b0486d6214971f53c6d2626193cc28
 ---
 
-A centralized way to track and disable [game controls](https://docs.fivem.net/docs/game-references/controls/#controls).
+Uma forma centralizada de rastrear e desabilitar [controles do jogo](https://docs.fivem.net/docs/game-references/controls/#controls).
 
 ## lib.disableControls
 
-Call on frame to disable all stored controls.
+Chame a cada frame para desabilitar todos os controles armazenados.
 
 ```lua
 lib.disableControls()
@@ -14,35 +16,35 @@ lib.disableControls()
 
 ## lib.disableControls:Add
 
-Adds the specified control(s) to the stored list.
-If the control is already being tracked, the stored counter will be incremented.
+Adiciona o(s) controle(s) especificado(s) à lista armazenada.  
+Se o controle já estiver sendo rastreado, o contador armazenado será incrementado.
 
 ```lua
 lib.disableControls:Add(...)
 ```
 
 - vararg: `number` ou `number[]`
-  - Control(s) to add a stored count of
+  - Controle(s) para adicionar uma contagem armazenada
 
 ## lib.disableControls:Remove
 
-Removes the specified control(s) from the stored list.
-If the stored counter for a given control is greater than one, the stored counter will be decremented.
+Remove o(s) controle(s) especificado(s) da lista armazenada.  
+Se o contador armazenado para um determinado controle for maior que um, o contador armazenado será decrementado.
 
 ```lua
 lib.disableControls:Remove(...)
 ```
 
 - vararg: `number` ou `number[]`
-  - Control(s) to remove a stored count of
+  - Controle(s) para remover uma contagem armazenada
 
 ## lib.disableControls:Clear
 
-Clears the stored counter(s) for the specified control(s).
+Limpa o(s) contador(es) armazenado(s) para o(s) controle(s) especificado(s).
 
 ```lua
 lib.disableControls:Clear(...)
 ```
 
 - vararg: `number` ou `number[]`
-  - Control(s) to clear out from being tracked
+  - Controle(s) para limpar do rastreamento
