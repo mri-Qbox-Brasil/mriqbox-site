@@ -83,8 +83,19 @@ A música do celular pode sair numa caixa de som ou no som do carro, e quem est�
 - **Na mão:** use o item `speaker` e a caixa vai para a mão, tocando o que o seu celular toca, sem parear. Quem está perto ouve enquanto você anda. **X** guarda; entrar num veículo também guarda.
 - **No chão:** com a caixa na mão, **G** coloca no chão. Ela fica conectada ao seu celular pelo Bluetooth (aparece em Ajustes > Bluetooth e na central), fica salva e volta depois de um reinício. Ao se afastar, o celular desconecta, pausa a música e avisa; ao voltar para perto, reconecta, avisa e continua a música de onde parou. Desconectou na mão: ela só reconecta depois que você se afastar e voltar. Mire na sua caixa com o target e escolha "Pegar caixa de som" para ela voltar à mão, com a música tocando. Caixa que fica muitos dias sem o dono por perto some do mapa e volta para o inventário dele (veja `speakerExpireDays`).
 - **Outras pessoas:** quem quiser tocar na caixa dos outros mira nela com o target e escolhe "Conectar à caixa", ou pareia em **Ajustes > Bluetooth** do celular ("Caixa de som de Fulano"). Pareada, o celular conecta sozinho perto dela. Conectado, o Soundfy mostra "Tocando em Caixa de som de Fulano", o volume passa a ser o da caixa e o target mostra "Volume da caixa" e "Desconectar da caixa". Ao sair do alcance, a música pausa e o celular avisa; ao voltar, continua de onde parou. A caixa toca de um celular por vez.
-- **Carro:** ao assumir o volante, o carro aparece no Bluetooth ("Som do carro ABC1234"). Pareado pela placa, ele reconecta sempre que você entrar nele. Dentro do carro o som é cheio; fora, abafado.
+- **Carro:** ao assumir o volante, o carro aparece no Bluetooth ("Som do carro ABC1234"). Pareado pela placa, ele reconecta sempre que você entrar nele. Dentro do carro o som é cheio; fora, abafado (menos com vidro aberto, porta aberta ou capota baixada).
 - Uma caixa toca um celular por vez. Ao perder a conexão, a música pausa.
+
+**Som 3D.** Caixas e carros soam de onde estão:
+
+- o volume cai com a distância e o agudo some aos poucos, como no ar;
+- a música vem do lado em que a caixa está em relação à câmera, e fica mais fechada quando está atrás;
+- parede ou objeto no caminho abafa: o grave passa, o agudo não;
+- dentro de um carro fechado, o som de fora chega abafado; com vidro ou porta aberta, quase limpo;
+- dentro de um interior (casa, boate, túnel), a caixa ganha eco de sala;
+- debaixo d'água o som do mundo fica abafado, e o menu de pausa abaixa tudo, inclusive a música do celular.
+
+Lado, agudo e eco só valem para arquivos de um site que libera CORS (o cabeçalho `Access-Control-Allow-Origin`); sem isso, o navegador do jogo não deixa mexer no som. Faixas do YouTube e de sites sem CORS ganham só o volume (distância, parede, carro e menu de pausa) e tocam normalmente. A música do próprio celular, sem caixa, toca como num fone, sem 3D.
 
 ---
 
@@ -92,7 +103,7 @@ A música do celular pode sair numa caixa de som ou no som do carro, e quem est�
 
 **Licença.** A licença de criador da Rockstar (PLA) proíbe usar música de terceiros no servidor, seja arquivo ou link do YouTube. Aprove só música própria dos jogadores ou com licença livre (Creative Commons). A responsabilidade é do dono do servidor.
 
-**Hospedagem.** As faixas são links. Use um host do próprio servidor (Fivemanage, uma CDN sua) e libere o site no painel. Links de terceiros que não foram feitos para isso (Wikimedia, Discord) costumam bloquear depois de algumas reproduções ou expirar.
+**Hospedagem.** As faixas são links. Use um host do próprio servidor (Fivemanage, uma CDN sua) e libere o site no painel. Links de terceiros que não foram feitos para isso (Wikimedia, Discord) costumam bloquear depois de algumas reproduções ou expirar. Para o som 3D completo nas caixas, o host precisa mandar `Access-Control-Allow-Origin: *` (a maioria das CDNs e buckets permite ligar).
 
 **YouTube.** Faixas do YouTube tocam num player escondido. Com "Aceitar YouTube" ligado no painel, artistas enviam links do YouTube e qualquer jogador busca no YouTube pelo app: o vídeo escolhido vira faixa do catálogo (artista com o nome do canal), para poder curtir, pôr em playlist e tocar nas caixas. A busca é feita pelo servidor, sem chave de API, com cache. A administração sempre pode criar faixas do YouTube. Vídeos com incorporação desativada não tocam (o teste de link avisa).
 
