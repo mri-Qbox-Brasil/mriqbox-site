@@ -2,8 +2,11 @@
 
 import Link from "next/link"
 import Script from "next/script"
+import { usePathname } from "next/navigation"
 import { useCallback, useSyncExternalStore } from "react"
 import { Button } from "@/components/ui/button"
+import { siteDictionary } from "@/components/site/dictionary"
+import { ROUTES, localeFromPath } from "@/lib/i18n"
 
 const STORAGE_KEY = "mriqbox-consent"
 const ADSENSE_CLIENT = "ca-pub-8817321986799686"
@@ -11,7 +14,7 @@ const EVENT = "mriqbox-consent-change"
 
 type Consent = "accepted" | "rejected" | null
 
-// Le o consentimento via useSyncExternalStore — padrao React pra estado
+// Le o consentimento via useSyncExternalStore: padrao React pra estado
 // externo (localStorage), evita setState em effect e lida com SSR via
 // getServerSnapshot. Mudancas no mesmo tab disparam um Event custom (o
 // evento nativo `storage` so dispara entre tabs).
@@ -53,7 +56,7 @@ function getEmbeddedServerSnapshot(): boolean {
 //
 // Estrategia: o script do AdSense (adsbygoogle.js) carrega SEMPRE, em
 // qualquer pagina, antes do user clicar no banner. Isso e necessario pra
-// passar a revisao do AdSense — o bot revisor nao clica em banner e
+// passar a revisao do AdSense, o bot revisor nao clica em banner e
 // precisa ver o script rodando pra verificar a propriedade do site.
 //
 // O banner LGPD ainda aparece e registra a escolha do user em localStorage.
@@ -63,6 +66,8 @@ function getEmbeddedServerSnapshot(): boolean {
 export function CookieConsent() {
   const consent = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot)
   const embedded = useSyncExternalStore(subscribeNoop, getEmbeddedSnapshot, getEmbeddedServerSnapshot)
+  const locale = localeFromPath(usePathname() ?? "/")
+  const t = siteDictionary[locale].cookies
 
   const choose = useCallback((value: Exclude<Consent, null>) => {
     localStorage.setItem(STORAGE_KEY, value)
@@ -85,18 +90,18 @@ export function CookieConsent() {
         <div className="fixed bottom-0 inset-x-0 z-50 border-t border-border bg-card/95 backdrop-blur-sm">
           <div className="container mx-auto px-4 py-4 flex flex-col sm:flex-row items-center justify-between gap-4">
             <p className="text-sm text-muted-foreground text-center sm:text-left">
-              Usamos cookies para anúncios e métricas. Veja a{" "}
-              <Link href="/privacidade" className="text-primary hover:underline">
-                política de privacidade
+              {t.text}
+              <Link href={ROUTES.privacy[locale]} className="text-primary hover:underline">
+                {t.link}
               </Link>
               .
             </p>
             <div className="flex items-center gap-2 shrink-0">
               <Button variant="ghost" size="sm" onClick={() => choose("rejected")}>
-                Recusar
+                {t.reject}
               </Button>
               <Button size="sm" onClick={() => choose("accepted")}>
-                OK
+                {t.accept}
               </Button>
             </div>
           </div>

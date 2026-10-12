@@ -6,30 +6,8 @@ import { Github } from "@/components/icons/github"
 import { BrazilFlag, MercadoPagoIcon, PatreonIcon, PixIcon, UsaFlag } from "@/components/icons/brands"
 import { SupportersWall } from "@/components/supporters-wall"
 import { breadcrumb, jsonLd } from "@/lib/schema"
-import type { Locale } from "@/lib/i18n"
-import { PATREON_URL, PLAN_URLS, SUPPORT_PATHS, supportDictionary, type SupportDictionary } from "./dictionary"
-
-const LOCALE_LABELS: Record<Locale, string> = { "pt-BR": "PT", en: "EN" }
-
-function LanguageSwitch({ current }: { current: Locale }) {
-  return (
-    <div className="flex items-center rounded-full border border-white/10 p-0.5 text-xs font-bold">
-      {(Object.keys(SUPPORT_PATHS) as Locale[]).map((locale) => (
-        <Link
-          key={locale}
-          href={SUPPORT_PATHS[locale]}
-          hrefLang={locale}
-          aria-current={locale === current ? "page" : undefined}
-          className={`rounded-full px-3 py-1 transition-colors ${
-            locale === current ? "bg-primary text-primary-foreground" : "text-muted-foreground hover:text-white"
-          }`}
-        >
-          {LOCALE_LABELS[locale]}
-        </Link>
-      ))}
-    </div>
-  )
-}
+import { ROUTES, type Locale } from "@/lib/i18n"
+import { PATREON_URL, PLAN_URLS, supportDictionary, type SupportDictionary } from "./dictionary"
 
 function Benefits({ items }: { items: string[] }) {
   return (
@@ -134,25 +112,24 @@ function PatreonOption({ t, primary }: { t: SupportDictionary; primary: boolean 
 
 export function SupportPage({ locale }: { locale: Locale }) {
   const t = supportDictionary[locale]
-  // Visitors reading in English are abroad, so Patreon (USD) leads there; BRL leads in Portuguese.
-  const patreonFirst = locale === "en"
+  // Pix and BRL only work from Brazil, so Patreon (USD) leads in every other locale.
+  const patreonFirst = locale !== "pt-BR"
   const breadcrumbLd = breadcrumb([
-    { name: t.home, path: "/" },
-    { name: t.eyebrow, path: SUPPORT_PATHS[locale] },
+    { name: t.home, path: ROUTES.home[locale] },
+    { name: t.eyebrow, path: ROUTES.support[locale] },
   ])
 
   return (
-    <div lang={locale} className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(breadcrumbLd) }} />
       <div className="container mx-auto px-4 py-12 max-w-5xl">
-        <div className="flex items-center justify-between mb-8">
+        <div className="mb-8">
           <Button variant="ghost" size="sm" asChild>
-            <Link href="/">
+            <Link href={ROUTES.home[locale]}>
               <ArrowLeft className="w-4 h-4 mr-2" />
               {t.back}
             </Link>
           </Button>
-          <LanguageSwitch current={locale} />
         </div>
 
         <div className="max-w-3xl">

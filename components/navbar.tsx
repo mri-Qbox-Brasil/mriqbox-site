@@ -5,18 +5,22 @@ import Image from "next/image"
 import { useState } from "react"
 import { Menu, X } from "lucide-react"
 import { Github } from "@/components/icons/github"
+import { LanguageSwitcher } from "@/components/site/language-switcher"
+import { siteDictionary } from "@/components/site/dictionary"
+import { ROUTES, type Locale } from "@/lib/i18n"
 
-// Links secundarios (Manifesto, Sobre, Comparativo, Glossario...) ficam so no
-// footer, pra manter o nav enxuto.
-const NAV_LINKS = [
-  { href: "/docs", label: "Documentação" },
-  { href: "/comecar", label: "Artifacts DB" },
-  { href: "https://tela.mriqbox.com.br", label: "Compartilhar Tela", external: true },
-  { href: "https://bot.mriqbox.com.br", label: "MRI BOT", external: true, badge: "Novo" },
-  { href: "/apoie", label: "Nos apoie" },
-]
+// Secondary links (manifesto, about, comparison, glossary...) live only in the footer to keep the nav short.
+function navLinks(locale: Locale) {
+  const t = siteDictionary[locale].nav
+  return [
+    { href: "/docs", label: t.docs },
+    { href: ROUTES.artifacts[locale], label: t.artifacts },
+    { href: "https://tela.mriqbox.com.br", label: t.screenShare, external: true },
+    { href: "https://bot.mriqbox.com.br", label: t.mriBot, external: true, badge: t.newBadge },
+    { href: ROUTES.support[locale], label: t.support },
+  ]
+}
 
-// Links externos abrem em nova aba.
 const linkTarget = (l: { external?: boolean }) =>
   l.external ? { target: "_blank", rel: "noopener noreferrer" } : {}
 
@@ -30,57 +34,55 @@ function NavBadge({ label }: { label: string }) {
   )
 }
 
-export function Navbar() {
+export function Navbar({ locale }: { locale: Locale }) {
   const [isOpen, setIsOpen] = useState(false)
+  const t = siteDictionary[locale].nav
+  const links = navLinks(locale)
 
   return (
     <>
-      {/* Navbar (Nexatlas style - Pill) */}
-      <nav className="fixed top-6 left-1/2 -translate-x-1/2 w-[90%] max-w-[1100px] z-50 h-[64px] px-6 flex items-center justify-between bg-card/60 backdrop-blur-xl border border-white/5 rounded-full transition-all">
-        <Link href="/" className="flex items-center gap-2">
+      <nav className="fixed top-6 left-1/2 -translate-x-1/2 w-[90%] max-w-[1200px] z-50 h-[64px] px-6 flex items-center justify-between bg-card/60 backdrop-blur-xl border border-white/5 rounded-full transition-all">
+        <Link href={ROUTES.home[locale]} className="flex items-center gap-2">
           <Image src="https://assets.mriqbox.com.br/branding/logo96.png" alt="MRI Qbox Brasil Logo" width={24} height={24} className="object-contain" />
-          <span className="font-semibold text-sm tracking-widest uppercase text-white sm:inline-block">MRI Qbox</span>
+          <span className="whitespace-nowrap font-semibold text-sm tracking-widest uppercase text-white">MRI Qbox</span>
         </Link>
 
-        {/* Desktop Links */}
-        <div className="hidden lg:flex items-center gap-6">
-          {NAV_LINKS.map((l) => (
-            <Link key={l.href} href={l.href} {...linkTarget(l)} className="text-xs font-bold uppercase tracking-wider text-white hover:text-primary transition-colors inline-flex items-center gap-1.5">{l.label}{l.badge && <NavBadge label={l.badge} />}</Link>
+        <div className="hidden xl:flex items-center gap-4 xl:gap-6">
+          {links.map((l) => (
+            <Link key={l.href} href={l.href} {...linkTarget(l)} className="whitespace-nowrap text-xs font-bold uppercase tracking-wider text-white hover:text-primary transition-colors inline-flex items-center gap-1.5">{l.label}{l.badge && <NavBadge label={l.badge} />}</Link>
           ))}
         </div>
 
-        <div className="flex items-center gap-3">
-          <Link href={GITHUB_URL} target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="hidden lg:flex p-2 rounded-full text-white hover:text-primary hover:bg-white/10 transition-colors">
+        <div className="flex items-center gap-2">
+          <LanguageSwitcher current={locale} label={t.language} />
+          <Link href={GITHUB_URL} target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="hidden xl:flex p-2 rounded-full text-white hover:text-primary hover:bg-white/10 transition-colors">
             <Github className="w-5 h-5" />
           </Link>
 
-          {/* Desktop Discord Button */}
-          <Link href="/discord" className="hidden lg:flex text-[10px] sm:text-xs font-bold uppercase tracking-wider text-primary-foreground px-4 sm:px-6 py-2 sm:py-2.5 bg-primary hover:bg-primary/90 rounded-full transition-all items-center gap-2 hover:scale-105">
-            Acesse o Discord
+          <Link href={ROUTES.discord[locale]} className="hidden xl:flex whitespace-nowrap text-xs font-bold uppercase tracking-wider text-primary-foreground px-5 py-2 sm:py-2.5 bg-primary hover:bg-primary/90 rounded-full transition-all items-center gap-2 hover:scale-105">
+            {t.discord}
           </Link>
-          
-          {/* Mobile Hamburger Menu */}
-          <button 
-            className="lg:hidden flex items-center justify-center p-2 rounded-full hover:bg-white/10 text-white transition-colors"
+
+          <button
+            className="xl:hidden flex items-center justify-center p-2 rounded-full hover:bg-white/10 text-white transition-colors"
             onClick={() => setIsOpen(!isOpen)}
-            aria-label="Toggle Menu"
+            aria-label={t.menu}
           >
             {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
         </div>
       </nav>
 
-      {/* Mobile Menu Dropdown */}
       {isOpen && (
-        <div className="fixed top-[90px] left-1/2 -translate-x-1/2 w-[90%] max-w-[1100px] z-40 bg-card/95 backdrop-blur-xl border border-white/10 rounded-2xl p-6 flex flex-col gap-4 shadow-2xl lg:hidden animate-in slide-in-from-top-4 fade-in">
-          {NAV_LINKS.map((l) => (
+        <div className="fixed top-[90px] left-1/2 -translate-x-1/2 w-[90%] max-w-[1200px] z-40 bg-card/95 backdrop-blur-xl border border-white/10 rounded-2xl p-6 flex flex-col gap-4 shadow-2xl xl:hidden animate-in slide-in-from-top-4 fade-in">
+          {links.map((l) => (
             <Link key={l.href} href={l.href} {...linkTarget(l)} onClick={() => setIsOpen(false)} className="text-sm font-bold uppercase tracking-wider text-white hover:text-primary transition-colors py-2 border-b border-white/5 flex items-center gap-2">{l.label}{l.badge && <NavBadge label={l.badge} />}</Link>
           ))}
           <Link href={GITHUB_URL} onClick={() => setIsOpen(false)} target="_blank" rel="noopener noreferrer" className="text-sm font-bold uppercase tracking-wider text-white hover:text-primary transition-colors py-2 border-b border-white/5 flex items-center gap-2">
             <Github className="w-4 h-4" /> GitHub
           </Link>
-          <Link href="/discord" onClick={() => setIsOpen(false)} className="text-sm font-bold uppercase tracking-wider text-primary-foreground px-6 py-3 bg-primary hover:bg-primary/90 rounded-xl transition-all flex items-center justify-center gap-2 mt-2 text-center">
-            Acesse o Discord
+          <Link href={ROUTES.discord[locale]} onClick={() => setIsOpen(false)} className="text-sm font-bold uppercase tracking-wider text-primary-foreground px-6 py-3 bg-primary hover:bg-primary/90 rounded-xl transition-all flex items-center justify-center gap-2 mt-2 text-center">
+            {t.discord}
           </Link>
         </div>
       )}
