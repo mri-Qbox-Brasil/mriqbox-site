@@ -2,8 +2,11 @@ import Image from "next/image"
 import Link from "next/link"
 import { ArrowUpRight } from "lucide-react"
 import { joinUrl, type MriServer } from "@/lib/mri-servers"
+import type { Locale } from "@/lib/i18n"
+import { serversDictionary } from "@/components/servers/dictionary"
 
-export function ServerCard({ server }: { server: MriServer }) {
+export function ServerCard({ server, locale }: { server: MriServer; locale: Locale }) {
+  const t = serversDictionary[locale].card
   const online = server.players > 0
 
   return (
@@ -31,11 +34,11 @@ export function ServerCard({ server }: { server: MriServer }) {
             <span className={`h-1.5 w-1.5 rounded-full ${online ? "bg-primary" : "bg-white/20"}`} />
             {online ? (
               <span>
-                <strong className="text-white">{server.players}</strong>
-                {server.maxPlayers ? ` / ${server.maxPlayers}` : ""} jogadores
+                <strong className="text-white">{server.players.toLocaleString(locale)}</strong>
+                {server.maxPlayers ? ` / ${server.maxPlayers.toLocaleString(locale)}` : ""} {t.players}
               </span>
             ) : (
-              <span>sem jogadores agora</span>
+              <span>{t.noPlayers}</span>
             )}
           </div>
         </div>
@@ -47,7 +50,7 @@ export function ServerCard({ server }: { server: MriServer }) {
         rel="noopener noreferrer"
         className="mt-auto inline-flex items-center justify-center gap-1.5 rounded-lg border border-white/10 bg-white/5 py-2 text-xs font-bold text-white transition-colors hover:border-primary/50 hover:text-primary"
       >
-        Entrar no servidor
+        {t.join}
         <ArrowUpRight className="h-3.5 w-3.5" />
       </Link>
     </div>

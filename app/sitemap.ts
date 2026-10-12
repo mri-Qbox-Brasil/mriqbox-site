@@ -1,31 +1,42 @@
 import type { MetadataRoute } from "next"
 import { source } from "@/lib/source"
+import { ROUTES, locales, type RouteId } from "@/lib/i18n"
 
 const SITE_URL = "https://mriqbox.com.br"
 
-// Necessario pro `output: export` (build do GitHub Pages); inocuo na Vercel.
+// Required by `output: export` (GitHub Pages build); harmless on Vercel.
 export const dynamic = "force-static"
 
+const PAGES: Record<RouteId, { priority: number; changeFrequency: "monthly" | "weekly" }> = {
+  home: { priority: 1, changeFrequency: "weekly" },
+  whyMri: { priority: 0.95, changeFrequency: "monthly" },
+  artifacts: { priority: 0.9, changeFrequency: "monthly" },
+  comparison: { priority: 0.8, changeFrequency: "monthly" },
+  glossary: { priority: 0.7, changeFrequency: "monthly" },
+  servers: { priority: 0.7, changeFrequency: "weekly" },
+  about: { priority: 0.6, changeFrequency: "monthly" },
+  discord: { priority: 0.6, changeFrequency: "monthly" },
+  support: { priority: 0.6, changeFrequency: "monthly" },
+  privacy: { priority: 0.3, changeFrequency: "monthly" },
+  terms: { priority: 0.3, changeFrequency: "monthly" },
+}
+
+const url = (path: string) => `${SITE_URL}${path === "/" ? "" : path}`
+
 export default function sitemap(): MetadataRoute.Sitemap {
-  const routes: { path: string; priority: number; changeFrequency: "monthly" | "weekly" }[] = [
-    { path: "/", priority: 1, changeFrequency: "weekly" },
-    { path: "/por-que-mri", priority: 0.95, changeFrequency: "monthly" },
-    { path: "/comecar", priority: 0.9, changeFrequency: "monthly" },
-    { path: "/comparativo", priority: 0.8, changeFrequency: "monthly" },
-    { path: "/glossario", priority: 0.7, changeFrequency: "monthly" },
-    { path: "/sobre", priority: 0.6, changeFrequency: "monthly" },
-    { path: "/discord", priority: 0.6, changeFrequency: "monthly" },
-    { path: "/apoie", priority: 0.6, changeFrequency: "monthly" },
-    { path: "/en/support", priority: 0.5, changeFrequency: "monthly" },
-    { path: "/servidores", priority: 0.7, changeFrequency: "weekly" },
-    { path: "/privacidade", priority: 0.3, changeFrequency: "monthly" },
-    { path: "/termos", priority: 0.3, changeFrequency: "monthly" },
-  ]
-  const sitePages: MetadataRoute.Sitemap = routes.map((r) => ({
-    url: `${SITE_URL}${r.path === "/" ? "" : r.path}`,
-    changeFrequency: r.changeFrequency,
-    priority: r.priority,
-  }))
+  const sitePages: MetadataRoute.Sitemap = (Object.keys(PAGES) as RouteId[]).flatMap((id) => {
+    const languages = {
+      ...Object.fromEntries(locales.map((l) => [l, url(ROUTES[id][l])])),
+      "x-default": url(ROUTES[id]["pt-BR"]),
+    }
+    return locales.map((locale) => ({
+      url: url(ROUTES[id][locale]),
+      changeFrequency: PAGES[id].changeFrequency,
+      // Translations rank a notch below the Brazilian original.
+      priority: locale === "pt-BR" ? PAGES[id].priority : Math.round(PAGES[id].priority * 80) / 100,
+      alternates: { languages },
+    }))
+  })
 
   const docsPages: MetadataRoute.Sitemap = source.getPages().map((page) => ({
     url: `${SITE_URL}${page.url}`,

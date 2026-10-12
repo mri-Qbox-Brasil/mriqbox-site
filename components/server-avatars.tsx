@@ -2,9 +2,11 @@ import type { ReactNode } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { mriServers, totalServers } from "@/lib/mri-servers"
+import { ROUTES, type Locale } from "@/lib/i18n"
+import { serversDictionary } from "@/components/servers/dictionary"
 
 const AVATARS = 12
-const AVATARS_MOBILE = 8 // no celular cabe uma linha só
+const AVATARS_MOBILE = 8 // a single row fits on phones
 
 function Badge({ className, children }: { className: string; children: ReactNode }) {
   return (
@@ -16,9 +18,8 @@ function Badge({ className, children }: { className: string; children: ReactNode
   )
 }
 
-// Logos agrupados dos servidores com mais jogadores (só os que têm logo), com
-// "+N" pro resto. Fica dentro do card do gráfico da home e leva pra /servidores.
-export function ServerAvatars() {
+// Logos of the busiest servers that have one, plus "+N" for the rest; links to the servers page.
+export function ServerAvatars({ locale = "pt-BR" }: { locale?: Locale }) {
   const withLogo = mriServers.filter((s) => s.logo).slice(0, AVATARS)
   if (!withLogo.length) return null
   const rest = totalServers - withLogo.length
@@ -26,8 +27,8 @@ export function ServerAvatars() {
 
   return (
     <Link
-      href="/servidores"
-      aria-label={`Ver os ${totalServers} servidores que usam MRI`}
+      href={ROUTES.servers[locale]}
+      aria-label={serversDictionary[locale].avatarsLabel.replace("{count}", totalServers.toLocaleString(locale))}
       className="group flex flex-wrap items-center -space-x-2"
     >
       {withLogo.map((s, i) => (
@@ -44,8 +45,8 @@ export function ServerAvatars() {
           }`}
         />
       ))}
-      {restMobile > 0 && <Badge className="flex sm:hidden">+{restMobile}</Badge>}
-      {rest > 0 && <Badge className="hidden sm:flex">+{rest}</Badge>}
+      {restMobile > 0 && <Badge className="flex sm:hidden">+{restMobile.toLocaleString(locale)}</Badge>}
+      {rest > 0 && <Badge className="hidden sm:flex">+{rest.toLocaleString(locale)}</Badge>}
     </Link>
   )
 }

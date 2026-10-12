@@ -1,0 +1,146 @@
+import type { Locale } from "@/lib/i18n"
+
+const ptBR = {
+  nav: {
+    docs: "Documentação",
+    artifacts: "Artifacts DB",
+    screenShare: "Compartilhar Tela",
+    mriBot: "MRI BOT",
+    support: "Nos apoie",
+    newBadge: "Novo",
+    discord: "Acesse o Discord",
+    menu: "Abrir menu",
+    language: "Idioma",
+  },
+  footer: {
+    tagline: "Uma base FiveM open source para criar sem limites. Feita no Brasil para cidades que querem ir além.",
+    project: "Projeto",
+    about: "Sobre nós",
+    servers: "Servidores",
+    content: "Conteúdo",
+    manifesto: "Manifesto",
+    comparison: "Comparativo",
+    glossary: "Glossário",
+    community: "Comunidade",
+    legal: "Legal",
+    privacy: "Privacidade",
+    terms: "Termos de Uso",
+    license: "Licença GPL-3.0.",
+  },
+  // Shown to visitors whose browser prefers this locale while they read another one.
+  suggest: {
+    text: "Este site também está em português.",
+    action: "Ver em português",
+    dismiss: "Fechar",
+  },
+  cookies: { text: "Usamos cookies para anúncios e métricas. Veja a ", link: "política de privacidade", reject: "Recusar", accept: "OK" },
+}
+
+export type SiteDictionary = typeof ptBR
+
+const ptPT: SiteDictionary = {
+  nav: {
+    docs: "Documentação",
+    artifacts: "Artifacts DB",
+    screenShare: "Partilhar Ecrã",
+    mriBot: "MRI BOT",
+    support: "Apoie-nos",
+    newBadge: "Novo",
+    discord: "Aceda ao Discord",
+    menu: "Abrir menu",
+    language: "Idioma",
+  },
+  footer: {
+    tagline: "Uma base FiveM open source para criar sem limites. Feita no Brasil para cidades que querem ir mais longe.",
+    project: "Projeto",
+    about: "Sobre nós",
+    servers: "Servidores",
+    content: "Conteúdo",
+    manifesto: "Manifesto",
+    comparison: "Comparativo",
+    glossary: "Glossário",
+    community: "Comunidade",
+    legal: "Legal",
+    privacy: "Privacidade",
+    terms: "Termos de Utilização",
+    license: "Licença GPL-3.0.",
+  },
+  suggest: {
+    text: "Este site também está disponível em português de Portugal.",
+    action: "Ver em português de Portugal",
+    dismiss: "Fechar",
+  },
+  cookies: { text: "Utilizamos cookies para anúncios e métricas. Consulte a ", link: "política de privacidade", reject: "Recusar", accept: "OK" },
+}
+
+const es: SiteDictionary = {
+  nav: {
+    docs: "Documentación",
+    artifacts: "Artifacts DB",
+    screenShare: "Compartir pantalla",
+    mriBot: "MRI BOT",
+    support: "Apóyanos",
+    newBadge: "Nuevo",
+    discord: "Únete al Discord",
+    menu: "Abrir menú",
+    language: "Idioma",
+  },
+  footer: {
+    tagline: "Una base FiveM open source para crear sin límites. Hecha en Brasil para ciudades que quieren ir más allá.",
+    project: "Proyecto",
+    about: "Sobre nosotros",
+    servers: "Servidores",
+    content: "Contenido",
+    manifesto: "Manifiesto",
+    comparison: "Comparativa",
+    glossary: "Glosario",
+    community: "Comunidad",
+    legal: "Legal",
+    privacy: "Privacidad",
+    terms: "Términos de uso",
+    license: "Licencia GPL-3.0.",
+  },
+  suggest: {
+    text: "Este sitio también está en español.",
+    action: "Ver en español",
+    dismiss: "Cerrar",
+  },
+  cookies: { text: "Usamos cookies para anuncios y métricas. Consulta la ", link: "política de privacidad", reject: "Rechazar", accept: "OK" },
+}
+
+const en: SiteDictionary = {
+  nav: {
+    docs: "Docs",
+    artifacts: "Artifacts DB",
+    screenShare: "Screen Share",
+    mriBot: "MRI BOT",
+    support: "Support us",
+    newBadge: "New",
+    discord: "Join the Discord",
+    menu: "Open menu",
+    language: "Language",
+  },
+  footer: {
+    tagline: "An open source FiveM framework to build without limits. Made in Brazil for cities that want to go further.",
+    project: "Project",
+    about: "About us",
+    servers: "Servers",
+    content: "Content",
+    manifesto: "Manifesto",
+    comparison: "Comparison",
+    glossary: "Glossary",
+    community: "Community",
+    legal: "Legal",
+    privacy: "Privacy",
+    terms: "Terms of Use",
+    license: "GPL-3.0 license.",
+  },
+  suggest: {
+    text: "This site is also available in English.",
+    action: "Read in English",
+    dismiss: "Close",
+  },
+  cookies: { text: "We use cookies for ads and analytics. See our ", link: "privacy policy", reject: "Decline", accept: "OK" },
+}
+
+export const siteDictionary: Record<Locale, SiteDictionary> = { "pt-BR": ptBR, "pt-PT": ptPT, es, en }

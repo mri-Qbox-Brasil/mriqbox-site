@@ -1,5 +1,5 @@
 // Helpers de schema.org JSON-LD pra SEO. Cada subpagina inclui um <script
-// type="application/ld+json"> com o output dessas funcoes — ajuda o Google
+// type="application/ld+json"> com o output dessas funcoes, ajuda o Google
 // a entender o conteudo e exibir rich snippets (breadcrumbs, FAQ, HowTo).
 
 const SITE_URL = "https://mriqbox.com.br"
@@ -73,13 +73,14 @@ export function article(item: {
   path: string
   datePublished: string
   dateModified?: string
+  inLanguage?: string
 }) {
   return {
     "@context": "https://schema.org",
     "@type": "Article",
     headline: item.headline,
     description: item.description,
-    inLanguage: "pt-BR",
+    inLanguage: item.inLanguage ?? "pt-BR",
     datePublished: item.datePublished,
     dateModified: item.dateModified ?? item.datePublished,
     author: { "@type": "Organization", name: "MRI Qbox Brasil", url: SITE_URL },
@@ -99,17 +100,14 @@ export function article(item: {
   }
 }
 
-// Formata data ISO (YYYY-MM-DD) pra texto BR ("1 de junho de 2026").
-export function formatDateBR(iso: string): string {
-  const [y, m, d] = iso.split("-").map(Number)
-  const months = [
-    "janeiro", "fevereiro", "março", "abril", "maio", "junho",
-    "julho", "agosto", "setembro", "outubro", "novembro", "dezembro",
-  ]
-  return `${d} de ${months[m - 1]} de ${y}`
+// Formats an ISO date (YYYY-MM-DD) as long text in the page locale, e.g. "1 de junho de 2026".
+export function formatDate(iso: string, locale: string): string {
+  return new Intl.DateTimeFormat(locale, { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" }).format(
+    new Date(`${iso}T00:00:00Z`)
+  )
 }
 
-// Renderiza o JSON-LD como um <script> tag — usar dentro do JSX da pagina.
+// Renderiza o JSON-LD como um <script> tag, usar dentro do JSX da pagina.
 export function jsonLd(data: object) {
   return JSON.stringify(data)
 }
