@@ -1,0 +1,84 @@
+---
+title: Shared
+upstream_path: content/docs/ox_lib/Grid/Shared.mdx
+upstream_sha: 328e36feb5b0486d6214971f53c6d2626193cc28
+---
+
+Um sistema que divide o mapa em células 2D menores. Entradas em uma célula podem ser adicionadas, removidas e listadas.
+
+## Classe GridEntry
+
+Uma tabela representando uma entrada de grid com as seguintes propriedades.
+
+- coords: `vector`
+- length?: `number`
+- width?: `number`
+- radius?: `number`
+
+## lib.grid.getCellPosition
+
+Retorna a posição da célula no ponto fornecido.
+
+```lua
+lib.grid.getCellPosition(point)
+```
+
+- point: `vector`
+
+**Retorna:**
+
+- x: `number`
+- y: `number`
+
+## lib.grid.getCell
+
+Retorna todas as entradas na célula à qual o ponto pertence.
+
+```lua
+lib.grid.getCell(point)
+```
+
+- point: `vector`
+
+**Retorna:**
+
+- entries: `GridEntry[]`
+
+## lib.grid.getNearbyEntries
+
+Retorna todas as entradas próximas ao ponto com um filtro opcional
+
+```lua
+lib.grid.getNearbyEntries(point, filter)
+```
+
+- point: `vector`
+- filter: `function(entry: GridEntry): boolean`
+
+**Retorna:**
+
+- entries: `Array<GridEntry>`
+
+## lib.grid.addEntry
+
+Adiciona uma entrada ao grid
+
+```lua
+lib.grid.addEntry(entry)
+```
+
+- entry: `GridEntry`
+
+## lib.grid.removeEntry
+
+Remove uma entrada que foi previamente adicionada ao grid
+
+```lua
+lib.grid.removeEntry(entry)
+```
+
+- entry: `GridEntry`
+
+**Retorna:**
+
+- success: `boolean`
