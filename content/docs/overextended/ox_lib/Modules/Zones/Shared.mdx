@@ -4,9 +4,9 @@ upstream_path: content/docs/ox_lib/Zones/Shared.mdx
 upstream_sha: 328e36feb5b0486d6214971f53c6d2626193cc28
 ---
 
-Um sistema de verificação espacial de alta performance para o mundo do jogo. Zones definem uma área 3D (sphere, box ou polygon) e avaliam se uma posição está dentro ou fora daquela região — semelhante a um [colshape](https://wiki.multitheftauto.com/wiki/Element/Collision_shape).
+Um sistema de verificação espacial de alta performance para o mundo do jogo. Zones definem uma área 3D (sphere, box ou polygon) e avaliam se uma posição está dentro ou fora daquela região, de forma semelhante a um [colshape](https://wiki.multitheftauto.com/wiki/Element/Collision_shape).
 
-Internamente, as Zones utilizam um [spatial grid](docs/ox_lib/Grid/Shared) para restringir com eficiência as zones relevantes antes de executar testes precisos de posição.
+Internamente, as Zones utilizam um [spatial grid](../Grid/Shared) para restringir com eficiência as zones relevantes antes de executar testes precisos de posição.
 
 Para Lua, isto substitui o [PolyZone](https://github.com/mkafrin/PolyZone) e aproveita a biblioteca [GLM](https://github.com/citizenfx/lua/blob/luaglm-dev/cfx/README.md) para alta performance e eficiência de memória.
 
@@ -20,7 +20,7 @@ As Zones também estão disponíveis em JS, utilizando nossa [biblioteca de util
   As zones em Lua e JavaScript não são compatíveis em termos de API. As definições TypeScript e os comentários TSDoc no pacote npm servem como referência oficial para a JavaScript API.
 </Callout>
 
-## Polygon/Prism Zone
+## Polygon/Prism Zone [#libzonespoly]
 
 Cria um polígono a partir dos vértices fornecidos, que é então colocado no mundo e extrudado até a altura fornecida para formar uma forma 3D.
 
@@ -49,7 +49,7 @@ Zone.Prism(vertices: Vector2[], height: number, z: number)
 </Tab>
 </Tabs>
 
-## Box Zone
+## Box Zone [#libzonesbox]
 
 <Tabs groupId="language" items={['Lua', 'TypeScript']}>
 <Tab>
@@ -77,7 +77,7 @@ Zone.Cuboid(origin: Vector3, width: number, depth: number, height: number, headi
 </Tab>
 </Tabs>
 
-## Sphere Zone
+## Sphere Zone [#libzonessphere]
 
 <Tabs groupId="language" items={['Lua', 'TypeScript']}>
 <Tab>
@@ -103,7 +103,7 @@ Zone.Sphere(coords: Vector3, radius: number)
 </Tab>
 </Tabs>
 
-## Methods
+## Métodos
 
 ### onEnter
 
@@ -157,7 +157,7 @@ zone.onExit = onExit;
 
 ### inside
 
-Uma função chamada quando o jogador sai da zone. Ela pode ser anexada à zone após a instanciação, ou na tabela `data` se estiver usando Lua.
+Uma função chamada a cada frame enquanto o jogador está dentro da zone. Ela pode ser anexada à zone após a instanciação, ou na tabela `data` se estiver usando Lua.
 
 <Tabs groupId="language" items={['Lua', 'TypeScript']}>
 <Tab>
@@ -239,7 +239,7 @@ zone:setDebug(true, vec4(255, 0, 0, 100))
 zone:setDebug(false)
 ```
 
-## Utility Functions
+## Funções utilitárias
 
 ### getAllZones
 
@@ -313,7 +313,7 @@ Zone.getNearby(point);
 </Tab>
 </Tabs>
 
-## Examples
+## Exemplos de uso
 
 <Tabs groupId="language" items={['Lua', 'TypeScript']}>
 <Tab>
@@ -420,9 +420,9 @@ Zone.map.forEach((zone) => {
 </Tab>
 </Tabs>
 
-## Zone creation script
+## Script de criação de Zones
 
-Você pode usar nosso criador de zones embutido com `/zone` — passando `poly`, `box` ou `sphere` como argumento.
+Você pode usar nosso criador de zones embutido com `/zone`, passando `poly`, `box` ou `sphere` como argumento.
 Os controles disponíveis serão exibidos no lado direito.
 
 As zones serão salvas em `ox_lib/created_zones.lua` no formato escolhido.
