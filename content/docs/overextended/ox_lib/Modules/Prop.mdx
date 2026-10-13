@@ -1,0 +1,52 @@
+---
+title: Prop
+upstream_path: content/docs/ox_lib/Prop.mdx
+upstream_sha: 328e36feb5b0486d6214971f53c6d2626193cc28
+---
+
+Uma classe para entidades de objeto implementando uma interface customizada de statebag e operações comuns de entidade.
+
+## Construtor
+
+<Tabs groupId="language" items={['Lua', 'TypeScript']}>
+<Tab>
+```lua
+lib.prop:new(handle)
+```
+</Tab>
+<Tab>
+```ts
+import { Prop } from "@overextended/ox_lib";
+
+new Prop(handle)
+```
+</Tab>
+</Tabs>
+
+- handle: `number` O [script handle](https://docs.fivem.net/docs/scripting-manual/networking/ids/#entity-handle) da entidade.
+
+**Retorna:** `Prop`
+
+## Métodos
+
+### setOnGround
+
+Tenta colocar a entidade no chão.  
+No servidor, isso usa o estado `ox_entity_setonground` e um [manipulador de mudança de statebag](https://github.com/overextended/ox_lib/blob/44796d362997f9d1b67a01b56ed5bcba1e73c2f4/resource/client.lua#L39-L74).
+
+<Tabs groupId="language" items={['Lua', 'TypeScript']}>
+<Tab>
+```lua
+entity:setOnGround()
+```
+</Tab>
+<Tab>
+```ts
+entity.setOnGround()
+```
+</Tab>
+</Tabs>
+
+**Retorna:** `boolean`
+
+<include>GameEntity.mdx</include>
