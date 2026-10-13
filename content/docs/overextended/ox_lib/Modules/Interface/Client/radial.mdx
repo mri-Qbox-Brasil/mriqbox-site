@@ -1,5 +1,7 @@
 ---
 title: Menu Radial
+upstream_path: content/docs/ox_lib/Interface/Client/radial.mdx
+upstream_sha: 328e36feb5b0486d6214971f53c6d2626193cc28
 ---
 
 - O menu radial possui um menu global que, por padrão, é acessado com `z` e só é exibido quando há pelo menos um item.
@@ -8,19 +10,19 @@ title: Menu Radial
 
 ## lib.addRadialItem
 
-Item ou array de itens adicionados ao menu radial global.
+Item ou array de itens adicionados ao menu radial global, ou a um submenu se `parentMenuId` for especificado.
 
 <Tabs items={["Lua", "JS"]}>
   <Tabs.Tab>
     ```lua
-    lib.addRadialItem(items)
+    lib.addRadialItem(items, parentMenuId)
     ```
   </Tabs.Tab>
   <Tabs.Tab>
     ```ts
     import lib from '@overextended/ox_lib/client';
 
-    lib.addRadialItem(items);
+    lib.addRadialItem(items, parentMenuId);
     ```
   </Tabs.Tab>
 </Tabs>
@@ -40,27 +42,31 @@ Item ou array de itens adicionados ao menu radial global.
   - onSelect: `function(currentMenu: string | nil, itemIndex: number)` | `string`
     - Função executada quando um usuário clica no item.
   - keepOpen?: `boolean`
+- parentMenuId?: `string`
+  - Se especificado, adiciona o(s) item(ns) ao submenu com este id em vez do menu global.
 
 ## lib.removeRadialItem
 
-Id de um item a ser removido do menu global.
+Id de um item a ser removido do menu global, ou de um submenu se `parentMenuId` for especificado.
 
 <Tabs items={["Lua", "JS"]}>
   <Tabs.Tab>
     ```lua
-    lib.removeRadialItem(item)
+    lib.removeRadialItem(id, parentMenuId)
     ```
   </Tabs.Tab>
   <Tabs.Tab>
     ```ts
     import lib from '@overextended/ox_lib/client';
 
-    lib.removeRadialItem(item);
+    lib.removeRadialItem(id, parentMenuId);
     ```
   </Tabs.Tab>
 </Tabs>
 
 - id: `string`
+- parentMenuId?: `string`
+  - Se especificado, remove o item do submenu com este id em vez do menu global.
 
 ## lib.clearRadialItems
 
@@ -111,6 +117,28 @@ Registra um submenu radial com opções predefinidas.
       - Id de um menu para abrir.
     - onSelect?: `function(currentMenu: string | nil, itemIndex: number)` | `string`
       - Função executada quando um usuário clica no item.
+
+## lib.showRadialMenu
+
+Abre um menu radial registrado como o menu radial raiz.
+
+<Tabs items={["Lua", "JS"]}>
+  <Tabs.Tab>
+    ```lua
+    lib.showRadialMenu(id)
+    ```
+  </Tabs.Tab>
+  <Tabs.Tab>
+    ```ts
+    import lib from '@overextended/ox_lib/client';
+
+    lib.showRadialMenu(id);
+    ```
+  </Tabs.Tab>
+</Tabs>
+
+- id: string
+  - Id único do menu a partir dos menus radiais registrados.
 
 ## lib.hideRadial
 
