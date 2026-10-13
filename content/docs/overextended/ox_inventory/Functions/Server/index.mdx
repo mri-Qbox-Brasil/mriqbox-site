@@ -627,14 +627,14 @@ print(json.encode(inventory, {indent = true}))
 
 ## GetInventories
 
-Retorna os IDs de todos os inventários carregados que correspondem ao type informado. Se `detailed` for `true`, retorna os data completos do inventário em vez de apenas o ID do inventário.
+Retorna os IDs de todos os inventários carregados que correspondem ao type informado. Se `detailed` for `true`, retorna os dados completos do inventário em vez de apenas o ID do inventário.
 
 ```lua
 exports.ox_inventory:GetInventories(invType, detailed)
 ```
 
 - invType: `string`
-- detailed?: `boolean` retorna os data completos do inventário em vez de apenas o ID do inventário
+- detailed?: `boolean` retorna os dados completos do inventário em vez de apenas o ID do inventário
 
 <br />
 <u>**Exemplo**</u>
@@ -652,7 +652,7 @@ print(json.encode(inventories, {indent = true}))
 ]]
 ```
 
-Com `detailed` ativado, a função retorna os data completos do inventário:
+Com `detailed` ativado, a função retorna os dados completos do inventário:
 
 ```lua
 local inventories = exports.ox_inventory:GetInventories('glovebox', true)
@@ -838,7 +838,7 @@ exports.ox_inventory:RegisterStash(id, label, slots, maxWeight, owner, groups, c
 
 <Callout type="error">
   O parâmetro owner não serve para controle de acesso ao stash, use o
-  hook [`openInventory`](./Server/Hooks.mdx#openinventory) para controle de acesso.
+  hook [`openInventory`](./Server/Hooks#openinventory) para controle de acesso.
 </Callout>
 
 <br />
