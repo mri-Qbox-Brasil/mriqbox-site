@@ -20,11 +20,15 @@ export default async function Page(props: {
 
   return (
     <DocsPage toc={page.data.toc} full={page.data.full}>
-      <DocsTitle>{page.data.title}</DocsTitle>
-      <DocsDescription>{page.data.description}</DocsDescription>
-      <DocsBody>
-        <MDXContent components={getMDXComponents()} />
-      </DocsBody>
+      {/* Pagefind indexa só este bloco (título + descrição + corpo):
+          nav, sidebar, TOC e footer ficam fora do índice. */}
+      <div data-pagefind-body>
+        <DocsTitle>{page.data.title}</DocsTitle>
+        <DocsDescription>{page.data.description}</DocsDescription>
+        <DocsBody>
+          <MDXContent components={getMDXComponents()} />
+        </DocsBody>
+      </div>
     </DocsPage>
   )
 }
