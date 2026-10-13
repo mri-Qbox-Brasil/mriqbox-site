@@ -23,7 +23,7 @@ if (isExport) {
       "--site",
       ".next/server/app",
       "--glob",
-      "**/docs/**/*.html",
+      "{docs.html,docs/**/*.html}",
       "--output-path",
       "public/pagefind",
     ],
