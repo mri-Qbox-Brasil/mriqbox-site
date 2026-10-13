@@ -1,5 +1,7 @@
 ---
 title: Client
+upstream_path: content/docs/ox_lib/AddKeybind/Client.mdx
+upstream_sha: 328e36feb5b0486d6214971f53c6d2626193cc28
 ---
 
 Registers keybinds and simplifies interactions of the keybinds.
@@ -27,14 +29,17 @@ A table representing a keybind with the following properties.
   - An optional secondary keybind.
 - secondaryMapper?: `string`
   - An optional mapper for the secondary key, otherwise using the default mapper.
+- allowInPauseMenu?: `boolean`
+  - Permite que a keybind dispare enquanto o menu de pausa/frontend estiver ativo.
+  - Padrão: `false`
 - disable: `function(self: CKeybind, disable: boolean)`
   - Built-in function to enable / disable a keybind
 - isControlPressed: `function(self: CKeybind)`
   - Built-in function to get the current pressed state for the keybind
 - onPressed?: `function(self: CKeybind)`
-  - User-defined function triggered on keybind press
+  - Função definida pelo usuário disparada ao pressionar a keybind
 - onReleased?: `function(self: CKeybind)`
-  - User-defined function triggered on keybind release
+  - Função definida pelo usuário disparada ao soltar a keybind
 
 ## lib.addKeybind
 
@@ -44,25 +49,32 @@ lib.addKeybind(data)
 
 - data: `table`
   - name: `string`
+    - Nome do comando criado para RegisterKeyMap
+    - Não deve conter espaços em branco
   - description: `string`
+    - O nome exibido em 'Settings' -> 'Key Bindings' -> 'FiveM'
   - defaultKey?: `string`
     - Padrão: `None`
   - defaultMapper?: `string`
     - Padrão: `keyboard`
   - secondaryKey?: `string`
   - secondaryMapper?: `string`
+  - allowInPauseMenu?: `boolean`
+    - Padrão: `false`
+    - Se true, os callbacks da keybind podem rodar enquanto `IsPauseMenuActive()` for true
   - disabled?: `boolean`
     - Se a keybind deve começar desabilitada por padrão
   - onPressed?: `function(self: CKeybind)`
-    - Function triggered on keybind press
+    - Função disparada ao pressionar a keybind
   - onReleased?: `function(self: CKeybind)`
-    - Function triggered on keybind release
+    - Função disparada ao soltar a keybind
 
 ```lua
 local keybind = lib.addKeybind({
     name = 'respects',
     description = 'press F to pay respects',
     defaultKey = 'F',
+    allowInPauseMenu = true,
     onPressed = function(self)
         print(('pressed %s (%s)'):format(self.currentKey, self.name))
     end,
@@ -85,7 +97,7 @@ keybind:disable(false) -- enables the keybind
 
 Todas as keybinds registradas com `lib.addKeybind()` possuem um estado booleano que indica se estão pressionadas ou não.
 
-You can get the state with the following method
+Você pode obter o estado com o método a seguir
 
 ```lua
 local state = keybind:isControlPressed()
