@@ -19,6 +19,38 @@ exports.ox_target:disableTargeting(state)
 - state: `boolean`
   - Defina `state` como `true` para desativar o targeting (o "olho") se estiver ativo, e impedir que reabra até que `state` seja `false`.
 
+## isActive
+
+Verifica se o sistema de targeting está ativo no momento.
+
+```lua
+exports.ox_target:isActive()
+```
+
+Retorno:
+
+- `boolean` - Retorna `true` se o sistema de targeting estiver ativo, caso contrário `false`.
+
+## getTargetOptions
+
+Obtém as opções de targeting de uma entidade específica.
+
+```lua
+exports.ox_target:getTargetOptions(entity, entityType, model)
+```
+
+- entity?: `number` - O handle da entidade
+- entityType?: `number` - O tipo da entidade (1 para peds, 2 para veículos, 3 para objetos)
+- model?: `number` - O hash do modelo da entidade
+
+Retorno:
+
+- `table` - Retorna uma tabela com as opções de target da entidade:
+  - global: Opções do tipo de entidade (peds, veículos ou objetos)
+  - model: Opções do modelo específico
+  - entity: Opções da entidade em rede
+  - localEntity: Opções da entidade local
+
 ## addGlobalOption
 
 Creates new targetable options which are displayed at all times.
@@ -260,8 +292,8 @@ exports.ox_target:zoneExists(id)
 ```
 
 - id: `number` ou `string`
-  - O id `number` retornado por [addSphereZone](#addspherezone), [addBoxZone](#addboxzone) ou [addPolyZone](#addpolyzone)
-    **OR**
+  - O id `number` retornado por [addSphereZone](#addspherezone), [addBoxZone](#addboxzone) ou [addPolyZone](#addpolyzone)  
+  **OU**
   - O nome `string` dado à zone.
 
 Retorno:
