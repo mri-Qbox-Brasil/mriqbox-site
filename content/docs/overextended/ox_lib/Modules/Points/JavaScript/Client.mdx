@@ -1,5 +1,7 @@
 ---
 title: Cliente
+upstream_path: content/docs/ox_lib/Points/JavaScript/Client.mdx
+upstream_sha: 328e36feb5b0486d6214971f53c6d2626193cc28
 ---
 
 ## Points
@@ -7,7 +9,7 @@ title: Cliente
 Verificação de distância simples e centralizada, com suporte a callbacks ao entrar, sair e permanecer no alcance de coordenadas definidas.
 
 ```ts
-Point<T>({coords, distance, onEnter, onExit, nearby, args})
+Point<T>({ coords, distance, onEnter, onExit, nearby, args });
 ```
 
 - coords: `number[]`
@@ -18,15 +20,40 @@ Point<T>({coords, distance, onEnter, onExit, nearby, args})
 - args?: `T`
 
 ```ts
-import { Point, cache } from '@overextended/ox_lib/client'
+import { Point, cache } from "@overextended/ox_lib/client";
 
-function nearby(this: Point<{dunak: string}>) {
+function nearby(this: Point<{ dunak: string }>) {
   // @ts-ignore
-  DrawMarker(2, this.coords.x, this.coords.y, this.coords.z, 0, 0, 0, 0, 180, 0, 1, 1, 1, 200, 20, 20, 50, false, true, 2, false, null, null, false)
+  DrawMarker(
+    2,
+    this.coords.x,
+    this.coords.y,
+    this.coords.z,
+    0,
+    0,
+    0,
+    0,
+    180,
+    0,
+    1,
+    1,
+    1,
+    200,
+    20,
+    20,
+    50,
+    false,
+    true,
+    2,
+    false,
+    null,
+    null,
+    false,
+  );
 
   if (this.currentDistance && this.currentDistance < 1 && IsControlJustReleased(0, 38)) {
-    console.log('Dentro do marker', this.id)
-    console.log(this.args?.dunak)
+    console.log("Dentro do marker", this.id);
+    console.log(this.args?.dunak);
   }
 }
 
@@ -35,15 +62,15 @@ const point = new Point({
   distance: 5,
   nearby: nearby,
   args: {
-    dunak: 'nerd'
-  }
-})
+    dunak: "nerd",
+  },
+});
 
 point.onEnter = () => {
-  console.log('Entrou no alcance do ponto', point.id)
-}
+  console.log("Entrou no alcance do ponto", point.id);
+};
 
 point.onExit = () => {
-  console.log('Saiu do alcance do ponto', point.id)
-}
+  console.log("Saiu do alcance do ponto", point.id);
+};
 ```
