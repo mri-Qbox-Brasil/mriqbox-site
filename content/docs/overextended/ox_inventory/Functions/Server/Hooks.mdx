@@ -13,7 +13,7 @@ exports.ox_inventory:registerHook(eventName, function(payload) end, options)
 ```
 
 <Callout type="error">
-  Os callbacks de hook são destinados apenas à validação e devem evitar efeitos colaterais, como modificar data, gravar em um banco de dados ou operações adicionais.
+  Os callbacks de hook são destinados apenas à validação e devem evitar efeitos colaterais, como modificar dados, gravar em um banco de dados ou disparar operações adicionais.
 
   Como as ações ainda podem estar em andamento ou podem falhar, modificar o estado do item ou do inventário antes da conclusão pode levar a race conditions ou comportamento inconsistente.
 
@@ -40,7 +40,7 @@ exports.ox_inventory:registerHook(eventName, function(payload) end, options)
 ### swapItems
 
 Disparado ao mover qualquer item de um slot para outro, ou ao "dar" um item.  
-By returning `false`, you can cancel the action and revert the inventory state.
+Ao retornar `false`, você pode cancelar a ação e reverter o estado do inventário.
 
 - Payload: `table`
   - source: `number`
@@ -54,9 +54,9 @@ By returning `false`, you can cancel the action and revert the inventory state.
   - count: `number`
 
 <details>
-<summary><b>Example</b></summary>
+<summary><b>Exemplo</b></summary>
 
-Blacklists "water" from being moved into or from gloveboxes and trunks.
+Impede que "water" seja movido para dentro ou para fora de porta-luvas e porta-malas.
 
 ```lua
 local hookId = exports.ox_inventory:registerHook('swapItems', function(payload)
@@ -84,12 +84,12 @@ end, {
   - inventoryType: `string`
 
 Disparado quando um jogador tenta abrir um inventário secundário.  
-By returning `false`, you can cancel the action and keep the player's inventory closed.
+Ao retornar `false`, você pode cancelar a ação e manter o inventário do jogador fechado.
 
 <details>
-<summary><b>Example</b></summary>
+<summary><b>Exemplo</b></summary>
 
-Disables gloveboxes and trunks.
+Desabilita porta-luvas e porta-malas.
 
 ```lua
 local hookId = exports.ox_inventory:registerHook('openInventory', function(payload)
@@ -123,7 +123,7 @@ Disparado quando um jogador tenta abrir um inventário de loja.
 Ao retornar `false`, você pode cancelar a ação e manter o inventário da loja fechado.
 
 <details>
-<summary><b>Example</b></summary>
+<summary><b>Exemplo</b></summary>
 
 Desabilita as lojas General.
 
@@ -150,14 +150,14 @@ end, {
   - count: `number`
 
 Disparado quando um item é criado, seja ao comprá-lo, usando AddItem, ou ao converter dados de inventário.  
-By returning a table you can modify or replace the metadata given to an item.
+Ao retornar uma tabela, você pode modificar ou substituir os metadados dados ao item.
 
 Eventos post-hook não são necessários para este evento, mas ainda são recomendados
 
 <details>
-<summary><b>Example</b></summary>
+<summary><b>Exemplo</b></summary>
 
-Sets the label for "water" to "Mineral Water".
+Define o label de "water" como "Mineral Water".
 
 ```lua
 local hookId = exports.ox_inventory:registerHook('createItem', function(payload)
@@ -193,9 +193,9 @@ end, {
 Disparado quando um item está prestes a ser comprado e pode retornar `false` para impedir a transação.
 
 <details>
-<summary><b>Example</b></summary>
+<summary><b>Exemplo</b></summary>
 
-Prevents players from purchasing items at General stores.
+Impede que jogadores comprem itens nas lojas General.
 
 ```lua
 local hookId = exports.ox_inventory:registerHook('buyItem', function(payload)
@@ -229,9 +229,9 @@ end, {
   - toSlot: `number`
 
 <details>
-<summary><b>Example</b></summary>
+<summary><b>Exemplo</b></summary>
 
-Prevent lockpicks from being crafted by players.
+Impede que jogadores fabriquem lockpicks.
 
 ```lua
 local hookId = exports.ox_inventory:registerHook('craftItem', function(payload)
@@ -268,7 +268,7 @@ Ao retornar `false`, você pode impedir completamente que ele seja usado.
   - consume: `number`
 
 <details>
-<summary><b>Example</b></summary>
+<summary><b>Exemplo</b></summary>
 
 Impede o jogador de usar o item "water".
 
