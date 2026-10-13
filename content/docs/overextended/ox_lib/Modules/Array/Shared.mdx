@@ -1,5 +1,7 @@
 ---
 title: Shared
+upstream_path: content/docs/ox_lib/Array/Shared.mdx
+upstream_sha: 328e36feb5b0486d6214971f53c6d2626193cc28
 ---
 
 ## lib.array
@@ -8,41 +10,55 @@ Uma tabela usada como protótipo para a classe Array. Funções podem ser usadas
 
 ### lib.array:new
 
-Constructs instance of Array containing the given elements.
+Constrói uma instância de Array contendo os elementos fornecidos.
+
+- ...: `any`
 
 ```lua
 lib.array:new(...)
 ```
 
-- ...: `any`
+**Returns:**
+
+- arr: `Array`
+
+### lib.array.from
+
+Cria um novo array a partir de um valor iterável.
+
+- iter: `function` | `table` | `string`
+  - Funções iteradoras como string.gmatch podem ser usadas para construir arrays.
+
+```lua
+lib.array.from(iter)
+```
 
 **Returns:**
 
 - arr: `Array`
 
-### lib.isArray
+### lib.array.at
 
-Determina se a tabela fornecida é uma instância de Array ou uma tabela do tipo array.
+Retorna o elemento no índice fornecido, com números negativos contando de trás para frente a partir do fim do array.
+
+- index: `integer`
 
 ```lua
-lib.array.isArray(tbl)
+lib.array.at(index)
 ```
-
-- tbl: `table`
 
 **Returns:**
 
-- isArray: `boolean`
+- element: `unknown`
 
 ### lib.array.merge
 
-Combines the elements of two arrays into a new array.
+Combina os elementos de dois ou mais arrays em um novo array.
 
-- a: `Array`
-- b: `Array`
+- ...: `Array`
 
 ```lua
-lib.array.merge(a, b)
+lib.array.merge(...)
 ```
 
 **Returns:**
@@ -51,10 +67,10 @@ lib.array.merge(a, b)
 
 ### lib.array.every
 
-Tests if all elements in an array succeed in passing the provided test function.
+Testa se todos os elementos em um array passam na função de teste fornecida.
 
 - arr: `Array`
-- testFn: `function`
+- testFn: `function(element: unknown): boolean`
 
 ```lua
 lib.array.every(arr, testFn)
@@ -64,12 +80,29 @@ lib.array.every(arr, testFn)
 
 - success: `boolean`
 
-### lib.array.filter
+### lib.array.fill
 
-Creates a new array containing the elements from an array that pass the provided test function.
+Define todos os elementos dentro de um intervalo para o valor fornecido e retorna o array modificado.
 
 - arr: `Array`
-- testFn: `function`
+- value: `any`
+- start?: `integer`
+- endIndex?: `integer`
+
+```lua
+lib.array.fill(arr, value, start, endIndex)
+```
+
+**Returns:**
+
+- arr: `Array`
+
+### lib.array.filter
+
+Cria um novo array contendo os elementos de um array que passam na função de teste fornecida.
+
+- arr: `Array`
+- testFn: `function(element: unknown): boolean`
 
 ```lua
 lib.array.filter(arr, testFn)
@@ -77,19 +110,19 @@ lib.array.filter(arr, testFn)
 
 **Returns:**
 
-- arr: `Array`
+- newArr: `Array`
 
 ### lib.array.find
 
-Returns the first element of an array the passes the provided test function.
+Retorna o primeiro elemento de um array que passa na função de teste fornecida.
 
 - arr: `Array`
-- testFn: `function`
+- testFn: `function(element: unknown): boolean`
 - reverse?: `boolean`
-  - Iterate over the array in reverse order.
+  - Itera sobre o array em ordem reversa.
 
 ```lua
-lib.array.find(arr, function(element) end, reverse)
+lib.array.find(arr, testFn, reverse)
 ```
 
 **Returns:**
@@ -98,29 +131,29 @@ lib.array.find(arr, function(element) end, reverse)
 
 ### lib.array.findIndex
 
-Returns the index of the first element of an array the passes the provided test function.
+Retorna o índice do primeiro elemento de um array que passa na função de teste fornecida.
 
 - arr: `Array`
-- testFn: `function`
+- testFn: `function(element: unknown): boolean`
 - reverse?: `boolean`
-  - Iterate over the array in reverse order.
+  - Itera sobre o array em ordem reversa.
 
 ```lua
-lib.array.findIndex(arr, function(element) end, reverse)
+lib.array.findIndex(arr, testFn, reverse)
 ```
 
 **Returns:**
 
-- index: `number`
+- index: `integer`
 
 ### lib.array.indexOf
 
-Returns the index of the first element of an array the matches the provided value.
+Retorna o índice do primeiro elemento de um array que corresponde ao valor fornecido.
 
 - arr: `Array`
 - value: `any`
 - reverse?: `boolean`
-  - Iterate over the array in reverse order.
+  - Itera sobre o array em ordem reversa.
 
 ```lua
 lib.array.indexOf(arr, value, reverse)
@@ -128,22 +161,22 @@ lib.array.indexOf(arr, value, reverse)
 
 **Returns:**
 
-- index: `number`
+- index: `integer`
 
 ### lib.array.forEach
 
-Executes the provided function for each element in an array.
+Executa a função fornecida para cada elemento em um array.
 
 - arr: `Array`
-- cb: `function`
+- cb: `function(element: unknown)`
 
 ```lua
-lib.array.forEach(arr, function(element) end, reverse)
+lib.array.forEach(arr, cb, reverse)
 ```
 
 **Returns:**
 
-- index: `number`
+- index: `integer`
 
 ### lib.array.join
 
@@ -160,9 +193,23 @@ lib.array.join(arr, seperator)
 
 - str: `string`
 
+### lib.array.map
+
+Cria um novo array contendo os resultados da chamada da função fornecida em cada elemento de um array.
+
+- fn: `function(element: unknown, index: integer, arr: Array): unknown`
+
+```lua
+lib.array.map(arr, fn)
+```
+
+**Returns:**
+
+- newArr: `Array`
+
 ### lib.array.pop
 
-Removes the last element from an array and returns the value.
+Remove o último elemento de um array e retorna o valor.
 
 - arr: `Array`
 
@@ -176,7 +223,7 @@ lib.array.pop(arr)
 
 ### lib.array.push
 
-Adds the given elements to the end of an array and returns the new array length.
+Adiciona os elementos fornecidos ao fim de um array e retorna o novo comprimento do array.
 
 - arr: `Array`
 - ...: `any`
@@ -187,11 +234,11 @@ lib.array.push(arr, ...)
 
 **Returns:**
 
-- length: `number`
+- length: `integer`
 
 ### lib.array.shift
 
-Removes the first element from an array and returns the value.
+Remove o primeiro elemento de um array e retorna o valor.
 
 - arr: `Array`
 
@@ -203,19 +250,92 @@ lib.array.shift(arr)
 
 - element: `unknown`
 
-### lib.array.reduce
+### lib.array.slice
 
-The "reducer" function is applied to every element in an array, with the previous result serving as the accumulator.
-If an initial value is provided it's used as the accumulator for the first index; otherwise iteration starts at the second index, with the first index as the accumulator.
+Cria uma cópia rasa de uma porção de um array como um novo array.
 
 - arr: `Array`
-- reducer: `function`
+- start?: `integer`
+- finish?: `integer`
+
+```lua
+lib.array.slice(arr, start, finish)
+```
+
+**Returns:**
+
+- newArr: `Array`
+
+### lib.array.toReversed
+
+Cria um novo array com a ordem de seus elementos invertida a partir do array fornecido.
+
+- arr: `Array`
+
+```lua
+lib.array.toReversed(arr)
+```
+
+**Returns:**
+
+- newArr: `Array`
+
+### lib.array.unshift
+
+Insere novos elementos no início de um array e retorna o novo comprimento do array.
+
+- arr: `Array`
+- ...: `any`
+
+```lua
+lib.array.unshift(arr, ...)
+```
+
+**Returns:**
+
+- length: `integer`
+
+### lib.array.reduce
+
+A função "reducer" é aplicada a cada elemento em um array, com o resultado anterior servindo como acumulador.  
+Se um valor inicial for fornecido, ele é usado como acumulador para o primeiro índice; caso contrário, a iteração começa no segundo índice, com o primeiro índice como acumulador.
+
+- arr: `Array`
+- reducer: `function(accumulator: unknown, element: unknown, index?: integer)`
 - initialValue?: `any`
 
 ```lua
-lib.array.reduce(arr, function(accumulator, element, index) end)
+lib.array.reduce(arr, reducer)
 ```
 
 **Returns:**
 
 - accumulator: `unknown`
+
+### lib.array.reverse
+
+Inverte a ordem dos elementos dentro de um array.
+
+- arr: `Array`
+
+```lua
+lib.array.reverse(arr)
+```
+
+**Returns:**
+
+- arr: `Array`
+
+### lib.isArray
+
+Determina se a tabela fornecida é uma instância de Array ou uma tabela do tipo array.
+
+- tbl: `table`
+
+```lua
+lib.array.isArray(tbl)
+```
+
+**Returns:**
+
+- isArray: `boolean`
