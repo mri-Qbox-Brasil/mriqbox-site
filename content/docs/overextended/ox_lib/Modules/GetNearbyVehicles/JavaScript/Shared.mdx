@@ -1,0 +1,34 @@
+---
+title: Shared
+upstream_path: content/docs/ox_lib/GetNearbyVehicles/JavaScript/Shared.mdx
+upstream_sha: 328e36feb5b0486d6214971f53c6d2626193cc28
+---
+
+## getNearbyVehicles
+
+Obtém o handle do veículo e as coordenadas de todos os veículos dentro do alcance a partir de um conjunto de coordenadas.
+
+```ts
+getNearbyVehicles(coords: Vector3, maxDistance?: number, includePlayerVehicle?: boolean)
+```
+
+- coords: `Vector3`
+  - As coordenadas a partir das quais será feita a verificação.
+- maxDistance?: `number`
+  - A distância máxima para verificação.
+  - Padrão: `2.0`
+- includePlayerVehicle?: `boolean`
+  - Se deve incluir o veículo atual do jogador (ignorado no servidor)
+  - Padrão: `false`
+
+Retorno:
+
+- NearbyVehicle: `{ vehicle: number, coords: vector3 }[]`
+
+```ts
+import { Vector3 } from "@nativewrappers/fivem";
+import { cache, getNearbyVehicles } from "@overextended/ox_lib/client";
+
+const playerCoords = Vector3.fromArray(GetEntityCoords(cache.ped, true));
+const nearbyVehicles = getNearbyVehicles(playerCoords, 50, true);
+```
