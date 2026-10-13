@@ -1,15 +1,17 @@
 ---
 title: Eventos
+upstream_path: content/docs/ox_doorlock/Server/events.mdx
+upstream_sha: 328e36feb5b0486d6214971f53c6d2626193cc28
 ---
 
 ## Handlers
 
-Esses eventos **não devem** ser acionados por nenhum outro script.
+Esses eventos **não devem** ser disparados por nenhum outro script.
 
 
 ### ox_doorlock:stateChanged
 
-Acionado quando o estado de uma porta é atualizado.
+Disparado quando o estado de uma porta é atualizado.
 
 ```lua
 AddEventHandler('ox_doorlock:stateChanged', function(source, doorId, state, usedItem) end)
