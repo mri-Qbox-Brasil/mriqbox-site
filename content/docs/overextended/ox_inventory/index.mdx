@@ -12,22 +12,23 @@ Um inventário baseado em slot com metadados de item para "item uniqueness".
 Explore mais de 24.000 imagens estilizadas e fiéis ao lore em [Artwork Inventory](https://artwork-inventory.tebex.io/) e use o código `ox10` para 10% de desconto.
 </Callout>
 
-## Instalação
+## Instalação [#installation]
 
 <Callout type="info">
 
-Recomendamos **fortemente** consultar [Guides](../docs/guides) para configurar Git, Node.js e bun.
+Recomendamos **fortemente** consultar [Guias](../guides) para configurar Git, Node.js e bun.
 
 </Callout>
 
-### Instale todas as dependências do resource [step]
+<Steps>
+### Instale todas as dependências do resource
 
 - [oxmysql](../oxmysql)
 - [ox_lib](../ox_lib/)
 
-### Baixe uma release ou compile o código-fonte. [step]
+### Baixe uma release ou compile o código-fonte.
 
-- Baixe a [latest release](https://github.com/overextended/ox_inventory/releases/latest).
+- Baixe a [release mais recente](https://github.com/overextended/ox_inventory/releases/latest).
 
 ```bash
 git clone https://github.com/overextended/ox_inventory.git
@@ -36,13 +37,13 @@ bun i
 bun run build
 ```
 
-### Instale as dependências opcionais [step]
+### Instale as dependências opcionais
 
 Estes resources não são obrigatórios, mas fornecem funcionalidades adicionais.
 
 - [ox_target](../ox_target/)
 
-### Ordem de start dos resources [step]
+### Ordem de start dos resources
 
 É importante que seus resources iniciem em uma ordem lógica para evitar erros por dependências ausentes.
 
@@ -54,7 +55,7 @@ start ox_target
 start ox_inventory
 ```
 
-### Configuração [step]
+### Configuração
 
 A configuração do resource é feita usando [convars](https://docs.fivem.net/docs/scripting-reference/convars/).
 
@@ -227,6 +228,8 @@ setr inventory:craftingmarker {
 set inventory:accounts ["money"]
 ```
 
+</Steps>
+
 ## Incompatibilidades de framework
 
 <Callout type="warning">
@@ -249,9 +252,10 @@ Se você estiver substituindo um sistema de inventário existente/embutido, isso
 
 Esta configuração é altamente opinativa e rígida, então depende da sua própria habilidade como desenvolvedor para fazê-la funcionar.
 
-### Configure um submódulo bridge [step]
+<Steps>
+### Configure um submódulo bridge
 
-Defina o framework target primeiro — pode ser o nome, um acrônimo ou apenas "custom".
+Defina primeiro o framework de destino: pode ser o nome, um acrônimo ou apenas "custom".
 
 ```bash
 setr inventory:framework "custom"
@@ -261,7 +265,7 @@ Copie o diretório `ox` do diretório [bridge](https://github.com/overextended/o
 
 As funções e os manipuladores de eventos mínimos já estão adicionados aqui, mas você precisará alterá-los para corresponder ao seu framework; não podemos ajudar aqui. Você pode consultar os outros bridges de framework se precisar de inspiração.
 
-### Configure as referências do banco de dados [step]
+### Configure as referências do banco de dados
 
 Dê uma olhada no módulo [mysql](https://github.com/overextended/ox_inventory/blob/main/modules/mysql/server.lua). Você precisará referenciar suas tabelas de jogador/veículo e colunas de id.
 
@@ -273,3 +277,5 @@ elseif shared.framework == 'custom' then
     vehicleColumn = 'id'       -- primary key for identifying the vehicle (i.e. plate, vin, id)
 end
 ```
+
+</Steps>
