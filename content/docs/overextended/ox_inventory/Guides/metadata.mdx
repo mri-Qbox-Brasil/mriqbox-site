@@ -1,5 +1,7 @@
 ---
 title: Metadados
+upstream_path: content/docs/ox_inventory/Guides/metadata.mdx
+upstream_sha: 328e36feb5b0486d6214971f53c6d2626193cc28
 ---
 
 ## Metadados
@@ -111,4 +113,22 @@ exports.ox_inventory:displayMetadata({
     attack = 'ATK',
     defense = 'DEF'
 })
+```
+
+## Metadados de components de weapon
+
+Você também pode criar itens com weapon components já anexados usando a propriedade de metadados `components`.
+Os weapon components estão definidos em [data/weapons.lua](https://github.com/overextended/ox_inventory/blob/4d178a50a225661eeadcefc5b531c52e10522191/data/weapons.lua#L721)
+Você também pode definir a quantidade de munição com a propriedade de metadados `ammo`.
+
+```lua
+local metadataExample = {
+    ammo = 30,
+    components = {
+        'at_flashlight',
+        'at_suppressor_heavy'
+    }
+}
+
+exports.ox_inventory:AddItem(inv, item, count, metadataExample, slot, cb)
 ```
