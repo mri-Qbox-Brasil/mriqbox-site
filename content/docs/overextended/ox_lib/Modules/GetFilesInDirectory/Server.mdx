@@ -1,0 +1,23 @@
+---
+title: Server
+upstream_path: content/docs/ox_lib/GetFilesInDirectory/Server.mdx
+upstream_sha: 328e36feb5b0486d6214971f53c6d2626193cc28
+---
+
+## lib.getFilesInDirectory
+
+Obtém uma lista de todos os arquivos em um diretório de resource especificado, junto com a contagem de arquivos
+
+```lua
+lib.getFilesInDirectory(path, pattern)
+```
+
+- path: `string`
+  - O caminho relativo ou absoluto para o diretório onde os arquivos devem ser listados.
+- pattern: `string`
+  - Padrão a ser verificado ao procurar arquivos.
+
+Retorno:
+
+- files: `string[]`
+- fileCount: `number`
