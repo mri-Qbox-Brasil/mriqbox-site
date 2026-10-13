@@ -6,6 +6,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next"
 import CookieConsent from "@/components/cookie-consent"
 import Script from "next/script"
 import { RootProvider } from "fumadocs-ui/provider/next"
+import PagefindSearchDialog from "@/components/pagefind-search-dialog"
 import "./globals.css"
 
 const inter = Inter({
@@ -126,17 +127,13 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(WEBSITE_SCHEMA) }}
         />
         {/* RootProvider habilita a busca/contexto do Fumadocs (docs). Tema fixo
-            em dark (site é dark-only). Busca no servidor na Vercel e estática
-            no GitHub Pages (ver app/api/search/route.ts). O endpoint inclui
-            o basePath (vazio em produção, /mriqbox-site no GitHub Pages). */}
+            em dark (site é dark-only). Busca Pagefind estática nos dois modos
+            (Vercel e export): o bundle é gerado no build (ver
+            scripts/build-pagefind.mjs) e o dialog usa a API JS do pagefind. */}
         <RootProvider
           theme={{ enabled: false }}
           search={{
-            options: {
-              // sem `type` o dialog usa a busca no servidor (fetch)
-              type: process.env.GITHUB_PAGES === "true" ? "static" : undefined,
-              api: `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/search`,
-            },
+            SearchDialog: PagefindSearchDialog,
           }}
         >
           {children}
