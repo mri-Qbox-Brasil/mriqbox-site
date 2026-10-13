@@ -1,5 +1,7 @@
 ---
 title: TargetOptions
+upstream_path: content/docs/ox_target/TargetOptions.mdx
+upstream_sha: 328e36feb5b0486d6214971f53c6d2626193cc28
 ---
 
 All target actions are formated as an array containing objects with the following properties.
@@ -46,7 +48,7 @@ All target actions are formated as an array containing objects with the followin
 
 This is the data returned to a registered callback or event for selected option.
 
-A selected option will trigger a single action, in order of priority:
+Uma opção selecionada dispara uma única ação, por ordem de prioridade:
 
 1. onSelect
 2. export
@@ -56,7 +58,7 @@ A selected option will trigger a single action, in order of priority:
 
 - data: `table`
   - entity: `number`
-    - The id of the entity hit by the shape test. If triggering a server event, this is the network id instead.
+    - O id da entidade atingida pelo teste de forma. Ao disparar um evento de servidor, este é o network id.
   - coords: `vector3`
     - As coordenadas resultantes onde o teste de colisão atingiu.
   - distance: `number`
