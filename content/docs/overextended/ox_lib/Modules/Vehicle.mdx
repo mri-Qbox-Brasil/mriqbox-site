@@ -1,0 +1,109 @@
+---
+title: Vehicle
+upstream_path: content/docs/ox_lib/Vehicle.mdx
+upstream_sha: 328e36feb5b0486d6214971f53c6d2626193cc28
+---
+
+Uma classe para entidades de veículo implementando uma interface customizada de statebag e operações comuns de entidade.
+
+## Construtor
+
+<Tabs groupId="language" items={['Lua', 'TypeScript']}>
+<Tab>
+```lua
+lib.vehicle:new(handle)
+```
+</Tab>
+<Tab>
+```ts
+import { Vehicle } from "@overextended/ox_lib";
+
+new Vehicle(handle)
+```
+</Tab>
+</Tabs>
+
+- handle: `number` O [script handle](https://docs.fivem.net/docs/scripting-manual/networking/ids/#entity-handle) da entidade.
+
+**Retorna:** `Vehicle`
+
+## Métodos
+
+### setOnGround
+
+Tenta colocar a entidade no chão.  
+No servidor, isso usa o estado `ox_entity_setonground` e um [manipulador de mudança de statebag](https://github.com/overextended/ox_lib/blob/44796d362997f9d1b67a01b56ed5bcba1e73c2f4/resource/client.lua#L39-L74).
+
+<Tabs groupId="language" items={['Lua', 'TypeScript']}>
+<Tab>
+```lua
+entity:setOnGround()
+```
+</Tab>
+<Tab>
+```ts
+entity.setOnGround()
+```
+</Tab>
+</Tabs>
+
+**Retorna:** `boolean`
+
+### getType
+
+Obtém o tipo de veículo da entidade. Veja [GetVehicleType](https://docs.fivem.net/natives/?_0xA273060E).
+
+<Tabs groupId="language" items={['Lua', 'TypeScript']}>
+<Tab>
+```lua
+entity:getType()
+```
+</Tab>
+<Tab>
+```ts
+entity.getType()
+```
+</Tab>
+</Tabs>
+
+**Retorna:** `string`
+
+### getPlate
+
+Obtém o texto da placa do veículo da entidade.
+
+<Tabs groupId="language" items={['Lua', 'TypeScript']}>
+<Tab>
+```lua
+entity:getPlate()
+```
+</Tab>
+<Tab>
+```ts
+entity.getPlate()
+```
+</Tab>
+</Tabs>
+
+**Retorna:** `string`
+
+### setPlate
+
+Define o texto da placa do veículo da entidade.
+
+<Tabs groupId="language" items={['Lua', 'TypeScript']}>
+<Tab>
+```lua
+entity:setPlate(plate)
+```
+</Tab>
+<Tab>
+```ts
+entity.setPlate(plate)
+```
+</Tab>
+</Tabs>
+
+- plate: `string`
+
+<include>GameEntity.mdx</include>
