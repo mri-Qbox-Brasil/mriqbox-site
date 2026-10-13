@@ -1,0 +1,295 @@
+---
+title: GameEntity
+upstream_path: content/docs/ox_lib/GameEntity.mdx
+upstream_sha: 328e36feb5b0486d6214971f53c6d2626193cc28
+---
+{/*
+Classe interna usada pelas classes GameEntity (Ped, Player, Prop, Vehicle).
+*/}
+
+## Métodos de GameEntity
+
+### set
+
+Escreve um valor na statebag da entidade.
+
+<Tabs groupId="language" items={['Lua', 'TypeScript']}>
+<Tab>
+```lua
+entity:set(key, value)
+```
+</Tab>
+<Tab>
+```ts
+entity.set(key, value)
+```
+</Tab>
+</Tabs>
+
+- key: `string`
+- value: `any`
+
+**Retorna:** `boolean` - Se o estado mudou.
+
+### setr
+
+Escreve um valor replicado na statebag da entidade. Valores definidos no cliente são validados pelo servidor (veja [Hooks](./Hooks#registered-hooks)).  
+Valores replicados são sincronizados entre o servidor e todos os jogadores relevantes.
+
+<Tabs groupId="language" items={['Lua', 'TypeScript']}>
+<Tab>
+```lua
+entity:setr(key, value)
+```
+</Tab>
+<Tab>
+```ts
+entity.setr(key, value)
+```
+</Tab>
+</Tabs>
+
+- key: `string`
+- value: `any`
+
+**Retorna:** `boolean` - Se o estado mudou.
+
+### sets
+
+Escreve um valor sincronizado na statebag da entidade. Valores definidos no cliente são validados pelo servidor (veja [Hooks](./Hooks#registered-hooks)).  
+Valores sincronizados são replicados apenas entre o jogador e o servidor, e não podem ser definidos em entidades que não sejam de jogador.
+
+<Tabs groupId="language" items={['Lua', 'TypeScript']}>
+<Tab>
+```lua
+entity:sets(key, value)
+```
+</Tab>
+<Tab>
+```ts
+entity.sets(key, value)
+```
+</Tab>
+</Tabs>
+
+- key: `string`
+- value: `any`
+
+**Retorna:** `boolean` - Se o estado mudou.
+
+### get
+
+Retorna um valor da statebag da entidade.
+
+<Tabs groupId="language" items={['Lua', 'TypeScript']}>
+<Tab>
+```lua
+entity:get(key)
+```
+</Tab>
+<Tab>
+```ts
+entity.get(key)
+```
+</Tab>
+</Tabs>
+
+- key: `string`
+
+**Retorna:** `unknown`
+
+### has
+
+Retorna se uma chave existe na statebag da entidade.
+
+<Tabs groupId="language" items={['Lua', 'TypeScript']}>
+<Tab>
+```lua
+entity:has(key)
+```
+</Tab>
+<Tab>
+```ts
+entity.has(key)
+```
+</Tab>
+</Tabs>
+
+- key: `string`
+
+**Retorna:** `boolean`
+
+### keys
+
+Retorna um array com todas as chaves definidas na statebag da entidade.
+
+<Tabs groupId="language" items={['Lua', 'TypeScript']}>
+<Tab>
+```lua
+entity:keys()
+```
+</Tab>
+<Tab>
+```ts
+entity.keys()
+```
+</Tab>
+</Tabs>
+
+**Retorna:** `string[]`
+
+
+### setHandle
+
+Atualiza as propriedades handle, netId e statebag em uma entidade. Útil ao reutilizar uma instância de entidade, recriar uma entidade, mudar o modelo, etc.
+
+<Tabs groupId="language" items={['Lua', 'TypeScript']}>
+<Tab>
+```lua
+entity:setHandle(handle)
+```
+</Tab>
+<Tab>
+```ts
+entity.setHandle(handle)
+```
+</Tab>
+</Tabs>
+
+- handle: `number`
+
+### getCoords
+
+Obtém as coordenadas atuais da entidade.
+
+<Tabs groupId="language" items={['Lua', 'TypeScript']}>
+<Tab>
+```lua
+entity:getCoords()
+```
+</Tab>
+<Tab>
+```ts
+entity.getCoords()
+```
+</Tab>
+</Tabs>
+
+**Retorna:** `Vector3`
+
+### setCoords
+
+Define as coordenadas da entidade para a posição especificada.
+
+<Tabs groupId="language" items={['Lua', 'TypeScript']}>
+<Tab>
+```lua
+entity:setCoords(x, y, z, deadFlag, ragdollFlag, clearArea)
+```
+</Tab>
+<Tab>
+```ts
+entity.setCoords()
+```
+</Tab>
+</Tabs>
+
+- x: `number`
+- y: `number`
+- z: `number`
+- deadFlag?: `boolean` (Padrão: false)
+- ragdollFlag?: `boolean` (Padrão: false)
+- clearArea?: `boolean` (Padrão: false)
+
+### getModel
+
+Obtém o hash do modelo atual da entidade.
+
+<Tabs groupId="language" items={['Lua', 'TypeScript']}>
+<Tab>
+```lua
+entity:getModel()
+```
+</Tab>
+<Tab>
+```ts
+entity.getModel()
+```
+</Tab>
+</Tabs>
+
+**Retorna:** `number`
+
+### getHeading
+
+Obtém o heading atual da entidade (ou yaw) em graus.
+
+<Tabs groupId="language" items={['Lua', 'TypeScript']}>
+<Tab>
+```lua
+entity:getHeading()
+```
+</Tab>
+<Tab>
+```ts
+entity.getHeading()
+```
+</Tab>
+</Tabs>
+
+**Retorna:** `number`
+
+### setHeading
+
+Define o heading da entidade (ou yaw) para o valor fornecido em graus.
+
+<Tabs groupId="language" items={['Lua', 'TypeScript']}>
+<Tab>
+```lua
+entity:setHeading(heading)
+```
+</Tab>
+<Tab>
+```ts
+entity.setHeading(heading)
+```
+</Tab>
+</Tabs>
+
+- heading: `number`
+
+### getRoutingBucket
+
+Obtém o routing bucket atual da entidade.
+
+<Tabs groupId="language" items={['Lua', 'TypeScript']}>
+<Tab>
+```lua
+entity:getRoutingBucket()
+```
+</Tab>
+<Tab>
+```ts
+entity.getRoutingBucket()
+```
+</Tab>
+</Tabs>
+
+**Retorna:** `number`
+
+### setRoutingBucket
+
+Define o routing bucket da entidade para o id fornecido. **Somente servidor.**
+
+<Tabs groupId="language" items={['Lua', 'TypeScript']}>
+<Tab>
+```lua
+entity:setRoutingBucket(bucketId)
+```
+</Tab>
+<Tab>
+```ts
+entity.setRoutingBucket(bucketId)
+```
+</Tab>
+</Tabs>
