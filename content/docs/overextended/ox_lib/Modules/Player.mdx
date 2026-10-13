@@ -1,0 +1,53 @@
+---
+title: Player
+upstream_path: content/docs/ox_lib/Player.mdx
+upstream_sha: 328e36feb5b0486d6214971f53c6d2626193cc28
+---
+
+Uma classe que estende a classe [Ped](Ped) com funcionalidade adicional para jogadores.
+
+## Construtor
+
+<Tabs groupId="language" items={['Lua', 'TypeScript']}>
+<Tab>
+```lua
+lib.player:new(netId)
+```
+</Tab>
+<Tab>
+```ts
+import { Player } from "@overextended/ox_lib";
+
+new Player(netId)
+```
+</Tab>
+</Tabs>
+
+- netId: `number` O [server id](https://docs.fivem.net/docs/scripting-manual/networking/ids/#server-id) do jogador.
+
+**Retorna:** `Player`
+
+## Métodos
+
+### setModel
+
+Cria um novo ped e o atribui ao jogador. No cliente, isso invalida o entity handle (veja [setHandle](#sethandle)).
+
+<Tabs groupId="language" items={['Lua', 'TypeScript']}>
+<Tab>
+```lua
+entity:setModel(model)
+```
+</Tab>
+<Tab>
+```ts
+entity.setModel(model)
+```
+</Tab>
+</Tabs>
+
+- model: `string` | `number`
+
+## Métodos de Ped
+
+<include>Ped.mdx#pedmethods</include>
