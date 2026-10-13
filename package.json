@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "build": "next build --webpack",
+    "build": "next build --webpack && node scripts/build-pagefind.mjs",
     "dev": "next dev --webpack",
     "lint": "eslint .",
     "start": "next start"
@@ -31,6 +31,7 @@
     "@types/react-dom": "^19.3.0",
     "eslint": "^9.39.4",
     "eslint-config-next": "16.2.10",
+    "pagefind": "^1.5.2",
     "postcss": "^8.5",
     "tailwindcss": "^4.1.9",
     "tw-animate-css": "1.3.3",
