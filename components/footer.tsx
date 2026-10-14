@@ -29,6 +29,8 @@ export function Footer({ locale }: { locale: Locale }) {
             <Link href="/docs" className={LINK}>{nav.docs}</Link>
             <Link href={ROUTES.servers[locale]} className={LINK}>{t.servers}</Link>
             <Link href="https://tela.mriqbox.com.br" target="_blank" rel="noopener noreferrer" className={LINK}>{nav.screenShare}</Link>
+            <Link href="https://ui.mriqbox.com.br" target="_blank" rel="noopener noreferrer" className={LINK}>{t.uiKit}</Link>
+            <Link href="https://assets.mriqbox.com.br" target="_blank" rel="noopener noreferrer" className={LINK}>{t.assets}</Link>
           </div>
           <div className="flex flex-col gap-4">
             <h4 className={TITLE}>{t.content}</h4>

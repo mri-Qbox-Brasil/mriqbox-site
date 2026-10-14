@@ -8,6 +8,7 @@ import {
 import { notFound } from "next/navigation"
 import { getMDXComponents } from "@/mdx-components"
 import type { Metadata } from "next"
+import { OG_IMAGE } from "@/lib/page-metadata"
 
 export default async function Page(props: {
   params: Promise<{ slug?: string[] }>
@@ -56,11 +57,13 @@ export async function generateMetadata(props: {
       description,
       url: page.url,
       type: "article",
+      images: [OG_IMAGE],
     },
     twitter: {
       card: "summary_large_image",
       title: `${page.data.title} | Documentação MRI Qbox`,
       description,
+      images: [OG_IMAGE],
     },
   }
 }

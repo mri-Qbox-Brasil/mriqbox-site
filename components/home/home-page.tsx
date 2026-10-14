@@ -25,7 +25,7 @@ export function homeMetadata(locale: Locale): Metadata {
     ogTitle: meta.ogTitle,
     ogDescription: meta.ogDescription,
   })
-  return { ...base, twitter: { card: "summary_large_image", title: meta.title, description: meta.twitterDescription } }
+  return { ...base, twitter: { card: "summary_large_image", title: meta.title, description: meta.twitterDescription, images: base.twitter?.images } }
 }
 
 type Feedback = { id: FeedbackId; name: string; avatar: string; role: FeedbackRole | { org: string } }

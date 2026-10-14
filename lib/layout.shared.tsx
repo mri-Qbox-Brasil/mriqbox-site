@@ -29,6 +29,8 @@ export function baseOptions(): BaseLayoutProps {
       { text: "Artifacts DB", url: "/comecar" },
       { text: "Saber Mais", url: "/sobre" },
       { text: "Compartilhar Tela", url: "https://tela.mriqbox.com.br", external: true },
+      { text: "UI Kit", url: "https://ui.mriqbox.com.br", external: true },
+      { text: "Banco de Assets", url: "https://assets.mriqbox.com.br", external: true },
       { text: "Discord", url: "/discord" },
     ],
   }
