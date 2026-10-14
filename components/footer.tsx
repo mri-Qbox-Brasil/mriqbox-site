@@ -31,6 +31,7 @@ export function Footer({ locale }: { locale: Locale }) {
             <Link href="https://tela.mriqbox.com.br" target="_blank" rel="noopener noreferrer" className={LINK}>{nav.screenShare}</Link>
             <Link href="https://ui.mriqbox.com.br" target="_blank" rel="noopener noreferrer" className={LINK}>{t.uiKit}</Link>
             <Link href="https://assets.mriqbox.com.br" target="_blank" rel="noopener noreferrer" className={LINK}>{t.assets}</Link>
+            <Link href="https://skills.mriqbox.com.br" target="_blank" rel="noopener noreferrer" className={LINK}>{t.skills}</Link>
           </div>
           <div className="flex flex-col gap-4">
             <h4 className={TITLE}>{t.content}</h4>
