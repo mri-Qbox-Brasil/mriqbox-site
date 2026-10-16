@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-10-15T23:22:20.344Z",
+ "updatedAt": "2026-10-16T01:49:05.388Z",
  "resources": [
   "mri_Qadmin",
   "mri_Qairbags",
@@ -31,6 +31,7 @@
   "mri_Qemotes",
   "mri_QexoticPaints",
   "mri_Qfarm",
+  "mri_Qfarm_v1",
   "mri_Qflatbed",
   "mri_Qfleecaheist",
   "mri_Qfps",
@@ -210,15 +211,6 @@
    "avgPlayers": 4
   },
   {
-   "id": "7bbd59b",
-   "name": "🏙️ Unclassified RP",
-   "logo": "https://frontend.cfx-services.net/api/servers/icon/7bbd59b/1041365622.png",
-   "locale": "en-GB",
-   "players": 9,
-   "maxPlayers": 9,
-   "avgPlayers": 2
-  },
-  {
    "id": "3yg6e9z",
    "name": "ASCEND RP",
    "logo": "https://frontend.cfx-services.net/api/servers/icon/3yg6e9z/2138702197.png",
@@ -262,6 +254,15 @@
    "players": 6,
    "maxPlayers": 6,
    "avgPlayers": 2
+  },
+  {
+   "id": "7bbd59b",
+   "name": "🏙️ Unclassified RP",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/7bbd59b/1041365622.png",
+   "locale": "en-GB",
+   "players": 5,
+   "maxPlayers": 15,
+   "avgPlayers": 3
   },
   {
    "id": "8em4zb4",
@@ -637,6 +638,15 @@
    "name": "[Qbox Project] Downgrade",
    "logo": "https://frontend.cfx-services.net/api/servers/icon/967y7b/2034334528.png",
    "locale": "root-AQ",
+   "players": 1,
+   "maxPlayers": 1,
+   "avgPlayers": 1
+  },
+  {
+   "id": "vqqvg3k",
+   "name": "AICityTest",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/vqqvg3k/-267466854.png",
+   "locale": "it-IT",
    "players": 1,
    "maxPlayers": 1,
    "avgPlayers": 1
@@ -1296,15 +1306,6 @@
    "locale": "pt-BR",
    "players": 0,
    "maxPlayers": 2,
-   "avgPlayers": 1
-  },
-  {
-   "id": "vqqvg3k",
-   "name": "AICityTest",
-   "logo": "https://frontend.cfx-services.net/api/servers/icon/vqqvg3k/-267466854.png",
-   "locale": "it-IT",
-   "players": 0,
-   "maxPlayers": 1,
    "avgPlayers": 1
   },
   {
