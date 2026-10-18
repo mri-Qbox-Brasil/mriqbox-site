@@ -1,0 +1,167 @@
+{
+  "brokenArtifacts": [
+    {
+      "artifact": "8509",
+      "reason": "State bags not replicated to clients"
+    },
+    {
+      "artifact": "10072",
+      "reason": "Crashing when players join"
+    },
+    {
+      "artifact": "10191",
+      "reason": "GetVehicleNumberPlateText server native broken, will cause issues with scripts involving vehicles"
+    },
+    {
+      "artifact": "10268-10309",
+      "reason": "sv_experimentalNetGameEventHandler enabled by default; can cause server crashing and reports of issues downgrading after upgrading"
+    },
+    {
+      "artifact": "10930",
+      "reason": "Failed build, ignore"
+    },
+    {
+      "artifact": "12078-12083",
+      "reason": "Some clients will fail to connect with 'ReadBulk of header failed' error"
+    },
+    {
+      "artifact": "12092-12135",
+      "reason": "SetPlayerModel may cause SIGSEGV crashes on some clients due to changes in player handling. 12031 and below works fine."
+    },
+    {
+      "artifact": "12151",
+      "reason": "Crashing if using newest title update (TU)"
+    },
+    {
+      "artifact": "12160-12165",
+      "reason": "Cannot use entity native calls in entityRemoved"
+    },
+    {
+      "artifact": "12180",
+      "reason": "voip-server-mumble.dll server crash (citizenfx/fivem#3054)"
+    },
+    {
+      "artifact": "12255",
+      "reason": "Unconfirmed, but several reports of server-side issues that don't persist when downgrading; best to avoid"
+    },
+    {
+      "artifact": "12509",
+      "reason": "Failed build, ignore"
+    },
+    {
+      "artifact": "12651",
+      "reason": "Failed Linux build, ignore"
+    },
+    {
+      "artifact": "12767",
+      "reason": "os.date() appends null terminator; can break Lua scripts"
+    },
+    {
+      "artifact": "12913-12932",
+      "reason": "Causes a crash when restarting Node.js 22"
+    },
+    {
+      "artifact": "12913-14177",
+      "reason": "High FXServer CPU usage on Linux artifacts; fixed by 14193 (citizenfx/fivem#3222)"
+    },
+    {
+      "artifact": "12933-13045",
+      "reason": "Still crashes (sometimes) when restarting resources due to Node.js 22"
+    },
+    {
+      "artifact": "13079",
+      "reason": "Failed Linux build (works OK if using Windows!)"
+    },
+    {
+      "artifact": "13380-13458",
+      "reason": "Server crashing due to integer encoding (PR#3235)"
+    },
+    {
+      "artifact": "13759-13890",
+      "reason": "Mumble (voice) external connections blocked by default"
+    },
+    {
+      "artifact": "14583-14716",
+      "reason": "Crash when using the new onEntityBucketChange"
+    },
+    {
+      "artifact": "14583-14862",
+      "reason": "Timeouts due to latency units being in nanoseconds"
+    },
+    {
+      "artifact": "16276",
+      "reason": "Multiple reports of issues loading JS within resources"
+    },
+    {
+      "artifact": "17462",
+      "reason": "Failed build, ignore"
+    },
+    {
+      "artifact": "21547",
+      "reason": "Multiple (unconfirmed) reports of server-sided natives throwing errors or causing crashes; best to avoid"
+    },
+    {
+      "artifact": "25839-25988",
+      "reason": "Node.js sandboxing seems to be causing issues for people - best to avoid for now"
+    },
+    {
+      "artifact": "25943",
+      "reason": "Failed build"
+    },
+    {
+      "artifact": "26261-27715",
+      "reason": "Issues with building Yarn resources on some Linux servers"
+    },
+    {
+      "artifact": "27722",
+      "reason": "Yarn fails to exit cleanly on Windows"
+    },
+    {
+      "artifact": "27783-27938",
+      "reason": "SIGSEV crashes (issue #3915)"
+    },
+    {
+      "artifact": "28626",
+      "reason": "Issues with packet loss/timeouts"
+    },
+    {
+      "artifact": "31689",
+      "reason": "GetVehiclePedIsIn server native returns 0 (citizenfx/fivem#4051)"
+    },
+    {
+      "artifact": "31725",
+      "reason": "Failed build"
+    },
+    {
+      "artifact": "32698",
+      "reason": "Failed Windows build (works OK if using Linux!)"
+    },
+    {
+      "artifact": "33230",
+      "reason": "Failed Windows build (works OK if using Linux!)"
+    },
+    {
+      "artifact": "33746",
+      "reason": "Failed Windows build (works OK if using Linux!)"
+    },
+    {
+      "artifact": "33864",
+      "reason": "Failed Windows build (works OK if using Linux!)"
+    },
+    {
+      "artifact": "34303",
+      "reason": "Failed build, ignore"
+    },
+    {
+      "artifact": "34410",
+      "reason": "Failed build"
+    },
+    {
+      "artifact": "35186-35214",
+      "reason": "Lua io.readdir directory iteration errors"
+    }
+  ],
+  "linuxDownloadLink": "https://runtime.fivem.net/artifacts/fivem/build_proot_linux/master/37389-c825d6d1cab8ce3330bbf2ee3e552a4516dc48d7/fx.tar.xz",
+  "recommendedArtifact": "37389",
+  "windowsDownloadLink": "https://runtime.fivem.net/artifacts/fivem/build_server_windows/master/37389-c825d6d1cab8ce3330bbf2ee3e552a4516dc48d7/server.zip"
+}
