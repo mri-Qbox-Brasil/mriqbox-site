@@ -37,6 +37,18 @@ function DocsImg({ src, ...props }: ComponentProps<"img">) {
   )
 }
 
+const DefaultLink = (defaultMdxComponents as MDXComponents).a as ComponentType<ComponentProps<"a">>
+
+// Docs links are written relative to the slashless page URL; trailing-slash URLs would resolve them one folder too deep.
+export function docsLink(pageUrl: string) {
+  return function DocsLink({ href, ...props }: ComponentProps<"a">) {
+    if (typeof href !== "string" || !/^\.\.?\//.test(href)) return <DefaultLink href={href} {...props} />
+    const url = new URL(href, `https://site${pageUrl}`)
+    const pathname = url.pathname.replace(/\.mdx?$/, "")
+    return <DefaultLink href={`${pathname}${url.hash}`} {...props} />
+  }
+}
+
 // Componentes disponíveis globalmente dentro do MDX. Assim os arquivos migrados
 // não precisam de imports (nextra/components e @components/* são removidos na
 // conversão da Fase 3).

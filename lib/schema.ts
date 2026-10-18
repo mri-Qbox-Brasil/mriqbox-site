@@ -2,7 +2,7 @@
 // type="application/ld+json"> com o output dessas funcoes, ajuda o Google
 // a entender o conteudo e exibir rich snippets (breadcrumbs, FAQ, HowTo).
 
-const SITE_URL = "https://mriqbox.com.br"
+import { absoluteUrl } from "@/lib/site"
 
 export function breadcrumb(items: { name: string; path: string }[]) {
   return {
@@ -12,7 +12,7 @@ export function breadcrumb(items: { name: string; path: string }[]) {
       "@type": "ListItem",
       position: i + 1,
       name: item.name,
-      item: `${SITE_URL}${item.path}`,
+      item: absoluteUrl(item.path),
     })),
   }
 }
@@ -63,7 +63,7 @@ export function softwareApplication(item: {
     operatingSystem: "FiveM",
     offers: { "@type": "Offer", price: "0", priceCurrency: "BRL" },
     url: item.url,
-    publisher: { "@type": "Organization", name: "MRI Qbox Brasil", url: SITE_URL },
+    publisher: { "@type": "Organization", name: "MRI Qbox Brasil", url: absoluteUrl("/") },
   }
 }
 
@@ -83,11 +83,11 @@ export function article(item: {
     inLanguage: item.inLanguage ?? "pt-BR",
     datePublished: item.datePublished,
     dateModified: item.dateModified ?? item.datePublished,
-    author: { "@type": "Organization", name: "MRI Qbox Brasil", url: SITE_URL },
+    author: { "@type": "Organization", name: "MRI Qbox Brasil", url: absoluteUrl("/") },
     publisher: {
       "@type": "Organization",
       name: "MRI Qbox Brasil",
-      url: SITE_URL,
+      url: absoluteUrl("/"),
       logo: {
         "@type": "ImageObject",
         url: "https://assets.mriqbox.com.br/branding/logo1080.png",
@@ -95,7 +95,7 @@ export function article(item: {
     },
     mainEntityOfPage: {
       "@type": "WebPage",
-      "@id": `${SITE_URL}${item.path}`,
+      "@id": absoluteUrl(item.path),
     },
   }
 }

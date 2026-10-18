@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next"
 
-const SITE_URL = "https://mriqbox.com.br"
+import { SITE_URL } from "@/lib/site"
 
 // Required by `output: export`.
 export const dynamic = "force-static"

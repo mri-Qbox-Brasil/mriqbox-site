@@ -6,7 +6,7 @@ import {
   DocsDescription,
 } from "fumadocs-ui/page"
 import { notFound } from "next/navigation"
-import { getMDXComponents } from "@/mdx-components"
+import { docsLink, getMDXComponents } from "@/mdx-components"
 import type { Metadata } from "next"
 import { OG_IMAGE } from "@/lib/page-metadata"
 
@@ -27,7 +27,7 @@ export default async function Page(props: {
         <DocsTitle>{page.data.title}</DocsTitle>
         <DocsDescription>{page.data.description}</DocsDescription>
         <DocsBody>
-          <MDXContent components={getMDXComponents()} />
+          <MDXContent components={getMDXComponents({ a: docsLink(page.url) })} />
         </DocsBody>
       </div>
     </DocsPage>
