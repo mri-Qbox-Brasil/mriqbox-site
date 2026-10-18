@@ -46,6 +46,7 @@ function PaymentMethods({ t }: { t: SupportDictionary }) {
 function BrlPlans({ t, primary }: { t: SupportDictionary; primary: boolean }) {
   const plans = [
     { id: "monthly", ...t.plans.monthly, href: PLAN_URLS.monthly, primary },
+    { id: "semiannual", ...t.plans.semiannual, href: PLAN_URLS.semiannual, primary: false },
     { id: "yearly", ...t.plans.yearly, href: PLAN_URLS.yearly, primary: false },
   ]
   return (
@@ -56,7 +57,7 @@ function BrlPlans({ t, primary }: { t: SupportDictionary; primary: boolean }) {
       </h2>
       <p className="text-sm text-muted-foreground mb-4">{t.plans.subtitle}</p>
       <PaymentMethods t={t} />
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
         {plans.map((plan) => (
           <Card key={plan.id} className={`p-8 flex flex-col gap-5 ${plan.primary ? "border-primary/50" : ""}`}>
             <div>
