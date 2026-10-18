@@ -1,8 +1,6 @@
 import type React from "react"
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
-import { Analytics } from "@vercel/analytics/next"
-import { SpeedInsights } from "@vercel/speed-insights/next"
 import CookieConsent from "@/components/cookie-consent"
 import Script from "next/script"
 import { RootProvider } from "fumadocs-ui/provider/next"
@@ -16,12 +14,6 @@ const inter = Inter({
 
 const SITE_URL = "https://mriqbox.com.br"
 const OG_IMAGE = "https://assets.mriqbox.com.br/branding/logo1080.png"
-
-// Build de dev no GitHub Pages: serve sob /mriqbox-site e nao deve ser indexado.
-// O basePath nao e aplicado automaticamente aos icons do metadata, entao
-// prefixamos manualmente aqui.
-const IS_GITHUB_PAGES = process.env.GITHUB_PAGES === "true"
-const BP = IS_GITHUB_PAGES ? "/mriqbox-site" : ""
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -48,17 +40,15 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-  // Versao de dev (GitHub Pages) nao deve aparecer nos buscadores.
-  ...(IS_GITHUB_PAGES && { robots: { index: false, follow: false } }),
   // Favicon: mri.ico (mesmo da aba do docs.mriqbox.com.br) + icon.png 460px
   // (avatar MRI) pra crawlers/cards de preview que ignoram .ico. apple-icon
   // pro iOS home screen e cards que usam apple-touch-icon.
   icons: {
     icon: [
-      { url: `${BP}/mri.ico`, type: "image/x-icon" },
-      { url: `${BP}/icon.png`, type: "image/png", sizes: "460x460" },
+      { url: "/mri.ico", type: "image/x-icon" },
+      { url: "/icon.png", type: "image/png", sizes: "460x460" },
     ],
-    apple: `${BP}/apple-icon.png`,
+    apple: "/apple-icon.png",
   },
   openGraph: {
     type: "website",
@@ -142,20 +132,15 @@ export default function RootLayout({
           {children}
         </RootProvider>
         <CookieConsent />
-        <Analytics />
-        <SpeedInsights />
         {/* Cloudflare Web Analytics (sem cookies). O dominio principal nao passa
             pelo proxy da Cloudflare, entao o beacon e instalado aqui. Usa o site
             "www.mriqbox.com.br" do Web Analytics: o site ligado a zona so aceita
-            trafego que passa pelo proxy. So em
-            producao: o build do GitHub Pages (dev) nao entra nas metricas. */}
-        {process.env.GITHUB_PAGES !== "true" && (
-          <Script
-            src="https://static.cloudflareinsights.com/beacon.min.js"
-            data-cf-beacon='{"token": "418412c332aa4355a803548160b2ef7c"}'
-            strategy="afterInteractive"
-          />
-        )}
+            trafego que passa pelo proxy. */}
+        <Script
+          src="https://static.cloudflareinsights.com/beacon.min.js"
+          data-cf-beacon='{"token": "418412c332aa4355a803548160b2ef7c"}'
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   )
