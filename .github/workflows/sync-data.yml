@@ -1,0 +1,48 @@
+name: Sync live data
+
+# Mirrors APIs that block browser requests into the data branch, which the site reads from raw.githubusercontent.com.
+on:
+  schedule:
+    - cron: "*/10 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-data
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the data branch
+        run: |
+          git init -q data
+          cd data
+          git remote add origin "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git"
+          if git fetch -q --depth 1 origin data; then git checkout -q -b data FETCH_HEAD; else git checkout -q --orphan data; fi
+
+      - name: Fetch supporters and artifacts
+        working-directory: data
+        run: |
+          fetch() {
+            if curl -fsS --max-time 20 "$2" -o /tmp/raw.json && jq -e "$3" /tmp/raw.json > /dev/null; then
+              jq -S . /tmp/raw.json > "$1"
+            else
+              echo "::warning::$1 not updated: $2 failed or changed format"
+            fi
+          }
+          fetch supporters.json https://api.mriqbox.com.br/public/supporters '.supporters | type == "array"'
+          fetch artifacts.json https://artifacts.jgscripts.com/jsonv2 '(.recommendedArtifact | type == "string") and (.brokenArtifacts | type == "array")'
+
+      - name: Commit when something changed
+        working-directory: data
+        run: |
+          git add -A
+          git diff --cached --quiet && exit 0
+          git config user.name 'github-actions'
+          git config user.email 'github-actions@github.com'
+          git commit -qm "chore(data): atualiza apoiadores e artifacts"
+          git push -q origin data

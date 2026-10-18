@@ -174,7 +174,7 @@ export function SupportPage({ locale }: { locale: Locale }) {
           </div>
         </Card>
 
-        <SupportersWall t={t.supporters} />
+        <SupportersWall locale={locale} />
 
         <section className="mt-16 max-w-3xl">
           <h2 className="text-2xl font-bold text-foreground mb-3">{t.other.title}</h2>

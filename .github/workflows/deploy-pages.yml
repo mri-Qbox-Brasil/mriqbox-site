@@ -3,9 +3,6 @@ name: Deploy site to GitHub Pages
 on:
   push:
     branches: [main]
-  # Hourly rebuild refreshes data fetched at build time (supporters, members, Discord, artifacts).
-  schedule:
-    - cron: "17 * * * *"
   workflow_dispatch:
 
 permissions:
