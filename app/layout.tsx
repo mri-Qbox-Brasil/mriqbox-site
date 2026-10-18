@@ -5,6 +5,7 @@ import CookieConsent from "@/components/cookie-consent"
 import Script from "next/script"
 import { RootProvider } from "fumadocs-ui/provider/next"
 import PagefindSearchDialog from "@/components/pagefind-search-dialog"
+import { SITE_URL, absoluteUrl } from "@/lib/site"
 import "./globals.css"
 
 const inter = Inter({
@@ -12,7 +13,6 @@ const inter = Inter({
   variable: "--font-inter",
 })
 
-const SITE_URL = "https://mriqbox.com.br"
 const OG_IMAGE = "https://assets.mriqbox.com.br/branding/logo1080.png"
 
 export const metadata: Metadata = {
@@ -53,7 +53,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "pt_BR",
-    url: SITE_URL,
+    url: absoluteUrl("/"),
     siteName: "MRI Qbox Brasil",
     title: "MRI Qbox Brasil | Framework FiveM Open Source",
     description:
@@ -77,7 +77,7 @@ const ORGANIZATION_SCHEMA = {
   "@type": "Organization",
   name: "MRI Qbox Brasil",
   alternateName: "MRI Qbox",
-  url: SITE_URL,
+  url: absoluteUrl("/"),
   logo: OG_IMAGE,
   description:
     "Framework FiveM open source baseada em Qbox, QBCore e Ox, mantida pela comunidade brasileira.",
@@ -97,7 +97,7 @@ const WEBSITE_SCHEMA = {
   "@type": "WebSite",
   name: "MRI Qbox Brasil",
   alternateName: "MRI Qbox",
-  url: SITE_URL,
+  url: absoluteUrl("/"),
   inLanguage: "pt-BR",
   description: "Documentação, recursos e comunidade da framework FiveM open source MRI Qbox Brasil.",
   publisher: { "@type": "Organization", name: "MRI Qbox Brasil" },

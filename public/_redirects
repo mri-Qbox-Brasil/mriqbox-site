@@ -1,4 +1,0 @@
-# Cloudflare Pages: o `output: export` do Next não gera redirects
-# (next.config.mjs só registra /recursos na Vercel), então o equivalente
-# estático vive aqui. Sintaxe: <origem> <destino> <status>.
-/recursos /docs/mri/resources 301
