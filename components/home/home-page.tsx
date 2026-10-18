@@ -1,18 +1,19 @@
 import Link from "next/link"
 import Image from "next/image"
 import type { Metadata } from "next"
-import { Zap, Shield, Code, ArrowRight, Coffee, Download } from "lucide-react"
+import { Zap, Shield, Code, ArrowRight, Download } from "lucide-react"
 import { Github } from "@/components/icons/github"
 import { MriBotPromo } from "@/components/mri-bot-promo"
 import parceiros from "@/config/parceiros"
 import statsHistory from "@/data/stats-history.json"
 import { getArtifactsDb } from "@/lib/artifacts-db"
+import { getDiscordMemberCount, getTeamMembers } from "@/lib/community"
 import { ROUTES, type Locale } from "@/lib/i18n"
 import { totalPlayers, totalServers } from "@/lib/mri-servers"
 import { pageMetadata } from "@/lib/page-metadata"
 import { faqPage, jsonLd } from "@/lib/schema"
 import { homeDictionary, type FeedbackId, type FeedbackRole, type HomeDictionary } from "./content"
-import { InstallerMockup } from "./InstallerMockup"
+import { DiscordCount, LiveInstallerMockup, TeamBadgeAvatars, TeamGrid } from "./live-sections"
 import { ParceiroCarousel } from "./ParceiroCarousel"
 import PlayersChart from "./PlayersChart"
 
@@ -46,56 +47,6 @@ const FEEDBACKS: Feedback[] = [
   { id: "gleibsonms", name: "gleibsonms", role: "member", avatar: "./profiles/gleibsonms.webp" },
   { id: "baumel", name: "baumel_", role: "member", avatar: "./profiles/baumel.webp" },
 ]
-
-type TeamMember = {
-  login: string
-  avatar_url: string
-  html_url: string
-  kofi_username?: string
-}
-
-// Keeps the section from shipping empty in the static build when the members service is down.
-const TEAM_MEMBERS_FALLBACK: TeamMember[] = [
-  { login: "BrunoOlivera07", avatar_url: "https://github.com/BrunoOlivera07.png?size=224", html_url: "https://github.com/BrunoOlivera07" },
-  { login: "ggfto", avatar_url: "https://github.com/ggfto.png?size=224", html_url: "https://github.com/ggfto", kofi_username: "ggfto" },
-  { login: "GordelaG", avatar_url: "https://github.com/GordelaG.png?size=224", html_url: "https://github.com/GordelaG", kofi_username: "GordelaG" },
-  { login: "gvs006", avatar_url: "https://github.com/gvs006.png?size=224", html_url: "https://github.com/gvs006", kofi_username: "gvs006" },
-  { login: "JJ4hts", avatar_url: "https://github.com/JJ4hts.png?size=224", html_url: "https://github.com/JJ4hts", kofi_username: "JJ4hts" },
-  { login: "mur4i", avatar_url: "https://github.com/mur4i.png?size=224", html_url: "https://github.com/mur4i", kofi_username: "mur4i" },
-  { login: "SubZeroGLX", avatar_url: "https://github.com/SubZeroGLX.png?size=224", html_url: "https://github.com/SubZeroGLX", kofi_username: "SubZeroGLX" },
-  { login: "xstells", avatar_url: "https://github.com/xstells.png?size=224", html_url: "https://github.com/xstells", kofi_username: "xstells" },
-]
-
-const DISCORD_MEMBERS_FALLBACK = 3500
-
-async function getTeamMembers(): Promise<TeamMember[]> {
-  try {
-    const res = await fetch("https://users.mriqbox.com.br/public/members.json", { next: { revalidate: 3600 } })
-    if (!res.ok) throw new Error(`HTTP ${res.status}`)
-    const members: unknown = await res.json()
-    if (!Array.isArray(members)) throw new Error("Invalid members response")
-    // The remote list is authoritative, even when empty.
-    return members as TeamMember[]
-  } catch {
-    return TEAM_MEMBERS_FALLBACK
-  }
-}
-
-async function getDiscordMemberCount(): Promise<number> {
-  try {
-    const res = await fetch("https://discord.com/api/v9/invites/uEfGD4mmVh?with_counts=true", { next: { revalidate: 3600 } })
-    if (res.ok) {
-      const data = await res.json()
-      if (data.approximate_member_count) return data.approximate_member_count
-    }
-  } catch {}
-  return DISCORD_MEMBERS_FALLBACK
-}
-
-function formatThousands(count: number, locale: Locale): string {
-  const value = new Intl.NumberFormat(locale, { minimumFractionDigits: 1, maximumFractionDigits: 1 }).format(count / 1000)
-  return `+${value}k`
-}
 
 function FeedbackCard({ feedback, t, hidden }: { feedback: Feedback; t: HomeDictionary["feedback"]; hidden?: boolean }) {
   const role = typeof feedback.role === "string" ? t.roles[feedback.role] : feedback.role.org
@@ -135,7 +86,7 @@ export async function HomePage({ locale }: { locale: Locale }) {
     { id: "free", value: "100%", ...t.metrics.free },
     { id: "scripts", value: "+50", ...t.metrics.scripts },
     { id: "community", value: "24/7", ...t.metrics.community },
-    { id: "discord", value: formatThousands(discordMembers, locale), ...t.metrics.discord },
+    { id: "discord", value: <DiscordCount initial={discordMembers} locale={locale} />, ...t.metrics.discord },
   ]
   const metricCellClasses = [
     "border-b border-primary-foreground/15 sm:border-r lg:border-b-0",
@@ -153,11 +104,7 @@ export async function HomePage({ locale }: { locale: Locale }) {
 
         <a href="#team" className="inline-flex items-center gap-2 py-1 px-4 rounded-full border border-primary/20 bg-primary/10 w-fit mb-6 hover:bg-primary/20 transition-colors group">
           <div className="flex -space-x-2 mr-1">
-            {teamMembers.slice(0, 4).map((member) => (
-              <div key={member.login} className="relative w-6 h-6 rounded-full overflow-hidden border-2 border-background">
-                <Image src={member.avatar_url} alt={member.login} fill className="object-cover" />
-              </div>
-            ))}
+            <TeamBadgeAvatars initial={teamMembers} />
           </div>
           <span className="text-sm font-bold text-primary">{t.hero.teamBadge}</span>
         </a>
@@ -207,13 +154,7 @@ export async function HomePage({ locale }: { locale: Locale }) {
           </div>
 
           <div className="hidden md:block">
-            <InstallerMockup
-              t={t.mockup}
-              className="rounded-t-none"
-              recommendedArtifact={artifactsDb.recommendedArtifact}
-              brokenArtifactsCount={artifactsDb.brokenArtifacts.length}
-              artifactsSynced={artifactsDb.synced}
-            />
+            <LiveInstallerMockup t={t.mockup} className="rounded-t-none" initial={artifactsDb} />
           </div>
         </div>
       </section>
@@ -237,28 +178,7 @@ export async function HomePage({ locale }: { locale: Locale }) {
           <p className="mt-4 max-w-xl text-sm leading-relaxed text-muted-foreground md:text-base">{t.team.text}</p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 w-full max-w-5xl">
-          {teamMembers.map((member) => (
-            <div key={member.login} className="group flex h-full flex-col items-center gap-5 rounded-2xl border border-white/5 bg-white/[0.015] p-5 transition-colors hover:border-primary/20 hover:bg-primary/[0.025]">
-              <div className="relative w-24 h-24 rounded-full overflow-hidden border-2 border-white/10 transition-colors group-hover:border-primary/50">
-                <Image src={member.avatar_url} alt={member.login} fill className="object-cover" />
-              </div>
-
-              <div className="flex w-full flex-1 flex-col justify-end gap-2">
-                <a href={member.html_url} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 rounded-lg border border-primary/20 bg-[#091811] px-4 py-2 text-sm font-semibold text-primary transition-colors hover:bg-[#0d2218]">
-                  <Github className="w-4 h-4" />
-                  {member.login}
-                </a>
-                {member.kofi_username && (
-                  <a href={`https://ko-fi.com/${member.kofi_username}`} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 rounded-lg border border-white/10 bg-white/[0.025] px-4 py-2 text-sm font-semibold text-white/65 transition-colors hover:border-primary/20 hover:bg-primary/5 hover:text-primary">
-                    <Coffee className="w-4 h-4" />
-                    {t.team.support}
-                  </a>
-                )}
-              </div>
-            </div>
-          ))}
-        </div>
+        <TeamGrid initial={teamMembers} supportLabel={t.team.support} />
       </section>
 
       <section className="w-full max-w-[1440px] mx-auto px-6 md:px-12 py-[120px] flex flex-col lg:flex-row gap-20">
