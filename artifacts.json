@@ -161,11 +161,27 @@
       "reason": "Lua io.readdir directory iteration errors"
     },
     {
+      "artifact": "35636",
+      "reason": "Windows server can hang under weaponDamageEvent flooding (issue #4239)"
+    },
+    {
+      "artifact": "36727",
+      "reason": "Linux build download unavailable (Windows download is available)"
+    },
+    {
+      "artifact": "36897",
+      "reason": "Network-thread hitches and mass timeouts under reliable-queue pressure on 36897 (issue #4244, PR #4242)."
+    },
+    {
       "artifact": "37346-37437",
       "reason": "Linux server crashes when starting escrow-protected resources; resolved in 37474."
+    },
+    {
+      "artifact": "37739",
+      "reason": "Failed build, ignore"
     }
   ],
-  "linuxDownloadLink": "https://runtime.fivem.net/artifacts/fivem/build_proot_linux/master/37739-4c4fe28a2fe4359610024269b2f1bf60cc5ea982/fx.tar.xz",
-  "recommendedArtifact": "37739",
-  "windowsDownloadLink": "https://runtime.fivem.net/artifacts/fivem/build_server_windows/master/37739-4c4fe28a2fe4359610024269b2f1bf60cc5ea982/server.zip"
+  "linuxDownloadLink": "https://runtime.fivem.net/artifacts/fivem/build_proot_linux/master/37692-ccd92212b96d4633897450940a57dc61dc2bc5b2/fx.tar.xz",
+  "recommendedArtifact": "37692",
+  "windowsDownloadLink": "https://runtime.fivem.net/artifacts/fivem/build_server_windows/master/37692-ccd92212b96d4633897450940a57dc61dc2bc5b2/server.zip"
 }
