@@ -281,15 +281,12 @@ As opções de um resource saem sozinhas quando ele para.
 
 ---
 
-## Opções padrão nos veículos
+## Opções nos veículos
 
-Todo veículo destrancado ganha abrir e fechar das quatro portas, capô e
-porta-malas. As portas ficam no osso delas (alcance de 1,5 m); capô e
-porta-malas na ponta da frente e de trás do carro, na meia altura (alcance de
-2 m), porque o osso deles é a dobradiça. O prompt mostra só a ação que vale
-agora, só com o verbo ("Abrir" ou "Fechar"), e o ícone mostra a peça (carro de
-lado nas portas, de frente no capô, de trás no porta-malas). Portas arrancadas ou
-inexistentes não aparecem.
+O Qinteract não põe opção nenhuma sozinho nos veículos. Abrir e fechar portas, capô e
+porta-malas, entrar pela porta e ver os itens do porta-malas vêm do mri_Qbox (módulos
+`vehicledoors` e `entervehicle`). `examples/vehicle-doors.lua` mostra o abrir e fechar
+pela API do ox_target, para outra base copiar; ele não é carregado.
 
 ---
 
@@ -318,9 +315,6 @@ A varredura roda em três ritmos, pra pesar pouco no `resmon`:
 - **Desenho (por frame):** só enquanto há alvo, e só calcula a posição de quem
   pode virar foco e dos primeiros marcadores.
 
-Nas portas dos veículos, o estado (válida, trancada, danificada, aberta) é lido
-uma vez por atualização e serve o abrir e o fechar.
-
 ---
 
 ## Localização
@@ -344,7 +338,6 @@ client/
   markers.lua      Animação dos marcadores
   dui.lua          Página do prompt numa DUI
   input.lua        Keybinds
-  vehicle.lua      Opções padrão dos veículos
   api.lua          Exports próprios
   panel.lua        Settings ao vivo, tema e painel /admininteract
   compat/          ox_target, qb-target, qtarget e sleepless_interact
