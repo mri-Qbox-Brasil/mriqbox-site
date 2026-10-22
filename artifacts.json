@@ -159,9 +159,13 @@
     {
       "artifact": "35186-35214",
       "reason": "Lua io.readdir directory iteration errors"
+    },
+    {
+      "artifact": "37346-37437",
+      "reason": "Linux server crashes when starting escrow-protected resources; resolved in 37474."
     }
   ],
-  "linuxDownloadLink": "https://runtime.fivem.net/artifacts/fivem/build_proot_linux/master/37579-8f3b0fadaa41b2176cf0ac4b93bc8a7117d33418/fx.tar.xz",
-  "recommendedArtifact": "37579",
-  "windowsDownloadLink": "https://runtime.fivem.net/artifacts/fivem/build_server_windows/master/37579-8f3b0fadaa41b2176cf0ac4b93bc8a7117d33418/server.zip"
+  "linuxDownloadLink": "https://runtime.fivem.net/artifacts/fivem/build_proot_linux/master/37739-4c4fe28a2fe4359610024269b2f1bf60cc5ea982/fx.tar.xz",
+  "recommendedArtifact": "37739",
+  "windowsDownloadLink": "https://runtime.fivem.net/artifacts/fivem/build_server_windows/master/37739-4c4fe28a2fe4359610024269b2f1bf60cc5ea982/server.zip"
 }
