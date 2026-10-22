@@ -54,7 +54,7 @@ Lista à esquerda, mapa no meio e editor à direita. Clicar na lista ou no pino 
 | Ajuste | Preencher (cobre e corta), Inteira (mostra toda, sobra transparente) ou Esticar |
 | Formato | Retângulo, Arredondado (cantos redondos) ou Redondo (círculo ou elipse, na proporção do pôster) |
 | Movimento | Parado, Zoom lento (aproxima e afasta) ou Deslizar (de um lado pro outro). Pausa junto com o vídeo quando longe |
-| Nitidez | Mínima, Leve, Baixa, Média ou Alta: tamanho da textura (128, 256, 512, 1024 ou 2048 px de lado). Mínima e Leve pra pôster pequeno ou visto de longe, Alta só em outdoor grande |
+| Nitidez | Mínima, Leve, Baixa, Média ou Alta: tamanho da textura de perto (128, 256, 512, 1024 ou 2048 px de lado). De longe ela baixa sozinha pro tamanho que o pôster ocupa na tela, sem serrilhar. Alta só em outdoor grande |
 | Brilho | de 20% a 200%. Abaixo de 100% escurece o pôster; acima clareia a imagem (o branco estoura) |
 | Mostrar no mundo | desligado, o pôster fica salvo mas some do mundo |
 
@@ -95,6 +95,8 @@ Botão no topo (só admin). Valem na hora pra todo mundo e ficam em `data/settin
 ## Desempenho
 
 - Cada pôster aceso é um navegador. Só os mais perto acendem, até o limite dos Ajustes, e dentro da distância (com folga de 25 m pra não recarregar na beirada).
+- Nada aparece ou some de repente: o pôster esmaece nos últimos 15% da distância (no mínimo 4 m), só aparece depois que a imagem ou o vídeo carregou, e some esmaecendo quando perde a vaga, é escondido ou apagado.
+- A nitidez acompanha o tamanho na tela: textura sem mipmap serrilha e cintila quando fica grande demais pro que aparece. A conta é só o tamanho do pôster e a distância dele até a câmera (nada a ver com a distância de exibição): a textura nunca tem mais pixels que o pôster na tela, de 32 a 2048 px. Um outdoor de 12 m usa 512 a 25 m, 128 a 100 m e 32 a 400 m. A troca tem uma folga de 15% pra não ficar indo e voltando e acontece no máximo a cada 2 s; a nova carrega embaixo e a antiga esmaece por cima, sem piscar. A escolhida no Visual é o teto. Vídeo sem som recomeça na troca; pôster com som ligado não troca, pra não cortar o áudio.
 - Apagado, o navegador volta pra um estoque e é reaproveitado pelo próximo pôster que acender.
 - Vídeo, YouTube e movimento ficam pausados fora da tela ou longe (mais de 60% da distância), a não ser que o som esteja chegando em você.
 - No revezamento só fica carregado o item da vez (o anterior sai depois do esmaecido).
