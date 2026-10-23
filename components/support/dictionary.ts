@@ -31,14 +31,14 @@ const ptBR = {
     after: ". O apoio mensal de quem pode contribuir é o que mantém o projeto andando. Escolha a forma que for melhor pra você.",
   },
   plans: {
-    title: "Escolha seu plano",
-    subtitle: "Em reais pelo Mercado Pago, sem dólar e sem IOF. Pode cancelar quando quiser.",
+    title: "Faça uma doação",
+    subtitle: "Em reais pelo Mercado Pago, sem dólar e sem IOF. A doação mensal pode ser cancelada quando quiser.",
     methods: { pix: "Pix", mercadoPago: "Mercado Pago", card: "Cartão de crédito" },
     donation:
       "O apoio é uma doação voluntária: a base continua gratuita pra todos, apoiando ou não. Doações não são reembolsáveis, exceto cobrança em duplicidade ou fraude.",
-    monthly: { label: "Mensal", price: "R$ 50", period: "por mês, como assinatura ou no Pix", cta: "Apoiar mensal" },
-    semiannual: { label: "Semestral", price: "R$ 300", period: "por 6 meses, no Pix ou parcelado no cartão", cta: "Apoiar semestral" },
-    yearly: { label: "Anual", price: "R$ 600", period: "por ano, no Pix, parcelado no cartão ou como assinatura", cta: "Apoiar anual" },
+    monthly: { label: "Mensal", price: "R$ 50", period: "por mês, como assinatura ou no Pix", cta: "Doar todo mês" },
+    semiannual: { label: "Semestral", price: "R$ 300", period: "por 6 meses, no Pix ou parcelado no cartão", cta: "Doar por 6 meses" },
+    yearly: { label: "Anual", price: "R$ 600", period: "por ano, no Pix, parcelado no cartão ou como assinatura", cta: "Doar por 1 ano" },
   },
   patreon: {
     title: "Fora do Brasil?",
@@ -105,14 +105,14 @@ const en: SupportDictionary = {
     after: ". Monthly support from those who can contribute is what keeps the project going. Pick whatever works best for you.",
   },
   plans: {
-    title: "Paying from Brazil?",
-    subtitle: "In BRL through Mercado Pago, no currency conversion. Cancel anytime.",
+    title: "Donating from Brazil?",
+    subtitle: "In BRL through Mercado Pago, no currency conversion. Monthly donations can be cancelled anytime.",
     methods: { pix: "Pix", mercadoPago: "Mercado Pago", card: "Credit card" },
     donation:
       "Support is a voluntary donation: the base stays free for everyone, supporter or not. Donations are non-refundable, except for duplicate charges or fraud.",
-    monthly: { label: "Monthly", price: "R$ 50", period: "per month, as a subscription or with Pix", cta: "Support monthly" },
-    semiannual: { label: "6 months", price: "R$ 300", period: "for 6 months, with Pix or card installments", cta: "Support for 6 months" },
-    yearly: { label: "Yearly", price: "R$ 600", period: "per year, with Pix, card installments or as a subscription", cta: "Support yearly" },
+    monthly: { label: "Monthly", price: "R$ 50", period: "per month, as a subscription or with Pix", cta: "Donate monthly" },
+    semiannual: { label: "6 months", price: "R$ 300", period: "for 6 months, with Pix or card installments", cta: "Donate for 6 months" },
+    yearly: { label: "Yearly", price: "R$ 600", period: "per year, with Pix, card installments or as a subscription", cta: "Donate for 1 year" },
   },
   patreon: {
     title: "Support us on Patreon",
@@ -177,14 +177,14 @@ const ptPT: SupportDictionary = {
     after: ". O apoio mensal de quem pode contribuir é o que mantém o projeto a andar. Escolha a forma que lhe for mais conveniente.",
   },
   plans: {
-    title: "Paga a partir do Brasil?",
-    subtitle: "Em reais pelo Mercado Pago, sem conversão de moeda. Pode cancelar quando quiser.",
+    title: "Doa a partir do Brasil?",
+    subtitle: "Em reais pelo Mercado Pago, sem conversão de moeda. O donativo mensal pode ser cancelado quando quiser.",
     methods: { pix: "Pix", mercadoPago: "Mercado Pago", card: "Cartão de crédito" },
     donation:
       "O apoio é um donativo voluntário: a base continua gratuita para todos, apoiando ou não. Os donativos não são reembolsáveis, exceto em caso de cobrança em duplicado ou fraude.",
-    monthly: { label: "Mensal", price: "R$ 50", period: "por mês, como subscrição ou por Pix", cta: "Apoiar mensalmente" },
-    semiannual: { label: "Semestral", price: "R$ 300", period: "por 6 meses, por Pix ou em prestações no cartão", cta: "Apoiar semestralmente" },
-    yearly: { label: "Anual", price: "R$ 600", period: "por ano, por Pix, em prestações no cartão ou como subscrição", cta: "Apoiar anualmente" },
+    monthly: { label: "Mensal", price: "R$ 50", period: "por mês, como subscrição ou por Pix", cta: "Doar todos os meses" },
+    semiannual: { label: "Semestral", price: "R$ 300", period: "por 6 meses, por Pix ou em prestações no cartão", cta: "Doar por 6 meses" },
+    yearly: { label: "Anual", price: "R$ 600", period: "por ano, por Pix, em prestações no cartão ou como subscrição", cta: "Doar por 1 ano" },
   },
   patreon: {
     title: "Apoie-nos no Patreon",
@@ -249,14 +249,14 @@ const es: SupportDictionary = {
     after: ". El apoyo mensual de quienes pueden contribuir es lo que mantiene el proyecto en marcha. Elige la forma que mejor te funcione.",
   },
   plans: {
-    title: "¿Pagas desde Brasil?",
-    subtitle: "En reales con Mercado Pago, sin conversión de moneda. Cancela cuando quieras.",
+    title: "¿Donas desde Brasil?",
+    subtitle: "En reales con Mercado Pago, sin conversión de moneda. La donación mensual se puede cancelar cuando quieras.",
     methods: { pix: "Pix", mercadoPago: "Mercado Pago", card: "Tarjeta de crédito" },
     donation:
       "El apoyo es una donación voluntaria: la base sigue siendo gratuita para todos, apoyes o no. Las donaciones no son reembolsables, salvo cobro duplicado o fraude.",
-    monthly: { label: "Mensual", price: "R$ 50", period: "al mes, como suscripción o con Pix", cta: "Apoyar mensual" },
-    semiannual: { label: "Semestral", price: "R$ 300", period: "por 6 meses, con Pix o en cuotas con tarjeta", cta: "Apoyar semestral" },
-    yearly: { label: "Anual", price: "R$ 600", period: "al año, con Pix, en cuotas con tarjeta o como suscripción", cta: "Apoyar anual" },
+    monthly: { label: "Mensual", price: "R$ 50", period: "al mes, como suscripción o con Pix", cta: "Donar cada mes" },
+    semiannual: { label: "Semestral", price: "R$ 300", period: "por 6 meses, con Pix o en cuotas con tarjeta", cta: "Donar por 6 meses" },
+    yearly: { label: "Anual", price: "R$ 600", period: "al año, con Pix, en cuotas con tarjeta o como suscripción", cta: "Donar por 1 año" },
   },
   patreon: {
     title: "Apóyanos en Patreon",
