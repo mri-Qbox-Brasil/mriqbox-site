@@ -4,7 +4,12 @@ title: Instalação
 
 A instalação do MRI Qbox é feita pelo **instalador oficial**, que automatiza o download dos artefatos, o setup do banco de dados e a configuração inicial do servidor.
 
-<br /><DownloadButton link="https://github.com/mri-Qbox-Brasil/mri_installer_download/releases/latest/download/mri_installer.exe" label="Baixar o instalador" repo="mri-Qbox-Brasil/mri_installer_download" />
+Ele existe em duas versões, publicadas juntas em cada release:
+
+| Arquivo | O que é | Sistema |
+| --- | --- | --- |
+| `mri_installer.exe` | aplicativo com interface gráfica | Windows |
+| `mri_installer_linux` | instalador de terminal (sem interface gráfica) | Linux |
 
 <Callout type="info">
 O instalador exige autenticação via Discord. Entre na nossa comunidade antes de começar: [discord.mriqbox.com.br](https://discord.mriqbox.com.br).
@@ -13,6 +18,10 @@ O instalador exige autenticação via Discord. Entre na nossa comunidade antes d
 <Callout type="error">
 Usuários **banidos do nosso Discord** não conseguirão autenticar e, portanto, não terão acesso ao download.
 </Callout>
+
+## Windows
+
+<DownloadButton link="https://github.com/mri-Qbox-Brasil/mri_installer_download/releases/latest/download/mri_installer.exe" label="Baixar o instalador para Windows" repo="mri-Qbox-Brasil/mri_installer_download" />
 
 <Steps>
     ### Baixe o instalador
@@ -56,6 +65,144 @@ Usuários **banidos do nosso Discord** não conseguirão autenticar e, portanto,
     Altere a senha padrão no primeiro acesso, especialmente se o txAdmin for ficar exposto na internet.
     </Callout>
 </Steps>
+
+## Linux
+
+<DownloadButton link="https://github.com/mri-Qbox-Brasil/mri_installer_download/releases/latest/download/mri_installer_linux" label="Baixar o instalador para Linux" repo="mri-Qbox-Brasil/mri_installer_download" />
+
+No Linux o instalador roda no terminal, sem interface gráfica, por isso funciona num servidor acessado por SSH. Você pode responder as perguntas uma a uma (modo interativo) ou passar tudo por flags (modo automatizado).
+
+<Callout type="warning">
+No Linux o instalador **não instala o MariaDB**. Deixe um MariaDB ou MySQL rodando antes de começar, pelo pacote da distribuição (`sudo apt install mariadb-server`) ou por um container. Quando o instalador perguntar se deve instalar o MariaDB automaticamente, responda **não** e informe o banco que já existe.
+</Callout>
+
+<Steps>
+    ### Baixe o instalador
+
+    Use o botão acima ou baixe direto pelo terminal:
+
+    ```bash
+    mkdir -p /opt/mri_installer && cd /opt/mri_installer
+    curl -LO https://github.com/mri-Qbox-Brasil/mri_installer_download/releases/latest/download/mri_installer_linux
+    chmod +x mri_installer_linux
+    ```
+
+    ### Execute o instalador
+
+    Rode com o usuário que vai ser dono da pasta do servidor, **não como root**:
+
+    ```bash
+    ./mri_installer_linux
+    ```
+
+    Sem flags, o instalador pergunta o que precisa: pasta de instalação, nome do servidor, chave de licença da Cfx (`cfxk_...`), dados do banco e receita.
+
+    <Callout type="warning">
+    Escolha uma pasta de instalação **sem espaços, acentos ou caracteres especiais**, por exemplo `/opt/fivem/mri_qbox`.
+    </Callout>
+
+    ### Autorize pelo Discord
+
+    Não precisa de navegador no servidor. O instalador mostra um **código de liberação** e duas formas de autorizar, e você usa **uma** delas:
+
+    1. No nosso Discord, rode `/liberar <código>`.
+    2. Ou abra o link exibido no navegador de qualquer outro aparelho.
+
+    O código expira em poucos minutos. Se expirar, rode o instalador de novo.
+
+    ### Pronto
+
+    Ao final, o servidor estará instalado na pasta escolhida. Acesse o txAdmin em `http://<ip-do-servidor>:40120` com as mesmas credenciais padrão do Windows (`admin` / `admin`) e troque a senha no primeiro acesso.
+</Steps>
+
+### Modo automatizado (sem perguntas)
+
+Se você passar `--install-path`, `--server-name` ou `--license-key`, o instalador entende que está sendo usado por um script: não pergunta nada, e o que faltar vira erro. As três flags são obrigatórias nesse modo.
+
+Para não ter que autorizar a cada execução, faça o login uma vez antes. Ele guarda o token na máquina, no mesmo esquema do `docker login`:
+
+```bash
+./mri_installer_linux --login
+
+./mri_installer_linux   --install-path /opt/fivem/mri_qbox   --server-name "Meu Servidor"   --license-key "cfxk_..."   --db-user root   --db-pass "senha-do-banco"
+```
+
+| Flag | Padrão | O que faz |
+| --- | --- | --- |
+| `--install-path <dir>` | | Pasta de instalação (obrigatória) |
+| `--server-name <nome>` | | Nome do servidor (obrigatória) |
+| `--license-key <cfxk_...>` | | Chave de licença da Cfx (obrigatória) |
+| `--db-user <nome>` | `root` | Usuário do banco |
+| `--db-pass <senha>` | | Senha do banco |
+| `--db-name <nome>` | `mri_qbox` | Nome do banco |
+| `--db-host <host>` | `127.0.0.1` | Host do banco |
+| `--db-port <porta>` | `3306` | Porta do banco |
+| `--recipe <n>` | | Número da receita na listagem (começa em 1) |
+| `--artifact-url <url ou n>` | | Build do FXServer (URL ou número da build) |
+| `--overwrite-db` | | Recria o banco se ele já existir |
+| `--overwrite-dir` | | Apaga a pasta de instalação se ela já existir |
+| `--token <jwt>` | | Token de autenticação (ou a variável `MRI_TOKEN`) |
+
+Veja todas as opções com `./mri_installer_linux --help`.
+
+### Comandos para um servidor já instalado
+
+Um comando por vez:
+
+```bash
+# Troca a build do FXServer (informe a build: número ou URL)
+./mri_installer_linux --update-artifacts --install-path /opt/fivem/mri_qbox --artifact-url 12345
+
+# Faz o backup do banco agora
+./mri_installer_linux --backup --install-path /opt/fivem/mri_qbox
+
+# Lista os resources instalados
+./mri_installer_linux --list-resources --install-path /opt/fivem/mri_qbox
+```
+
+### Painel web (acesso remoto)
+
+O instalador pode servir a interface completa (a mesma do Windows) pelo navegador, para você gerenciar o servidor Linux de outro computador:
+
+```bash
+MRI_WEB_PASSWORD="uma-senha-forte" ./mri_installer_linux --web --web-port 40130
+```
+
+Depois abra `http://<ip-do-servidor>:40130`. A porta padrão é `40130`. Use `--web-local` para aceitar só conexões de `127.0.0.1`, quando o painel for exposto por túnel ou proxy reverso.
+
+<Callout type="error">
+Sem senha, qualquer pessoa que alcançar a porta controla o instalador e o servidor. Sempre defina uma senha (`--web-password` ou `MRI_WEB_PASSWORD`) ou use `--web-local`.
+</Callout>
+
+Para deixar o painel sempre ligado, rode como serviço do systemd. Crie `/etc/systemd/system/mri-installer.service`:
+
+```ini
+[Unit]
+Description=MRI Installer (painel web)
+After=network-online.target
+
+[Service]
+# Dono da pasta do servidor; não rode como root.
+User=fivem
+Environment=MRI_WEB_PASSWORD=uma-senha-forte
+ExecStart=/opt/mri_installer/mri_installer_linux --web --web-port 40130
+# Sem isto, reiniciar o serviço derruba o FiveM junto.
+KillMode=process
+# A atualização automática sai com código 75 para o systemd subir o binário novo.
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
+```
+
+```bash
+sudo systemctl daemon-reload
+sudo systemctl enable --now mri-installer
+```
+
+<Callout type="info">
+Para a atualização automática funcionar, a pasta do binário (`/opt/mri_installer`) precisa ser gravável pelo usuário do serviço. Para o FiveM subir junto, ative **Iniciar este servidor ao abrir o instalador** em Gerenciar > painel do servidor > Inicialização.
+</Callout>
 
 <Callout type="info">
 Em caso de dúvidas ou problemas, peça suporte no nosso [Discord](https://discord.mriqbox.com.br).
