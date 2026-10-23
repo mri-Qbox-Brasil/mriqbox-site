@@ -48,7 +48,7 @@ const ptBR = {
   },
   benefits: {
     title: "Como agradecimento",
-    subtitle: "Os mesmos em qualquer plano, aqui ou no Patreon. São um obrigado pelo apoio, não um serviço contratado.",
+    subtitle: "Os mesmos em qualquer valor, aqui ou no Patreon. São um obrigado pelo apoio, não um serviço contratado.",
     groups: [
       {
         title: "Na comunidade",
@@ -122,7 +122,7 @@ const en: SupportDictionary = {
   },
   benefits: {
     title: "As a thank you",
-    subtitle: "The same on every plan, on Patreon or Mercado Pago. They are a thank you for your support, not a paid service.",
+    subtitle: "The same for any amount, on Patreon or Mercado Pago. They are a thank you for your support, not a paid service.",
     groups: [
       {
         title: "In the community",
@@ -194,7 +194,7 @@ const ptPT: SupportDictionary = {
   },
   benefits: {
     title: "Como agradecimento",
-    subtitle: "Os mesmos em qualquer plano, no Patreon ou no Mercado Pago. São um obrigado pelo apoio, não um serviço contratado.",
+    subtitle: "Os mesmos em qualquer valor, no Patreon ou no Mercado Pago. São um obrigado pelo apoio, não um serviço contratado.",
     groups: [
       {
         title: "Na comunidade",
@@ -266,7 +266,7 @@ const es: SupportDictionary = {
   },
   benefits: {
     title: "Como agradecimiento",
-    subtitle: "Los mismos en cualquier plan, en Patreon o en Mercado Pago. Son un agradecimiento por tu apoyo, no un servicio contratado.",
+    subtitle: "Los mismos con cualquier monto, en Patreon o en Mercado Pago. Son un agradecimiento por tu apoyo, no un servicio contratado.",
     groups: [
       {
         title: "En la comunidad",
