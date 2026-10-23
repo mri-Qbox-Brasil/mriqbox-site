@@ -8,6 +8,8 @@ const planUrl = (planId: string, pkg?: string) =>
   `https://shop.mriqbox.com.br/sub/${planId}${pkg ? `?package=${pkg}` : ""}`
 export const PLAN_URLS = {
   monthly: planUrl("3ed1efb1-626f-4b73-a5b8-f02bd02468a9"),
+  // Semiannual is the one-time 6-month package of the monthly plan.
+  semiannual: planUrl("3ed1efb1-626f-4b73-a5b8-f02bd02468a9", "6"),
   // Yearly preselects the one-time 12-month package (Pix or card installments).
   yearly: planUrl("410fa86e-13f9-4b2d-8235-d100674312fc", "12"),
 }
@@ -32,8 +34,11 @@ const ptBR = {
     title: "Escolha seu plano",
     subtitle: "Em reais pelo Mercado Pago, sem dólar e sem IOF. Pode cancelar quando quiser.",
     methods: { pix: "Pix", mercadoPago: "Mercado Pago", card: "Cartão de crédito" },
+    donation:
+      "O apoio é uma doação voluntária: a base continua gratuita pra todos, apoiando ou não. Doações não são reembolsáveis, exceto cobrança em duplicidade ou fraude.",
     monthly: { label: "Mensal", price: "R$ 50", period: "por mês, como assinatura ou no Pix", cta: "Apoiar mensal" },
-    yearly: { label: "Anual", price: "R$ 500", period: "por ano, no Pix, parcelado no cartão ou como assinatura", cta: "Apoiar anual" },
+    semiannual: { label: "Semestral", price: "R$ 300", period: "por 6 meses, no Pix ou parcelado no cartão", cta: "Apoiar semestral" },
+    yearly: { label: "Anual", price: "R$ 600", period: "por ano, no Pix, parcelado no cartão ou como assinatura", cta: "Apoiar anual" },
   },
   patreon: {
     title: "Fora do Brasil?",
@@ -42,15 +47,15 @@ const ptBR = {
     cta: "Apoiar pelo Patreon",
   },
   benefits: {
-    title: "O que você recebe",
-    subtitle: "Os mesmos em qualquer plano, aqui ou no Patreon.",
+    title: "Como agradecimento",
+    subtitle: "Os mesmos em qualquer plano, aqui ou no Patreon. São um obrigado pelo apoio, não um serviço contratado.",
     groups: [
       {
         title: "Na comunidade",
         items: [
           "Cargo de Apoiador no Discord",
           "Chat exclusivo com a Equipe MRI para bate-papo e dúvidas rápidas",
-          "Suporte com prioridade",
+          "Prioridade nas respostas da equipe, quando possível",
           "Voto em enquetes exclusivas",
           "Chat de sugestões e de report de bugs da base",
         ],
@@ -103,8 +108,11 @@ const en: SupportDictionary = {
     title: "Paying from Brazil?",
     subtitle: "In BRL through Mercado Pago, no currency conversion. Cancel anytime.",
     methods: { pix: "Pix", mercadoPago: "Mercado Pago", card: "Credit card" },
+    donation:
+      "Support is a voluntary donation: the base stays free for everyone, supporter or not. Donations are non-refundable, except for duplicate charges or fraud.",
     monthly: { label: "Monthly", price: "R$ 50", period: "per month, as a subscription or with Pix", cta: "Support monthly" },
-    yearly: { label: "Yearly", price: "R$ 500", period: "per year, with Pix, card installments or as a subscription", cta: "Support yearly" },
+    semiannual: { label: "6 months", price: "R$ 300", period: "for 6 months, with Pix or card installments", cta: "Support for 6 months" },
+    yearly: { label: "Yearly", price: "R$ 600", period: "per year, with Pix, card installments or as a subscription", cta: "Support yearly" },
   },
   patreon: {
     title: "Support us on Patreon",
@@ -113,15 +121,15 @@ const en: SupportDictionary = {
     cta: "Join on Patreon",
   },
   benefits: {
-    title: "What you get",
-    subtitle: "The same on every plan, on Patreon or Mercado Pago.",
+    title: "As a thank you",
+    subtitle: "The same on every plan, on Patreon or Mercado Pago. They are a thank you for your support, not a paid service.",
     groups: [
       {
         title: "In the community",
         items: [
           "Supporter role on Discord",
           "Private chat with the MRI team for quick questions",
-          "Priority support",
+          "Priority in team replies, when possible",
           "Vote on exclusive polls",
           "Suggestion and bug report channels for the framework",
         ],
@@ -172,8 +180,11 @@ const ptPT: SupportDictionary = {
     title: "Paga a partir do Brasil?",
     subtitle: "Em reais pelo Mercado Pago, sem conversão de moeda. Pode cancelar quando quiser.",
     methods: { pix: "Pix", mercadoPago: "Mercado Pago", card: "Cartão de crédito" },
+    donation:
+      "O apoio é um donativo voluntário: a base continua gratuita para todos, apoiando ou não. Os donativos não são reembolsáveis, exceto em caso de cobrança em duplicado ou fraude.",
     monthly: { label: "Mensal", price: "R$ 50", period: "por mês, como subscrição ou por Pix", cta: "Apoiar mensalmente" },
-    yearly: { label: "Anual", price: "R$ 500", period: "por ano, por Pix, em prestações no cartão ou como subscrição", cta: "Apoiar anualmente" },
+    semiannual: { label: "Semestral", price: "R$ 300", period: "por 6 meses, por Pix ou em prestações no cartão", cta: "Apoiar semestralmente" },
+    yearly: { label: "Anual", price: "R$ 600", period: "por ano, por Pix, em prestações no cartão ou como subscrição", cta: "Apoiar anualmente" },
   },
   patreon: {
     title: "Apoie-nos no Patreon",
@@ -182,15 +193,15 @@ const ptPT: SupportDictionary = {
     cta: "Aderir no Patreon",
   },
   benefits: {
-    title: "O que recebe",
-    subtitle: "Os mesmos em qualquer plano, no Patreon ou no Mercado Pago.",
+    title: "Como agradecimento",
+    subtitle: "Os mesmos em qualquer plano, no Patreon ou no Mercado Pago. São um obrigado pelo apoio, não um serviço contratado.",
     groups: [
       {
         title: "Na comunidade",
         items: [
           "Cargo de Apoiador no Discord",
           "Chat exclusivo com a Equipa MRI para conversa e dúvidas rápidas",
-          "Suporte prioritário",
+          "Prioridade nas respostas da equipa, sempre que possível",
           "Voto em sondagens exclusivas",
           "Canais de sugestões e de reporte de bugs da base",
         ],
@@ -241,8 +252,11 @@ const es: SupportDictionary = {
     title: "¿Pagas desde Brasil?",
     subtitle: "En reales con Mercado Pago, sin conversión de moneda. Cancela cuando quieras.",
     methods: { pix: "Pix", mercadoPago: "Mercado Pago", card: "Tarjeta de crédito" },
+    donation:
+      "El apoyo es una donación voluntaria: la base sigue siendo gratuita para todos, apoyes o no. Las donaciones no son reembolsables, salvo cobro duplicado o fraude.",
     monthly: { label: "Mensual", price: "R$ 50", period: "al mes, como suscripción o con Pix", cta: "Apoyar mensual" },
-    yearly: { label: "Anual", price: "R$ 500", period: "al año, con Pix, en cuotas con tarjeta o como suscripción", cta: "Apoyar anual" },
+    semiannual: { label: "Semestral", price: "R$ 300", period: "por 6 meses, con Pix o en cuotas con tarjeta", cta: "Apoyar semestral" },
+    yearly: { label: "Anual", price: "R$ 600", period: "al año, con Pix, en cuotas con tarjeta o como suscripción", cta: "Apoyar anual" },
   },
   patreon: {
     title: "Apóyanos en Patreon",
@@ -251,15 +265,15 @@ const es: SupportDictionary = {
     cta: "Unirme en Patreon",
   },
   benefits: {
-    title: "Lo que recibes",
-    subtitle: "Los mismos en cualquier plan, en Patreon o en Mercado Pago.",
+    title: "Como agradecimiento",
+    subtitle: "Los mismos en cualquier plan, en Patreon o en Mercado Pago. Son un agradecimiento por tu apoyo, no un servicio contratado.",
     groups: [
       {
         title: "En la comunidad",
         items: [
           "Rol de Apoyador en Discord",
           "Chat privado con el equipo MRI para charlar y resolver dudas rápidas",
-          "Soporte prioritario",
+          "Prioridad en las respuestas del equipo, cuando sea posible",
           "Voto en encuestas exclusivas",
           "Canales de sugerencias y reporte de bugs de la base",
         ],
