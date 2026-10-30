@@ -1,5 +1,5 @@
 ---
-title: mri_Qchat-source
+title: MRI Qchat
 ---
 
 Chat moderno para FiveM (QBox/QBCore) com NUI em React + `@mriqbox/ui-kit`.

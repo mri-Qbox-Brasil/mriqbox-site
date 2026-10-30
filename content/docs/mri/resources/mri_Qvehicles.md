@@ -1,5 +1,5 @@
 ---
-title: mri_Qvehicles-source
+title: MRI Qvehicles
 ---
 
 > **Descontinuado.** Desde o mri_Qbox 2.2.0 o cadastro e o estoque de veículos fazem parte da

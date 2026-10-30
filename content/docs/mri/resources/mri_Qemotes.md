@@ -1,5 +1,5 @@
 ---
-title: mri_Qemotes-source
+title: MRI Qemotes
 ---
 
 Menu de emotes com a interface da suíte MRI, rodando sobre o catálogo e o motor de animação do `rpemotes-reborn`. Para servidores QBox que já usam o rpemotes e querem um menu com busca, favoritos, preview do personagem e navegação por teclado.
