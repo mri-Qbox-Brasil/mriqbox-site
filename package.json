@@ -18,7 +18,7 @@
     "fumadocs-mdx": "15.1.1",
     "fumadocs-ui": "^16.11.5",
     "lucide-react": "^1.48.0",
-    "next": "16.4.0",
+    "next": "16.4.5",
     "react": "19.2.7",
     "react-dom": "19.2.7",
     "tailwind-merge": "^3.6.0"
@@ -29,7 +29,7 @@
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",
     "eslint": "^9.39.4",
-    "eslint-config-next": "16.2.10",
+    "eslint-config-next": "16.4.5",
     "github-slugger": "^2.0.0",
     "pagefind": "^1.5.2",
     "postcss": "^8.5",
