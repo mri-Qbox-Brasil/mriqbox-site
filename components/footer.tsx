@@ -31,7 +31,6 @@ export function Footer({ locale }: { locale: Locale }) {
             <Link href="https://tela.mriqbox.com.br" target="_blank" rel="noopener noreferrer" className={LINK}>{nav.screenShare}</Link>
             <Link href="https://ui.mriqbox.com.br" target="_blank" rel="noopener noreferrer" className={LINK}>{t.uiKit}</Link>
             <Link href="https://assets.mriqbox.com.br" target="_blank" rel="noopener noreferrer" className={LINK}>{t.assets}</Link>
-            <Link href="https://skills.mriqbox.com.br" target="_blank" rel="noopener noreferrer" className={LINK}>{t.skills}</Link>
           </div>
           <div className="flex flex-col gap-4">
             <h4 className={TITLE}>{t.content}</h4>
@@ -50,7 +49,7 @@ export function Footer({ locale }: { locale: Locale }) {
             <h4 className={TITLE}>{t.legal}</h4>
             <Link href={ROUTES.privacy[locale]} className={LINK}>{t.privacy}</Link>
             <Link href={ROUTES.terms[locale]} className={LINK}>{t.terms}</Link>
-            <span className="text-xs text-muted-foreground/60 mt-4">© {new Date().getFullYear()} MRI Qbox Brasil.<br />{t.license}</span>
+            <span className="text-xs text-muted-foreground/60 mt-4">© {new Date().getFullYear()} MRI Qbox Brasil.</span>
           </div>
         </div>
       </div>

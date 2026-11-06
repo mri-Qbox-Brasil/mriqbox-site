@@ -19,7 +19,6 @@ const ptBR = {
     servers: "Servidores",
     uiKit: "UI Kit",
     assets: "Banco de Assets",
-    skills: "Skills para IA",
     content: "Conteúdo",
     manifesto: "Manifesto",
     comparison: "Comparativo",
@@ -28,7 +27,6 @@ const ptBR = {
     legal: "Legal",
     privacy: "Privacidade",
     terms: "Termos de Uso",
-    license: "Licença GPL-3.0.",
   },
   // Shown to visitors whose browser prefers this locale while they read another one.
   suggest: {
@@ -60,7 +58,6 @@ const ptPT: SiteDictionary = {
     servers: "Servidores",
     uiKit: "UI Kit",
     assets: "Banco de Assets",
-    skills: "Skills para IA",
     content: "Conteúdo",
     manifesto: "Manifesto",
     comparison: "Comparativo",
@@ -69,7 +66,6 @@ const ptPT: SiteDictionary = {
     legal: "Legal",
     privacy: "Privacidade",
     terms: "Termos de Utilização",
-    license: "Licença GPL-3.0.",
   },
   suggest: {
     text: "Este site também está disponível em português de Portugal.",
@@ -98,7 +94,6 @@ const es: SiteDictionary = {
     servers: "Servidores",
     uiKit: "UI Kit",
     assets: "Banco de assets",
-    skills: "Skills para IA",
     content: "Contenido",
     manifesto: "Manifiesto",
     comparison: "Comparativa",
@@ -107,7 +102,6 @@ const es: SiteDictionary = {
     legal: "Legal",
     privacy: "Privacidad",
     terms: "Términos de uso",
-    license: "Licencia GPL-3.0.",
   },
   suggest: {
     text: "Este sitio también está en español.",
@@ -136,7 +130,6 @@ const en: SiteDictionary = {
     servers: "Servers",
     uiKit: "UI Kit",
     assets: "Assets Library",
-    skills: "AI Skills",
     content: "Content",
     manifesto: "Manifesto",
     comparison: "Comparison",
@@ -145,7 +138,6 @@ const en: SiteDictionary = {
     legal: "Legal",
     privacy: "Privacy",
     terms: "Terms of Use",
-    license: "GPL-3.0 license.",
   },
   suggest: {
     text: "This site is also available in English.",

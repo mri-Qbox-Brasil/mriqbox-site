@@ -87,7 +87,6 @@ const ORGANIZATION_SCHEMA = {
     "https://tela.mriqbox.com.br",
     "https://ui.mriqbox.com.br",
     "https://assets.mriqbox.com.br",
-    "https://skills.mriqbox.com.br",
     "https://www.patreon.com/mriQboxBrasil",
   ],
 }
