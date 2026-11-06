@@ -69,11 +69,11 @@ export const ptPT: GlossaryDictionary = {
     },
     gpl: {
       definition:
-        "Licença open source com copyleft forte, usada pelo Qbox, QBCore, ox_inventory e MRI Qbox. Permite o uso comercial, mas obriga a que os forks distribuídos mantenham o código aberto.",
+        "Licença open source com copyleft forte, usada pelo Qbox, QBCore e ox_inventory. Permite o uso comercial, mas obriga a que os forks distribuídos mantenham o código aberto.",
     },
     lgpl: {
       definition:
-        "Variante mais permissiva da GPL, usada em bibliotecas (ox_lib, @mriqbox/ui-kit). Permite que projetos proprietários utilizem a biblioteca sem passarem eles próprios a ser GPL; só as alterações à biblioteca têm de ser publicadas.",
+        "Variante mais permissiva da GPL, usada em bibliotecas (ox_lib, mri_lib). Permite que projetos proprietários utilizem a biblioteca sem passarem eles próprios a ser GPL; só as alterações à biblioteca têm de ser publicadas.",
     },
     nui: {
       definition:

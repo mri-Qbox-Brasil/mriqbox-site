@@ -57,7 +57,7 @@ const ptBR: AboutDictionary = {
         { strong: "100% gratuita" },
         " e ",
         { strong: "open source" },
-        " (GPL-3.0 / LGPL-3.0, mesmo modelo do Qbox e Overextended) a base que servidores brasileiros precisam pra começar",
+        " a base que servidores brasileiros precisam pra começar",
       ],
       [{ strong: "Documentar tudo em português" }, " de forma técnica e acessível, com exemplos reais"],
       [
@@ -130,7 +130,7 @@ const ptPT: AboutDictionary = {
         { strong: "100% gratuita" },
         " e ",
         { strong: "open source" },
-        " (GPL-3.0 / LGPL-3.0, o mesmo modelo do Qbox e da Overextended) a base de que os servidores brasileiros precisam para começar",
+        " a base de que os servidores brasileiros precisam para começar",
       ],
       [{ strong: "Documentar tudo em português" }, " de forma técnica e acessível, com exemplos reais"],
       [
@@ -203,7 +203,7 @@ const es: AboutDictionary = {
         { strong: "100% gratuita" },
         " y ",
         { strong: "open source" },
-        " (GPL-3.0 / LGPL-3.0, el mismo modelo de Qbox y Overextended) la base que los servidores brasileños necesitan para empezar",
+        " la base que los servidores brasileños necesitan para empezar",
       ],
       [{ strong: "Documentar todo en portugués" }, " de forma técnica y accesible, con ejemplos reales"],
       [
@@ -276,7 +276,6 @@ const en: AboutDictionary = {
         { strong: "100% free" },
         " and ",
         { strong: "open source" },
-        " (GPL-3.0 / LGPL-3.0, the same model as Qbox and Overextended)",
       ],
       [{ strong: "Document everything in Portuguese" }, ", technical yet approachable, with real examples"],
       [

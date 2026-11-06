@@ -93,7 +93,7 @@ export const ptBR: WhyMriDictionary = {
     title: "A solução: a aposta da MRI",
     paragraphs: [
       [
-        "Tudo que a MRI faz é grátis, open source (GPL-3.0/LGPL-3.0, mesma do Qbox e Overextended), e documentado em português. ",
+        "Tudo que a MRI faz é grátis, open source e documentado em português. ",
         { strong: "Não existe versão paga" },
         ". Não existe paywall. Não existe “curso completo” caro.",
       ],

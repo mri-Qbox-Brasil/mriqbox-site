@@ -56,7 +56,7 @@ export const ptPT: ComparisonDictionary = {
       },
       {
         criterion: "Licença",
-        mri: { value: "GPL-3.0 / LGPL-3.0" },
+        mri: { value: "Varia por repositório" },
         qbox: { value: "GPL-3.0" },
         qbcore: { value: "GPL-3.0" },
         esx: { value: "GPL-3.0" },

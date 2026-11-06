@@ -4,7 +4,7 @@ export const es: TermsDictionary = {
   meta: {
     title: "Términos de uso | MRI Qbox Brasil",
     description:
-      "Términos de uso del sitio mriqbox.com.br, del código GPL-3.0/LGPL-3.0 publicado en los repositorios de MRI Qbox Brasil y del servidor de Discord de la comunidad.",
+      "Términos de uso del sitio mriqbox.com.br, del código publicado en los repositorios de MRI Qbox Brasil y del servidor de Discord de la comunidad.",
   },
   back: "Volver",
   home: "Inicio",
@@ -26,13 +26,9 @@ export const es: TermsDictionary = {
             { href: QBOX_URL, text: "Qbox" },
             " (Qbcore + Ox) para servidores FiveM brasileños. El código está alojado en ",
             { href: GITHUB_URL, text: "github.com/mri-Qbox-Brasil" },
-            " y licenciado bajo ",
-            { strong: "GPL-3.0" },
-            " (scripts y frameworks) o ",
-            { strong: "LGPL-3.0" },
-            " (bibliotecas reutilizables como @mriqbox/ui-kit), siguiendo el mismo modelo de licenciamiento de Qbox y Overextended. Cada repositorio indica la licencia aplicable en el archivo ",
+            ". Cada repositorio tiene su propia licencia: consulta su archivo ",
             { code: "LICENSE" },
-            ".",
+            ". Los forks mantienen la licencia del proyecto original.",
           ],
         },
       ],
@@ -42,10 +38,10 @@ export const es: TermsDictionary = {
       blocks: [
         {
           list: [
-            ["Usar los scripts en servidores FiveM, comerciales o no"],
+            ["Usar los scripts en servidores FiveM, respetando la licencia de cada repositorio"],
             ["Modificarlos para adaptarlos a tu servidor y contribuir de vuelta mediante Pull Request"],
             [
-              "Hacer fork y redistribuir, siempre que mantengas la licencia GPL/LGPL original y pongas a disposición el código modificado (copyleft)",
+              "Hacer fork y redistribuir, cuando la licencia del repositorio lo permita y siguiendo sus condiciones",
             ],
           ],
         },
@@ -56,11 +52,7 @@ export const es: TermsDictionary = {
       blocks: [
         {
           list: [
-            [
-              "Redistribuir versiones modificadas ",
-              { strong: "cerradas" },
-              ": la GPL exige que el código permanezca abierto",
-            ],
+            ["Vender los scripts propios de MRI, originales o modificados"],
             [
               "Usar la marca “MRI Qbox”, sus logotipos e identidad visual sin autorización (la licencia cubre el código fuente, no la marca registrada)",
             ],

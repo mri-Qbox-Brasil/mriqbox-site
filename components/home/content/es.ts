@@ -188,12 +188,12 @@ export const es: HomeDictionary = {
       {
         question: "¿De verdad es gratis?",
         answer:
-          "Sí. MRI Qbox es gratuita y open source, con proyectos publicados bajo GPL-3.0 o LGPL-3.0. Puedes estudiar, modificar, contribuir y usar el software en proyectos comerciales, respetando la licencia de cada repositorio. La infraestructura se mantiene con el apoyo de la comunidad, de Patreon y de anuncios.",
+          "Sí. MRI Qbox es gratuita y open source. Puedes estudiar, modificar y contribuir, respetando la licencia de cada repositorio. La infraestructura se mantiene con el apoyo de la comunidad, de Patreon y de anuncios.",
       },
       {
         question: "¿Puedo usarla en un servidor comercial?",
         answer:
-          "Sí. Las licencias permiten el uso comercial. Si distribuyes una versión modificada, puedes tener la obligación de publicar el código fuente y conservar los avisos de la licencia; consulta siempre la licencia del repositorio correspondiente. La marca y los logotipos de MRI Qbox tienen reglas propias y no deben representar otro proyecto sin autorización.",
+          "Depende del repositorio: cada uno tiene su propia licencia, y algunos limitan el uso comercial. Consulta siempre la licencia del repositorio correspondiente. La marca y los logotipos de MRI Qbox tienen reglas propias y no deben representar otro proyecto sin autorización.",
       },
       {
         question: "¿Dónde encuentro soporte técnico?",

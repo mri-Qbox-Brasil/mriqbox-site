@@ -69,11 +69,11 @@ export const en: GlossaryDictionary = {
     },
     gpl: {
       definition:
-        "A strong copyleft open-source license used by Qbox, QBCore, ox_inventory and MRI Qbox. It allows commercial use but requires distributed forks to keep their code open.",
+        "A strong copyleft open-source license used by Qbox, QBCore and ox_inventory. It allows commercial use but requires distributed forks to keep their code open.",
     },
     lgpl: {
       definition:
-        "A more permissive variant of the GPL, used for libraries (ox_lib, @mriqbox/ui-kit). Proprietary projects can use the library without becoming GPL themselves; only changes to the library itself must be published.",
+        "A more permissive variant of the GPL, used for libraries (ox_lib, mri_lib). Proprietary projects can use the library without becoming GPL themselves; only changes to the library itself must be published.",
     },
     nui: {
       definition:

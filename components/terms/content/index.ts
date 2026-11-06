@@ -7,6 +7,6 @@ import { en } from "./en"
 export type { TermsDictionary }
 
 // Month of the last terms change (YYYY-MM), shown at the top in every locale.
-export const TERMS_UPDATED = "2026-05"
+export const TERMS_UPDATED = "2026-11"
 
 export const termsDictionary: Record<Locale, TermsDictionary> = { "pt-BR": ptBR, "pt-PT": ptPT, es, en }
