@@ -65,8 +65,8 @@ export const ptPT: ComparisonDictionary = {
         criterion: "Base de dependências",
         mri: { value: "Qbox + ox_lib + oxmysql" },
         qbox: { value: "ox_lib + oxmysql nativo" },
-        qbcore: { value: "ox_lib (recente) ou legacy" },
-        esx: { value: "essentialmode (legacy) ou oxmysql" },
+        qbcore: { value: "oxmysql" },
+        esx: { value: "oxmysql (essentialmode só em versões antigas)" },
       },
       {
         criterion: "Desempenho (resmon)",
@@ -85,7 +85,7 @@ export const ptPT: ComparisonDictionary = {
       {
         criterion: "Manutenção ativa",
         mri: { value: "yes", note: "Mantida + sincronizada com o Qbox upstream" },
-        qbox: { value: "yes", note: "Equipa da Overextended ativa" },
+        qbox: { value: "yes", note: "Equipa do Qbox ativa" },
         qbcore: { value: "yes", note: "Comunidade grande" },
         esx: { value: "partial", note: "ESX Legacy ativo, ESX original abandonado" },
       },
@@ -124,7 +124,7 @@ export const ptPT: ComparisonDictionary = {
       title: "MRI Qbox vs Qbox internacional",
       paragraphs: [
         {
-          text: "O MRI Qbox é, literalmente, o Qbox traduzido para português do Brasil e mantido em sincronia com o upstream da Overextended. Não é um fork divergente, é uma adaptação que pega em cada release do Qbox internacional e traduz mensagens, NPCs, jobs, gangs e documentação.",
+          text: "O MRI Qbox é o Qbox traduzido para português do Brasil, mantido em sincronia com o upstream do projeto Qbox, com ajustes próprios por cima. Não é um fork divergente: acompanha o Qbox internacional e traduz mensagens, NPCs, jobs, gangs e documentação.",
         },
         {
           label: "Quando escolher a MRI:",

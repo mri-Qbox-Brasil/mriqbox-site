@@ -8,7 +8,7 @@ import { ROUTES, type Locale } from "@/lib/i18n"
 import { comparisonDictionary, type ComparisonCell } from "./content"
 
 const PUBLISHED = "2026-05-15"
-const UPDATED = "2026-06-01"
+const UPDATED = "2026-11-06"
 
 function cellRender(c: ComparisonCell) {
   if ("note" in c && c.note && (c.value === "yes" || c.value === "no" || c.value === "partial")) {

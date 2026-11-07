@@ -99,7 +99,7 @@ export const ptBR = {
     },
     qbox: {
       definition:
-        "Fork moderno do QBCore mantido pela Overextended. Integração nativa com ox_lib, threading async, performance superior. Base do MRI Qbox.",
+        "Fork moderno do QBCore mantido pelo projeto Qbox. Integração nativa com ox_lib, threading async, performance superior. Base do MRI Qbox.",
     },
     recipe: {
       definition:

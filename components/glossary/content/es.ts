@@ -97,7 +97,7 @@ export const es: GlossaryDictionary = {
     },
     qbox: {
       definition:
-        "Fork moderno de QBCore mantenido por Overextended. Integración nativa con ox_lib, threading asíncrono y mejor rendimiento. Es la base de MRI Qbox.",
+        "Fork moderno de QBCore mantenido por el proyecto Qbox. Integración nativa con ox_lib, threading asíncrono y mejor rendimiento. Es la base de MRI Qbox.",
     },
     recipe: {
       definition:

@@ -65,8 +65,8 @@ export const en: ComparisonDictionary = {
         criterion: "Core dependencies",
         mri: { value: "Qbox + ox_lib + oxmysql" },
         qbox: { value: "Native ox_lib + oxmysql" },
-        qbcore: { value: "ox_lib (recent) or legacy" },
-        esx: { value: "essentialmode (legacy) or oxmysql" },
+        qbcore: { value: "oxmysql" },
+        esx: { value: "oxmysql (essentialmode only on old versions)" },
       },
       {
         criterion: "Performance (resmon)",
@@ -85,7 +85,7 @@ export const en: ComparisonDictionary = {
       {
         criterion: "Actively maintained",
         mri: { value: "yes", note: "Maintained + synced with upstream Qbox" },
-        qbox: { value: "yes", note: "Active Overextended team" },
+        qbox: { value: "yes", note: "Active Qbox team" },
         qbcore: { value: "yes", note: "Large community" },
         esx: { value: "partial", note: "ESX Legacy active, original ESX abandoned" },
       },
@@ -124,7 +124,7 @@ export const en: ComparisonDictionary = {
       title: "MRI Qbox vs international Qbox",
       paragraphs: [
         {
-          text: "MRI Qbox is literally Qbox translated into Brazilian Portuguese, kept in sync with Overextended's upstream. It isn't a diverging fork; it's an adaptation that takes every international Qbox release and translates messages, NPCs, jobs, gangs and documentation.",
+          text: "MRI Qbox is Qbox translated into Brazilian Portuguese, kept in sync with the Qbox project's upstream, with its own adjustments on top. It isn't a diverging fork: it follows international Qbox and translates messages, NPCs, jobs, gangs and documentation.",
         },
         {
           label: "When to choose MRI:",
