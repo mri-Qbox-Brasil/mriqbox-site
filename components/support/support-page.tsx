@@ -176,6 +176,18 @@ export function SupportPage({ locale }: { locale: Locale }) {
           </div>
         </Card>
 
+        <section className="mt-16 max-w-3xl">
+          <h2 className="text-2xl font-bold text-foreground mb-6">{t.faq.title}</h2>
+          <div className="space-y-6">
+            {t.faq.items.map(({ q, a }) => (
+              <div key={q}>
+                <h3 className="font-bold text-foreground mb-1">{q}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">{a}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
         <SupportersWall locale={locale} />
 
         <section className="mt-16 max-w-3xl">

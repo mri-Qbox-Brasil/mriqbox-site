@@ -119,7 +119,7 @@ export const en: WhyMriDictionary = {
     outro: [
       "If you'd like to fund the volunteer time and infrastructure, ",
       { link: "monthly support (Mercado Pago or Patreon)", route: "support" },
-      " is the way to do it, but no access is exclusive to paying supporters. Everything stays free for everyone.",
+      " is the way to do it, but the base stays free for everyone, donor or not.",
     ],
   },
   cta: {

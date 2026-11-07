@@ -119,7 +119,7 @@ export const ptPT: WhyMriDictionary = {
     outro: [
       "Se quiser apoiar financeiramente o tempo voluntário e a infraestrutura, ",
       { link: "o apoio mensal (Mercado Pago ou Patreon)", route: "support" },
-      " é o canal, mas nenhum acesso é exclusivo de quem paga. Tudo continua gratuito para todos.",
+      " é o canal, mas a base continua gratuita para todos, doando ou não.",
     ],
   },
   cta: {
