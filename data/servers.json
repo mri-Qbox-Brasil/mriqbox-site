@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-11-09T23:37:43.672Z",
+ "updatedAt": "2026-11-10T04:50:44.842Z",
  "resources": [
   "mri_Qadmin",
   "mri_Qairbags",
@@ -103,45 +103,18 @@
    "name": "Bloodlines RP",
    "logo": "https://frontend.cfx-services.net/api/servers/icon/ameby5/1057030550.png",
    "locale": "pt-BR",
-   "players": 375,
-   "maxPlayers": 457,
-   "avgPlayers": 195
+   "players": 301,
+   "maxPlayers": 536,
+   "avgPlayers": 203
   },
   {
    "id": "pgg3v57",
    "name": "Vida Carioca Roleplay",
    "logo": "https://frontend.cfx-services.net/api/servers/icon/pgg3v57/-1617599944.png",
    "locale": "pt-BR",
-   "players": 219,
-   "maxPlayers": 255,
-   "avgPlayers": 97
-  },
-  {
-   "id": "7bbpd5v",
-   "name": "Racing Roleplay",
-   "logo": "https://frontend.cfx-services.net/api/servers/icon/7bbpd5v/-1782988813.png",
-   "locale": "pt-BR",
-   "players": 159,
-   "maxPlayers": 165,
-   "avgPlayers": 75
-  },
-  {
-   "id": "zjjaeg5",
-   "name": "Panóplia Roleplay",
-   "logo": "https://frontend.cfx-services.net/api/servers/icon/zjjaeg5/-1441998139.png",
-   "locale": "pt-PT",
-   "players": 133,
-   "maxPlayers": 154,
-   "avgPlayers": 61
-  },
-  {
-   "id": "kq3m3ar",
-   "name": "Vila Maria Roleplay",
-   "logo": null,
-   "locale": "pt-BR",
-   "players": 86,
-   "maxPlayers": 86,
-   "avgPlayers": 17
+   "players": 145,
+   "maxPlayers": 246,
+   "avgPlayers": 105
   },
   {
    "id": "zjjdp85",
@@ -149,152 +122,152 @@
    "logo": "https://frontend.cfx-services.net/api/servers/icon/zjjdp85/-1948282287.png",
    "locale": "pt-br",
    "players": 80,
-   "maxPlayers": 112,
-   "avgPlayers": 51
+   "maxPlayers": 128,
+   "avgPlayers": 53
   },
   {
-   "id": "zjj7y7d",
-   "name": "São Paulo Capital",
-   "logo": "https://frontend.cfx-services.net/api/servers/icon/zjj7y7d/1072631675.png",
+   "id": "7bbpd5v",
+   "name": "Racing Roleplay",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/7bbpd5v/-1782988813.png",
    "locale": "pt-BR",
-   "players": 75,
-   "maxPlayers": 85,
-   "avgPlayers": 30
-  },
-  {
-   "id": "pm9mja",
-   "name": "IMAGINE RP",
-   "logo": "https://frontend.cfx-services.net/api/servers/icon/pm9mja/-1956073361.png",
-   "locale": "pt-BR",
-   "players": 32,
-   "maxPlayers": 40,
-   "avgPlayers": 13
+   "players": 59,
+   "maxPlayers": 175,
+   "avgPlayers": 77
   },
   {
    "id": "qqq9yx9",
    "name": "Vesuvius Los Santos by Night",
    "logo": null,
    "locale": "pt-BR",
-   "players": 31,
-   "maxPlayers": 52,
+   "players": 42,
+   "maxPlayers": 55,
    "avgPlayers": 19
+  },
+  {
+   "id": "zjj7y7d",
+   "name": "São Paulo Capital",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/zjj7y7d/1072631675.png",
+   "locale": "pt-BR",
+   "players": 30,
+   "maxPlayers": 97,
+   "avgPlayers": 31
+  },
+  {
+   "id": "zjjaeg5",
+   "name": "Panóplia Roleplay",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/zjjaeg5/-1441998139.png",
+   "locale": "pt-PT",
+   "players": 26,
+   "maxPlayers": 154,
+   "avgPlayers": 59
+  },
+  {
+   "id": "kq3m3ar",
+   "name": "Vila Maria Roleplay",
+   "logo": null,
+   "locale": "pt-BR",
+   "players": 15,
+   "maxPlayers": 102,
+   "avgPlayers": 26
   },
   {
    "id": "e6em8bd",
    "name": "BELO HORIZONTE ⌠ MINAS GERAIS⌡",
    "logo": "https://frontend.cfx-services.net/api/servers/icon/e6em8bd/-968540773.png",
    "locale": "pt-BR",
-   "players": 27,
-   "maxPlayers": 27,
-   "avgPlayers": 9
+   "players": 14,
+   "maxPlayers": 36,
+   "avgPlayers": 11
   },
   {
-   "id": "e66958d",
-   "name": "Classic RP",
-   "logo": "https://frontend.cfx-services.net/api/servers/icon/e66958d/494755655.png",
+   "id": "pm9mja",
+   "name": "IMAGINE RP",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/pm9mja/-1956073361.png",
    "locale": "pt-BR",
-   "players": 24,
-   "maxPlayers": 26,
-   "avgPlayers": 9
+   "players": 11,
+   "maxPlayers": 38,
+   "avgPlayers": 13
   },
   {
    "id": "aeyjvk",
    "name": "ORIGINZ #SOBREVIVÊNCIA ZUMBI #APOCALIPSE",
    "logo": "https://frontend.cfx-services.net/api/servers/icon/aeyjvk/517249784.png",
    "locale": "pt-br",
-   "players": 23,
-   "maxPlayers": 28,
-   "avgPlayers": 11
+   "players": 9,
+   "maxPlayers": 24,
+   "avgPlayers": 10
   },
   {
-   "id": "zjjyajd",
-   "name": "Periferia Roleplay",
-   "logo": "https://frontend.cfx-services.net/api/servers/icon/zjjyajd/1677354540.png",
-   "locale": "pt-BR",
-   "players": 21,
-   "maxPlayers": 22,
-   "avgPlayers": 8
+   "id": "vqqjbvq",
+   "name": "SONIC RP GRAND OPENING JOIN NOW!!",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/vqqjbvq/1720792033.png",
+   "locale": "en-US",
+   "players": 8,
+   "maxPlayers": 10,
+   "avgPlayers": 3
+  },
+  {
+   "id": "988v4qe",
+   "name": "BlackSiteZ RP",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/988v4qe/-2009245689.png",
+   "locale": "es-CL",
+   "players": 7,
+   "maxPlayers": 14,
+   "avgPlayers": 3
   },
   {
    "id": "leejp54",
    "name": "NOVA GRECIA",
    "logo": "https://frontend.cfx-services.net/api/servers/icon/leejp54/308989967.png",
    "locale": "pt-BR",
-   "players": 8,
-   "maxPlayers": 15,
+   "players": 7,
+   "maxPlayers": 11,
    "avgPlayers": 3
+  },
+  {
+   "id": "e66958d",
+   "name": "Classic RP",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/e66958d/494755655.png",
+   "locale": "pt-BR",
+   "players": 6,
+   "maxPlayers": 27,
+   "avgPlayers": 9
+  },
+  {
+   "id": "a44bmm9",
+   "name": "LPZ CITY RP",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/a44bmm9/-643399714.png",
+   "locale": "pt-BR",
+   "players": 4,
+   "maxPlayers": 4,
+   "avgPlayers": 1
+  },
+  {
+   "id": "zjjyajd",
+   "name": "Periferia Roleplay",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/zjjyajd/1677354540.png",
+   "locale": "pt-BR",
+   "players": 3,
+   "maxPlayers": 28,
+   "avgPlayers": 9
+  },
+  {
+   "id": "98y4g3e",
+   "name": "Realidade Carioca",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/98y4g3e/-1326969301.png",
+   "locale": "pt-BR",
+   "players": 3,
+   "maxPlayers": 3,
+   "avgPlayers": 0
   },
   {
    "id": "gaa6ddq",
    "name": "West Valley Roleplay",
    "logo": null,
    "locale": "pt-BR",
-   "players": 7,
-   "maxPlayers": 10,
-   "avgPlayers": 2
-  },
-  {
-   "id": "bd9ddp8",
-   "name": "PRIME ROLEPLAY",
-   "logo": null,
-   "locale": "pt-BR",
-   "players": 6,
-   "maxPlayers": 7,
-   "avgPlayers": 1
-  },
-  {
-   "id": "735dka",
-   "name": "NationZ Season 3 #Zumbi #Sobrevivencia",
-   "logo": "https://frontend.cfx-services.net/api/servers/icon/735dka/794581446.png",
-   "locale": "pt-BR",
-   "players": 4,
-   "maxPlayers": 4,
-   "avgPlayers": 1
-  },
-  {
-   "id": "3med7y",
-   "name": "Nova Mooca Roleplay",
-   "logo": "https://frontend.cfx-services.net/api/servers/icon/3med7y/-179577070.png",
-   "locale": "pt-BR",
-   "players": 4,
-   "maxPlayers": 4,
-   "avgPlayers": 0
-  },
-  {
-   "id": "zjjklg5",
-   "name": "DRJ ROLEPLAY",
-   "logo": null,
-   "locale": "pt-BR",
-   "players": 3,
-   "maxPlayers": 10,
-   "avgPlayers": 4
-  },
-  {
-   "id": "qqqljy9",
-   "name": "Sinaloa RP",
-   "logo": null,
-   "locale": "pt-BR",
-   "players": 3,
-   "maxPlayers": 7,
-   "avgPlayers": 1
-  },
-  {
-   "id": "5gvqmr",
-   "name": "Street Roleplay",
-   "logo": "https://frontend.cfx-services.net/api/servers/icon/5gvqmr/-515436878.png",
-   "locale": "pt-BR",
-   "players": 3,
-   "maxPlayers": 3,
-   "avgPlayers": 1
-  },
-  {
-   "id": "dgg49by",
-   "name": "ABISMO SURVIVAL",
-   "logo": "https://frontend.cfx-services.net/api/servers/icon/dgg49by/-1581611318.png",
-   "locale": "pt-BR",
-   "players": 3,
-   "maxPlayers": 3,
-   "avgPlayers": 0
+   "players": 2,
+   "maxPlayers": 13,
+   "avgPlayers": 3
   },
   {
    "id": "v8l37e",
@@ -306,9 +279,9 @@
    "avgPlayers": 2
   },
   {
-   "id": "e6eeyba",
-   "name": "BASE PROJECT V",
-   "logo": "https://frontend.cfx-services.net/api/servers/icon/e6eeyba/209523675.png",
+   "id": "dggkdjj",
+   "name": "ARQUIVO X ROLEPLAY",
+   "logo": null,
    "locale": "pt-BR",
    "players": 2,
    "maxPlayers": 2,
@@ -333,48 +306,30 @@
    "avgPlayers": 1
   },
   {
-   "id": "oaa84q7",
-   "name": "LEGADO NEGRO RP",
-   "logo": "https://frontend.cfx-services.net/api/servers/icon/oaa84q7/-1842486900.png",
-   "locale": "pt-PT",
+   "id": "xmea45",
+   "name": "Kentucky Projects RP",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/xmea45/226950087.png",
+   "locale": "en-US",
    "players": 2,
    "maxPlayers": 2,
    "avgPlayers": 1
   },
   {
-   "id": "a44mzy9",
-   "name": "MDF RP",
-   "logo": null,
-   "locale": "tr-TR",
-   "players": 2,
-   "maxPlayers": 8,
-   "avgPlayers": 1
-  },
-  {
-   "id": "5ook4r6",
-   "name": "NOCTEM HOLLOW",
-   "logo": "https://frontend.cfx-services.net/api/servers/icon/5ook4r6/-767138445.png",
+   "id": "735dka",
+   "name": "NationZ Season 3 #Zumbi #Sobrevivencia",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/735dka/794581446.png",
    "locale": "pt-BR",
    "players": 2,
    "maxPlayers": 4,
    "avgPlayers": 1
   },
   {
-   "id": "5oodooz",
-   "name": "Sim City",
-   "logo": null,
+   "id": "3med7y",
+   "name": "Nova Mooca Roleplay",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/3med7y/-179577070.png",
    "locale": "pt-BR",
    "players": 2,
-   "maxPlayers": 4,
-   "avgPlayers": 1
-  },
-  {
-   "id": "m44y5g9",
-   "name": "THE CLOSED",
-   "logo": "https://frontend.cfx-services.net/api/servers/icon/m44y5g9/1262387957.png",
-   "locale": "pt-BR",
-   "players": 2,
-   "maxPlayers": 2,
+   "maxPlayers": 6,
    "avgPlayers": 1
   },
   {
@@ -383,53 +338,17 @@
    "logo": null,
    "locale": "pt-BR",
    "players": 2,
-   "maxPlayers": 2,
-   "avgPlayers": 1
-  },
-  {
-   "id": "j4rarr4",
-   "name": "Tokyo City",
-   "logo": "https://frontend.cfx-services.net/api/servers/icon/j4rarr4/209523675.png",
-   "locale": "pt-BR",
-   "players": 2,
    "maxPlayers": 3,
    "avgPlayers": 1
   },
   {
-   "id": "vq399px",
-   "name": "West County",
-   "logo": "https://frontend.cfx-services.net/api/servers/icon/vq399px/2091505548.png",
-   "locale": "pt-BR",
-   "players": 2,
-   "maxPlayers": 5,
-   "avgPlayers": 1
-  },
-  {
-   "id": "x964xm",
-   "name": "Belmonte Roleplay",
-   "logo": "https://frontend.cfx-services.net/api/servers/icon/x964xm/-1525106085.png",
-   "locale": "pt-BR",
-   "players": 2,
-   "maxPlayers": 3,
-   "avgPlayers": 0
-  },
-  {
-   "id": "m4zxjaa",
-   "name": "Ipiranga SP",
+   "id": "zjjklg5",
+   "name": "DRJ ROLEPLAY",
    "logo": null,
    "locale": "pt-BR",
-   "players": 2,
-   "maxPlayers": 2,
-   "avgPlayers": 0
-  },
-  {
-   "id": "vqqjbvq",
-   "name": "SONIC RP GRAND OPENING JOIN NOW!!",
-   "logo": "https://frontend.cfx-services.net/api/servers/icon/vqqjbvq/1720792033.png",
-   "locale": "en-US",
    "players": 1,
-   "maxPlayers": 11,
-   "avgPlayers": 3
+   "maxPlayers": 9,
+   "avgPlayers": 4
   },
   {
    "id": "pggg3pm",
@@ -441,26 +360,44 @@
    "avgPlayers": 2
   },
   {
-   "id": "vqj3plq",
-   "name": "Aika MG",
+   "id": "bd9ddp8",
+   "name": "PRIME ROLEPLAY",
    "logo": null,
    "locale": "pt-BR",
    "players": 1,
-   "maxPlayers": 1,
-   "avgPlayers": 1
+   "maxPlayers": 7,
+   "avgPlayers": 2
   },
   {
-   "id": "a4xza79",
-   "name": "Amaterasu RP",
+   "id": "qqqljy9",
+   "name": "Sinaloa RP",
    "logo": null,
+   "locale": "pt-BR",
+   "players": 1,
+   "maxPlayers": 7,
+   "avgPlayers": 2
+  },
+  {
+   "id": "m4zak49",
+   "name": "*",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/m4zak49/-159904409.png",
    "locale": "pt-BR",
    "players": 1,
    "maxPlayers": 2,
    "avgPlayers": 1
   },
   {
-   "id": "dggkdjj",
-   "name": "ARQUIVO X ROLEPLAY",
+   "id": "5oojmza",
+   "name": "AlvarengaRP Alpha v10",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/5oojmza/209523675.png",
+   "locale": "pt-BR",
+   "players": 1,
+   "maxPlayers": 1,
+   "avgPlayers": 1
+  },
+  {
+   "id": "bdxyrl4",
+   "name": "Asphalt Kings",
    "logo": null,
    "locale": "pt-BR",
    "players": 1,
@@ -471,15 +408,6 @@
    "id": "j4rb6bm",
    "name": "Astralis",
    "logo": "https://frontend.cfx-services.net/api/servers/icon/j4rb6bm/209523675.png",
-   "locale": "pt-BR",
-   "players": 1,
-   "maxPlayers": 1,
-   "avgPlayers": 1
-  },
-  {
-   "id": "avdj45",
-   "name": "Atitude RolePlay",
-   "logo": "https://frontend.cfx-services.net/api/servers/icon/avdj45/209523675.png",
    "locale": "pt-BR",
    "players": 1,
    "maxPlayers": 1,
@@ -498,6 +426,15 @@
    "id": "e6evpdp",
    "name": "BorderLand RP",
    "logo": "https://frontend.cfx-services.net/api/servers/icon/e6evpdp/209523675.png",
+   "locale": "pt-BR",
+   "players": 1,
+   "maxPlayers": 1,
+   "avgPlayers": 1
+  },
+  {
+   "id": "g9kplq",
+   "name": "Brasil New Life",
+   "logo": null,
    "locale": "pt-BR",
    "players": 1,
    "maxPlayers": 1,
@@ -531,28 +468,10 @@
    "avgPlayers": 1
   },
   {
-   "id": "lvv8x7",
-   "name": "CIDADE DOS CARROS",
-   "logo": "https://frontend.cfx-services.net/api/servers/icon/lvv8x7/209523675.png",
+   "id": "a44qd5e",
+   "name": "Connect",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/a44qd5e/525041530.png",
    "locale": "pt-BR",
-   "players": 1,
-   "maxPlayers": 1,
-   "avgPlayers": 1
-  },
-  {
-   "id": "rmme6y8",
-   "name": "DISTRITO PAULISTA",
-   "logo": "https://frontend.cfx-services.net/api/servers/icon/rmme6y8/-943564966.png",
-   "locale": "pt-BR",
-   "players": 1,
-   "maxPlayers": 10,
-   "avgPlayers": 1
-  },
-  {
-   "id": "48ryzv",
-   "name": "FAXAMA CITY",
-   "logo": "https://frontend.cfx-services.net/api/servers/icon/48ryzv/1932106008.png",
-   "locale": "Kurdish-iq",
    "players": 1,
    "maxPlayers": 1,
    "avgPlayers": 1
@@ -567,15 +486,6 @@
    "avgPlayers": 1
   },
   {
-   "id": "e6ae69m",
-   "name": "FiveworkDevelopment",
-   "logo": null,
-   "locale": "pt-BR",
-   "players": 1,
-   "maxPlayers": 3,
-   "avgPlayers": 1
-  },
-  {
    "id": "lqlpz4",
    "name": "Foe RP",
    "logo": "https://frontend.cfx-services.net/api/servers/icon/lqlpz4/1928612628.png",
@@ -585,18 +495,18 @@
    "avgPlayers": 1
   },
   {
-   "id": "xj4z8e",
-   "name": "GoodLife",
-   "logo": "https://frontend.cfx-services.net/api/servers/icon/xj4z8e/209523675.png",
+   "id": "boy3dp",
+   "name": "Fronteira Roleplay",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/boy3dp/-1197137131.png",
    "locale": "pt-BR",
    "players": 1,
    "maxPlayers": 1,
    "avgPlayers": 1
   },
   {
-   "id": "a44kxyz",
-   "name": "Infinity Roleplay",
-   "logo": null,
+   "id": "xj4z8e",
+   "name": "GoodLife",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/xj4z8e/209523675.png",
    "locale": "pt-BR",
    "players": 1,
    "maxPlayers": 1,
@@ -639,15 +549,6 @@
    "avgPlayers": 1
   },
   {
-   "id": "7b9zm3d",
-   "name": "Liberty Country Teste",
-   "logo": "https://frontend.cfx-services.net/api/servers/icon/7b9zm3d/1549624867.png",
-   "locale": "pt-BR",
-   "players": 1,
-   "maxPlayers": 1,
-   "avgPlayers": 1
-  },
-  {
    "id": "rmabq3j",
    "name": "Los Santos City RP",
    "logo": "https://frontend.cfx-services.net/api/servers/icon/rmabq3j/20922116.png",
@@ -657,30 +558,21 @@
    "avgPlayers": 1
   },
   {
-   "id": "kq3myx6",
-   "name": "Los Santos Dream",
-   "logo": null,
-   "locale": "pt-BR",
-   "players": 1,
-   "maxPlayers": 1,
-   "avgPlayers": 1
-  },
-  {
-   "id": "a44bmm9",
-   "name": "LPZ CITY RP",
-   "logo": "https://frontend.cfx-services.net/api/servers/icon/a44bmm9/-643399714.png",
-   "locale": "pt-BR",
-   "players": 1,
-   "maxPlayers": 9,
-   "avgPlayers": 1
-  },
-  {
    "id": "yg6ely",
    "name": "Mariposas",
    "logo": "https://frontend.cfx-services.net/api/servers/icon/yg6ely/-1759101738.png",
    "locale": "pt-BR",
    "players": 1,
    "maxPlayers": 1,
+   "avgPlayers": 1
+  },
+  {
+   "id": "a44mzy9",
+   "name": "MDF RP",
+   "logo": null,
+   "locale": "tr-TR",
+   "players": 1,
+   "maxPlayers": 8,
    "avgPlayers": 1
   },
   {
@@ -696,15 +588,6 @@
    "id": "oqyqdv",
    "name": "Meu Servidor FiveM",
    "logo": "https://frontend.cfx-services.net/api/servers/icon/oqyqdv/209523675.png",
-   "locale": "pt-BR",
-   "players": 1,
-   "maxPlayers": 1,
-   "avgPlayers": 1
-  },
-  {
-   "id": "gaapj4o",
-   "name": "Meu Servidor FiveM",
-   "logo": null,
    "locale": "pt-BR",
    "players": 1,
    "maxPlayers": 1,
@@ -729,6 +612,15 @@
    "avgPlayers": 1
   },
   {
+   "id": "vg4dme",
+   "name": "Missing server data (must be configured in Portal)",
+   "logo": null,
+   "locale": "root-AQ",
+   "players": 1,
+   "maxPlayers": 2,
+   "avgPlayers": 1
+  },
+  {
    "id": "3vv3ly",
    "name": "Missing server data (must be configured in Portal)",
    "logo": null,
@@ -738,7 +630,7 @@
    "avgPlayers": 1
   },
   {
-   "id": "adg963",
+   "id": "46j5dq",
    "name": "Missing server data (must be configured in Portal)",
    "logo": null,
    "locale": "root-AQ",
@@ -756,12 +648,21 @@
    "avgPlayers": 1
   },
   {
-   "id": "5dvk87",
-   "name": "natteco",
-   "logo": "https://frontend.cfx-services.net/api/servers/icon/5dvk87/2034334528.png",
-   "locale": "root-AQ",
+   "id": "5ook4r6",
+   "name": "NOCTEM HOLLOW",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/5ook4r6/-767138445.png",
+   "locale": "pt-BR",
    "players": 1,
-   "maxPlayers": 1,
+   "maxPlayers": 2,
+   "avgPlayers": 1
+  },
+  {
+   "id": "m44l9dq",
+   "name": "NoctisValley",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/m44l9dq/1350954328.png",
+   "locale": "pt-BR",
+   "players": 1,
+   "maxPlayers": 2,
    "avgPlayers": 1
   },
   {
@@ -774,9 +675,9 @@
    "avgPlayers": 1
   },
   {
-   "id": "dm7lbq",
-   "name": "PandoraZ",
-   "logo": "https://frontend.cfx-services.net/api/servers/icon/dm7lbq/-462989817.png",
+   "id": "y99vam9",
+   "name": "oNext Development",
+   "logo": null,
    "locale": "pt-BR",
    "players": 1,
    "maxPlayers": 1,
@@ -792,6 +693,15 @@
    "avgPlayers": 1
   },
   {
+   "id": "gadmbbq",
+   "name": "Projeto E.C.H.O.",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/gadmbbq/209523675.png",
+   "locale": "pt-BR",
+   "players": 1,
+   "maxPlayers": 1,
+   "avgPlayers": 1
+  },
+  {
    "id": "d78oyd",
    "name": "RDM RP",
    "logo": "https://frontend.cfx-services.net/api/servers/icon/d78oyd/89180177.png",
@@ -801,19 +711,10 @@
    "avgPlayers": 1
   },
   {
-   "id": "4gg3pzo",
-   "name": "RP Carioca",
-   "logo": "https://frontend.cfx-services.net/api/servers/icon/4gg3pzo/-180721689.png",
-   "locale": "pt-BR",
-   "players": 1,
-   "maxPlayers": 1,
-   "avgPlayers": 1
-  },
-  {
-   "id": "4gabadv",
-   "name": "São_Paulo_Roleplay",
+   "id": "vxgyrr",
+   "name": "RSG RedM Local",
    "logo": null,
-   "locale": "pt-BR",
+   "locale": "en-US",
    "players": 1,
    "maxPlayers": 1,
    "avgPlayers": 1
@@ -825,6 +726,15 @@
    "locale": "pt-BR",
    "players": 1,
    "maxPlayers": 1,
+   "avgPlayers": 1
+  },
+  {
+   "id": "4ggdv8o",
+   "name": "Sunnydale",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/4ggdv8o/-1981506077.png",
+   "locale": "pt-BR",
+   "players": 1,
+   "maxPlayers": 2,
    "avgPlayers": 1
   },
   {
@@ -846,19 +756,19 @@
    "avgPlayers": 1
   },
   {
-   "id": "6jbdz6",
-   "name": "TesteServer",
-   "logo": "https://frontend.cfx-services.net/api/servers/icon/6jbdz6/209523675.png",
+   "id": "7gzmye",
+   "name": "TRAP",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/7gzmye/-1341738964.png",
    "locale": "pt-BR",
    "players": 1,
-   "maxPlayers": 1,
+   "maxPlayers": 2,
    "avgPlayers": 1
   },
   {
-   "id": "kjokxv",
-   "name": "Tuning",
-   "logo": "https://frontend.cfx-services.net/api/servers/icon/kjokxv/-1436629742.png",
-   "locale": "pt-BR",
+   "id": "3yyplvz",
+   "name": "True Blood",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/3yyplvz/-1948282287.png",
+   "locale": "pt-br",
    "players": 1,
    "maxPlayers": 1,
    "avgPlayers": 1
@@ -891,18 +801,9 @@
    "avgPlayers": 1
   },
   {
-   "id": "rmakoqg",
-   "name": "Viseu RP",
-   "logo": null,
-   "locale": "pt-PT",
-   "players": 1,
-   "maxPlayers": 3,
-   "avgPlayers": 1
-  },
-  {
-   "id": "zekzy4",
-   "name": "Yorpex City",
-   "logo": "https://frontend.cfx-services.net/api/servers/icon/zekzy4/2082128475.png",
+   "id": "bddpe94",
+   "name": "Walli TsT",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/bddpe94/1863343489.png",
    "locale": "pt-BR",
    "players": 1,
    "maxPlayers": 1,
@@ -918,75 +819,39 @@
    "avgPlayers": 1
   },
   {
-   "id": "rmm8zq7",
-   "name": "5 Star RP",
-   "logo": "https://frontend.cfx-services.net/api/servers/icon/rmm8zq7/-369785637.png",
-   "locale": "fr-FR",
-   "players": 1,
-   "maxPlayers": 2,
-   "avgPlayers": 0
-  },
-  {
-   "id": "bdxl97d",
-   "name": "Apex City RolerPlay",
-   "logo": "https://frontend.cfx-services.net/api/servers/icon/bdxl97d/-689542051.png",
-   "locale": "pt-BR",
-   "players": 1,
-   "maxPlayers": 1,
-   "avgPlayers": 0
-  },
-  {
-   "id": "pggjgz7",
-   "name": "DUS CRIA RP",
-   "logo": "https://frontend.cfx-services.net/api/servers/icon/pggjgz7/-2147056315.png",
-   "locale": "pt-BR",
-   "players": 1,
-   "maxPlayers": 2,
-   "avgPlayers": 0
-  },
-  {
-   "id": "xllprpe",
-   "name": "Elysium Roleplay",
-   "logo": null,
-   "locale": "pt-BR",
-   "players": 1,
-   "maxPlayers": 3,
-   "avgPlayers": 0
-  },
-  {
-   "id": "oaxdzqv",
-   "name": "Hylex Roleplay",
-   "logo": "https://frontend.cfx-services.net/api/servers/icon/oaxdzqv/-275247368.png",
-   "locale": "pt-BR",
-   "players": 1,
-   "maxPlayers": 1,
-   "avgPlayers": 0
-  },
-  {
-   "id": "xmea45",
-   "name": "Kentucky Projects RP",
-   "logo": "https://frontend.cfx-services.net/api/servers/icon/xmea45/226950087.png",
-   "locale": "en-US",
-   "players": 1,
-   "maxPlayers": 1,
-   "avgPlayers": 0
-  },
-  {
-   "id": "m44l9dq",
-   "name": "NoctisValley",
-   "logo": "https://frontend.cfx-services.net/api/servers/icon/m44l9dq/1350954328.png",
-   "locale": "pt-BR",
-   "players": 1,
-   "maxPlayers": 2,
-   "avgPlayers": 0
-  },
-  {
-   "id": "y99vam9",
-   "name": "oNext Development",
+   "id": "y99o3gj",
+   "name": "BIPE",
    "logo": null,
    "locale": "pt-BR",
    "players": 1,
    "maxPlayers": 1,
+   "avgPlayers": 0
+  },
+  {
+   "id": "48ryzv",
+   "name": "FAXAMA CITY",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/48ryzv/1932106008.png",
+   "locale": "Kurdish-iq",
+   "players": 1,
+   "maxPlayers": 1,
+   "avgPlayers": 0
+  },
+  {
+   "id": "e6erk6a",
+   "name": "lordjc cinematics",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/e6erk6a/209523675.png",
+   "locale": "pt-BR",
+   "players": 1,
+   "maxPlayers": 1,
+   "avgPlayers": 0
+  },
+  {
+   "id": "bdd5bvd",
+   "name": "Odysseia RP",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/bdd5bvd/-947756515.png",
+   "locale": "pt-BR",
+   "players": 1,
+   "maxPlayers": 2,
    "avgPlayers": 0
   },
   {
@@ -999,21 +864,21 @@
    "avgPlayers": 0
   },
   {
-   "id": "8eep5vv",
-   "name": "PURO SUCO RJ",
+   "id": "4gabadv",
+   "name": "São_Paulo_Roleplay",
    "logo": null,
    "locale": "pt-BR",
    "players": 1,
-   "maxPlayers": 2,
+   "maxPlayers": 1,
    "avgPlayers": 0
   },
   {
-   "id": "embl63",
-   "name": "Santuario Z",
-   "logo": "https://frontend.cfx-services.net/api/servers/icon/embl63/2034334528.png",
-   "locale": "pt-BR",
+   "id": "pggv3aa",
+   "name": "Skyline Stories",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/pggv3aa/-845623148.png",
+   "locale": "en-US",
    "players": 1,
-   "maxPlayers": 2,
+   "maxPlayers": 1,
    "avgPlayers": 0
   },
   {
@@ -1026,18 +891,27 @@
    "avgPlayers": 2
   },
   {
-   "id": "m4zak49",
-   "name": "*",
-   "logo": "https://frontend.cfx-services.net/api/servers/icon/m4zak49/-159904409.png",
+   "id": "vqj3plq",
+   "name": "Aika MG",
+   "logo": null,
    "locale": "pt-BR",
    "players": 0,
    "maxPlayers": 1,
    "avgPlayers": 1
   },
   {
-   "id": "5oojmza",
-   "name": "AlvarengaRP Alpha v10",
-   "logo": "https://frontend.cfx-services.net/api/servers/icon/5oojmza/209523675.png",
+   "id": "a4xza79",
+   "name": "Amaterasu RP",
+   "logo": null,
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 2,
+   "avgPlayers": 1
+  },
+  {
+   "id": "bdxl97d",
+   "name": "Apex City RolerPlay",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/bdxl97d/-689542051.png",
    "locale": "pt-BR",
    "players": 0,
    "maxPlayers": 1,
@@ -1053,48 +927,21 @@
    "avgPlayers": 1
   },
   {
-   "id": "d7l645",
-   "name": "APOCALIPSE Z-SERVIDOR EM MANUTENÇÃO",
-   "logo": "https://frontend.cfx-services.net/api/servers/icon/d7l645/-228780924.png",
-   "locale": "pt-BR",
-   "players": 0,
-   "maxPlayers": 2,
-   "avgPlayers": 1
-  },
-  {
-   "id": "k5mymv",
-   "name": "AREAZ SURVIVAL",
-   "logo": "https://frontend.cfx-services.net/api/servers/icon/k5mymv/-493701130.png",
+   "id": "avdj45",
+   "name": "Atitude RolePlay",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/avdj45/209523675.png",
    "locale": "pt-BR",
    "players": 0,
    "maxPlayers": 1,
    "avgPlayers": 1
   },
   {
-   "id": "zjv6ar4",
-   "name": "Atlanta V",
-   "logo": "https://frontend.cfx-services.net/api/servers/icon/zjv6ar4/2083924924.png",
-   "locale": "root-AQ",
-   "players": 0,
-   "maxPlayers": 2,
-   "avgPlayers": 1
-  },
-  {
-   "id": "zyqe34",
-   "name": "Avenida Brasil",
-   "logo": null,
+   "id": "x964xm",
+   "name": "Belmonte Roleplay",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/x964xm/-1525106085.png",
    "locale": "pt-BR",
    "players": 0,
-   "maxPlayers": 1,
-   "avgPlayers": 1
-  },
-  {
-   "id": "988v4qe",
-   "name": "BlackSiteZ RP",
-   "logo": "https://frontend.cfx-services.net/api/servers/icon/988v4qe/-2009245689.png",
-   "locale": "es-CL",
-   "players": 0,
-   "maxPlayers": 7,
+   "maxPlayers": 4,
    "avgPlayers": 1
   },
   {
@@ -1116,27 +963,45 @@
    "avgPlayers": 1
   },
   {
-   "id": "y99mbej",
-   "name": "CDC",
-   "logo": "https://frontend.cfx-services.net/api/servers/icon/y99mbej/209523675.png",
+   "id": "ak99me",
+   "name": "FiveSP",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/ak99me/1223574950.png",
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 2,
+   "avgPlayers": 1
+  },
+  {
+   "id": "y9v3zjk",
+   "name": "Grande SP Roleplay",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/y9v3zjk/1969397769.png",
    "locale": "pt-BR",
    "players": 0,
    "maxPlayers": 1,
    "avgPlayers": 1
   },
   {
-   "id": "qqqm6j6",
-   "name": "Crooked Streets RP",
-   "logo": "https://frontend.cfx-services.net/api/servers/icon/qqqm6j6/-634256322.png",
-   "locale": "en-US",
-   "players": 0,
-   "maxPlayers": 3,
-   "avgPlayers": 1
-  },
-  {
    "id": "5oop6e6",
    "name": "Iconics Studio",
    "logo": "https://frontend.cfx-services.net/api/servers/icon/5oop6e6/-1062458122.png",
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 1,
+   "avgPlayers": 1
+  },
+  {
+   "id": "a44kxyz",
+   "name": "Infinity Roleplay",
+   "logo": null,
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 1,
+   "avgPlayers": 1
+  },
+  {
+   "id": "kq3myx6",
+   "name": "Los Santos Dream",
+   "logo": null,
    "locale": "pt-BR",
    "players": 0,
    "maxPlayers": 1,
@@ -1152,19 +1017,37 @@
    "avgPlayers": 1
   },
   {
-   "id": "kqm9rva",
-   "name": "Meu Servidor FiveM",
-   "logo": "https://frontend.cfx-services.net/api/servers/icon/kqm9rva/-947756515.png",
-   "locale": "pt-BR",
+   "id": "adg963",
+   "name": "Missing server data (must be configured in Portal)",
+   "logo": null,
+   "locale": "root-AQ",
    "players": 0,
    "maxPlayers": 1,
    "avgPlayers": 1
   },
   {
-   "id": "9vqv5a",
-   "name": "Missing server data (must be configured in Portal)",
-   "logo": null,
+   "id": "5dvk87",
+   "name": "natteco",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/5dvk87/2034334528.png",
    "locale": "root-AQ",
+   "players": 0,
+   "maxPlayers": 1,
+   "avgPlayers": 1
+  },
+  {
+   "id": "3mdzaz",
+   "name": "North Studio",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/3mdzaz/2018827675.png",
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 4,
+   "avgPlayers": 1
+  },
+  {
+   "id": "4gg3pzo",
+   "name": "RP Carioca",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/4gg3pzo/-180721689.png",
+   "locale": "pt-BR",
    "players": 0,
    "maxPlayers": 1,
    "avgPlayers": 1
@@ -1188,21 +1071,30 @@
    "avgPlayers": 1
   },
   {
-   "id": "4ggdv8o",
-   "name": "Sunnydale",
-   "logo": "https://frontend.cfx-services.net/api/servers/icon/4ggdv8o/-1981506077.png",
+   "id": "5oodooz",
+   "name": "Sim City",
+   "logo": null,
    "locale": "pt-BR",
    "players": 0,
-   "maxPlayers": 2,
+   "maxPlayers": 4,
    "avgPlayers": 1
   },
   {
-   "id": "7gzmye",
-   "name": "TRAP",
-   "logo": "https://frontend.cfx-services.net/api/servers/icon/7gzmye/-1341738964.png",
+   "id": "5gvqmr",
+   "name": "Street Roleplay",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/5gvqmr/-515436878.png",
    "locale": "pt-BR",
    "players": 0,
-   "maxPlayers": 1,
+   "maxPlayers": 3,
+   "avgPlayers": 1
+  },
+  {
+   "id": "m44y5g9",
+   "name": "THE CLOSED",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/m44y5g9/1262387957.png",
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 4,
    "avgPlayers": 1
   },
   {
@@ -1215,22 +1107,31 @@
    "avgPlayers": 1
   },
   {
-   "id": "bddpe94",
-   "name": "Walli TsT",
-   "logo": "https://frontend.cfx-services.net/api/servers/icon/bddpe94/1863343489.png",
-   "locale": "pt-BR",
+   "id": "rmakoqg",
+   "name": "Viseu RP",
+   "logo": null,
+   "locale": "pt-PT",
    "players": 0,
-   "maxPlayers": 1,
+   "maxPlayers": 3,
    "avgPlayers": 1
   },
   {
-   "id": "j44aqb4",
-   "name": "あむぐら",
-   "logo": "https://frontend.cfx-services.net/api/servers/icon/j44aqb4/2034334528.png",
-   "locale": "ja-jp",
+   "id": "vq399px",
+   "name": "West County",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/vq399px/2091505548.png",
+   "locale": "pt-BR",
    "players": 0,
-   "maxPlayers": 2,
+   "maxPlayers": 4,
    "avgPlayers": 1
+  },
+  {
+   "id": "3lz3lr",
+   "name": "",
+   "logo": null,
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 1,
+   "avgPlayers": 0
   },
   {
    "id": "6mmpx6j",
@@ -1239,6 +1140,15 @@
    "locale": "pt-BR",
    "players": 0,
    "maxPlayers": 1,
+   "avgPlayers": 0
+  },
+  {
+   "id": "rmm8zq7",
+   "name": "5 Star RP",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/rmm8zq7/-369785637.png",
+   "locale": "fr-FR",
+   "players": 0,
+   "maxPlayers": 2,
    "avgPlayers": 0
   },
   {
@@ -1260,12 +1170,21 @@
    "avgPlayers": 0
   },
   {
+   "id": "dgg49by",
+   "name": "ABISMO SURVIVAL",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/dgg49by/-1581611318.png",
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 3,
+   "avgPlayers": 0
+  },
+  {
    "id": "8eezrbv",
    "name": "ACAPULCO ROLEPLAY",
    "logo": "https://frontend.cfx-services.net/api/servers/icon/8eezrbv/1675954327.png",
    "locale": "pt-BR",
    "players": 0,
-   "maxPlayers": 0,
+   "maxPlayers": 1,
    "avgPlayers": 0
   },
   {
@@ -1275,6 +1194,33 @@
    "locale": "pt-br",
    "players": 0,
    "maxPlayers": 0,
+   "avgPlayers": 0
+  },
+  {
+   "id": "d7l645",
+   "name": "APOCALIPSE Z-SERVIDOR EM MANUTENÇÃO",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/d7l645/-228780924.png",
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 2,
+   "avgPlayers": 0
+  },
+  {
+   "id": "k5mymv",
+   "name": "AREAZ SURVIVAL",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/k5mymv/-493701130.png",
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 0,
+   "avgPlayers": 0
+  },
+  {
+   "id": "zjv6ar4",
+   "name": "Atlanta V",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/zjv6ar4/2083924924.png",
+   "locale": "root-AQ",
+   "players": 0,
+   "maxPlayers": 2,
    "avgPlayers": 0
   },
   {
@@ -1328,7 +1274,7 @@
    "logo": null,
    "locale": "pt-BR",
    "players": 0,
-   "maxPlayers": 1,
+   "maxPlayers": 0,
    "avgPlayers": 0
   },
   {
@@ -1343,15 +1289,6 @@
   {
    "id": "6mmad37",
    "name": "BolaTeste",
-   "logo": null,
-   "locale": "pt-BR",
-   "players": 0,
-   "maxPlayers": 1,
-   "avgPlayers": 0
-  },
-  {
-   "id": "g9kplq",
-   "name": "Brasil New Life",
    "logo": null,
    "locale": "pt-BR",
    "players": 0,
@@ -1431,12 +1368,30 @@
    "avgPlayers": 0
   },
   {
+   "id": "qqqm6j6",
+   "name": "Crooked Streets RP",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/qqqm6j6/-634256322.png",
+   "locale": "en-US",
+   "players": 0,
+   "maxPlayers": 1,
+   "avgPlayers": 0
+  },
+  {
    "id": "98y44je",
    "name": "Distrito Paulista",
    "logo": "https://frontend.cfx-services.net/api/servers/icon/98y44je/-943564966.png",
    "locale": "pt-BR",
    "players": 0,
    "maxPlayers": 0,
+   "avgPlayers": 0
+  },
+  {
+   "id": "rmme6y8",
+   "name": "DISTRITO PAULISTA",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/rmme6y8/-943564966.png",
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 1,
    "avgPlayers": 0
   },
   {
@@ -1455,6 +1410,15 @@
    "locale": "es-ES",
    "players": 0,
    "maxPlayers": 0,
+   "avgPlayers": 0
+  },
+  {
+   "id": "pggjgz7",
+   "name": "DUS CRIA RP",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/pggjgz7/-2147056315.png",
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 2,
    "avgPlayers": 0
   },
   {
@@ -1485,6 +1449,15 @@
    "avgPlayers": 0
   },
   {
+   "id": "xllprpe",
+   "name": "Elysium Roleplay",
+   "logo": null,
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 2,
+   "avgPlayers": 0
+  },
+  {
    "id": "7b988ra",
    "name": "Elysium RP",
    "logo": "https://frontend.cfx-services.net/api/servers/icon/7b988ra/209523675.png",
@@ -1499,7 +1472,7 @@
    "logo": "https://frontend.cfx-services.net/api/servers/icon/xjqg65/1430376527.png",
    "locale": "root-AQ",
    "players": 0,
-   "maxPlayers": 1,
+   "maxPlayers": 4,
    "avgPlayers": 0
   },
   {
@@ -1530,6 +1503,15 @@
    "avgPlayers": 0
   },
   {
+   "id": "e6ae69m",
+   "name": "FiveworkDevelopment",
+   "logo": null,
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 2,
+   "avgPlayers": 0
+  },
+  {
    "id": "555e66",
    "name": "FLY ROLEPLAY",
    "logo": "https://frontend.cfx-services.net/api/servers/icon/555e66/912201250.png",
@@ -1553,7 +1535,7 @@
    "logo": null,
    "locale": "pt-BR",
    "players": 0,
-   "maxPlayers": 0,
+   "maxPlayers": 3,
    "avgPlayers": 0
   },
   {
@@ -1584,6 +1566,15 @@
    "avgPlayers": 0
   },
   {
+   "id": "oaxdzqv",
+   "name": "Hylex Roleplay",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/oaxdzqv/-275247368.png",
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 1,
+   "avgPlayers": 0
+  },
+  {
    "id": "5oo6m3r",
    "name": "ILHA VITORIA ROLEPLAY",
    "logo": "https://frontend.cfx-services.net/api/servers/icon/5oo6m3r/82255874.png",
@@ -1593,12 +1584,21 @@
    "avgPlayers": 0
   },
   {
+   "id": "m4zxjaa",
+   "name": "Ipiranga SP",
+   "logo": null,
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 4,
+   "avgPlayers": 0
+  },
+  {
    "id": "8ee5k34",
    "name": "J23",
    "logo": "https://frontend.cfx-services.net/api/servers/icon/8ee5k34/-567685270.png",
    "locale": "pt-BR",
    "players": 0,
-   "maxPlayers": 0,
+   "maxPlayers": 1,
    "avgPlayers": 0
   },
   {
@@ -1620,6 +1620,15 @@
    "avgPlayers": 0
   },
   {
+   "id": "oaa84q7",
+   "name": "LEGADO NEGRO RP",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/oaa84q7/-1842486900.png",
+   "locale": "pt-PT",
+   "players": 0,
+   "maxPlayers": 2,
+   "avgPlayers": 0
+  },
+  {
    "id": "bdxxv8l",
    "name": "Legado Paulista",
    "logo": "https://frontend.cfx-services.net/api/servers/icon/bdxxv8l/-14454461.png",
@@ -1629,36 +1638,18 @@
    "avgPlayers": 0
   },
   {
-   "id": "bdxq6dd",
-   "name": "LittleCool",
-   "logo": "https://frontend.cfx-services.net/api/servers/icon/bdxq6dd/209523675.png",
-   "locale": "pt-BR",
-   "players": 0,
-   "maxPlayers": 0,
-   "avgPlayers": 0
-  },
-  {
    "id": "b8p7bp",
    "name": "LiveWireRP",
    "logo": "https://frontend.cfx-services.net/api/servers/icon/b8p7bp/-646659582.png",
    "locale": "en-US",
    "players": 0,
-   "maxPlayers": 1,
+   "maxPlayers": 0,
    "avgPlayers": 0
   },
   {
    "id": "zjvp535",
    "name": "LK Customs",
    "logo": null,
-   "locale": "pt-BR",
-   "players": 0,
-   "maxPlayers": 1,
-   "avgPlayers": 0
-  },
-  {
-   "id": "e6erk6a",
-   "name": "lordjc cinematics",
-   "logo": "https://frontend.cfx-services.net/api/servers/icon/e6erk6a/209523675.png",
    "locale": "pt-BR",
    "players": 0,
    "maxPlayers": 1,
@@ -1737,15 +1728,6 @@
    "avgPlayers": 0
   },
   {
-   "id": "xvjo5g",
-   "name": "Meu Servidor FiveM",
-   "logo": null,
-   "locale": "pt-BR",
-   "players": 0,
-   "maxPlayers": 0,
-   "avgPlayers": 0
-  },
-  {
    "id": "8d5rk4",
    "name": "Meu Servidor FiveM",
    "logo": null,
@@ -1782,16 +1764,25 @@
    "avgPlayers": 0
   },
   {
+   "id": "kqmbqr6",
+   "name": "Missing server data (must be configured in Portal)",
+   "logo": null,
+   "locale": "root-AQ",
+   "players": 0,
+   "maxPlayers": 0,
+   "avgPlayers": 0
+  },
+  {
    "id": "y99mg85",
    "name": "Missing server data (must be configured in Portal)",
    "logo": null,
    "locale": "root-AQ",
    "players": 0,
-   "maxPlayers": 1,
+   "maxPlayers": 0,
    "avgPlayers": 0
   },
   {
-   "id": "kqmbqr6",
+   "id": "9vqv5a",
    "name": "Missing server data (must be configured in Portal)",
    "logo": null,
    "locale": "root-AQ",
@@ -1805,7 +1796,7 @@
    "logo": null,
    "locale": "root-AQ",
    "players": 0,
-   "maxPlayers": 0,
+   "maxPlayers": 1,
    "avgPlayers": 0
   },
   {
@@ -1832,7 +1823,7 @@
    "logo": null,
    "locale": "root-AQ",
    "players": 0,
-   "maxPlayers": 1,
+   "maxPlayers": 2,
    "avgPlayers": 0
   },
   {
@@ -1854,6 +1845,15 @@
    "avgPlayers": 0
   },
   {
+   "id": "r4mxkp",
+   "name": "mri_Qbox Republica",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/r4mxkp/209523675.png",
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 0,
+   "avgPlayers": 0
+  },
+  {
    "id": "gaa6g4q",
    "name": "MRI_RPG",
    "logo": null,
@@ -1869,15 +1869,6 @@
    "locale": "pt-BR",
    "players": 0,
    "maxPlayers": 0,
-   "avgPlayers": 0
-  },
-  {
-   "id": "gaavazm",
-   "name": "NEBULOSA ROLEPLAY",
-   "logo": "https://frontend.cfx-services.net/api/servers/icon/gaavazm/-1727145360.png",
-   "locale": "pt-BR",
-   "players": 0,
-   "maxPlayers": 1,
    "avgPlayers": 0
   },
   {
@@ -1905,24 +1896,6 @@
    "locale": "pt-BR",
    "players": 0,
    "maxPlayers": 0,
-   "avgPlayers": 0
-  },
-  {
-   "id": "3mdzaz",
-   "name": "North Studio",
-   "logo": "https://frontend.cfx-services.net/api/servers/icon/3mdzaz/2018827675.png",
-   "locale": "pt-BR",
-   "players": 0,
-   "maxPlayers": 1,
-   "avgPlayers": 0
-  },
-  {
-   "id": "bdd5bvd",
-   "name": "Odysseia RP",
-   "logo": "https://frontend.cfx-services.net/api/servers/icon/bdd5bvd/-947756515.png",
-   "locale": "pt-BR",
-   "players": 0,
-   "maxPlayers": 2,
    "avgPlayers": 0
   },
   {
@@ -1994,7 +1967,7 @@
    "logo": "https://frontend.cfx-services.net/api/servers/icon/93958k/644009501.png",
    "locale": "pt-BR",
    "players": 0,
-   "maxPlayers": 0,
+   "maxPlayers": 1,
    "avgPlayers": 0
   },
   {
@@ -2007,12 +1980,12 @@
    "avgPlayers": 0
   },
   {
-   "id": "gadmbbq",
-   "name": "Projeto E.C.H.O.",
-   "logo": "https://frontend.cfx-services.net/api/servers/icon/gadmbbq/209523675.png",
+   "id": "8eep5vv",
+   "name": "PURO SUCO RJ",
+   "logo": null,
    "locale": "pt-BR",
    "players": 0,
-   "maxPlayers": 1,
+   "maxPlayers": 2,
    "avgPlayers": 0
   },
   {
@@ -2021,7 +1994,7 @@
    "logo": null,
    "locale": "pt-BR",
    "players": 0,
-   "maxPlayers": 0,
+   "maxPlayers": 1,
    "avgPlayers": 0
   },
   {
@@ -2039,16 +2012,7 @@
    "logo": "https://frontend.cfx-services.net/api/servers/icon/dm8p65/924158984.png",
    "locale": "en-US",
    "players": 0,
-   "maxPlayers": 1,
-   "avgPlayers": 0
-  },
-  {
-   "id": "98y4g3e",
-   "name": "Realidade Carioca",
-   "logo": "https://frontend.cfx-services.net/api/servers/icon/98y4g3e/-1326969301.png",
-   "locale": "pt-BR",
-   "players": 0,
-   "maxPlayers": 1,
+   "maxPlayers": 0,
    "avgPlayers": 0
   },
   {
@@ -2079,21 +2043,21 @@
    "avgPlayers": 0
   },
   {
-   "id": "amyoj5",
-   "name": "Rustic RP",
-   "logo": "https://frontend.cfx-services.net/api/servers/icon/amyoj5/-451677061.png",
-   "locale": "pt-BR",
-   "players": 0,
-   "maxPlayers": 1,
-   "avgPlayers": 0
-  },
-  {
    "id": "9883goa",
    "name": "RV",
    "logo": "https://frontend.cfx-services.net/api/servers/icon/9883goa/209523675.png",
    "locale": "pt-BR",
    "players": 0,
    "maxPlayers": 0,
+   "avgPlayers": 0
+  },
+  {
+   "id": "embl63",
+   "name": "Santuario Z",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/embl63/2034334528.png",
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 2,
    "avgPlayers": 0
   },
   {
@@ -2142,15 +2106,6 @@
    "avgPlayers": 0
   },
   {
-   "id": "pggv3aa",
-   "name": "Skyline Stories",
-   "logo": "https://frontend.cfx-services.net/api/servers/icon/pggv3aa/-845623148.png",
-   "locale": "en-US",
-   "players": 0,
-   "maxPlayers": 1,
-   "avgPlayers": 0
-  },
-  {
    "id": "leel3r4",
    "name": "SOBERANA",
    "logo": "https://frontend.cfx-services.net/api/servers/icon/leel3r4/993566326.png",
@@ -2174,7 +2129,7 @@
    "logo": null,
    "locale": "pt-BR",
    "players": 0,
-   "maxPlayers": 1,
+   "maxPlayers": 0,
    "avgPlayers": 0
   },
   {
@@ -2201,7 +2156,7 @@
    "logo": "https://frontend.cfx-services.net/api/servers/icon/p3qk55/1319697396.png",
    "locale": "pt-BR",
    "players": 0,
-   "maxPlayers": 2,
+   "maxPlayers": 0,
    "avgPlayers": 0
   },
   {
@@ -2250,12 +2205,12 @@
    "avgPlayers": 0
   },
   {
-   "id": "3yyplvz",
-   "name": "True Blood",
-   "logo": "https://frontend.cfx-services.net/api/servers/icon/3yyplvz/-1948282287.png",
-   "locale": "pt-br",
+   "id": "j4rarr4",
+   "name": "Tokyo City",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/j4rarr4/209523675.png",
+   "locale": "pt-BR",
    "players": 0,
-   "maxPlayers": 1,
+   "maxPlayers": 2,
    "avgPlayers": 0
   },
   {
@@ -2282,7 +2237,7 @@
    "logo": null,
    "locale": "pt-BR",
    "players": 0,
-   "maxPlayers": 1,
+   "maxPlayers": 3,
    "avgPlayers": 0
   },
   {
@@ -2300,7 +2255,7 @@
    "logo": "https://frontend.cfx-services.net/api/servers/icon/a44eel3/-1963922248.png",
    "locale": "pt-BR",
    "players": 0,
-   "maxPlayers": 1,
+   "maxPlayers": 0,
    "avgPlayers": 0
   },
   {
@@ -2328,6 +2283,15 @@
    "locale": "pt-BR",
    "players": 0,
    "maxPlayers": 0,
+   "avgPlayers": 0
+  },
+  {
+   "id": "jy8ozk",
+   "name": "Vera Cruz Base desenvolviment",
+   "logo": null,
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 1,
    "avgPlayers": 0
   },
   {
@@ -2385,6 +2349,15 @@
    "avgPlayers": 0
   },
   {
+   "id": "zekzy4",
+   "name": "Yorpex City",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/zekzy4/2082128475.png",
+   "locale": "pt-BR",
+   "players": 0,
+   "maxPlayers": 1,
+   "avgPlayers": 0
+  },
+  {
    "id": "3yymyjy",
    "name": "Yorpex City",
    "logo": null,
@@ -2400,6 +2373,15 @@
    "locale": "pt-BR",
    "players": 0,
    "maxPlayers": 1,
+   "avgPlayers": 0
+  },
+  {
+   "id": "j44aqb4",
+   "name": "あむぐら",
+   "logo": "https://frontend.cfx-services.net/api/servers/icon/j44aqb4/2034334528.png",
+   "locale": "ja-jp",
+   "players": 0,
+   "maxPlayers": 2,
    "avgPlayers": 0
   }
  ]
