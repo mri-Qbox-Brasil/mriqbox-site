@@ -1,29 +1,36 @@
 name: Sync All Docs
 
-# Publica o MANUAL.md de TODOS os repositorios do catalogo de uma vez, num
-# unico commit.
+# Publica a documentacao de resources a partir das RECEITAS do mriTxRecipe, a
+# fonte unica de verdade (regras em .release/ingest-docs.js):
+#   - base.yaml           -> publica;
+#   - so na beta.yaml     -> publica com "(beta)", se a variavel
+#                            DOCS_PUBLISH_BETA deste repo nao for false;
+#   - fora / sem MANUAL   -> nao publica e apaga a pagina.
 #
-# Existe por dois motivos:
-#   - backfill: publica quem ja tem MANUAL.md sem precisar de um push vazio em
-#     cada repositorio;
-#   - rede de seguranca: reconcilia o site com os repos caso algum
-#     repository_dispatch tenha se perdido.
+# Gatilhos:
+#   - repository_dispatch `update-manual`  : o MANUAL.md de um repo mudou
+#     (callable-repo-dispatch). Atualiza so aquele slug.
+#   - repository_dispatch `recipe-updated` : a receita mudou
+#     (callable-recipe-release). Reconcilia tudo.
+#   - schedule / workflow_dispatch         : reconcilia tudo (ou o CSV `only`).
 
 on:
   workflow_dispatch:
     inputs:
       only:
-        description: "CSV de repos para sincronizar (vazio = todos do catalogo)"
+        description: "CSV de repos para sincronizar (vazio = tudo das receitas)"
         required: false
+  repository_dispatch:
+    types: [update-manual, recipe-updated]
   schedule:
     - cron: "0 5 * * 1" # toda segunda-feira
 
-# Compartilha o grupo com o update-doc: os dois commitam no mesmo branch e nao
-# podem correr juntos.
 # Commita as docs no proprio branch; o token padrao do repo e so leitura.
 permissions:
   contents: write
 
+# Varios repos podem avisar ao mesmo tempo. Serializa em vez de cancelar: cada
+# aviso importa, e todos dao push no mesmo branch.
 concurrency:
   group: docs-ingest
   cancel-in-progress: false
@@ -43,38 +50,21 @@ jobs:
       - name: Instalar dependencias
         run: npm ci
 
-      # O catalogo e a fonte de verdade e mora no repo `workflows`, junto dos
-      # callables — nao duplicado aqui.
-      - name: Buscar catalogo
-        env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
-        run: |
-          curl -sSfL \
-            -H "Authorization: token $GH_TOKEN" \
-            -H "Accept: application/vnd.github.v3.raw" \
-            "https://api.github.com/repos/mri-Qbox-Brasil/workflows/contents/docs-repos.json" \
-            -o /tmp/catalog.json
-
       - name: Publicar documentacao
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          DOCS_PUBLISH_BETA: ${{ vars.DOCS_PUBLISH_BETA }}
+          EVENT: ${{ github.event_name }}
+          ACTION: ${{ github.event.action }}
+          PAYLOAD_SLUG: ${{ github.event.client_payload.slug || github.event.client_payload.repo }}
           ONLY: ${{ inputs.only }}
         run: |
-          node -e '
-            const all = JSON.parse(require("fs").readFileSync("/tmp/catalog.json", "utf8"));
-
-            const only = (process.env.ONLY || "")
-              .split(",").map(s => s.trim()).filter(Boolean);
-
-            const items = all
-              .filter(r => r.publish !== false)
-              .filter(r => !only.length || only.includes(r.repo) || only.includes(r.slug));
-
-            console.error(`catalogo: ${all.length} | a sincronizar: ${items.length}`);
-            require("fs").writeFileSync("/tmp/items.json", JSON.stringify(items));
-          '
-
-          node .release/ingest-docs.js "$(cat /tmp/items.json)"
+          echo "DOCS_PUBLISH_BETA=${DOCS_PUBLISH_BETA:-<vazio: ligado>}"
+          if [ "$EVENT" = "repository_dispatch" ] && [ "$ACTION" = "update-manual" ]; then
+            node .release/ingest-docs.js "$PAYLOAD_SLUG"
+          else
+            node .release/ingest-docs.js "$ONLY"
+          fi
 
       - name: Validar build
         run: npm run build
@@ -83,14 +73,14 @@ jobs:
         run: |
           git config user.name 'github-actions'
           git config user.email 'github-actions@github.com'
-          git add content/docs/mri/resources/
+          git add -A content/docs/mri/resources/
 
           if git diff --cached --quiet; then
             echo "Sem mudancas para commitar."
             exit 0
           fi
 
-          git commit -m "docs: sincroniza documentacao de recursos"
+          git commit -m "docs: sincroniza documentacao de resources com as receitas"
 
           for i in 1 2 3 4 5; do
             git push && exit 0

@@ -7,17 +7,30 @@ A documentação mora neste repo, sob `/docs` (Fumadocs). A migração do Nextra
 
 ## Como as docs de recursos se atualizam
 
-- Cada repo de script chama o `callable-repo-dispatch.yml` do repo
-  `mri-Qbox-Brasil/workflows`, que manda um `repository_dispatch`
-  (`update-manual`) para cá quando o `MANUAL.md` muda.
-- `.github/workflows/update-doc.yml` recebe o aviso e roda
-  `.release/ingest-docs.js`: baixa o `MANUAL.md`, publica em
-  `content/docs/mri/resources/<slug>.md` e regenera o `meta.json`.
-- `.github/workflows/sync-all-docs.yml` reconcilia o catálogo inteiro
-  (`docs-repos.json`, no repo `workflows`) toda segunda e via
-  `workflow_dispatch`, como rede de segurança para avisos perdidos.
-- Os dois usam o `GH_TOKEN` da organização para ler os manuais (há repo
-  `-source` privado) e o `GITHUB_TOKEN` (`contents: write`) para dar push.
+**Fonte única de verdade: as receitas do `mriTxRecipe` (branch `main`).** Não há
+catálogo à mão. Regras em `.release/ingest-docs.js`:
+
+- ativo na `base.yaml` → publica (a lite é um pedaço da base);
+- ativo só na `beta.yaml` → publica com "(beta)" no título e um aviso no topo,
+  se a variável `DOCS_PUBLISH_BETA` deste repo não for `false` (vazia = ligada);
+- fora das receitas (ou comentado), ou sem `MANUAL.md` → não publica e **a
+  página é apagada**. Página escrita à mão aqui também some no próximo sync.
+
+O `MANUAL.md` vem do `<repo>-source` quando ele tem o arquivo, senão do próprio
+repo; a página sai com o nome do repo da receita. O título vem do nome do repo
+(`mri_Qblips_v1` → "MRI Qblips v1").
+
+Tudo roda em `.github/workflows/sync-all-docs.yml`:
+
+- `repository_dispatch` `update-manual` (o `callable-repo-dispatch` do repo
+  `workflows`, quando um `MANUAL.md` muda) → atualiza só aquele slug;
+- `repository_dispatch` `recipe-updated` (o `callable-recipe-release`, a cada
+  push na `main` do `mriTxRecipe`) → reconcilia tudo;
+- toda segunda e via `workflow_dispatch` → reconcilia tudo (ou o CSV `only`).
+
+Erro de API que não seja 404 aborta antes de escrever ou apagar. Usa o
+`GH_TOKEN` da organização para ler receitas e manuais (há repo `-source`
+privado) e o `GITHUB_TOKEN` (`contents: write`) para dar push.
 
 ## `docs.mriqbox.com.br`
 
@@ -39,8 +52,5 @@ continuar existindo e **proxied** (nuvem laranja) para as regras valerem.
   pré-renderizada); no GitHub Pages (`output: export`) o índice é estático. O
   endpoint inclui o basePath (`/mriqbox-site/api/search` no GitHub Pages, raiz
   em produção) via `NEXT_PUBLIC_BASE_PATH`.
-- **Labels da sidebar:** o `title` do frontmatter de cada página. Nos resources
-  vem do `name` do catálogo.
-- **`mri_Qadmin`, `mri_Qchat`, `mri_Qhud`:** estão no catálogo mas ainda não
-  têm `MANUAL.md`. A página `mri_Qadmin.md` foi escrita à mão e o sync não a
-  apaga.
+- **Labels da sidebar:** o `title` do frontmatter de cada página, gerado do nome
+  do repo da receita.
