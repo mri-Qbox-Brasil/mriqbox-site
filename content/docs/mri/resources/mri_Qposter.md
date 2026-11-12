@@ -1,6 +1,8 @@
 ---
-title: MRI Qposter
+title: "MRI Qposter (beta)"
 ---
+
+> **Beta:** este resource está só na receita beta da MRI e ainda não faz parte da receita regular. Pode mudar sem aviso.
 
 Pôsteres, outdoors e telões no mundo. Cada pôster mostra imagem, vídeo, YouTube ou uma imagem subida do PC, sozinha ou em revezamento, desenhada por DUI sobre quatro cantos marcados no jogo (numa parede ou em cima de um veículo). Tudo se faz pelo painel, que também vira aba no mri_Qadmin. Se o dono deixar, jogadores criam os próprios pôsteres pelo F9.
 

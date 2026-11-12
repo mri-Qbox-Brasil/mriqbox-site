@@ -1,6 +1,8 @@
 ---
-title: MRI Qsoundfyapp
+title: "MRI Qsoundfyapp (beta)"
 ---
+
+> **Beta:** este resource está só na receita beta da MRI e ainda não faz parte da receita regular. Pode mudar sem aviso.
 
 **Soundfy**: o streaming de música da cidade, no estilo do Spotify, para o [sd-phone](https://github.com/Samuels-Development/sd-phone) e o sd-tablet. Catálogo com busca e gêneros, artistas da cidade, playlists curadas pela administração, "Mais tocadas", curtidas e playlists dos jogadores, caixas de som e som do carro com som 3D, e faixas do YouTube.
 

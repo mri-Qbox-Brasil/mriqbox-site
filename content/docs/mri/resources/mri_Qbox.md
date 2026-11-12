@@ -2,7 +2,9 @@
 title: MRI Qbox
 ---
 
-Recurso guarda-chuva da suite MRI: reúne os menus F9/F10, o sistema de staff e VIP, e um conjunto de módulos opcionais de combate, veículos e interação que ligam os demais recursos MRI ao `qbx_core`.
+Coleção de módulos da suíte MRI: menus F9/F10, VIP, comandos de admin e módulos de
+combate, veículos, interação, inventário e mundo. Cada módulo liga, desliga e se configura
+pelo painel `/mriqbox` (ou pela aba no mri_Qadmin), e a mudança vale na hora, sem reiniciar.
 
 ---
 
@@ -11,16 +13,18 @@ Recurso guarda-chuva da suite MRI: reúne os menus F9/F10, o sistema de staff e 
 1. [Dependências](#dependências)
 2. [Instalação](#instalação)
 3. [Permissões (ACE)](#permissões-ace)
-4. [Configuração](#configuração)
-5. [Comandos](#comandos)
-6. [Teclas](#teclas)
-7. [Menus F9 e F10](#menus-f9-e-f10)
-8. [Staff](#staff)
-9. [VIP](#vip)
-10. [Módulos](#módulos)
-11. [Integrações](#integrações)
-12. [Entrypoints para outros recursos](#entrypoints-para-outros-recursos)
-13. [Estrutura de arquivos](#estrutura-de-arquivos)
+4. [Painel de configuração](#painel-de-configuração)
+5. [Módulos](#módulos)
+6. [Comandos](#comandos)
+7. [Teclas](#teclas)
+8. [Menus F9 e F10](#menus-f9-e-f10)
+9. [Staff](#staff)
+10. [VIP](#vip)
+11. [Veículos: cadastro e estoque](#veículos-cadastro-e-estoque)
+12. [Editor do inventário](#editor-do-inventário)
+13. [Integrações](#integrações)
+14. [Entrypoints para outros recursos](#entrypoints-para-outros-recursos)
+15. [Estrutura de arquivos](#estrutura-de-arquivos)
 
 ---
 
@@ -28,118 +32,175 @@ Recurso guarda-chuva da suite MRI: reúne os menus F9/F10, o sistema de staff e 
 
 | Recurso | Obrigatório | Observação |
 |---|---|---|
-| `ox_lib` | Sim | Importado no `fxmanifest.lua` (`@ox_lib/init.lua`). Menus, comandos, callbacks, keybinds, principals |
-| `qbx_core` | Sim | Importa `@qbx_core/modules/playerdata.lua`. Fonte de `QBX.PlayerData`, jobs, gangs e metadata |
-| `oxmysql` | Sim | Importado no `fxmanifest.lua`. Lista de players para os painéis de staff e VIP |
-| `ox_inventory` | Sim | Peso, drop de itens, drag-craft, item carry, item collection, `/viewallitems` |
-| `ox_target` | Sim | Lixeiras, entrada por porta do veículo, water cooler, itemcollection |
-| `qb-core` | Sim (se `vipmenu.Enable`) | `modules/mri/server-side/ox_lib-modules/vip.lua` chama `exports['qb-core']:GetCoreObject()` no load |
-| `qbx_management` | Sim (para os painéis) | `qbx_management:server:getPlayers` (busca de jogadores próximos) e `OpenBossMenu` (`/menu`) |
-| `mri_Qjobsystem` | Sim (para o menu F9) | O menu do jogador chama `CheckPlayerIsbossByJobSystemData` sem checar se o recurso existe — o menu quebra sem ele |
-| `mri_Qadmin` | Não | Usado como destino preferencial de `setPlayerJob`/`setPlayerGang` |
-| `ps-adminmenu` | Não | Fallback de `setPlayerJob`/`setPlayerGang` quando o `mri_Qadmin` não está iniciado |
-| `mri_Qvinewood` | Não | Adiciona a entrada "Vinewood" no menu de gerenciamento |
+| `ox_lib` | Sim | Menus, comandos, callbacks, keybinds, principals e o `/uiconfig` do tema |
+| `qbx_core` | Sim | `QBX.PlayerData`, jobs, gangs e metadata (VIP); o fork MRI, com a API de veículos em runtime |
+| `oxmysql` | Sim | Lista de personagens do painel de VIP e a tabela `vehicles_data` |
+| `ox_inventory` | Sim | Peso, drop de itens, craft arrastando, carregar nos braços, pegar do chão |
+| `ox_target` | Sim | Lixeiras, entrar pela porta, bebedouros, pegar do chão |
+| `mri_Qbossmenu` | Para os painéis | Jogadores próximos no painel de VIP, o `/menu <job>` e "Gerenciar Emprego" e "Gerenciar Gangue" no F9. Atende pelos nomes antigos `qbx_management` e `mri_Qjobsystem`, que também servem. Sem ele, as opções de gerenciar só não aparecem |
+| `mri_Qadmin` | Não | Abas "MRI Qbox" (painel) e "Veículos" |
+| `mri_Qvinewood` | Não | Entrada "Vinewood" no menu de gerenciamento |
 
-Os menus F9/F10 disparam comandos de outros recursos (`doorlock`, `blip`, `bau`, `npc`, `objectspawner`, `elevador`, `garagelist`, `craft:create`, `open_jobs`, `spotlight`, `weather`, `adm`…). Cada entrada só funciona se o recurso que registra aquele comando estiver instalado — o `mri_Qbox` não valida isso.
+Os menus F9/F10 disparam comandos de outros recursos (`doorlock`, `blip`, `bau`, `npc`,
+`objectspawner`, `elevador`, `garagelist`, `craft:create`, `open_jobs`, `spotlight`,
+`weather`, `adm`...). Cada entrada só funciona se o recurso daquele comando estiver instalado.
 
 ---
 
 ## Instalação
 
-1. Copie a pasta `mri_Qbox` para `resources/`.
-2. Adicione ao `server.cfg`, depois de `ox_lib`, `qbx_core`, `oxmysql`, `ox_inventory` e `ox_target`:
+1. Coloque a pasta `mri_Qbox` em `resources/` (na base MRI, em `resources/[mri]`).
+2. No `server.cfg`, inicie depois de `ox_lib`, `qbx_core`, `oxmysql`, `ox_inventory` e
+   `ox_target`:
    ```
    ensure mri_Qbox
    ```
-3. Libere a ACE de admin (ver [Permissões (ACE)](#permissões-ace)).
-4. Ajuste `config.lua` — quase todos os módulos vêm com `toggle = false` e precisam ser ligados individualmente.
-5. Não há SQL para importar. Staff e VIP são gravados na metadata do player (`players.metadata`), tabela que o `qbx_core` já cria.
+3. Libere a ACE de admin (ver [Permissões](#permissões-ace)).
+4. Abra o `/mriqbox` e ligue os módulos que quiser. Os valores ficam em `data/config.json`.
+5. Não há SQL para importar: o VIP fica na metadata do personagem
+   (`players.metadata`), que o `qbx_core` já cria, e a tabela `vehicles_data` é criada
+   sozinha.
+6. Vindo do mri_Qvehicles: tire ele do servidor (ver [Vindo do mri_Qvehicles](#vindo-do-mri_qvehicles)).
 
 ---
 
 ## Permissões (ACE)
 
-Os comandos administrativos usam `restricted = 'group.admin'` do `ox_lib`:
+| Permissão | Libera |
+|---|---|
+| `mri_Qbox.admin` ou `command` | O painel `/mriqbox` e a aba no mri_Qadmin |
+| `mri_Qvehicles.admin`, `mri_Qbox.admin` ou `command` | A tela de veículos (aba "Veículos" no mri_Qadmin) |
+| `group.admin` | Comandos de admin (`/item`, `/vipadm`...) e os eventos do painel de VIP |
 
 ```
 add_ace group.admin command allow
 add_principal identifier.fivem:1 group.admin
 ```
 
-Além disso, o recurso **concede principals dinamicamente**:
-
-- Ao entrar no servidor, quem tem `metadata.staff` recebe o principal correspondente (`group.admin`, `group.mod`, `group.support`) via `lib.addPrincipal`.
-- Ao entrar, quem tem `metadata.vip` recebe o principal com o nome do tier (`tier1`, …).
-
-Ou seja, o cargo de staff é persistido na metadata do personagem e reaplicado como ACE a cada login — não é preciso mexer no `server.cfg` para cada admin.
+O recurso também **concede principals sozinho**: ao logar, quem tem `metadata.vip` recebe o
+principal com o nome do tier. Não é preciso mexer no `server.cfg` pra cada admin.
 
 ---
 
-## Configuração
+## Painel de configuração
 
-Arquivo principal: `config.lua` (tabela global `cfg`).
+`/mriqbox` abre o painel (ou a aba "MRI Qbox" no mri_Qadmin). ESC fecha.
 
-| Campo | Tipo | Obrigatório | Descrição |
-|---|---|---|---|
-| `cfg.printidentifiers` | bool | Não | Imprime todos os identifiers do jogador no console em `playerConnecting` |
-| `cfg.vipmenu.Enable` | bool | Não | Liga o sistema de VIP. Se `false`, os arquivos de VIP saem no `return` inicial |
-| `cfg.vipmenu.PaycheckInterval` | number | Não | Intervalo do salário VIP, em minutos. `0` ou menos desliga o pagamento |
-| `cfg.vipmenu.CashType` | string | Não | Conta que recebe o salário: `money`, `bank` ou `crypto` |
-| `cfg.vipmenu.CoinType` | string | Não | Símbolo da moeda exibido na notificação de salário |
-| `cfg.vipmenu.Roles` | tabela | Sim (se `Enable`) | Tiers de VIP. **Precisa conter a chave `nenhum`** — é o fallback usado para quem não é VIP |
-| `cfg.vipmenu.Roles[tier].label` | string | Sim | Nome exibido nos menus |
-| `cfg.vipmenu.Roles[tier].payment` | number | Sim | Valor do salário por intervalo |
-| `cfg.vipmenu.Roles[tier].inventory` | number | Sim | Peso máximo do inventário em kg (multiplicado por 1000 e aplicado com `ox_inventory:SetMaxWeight`) |
-| `cfg.indestructibleProps` | bool | Não | Congela props de rua/tráfego para não serem destruídos |
-| `cfg.dropitems` | bool | Não | Liga o drop de itens como prop no mundo |
-| `cfg.dropitems_table` | tabela | Não | Mapa `item = modelo do prop`. Só os itens listados aqui viram prop ao serem largados |
-| `cfg.entervehicle.toggle` | bool | Não | Adiciona opções de target em cada porta do veículo para entrar direto naquele assento |
-| `cfg.dumpsters.toggle` | bool | Não | Liga as lixeiras (esconder-se e vasculhar) |
-| `cfg.dumpsters.HideProps.Model` | array | Não | Hashes dos props em que o jogador pode se esconder |
-| `cfg.dumpsters.TrashProps.Model` | array | Não | Hashes dos props que podem ser vasculhados |
-| `cfg.disablefreepunch.toggle` | bool | Não | Só permite socar mirando (evita soco acidental ao usar o target) |
-| `cfg.forcedfirstperson.twopov` | bool | Não | Reduz as visões de câmera a duas (primeira e terceira pessoa) |
-| `cfg.forcedfirstperson.invehicle.ativar` | bool | Não | Força primeira pessoa dentro do veículo |
-| `cfg.forcedfirstperson.invehicle.hold` | bool | Não | Só força primeira pessoa no veículo enquanto segura arma |
-| `cfg.disablecombatroll.toggle` | bool | Não | Desativa o rolamento de combate |
-| `cfg.damageragdoll.toggle` | bool | Não | Faz o jogador cair ao levar tiro na perna |
-| `cfg.disableblindfiring.toggle` | bool | Não | Desativa o tiro cego atrás de cobertura |
-| `cfg.realisticrecoil.hideCrosshair` | bool | Não | Esconde a mira nativa do GTA ao apontar |
-| `cfg.realisticrecoil.drunkAiming` | bool | Não | Mira instável ("bêbada") |
-| `cfg.realisticrecoil.drunkAimingPower` | number | Não | Intensidade do tremor da mira |
-| `cfg.realisticrecoil.verticalRecoil` | bool | Não | Recuo vertical ao atirar |
-| `cfg.realisticrecoil.disableAimPunching` | bool | Não | Bloqueia socar enquanto mira |
-| `cfg.realisticrecoil.disableHeadshots` | bool | Não | Remove o one-shot na cabeça |
-| `cfg.realisticrecoil.whitelistedWeapons` | tabela | Não | Armas sem recuo (por hash de nome) |
-| `cfg.realisticrecoil.recoilMultipliers` | tabela | Não | Multiplicador de recuo vertical por classe de arma (`PISTOL`, `SMG`, `RIFLE`, `LMG`, `SHOTGUN`, `SNIPER`, `VEHICLE`) |
-| `cfg.wheelbreak.toggle` | bool | Não | Roda quebra/solta em colisão |
-| `cfg.wheelbreak.mode` | string | Não | `impact` (usa força do impacto) ou `speed` (usa velocidade mínima) |
-| `cfg.wheelbreak.impactDamage` | number | Não | (`impact`) dano de lataria perdido de uma vez para quebrar a roda |
-| `cfg.wheelbreak.minImpactSpeed` | number | Não | (`impact`) velocidade mínima em km/h para validar o impacto |
-| `cfg.wheelbreak.impactDeltaSpeed` | number | Não | (`impact`) perda mínima de velocidade em km/h num instante |
-| `cfg.wheelbreak.cooldown` | number | Não | ms entre uma quebra e outra no mesmo veículo |
-| `cfg.wheelbreak.speed` | number | Não | (`speed`) velocidade mínima em km/h para quebrar a roda |
-| `cfg.savewheelpos.toggle` | bool | Não | Mantém o ângulo do volante ao sair do veículo |
-| `cfg.disableaircontrol.toggle` | bool | Não | Bloqueia pular/sair do veículo enquanto ele está no ar |
-| `cfg.carexplosion.toggle` | bool | Não | Veículo explode ao cair de altura |
-| `cfg.carexplosion.height` | number | Não | Altura da queda que dispara a explosão |
-| `cfg.drift.toggle` | bool | Não | Liga o drift com Shift |
-| `cfg.drift.points` | bool | Não | Mostra o contador de pontos de drift na NUI |
-| `cfg.drift.speed` | number | Não | Velocidade máxima em que o drift funciona |
-| `cfg.mercosulplates.toggle` | bool | Não | **Deprecado.** Substituído pelo recurso `mri_Qcarplates` |
+- **Lateral:** categorias (Menus, Admin, Combate, Veículos, Interação, Inventário, Mundo, Som) e
+  busca por nome ou descrição.
+- **Lista:** cada módulo com descrição e o liga/desliga na própria linha. Módulo que faz
+  parte da base mostra o selo "Base" no lugar do liga/desliga: fica sempre ligado.
+- **Detalhe:** as opções do módulo (número com unidade, texto, seleção, listas, tabela
+  chave e valor, JSON), "Restaurar padrão", "Descartar" e "Salvar". O módulo Veículos abre
+  a tela de cadastro inteira, com "Módulos" pra voltar.
 
-### Chaves de config sem implementação
+Tudo vale na hora pra todos os jogadores:
 
-`cfg.SqlBackup` e `cfg.AutoUpdater` existem no `config.lua`, mas **nenhum arquivo do repositório lê essas chaves**. Alterá-las não tem efeito.
+- módulo de loop (recuo, drift, roda solta...) passa a obedecer na volta seguinte;
+- módulo que registra coisa em outro recurso (olhinho, gancho do inventário, item de menu,
+  textura) registra ao ligar e remove ao desligar;
+- comando e tecla continuam registrados (o FiveM não remove), mas desligados avisam
+  "Comando desligado no painel do mri_Qbox" ou não fazem nada.
 
-### Configs por módulo
+O servidor valida cada valor pelo tipo da opção antes de gravar em `data/config.json`.
+O tema do painel segue a suíte: cor de destaque e fundo pelas convars `mri:color` e
+`mri:backgroundColor`, e o resto (dark/glass, opacidade, raio, fonte) pelo `/uiconfig`.
 
-| Arquivo | Conteúdo |
+---
+
+## Módulos
+
+Ligado ou desligado de fábrica entre parênteses.
+
+### Menus e admin
+
+| Módulo | O que faz |
 |---|---|
-| `modules/dragCraft/config.lua` | Receitas do drag-to-craft (`RECIPES`) |
-| `modules/itemCarry/server/data.lua` | Itens que geram prop visual ao serem carregados (`CARRY_ITEMS`) |
-| `modules/waterCooler/config/config.lua` | Props-alvo, distâncias, progress bar, itens de garrafa e hidratação |
-| `modules/cinematic/client/config.lua` | Planos de câmera da cinemática de boas-vindas |
+| Menus F9 e F10 (ligado) | Menu do jogador e de administração. Os exports pra outros recursos continuam valendo com ele desligado |
+| VIP (desligado) | Tiers com ACE, peso do inventário e salário periódico. Opções: intervalo do salário, conta, símbolo da moeda e os tiers (JSON) |
+| Comandos de admin (ligado) | `/item`, `/tuning`, `/menu_admin`, `/customs`, `/raycast`, `/menu` |
+| Atalhos de comando (ligado) | Outro nome pra um comando que já existe, editado no painel (atalho -> comando). Já vem com `/tpto` -> `/tp`, `/tpway` -> `/tpm` e `/god` -> `/revive`, pra quem vem do creative ou vRP. Vale a permissão do comando original; atalho com nome de comando que já existe ou que aponta pra outro atalho é ignorado, com aviso no console |
+| Passaporte (desligado) | Número fixo de cada personagem, como o passaporte do creative e do vRP: é o `id` da tabela `players`, que não muda quando o jogador reconecta e não é reaproveitado. Fica no statebag `passport` do jogador (a HUD e outros scripts leem dali). Opção **Primeiro passaporte** (1): personagens novos começam nele e os números abaixo ficam reservados pra dar ou vender. O botão **Gerenciar** (e a aba **Passaportes** do mri_Qadmin, com o módulo ligado) abre a lista de personagens com o passaporte de cada um, busca e troca de passaporte (só número reservado ou livre abaixo do próximo; ACE `mri_Qbox.admin` ou `command`). Opção: **Comandos usam o passaporte** (desligada), que faz todo comando com jogador feito no `lib.addCommand` (`/tp`, `/revive`, `/kick`, `/ban`...) pedir o passaporte no lugar do id do servidor; `me` continua valendo |
+| Identificadores no console (ligado) | Mostra os identificadores de quem conecta |
+| Expulsar AFK (desligado) | Igual ao qbx_afk: confere a cada segundo e expulsa quem fica no mesmo ponto exato por tempo demais (padrão 1000 s), com avisos a 15, 10, 5, 2,5 e 1 minuto e a 30, 20 e 10 segundos. Os grupos da lista (padrão mod e admin, permissões do qbx_core) não são expulsos |
+| Gravação (ligado) | Item **Gravação** no F9: tela pra gravar, gravar em replay (guarda os últimos segundos), salvar, descartar e abrir o Rockstar Editor (pede confirmação, porque tira do servidor). Gravando com a tela fechada, fica um aviso REC no canto. Substitui os comandos do qbx_editor |
+| Anticheat (ligado) | Veículos e peds proibidos: o servidor cancela na hora quem tentar criar, inclusive script de garagem (proteção contra menu de cheat). Substitui o qbx_entitiesblacklist; saiu do módulo Mapa |
+
+### Combate
+
+| Módulo | O que faz |
+|---|---|
+| Cair com tiro na perna (desligado) | Ragdoll ao levar tiro na perna ou na pélvis |
+| Sem tiro cego (desligado) | Não atira da cobertura sem mirar |
+| Sem rolamento (desligado) | Tira o rolamento de combate mirando |
+| Sem soco sem mirar (desligado) | Só bate ou atira segurando a mira |
+| Recuo realista (ligado) | A câmera sobe a cada tiro com a força de cada arma (os valores do qbx_recoils, editáveis no painel), em passos como no qbx_recoils e sem recuo no drive-by (multiplicador VEHICLE 0). Opções: multiplicador por tipo, mira bêbada, sem headshot de um tiro, sem soco mirando e armas sem recuo. Substitui o qbx_recoils |
+| Só duas câmeras a pé (desligado) | Primeira e terceira pessoa (V alterna) |
+| Primeira pessoa armado no carro (desligado) | Motorista armado vai pra primeira pessoa (sempre ou só segurando a mira) |
+| Esconder HUD nativa (ligado) | Esconde estrelas de procurado, dinheiro, área e rua, nome e classe do veículo, roda e ícone da arma; opcional, a mira. Bloqueia a tecla da roda de armas (TAB). Responde os exports do qbx_hudcomponents pelo nome antigo (`exports.qbx_smallresources:AddDisableHudComponents` e os outros). Substitui o qbx_hudcomponents |
+| Armas do GTA (ligado) | NPC morto não solta arma, ninguém pega do chão a arma que o GTA solta, sem coronhada e extintor e galão de gasolina sem acabar. Substitui o qbx_itempickup e parte do qbx_ignore |
+| Tempo no chão do taser (ligado) | Quem leva taser fica no chão um tempo sorteado entre o mínimo e o máximo (padrão 4 a 7 s). Substitui o qbx_stun |
+| Derrubar correndo (ligado) | Igual ao qbx_tackle: correndo, a tecla `tackle` (padrão E) derruba quem está logo à frente (7 s no chão, ajustável); quem derruba cai por um instante. O servidor confere a distância (2 m). Substitui o qbx_tackle |
+
+### Veículos
+
+| Módulo | O que faz |
+|---|---|
+| Veículos (sempre ligado) | Cadastro, edição e estoque dos veículos sem reiniciar. Ver [Veículos: cadastro e estoque](#veículos-cadastro-e-estoque) |
+| Drift no Shift (ligado) | Perde aderência segurando Shift até a velocidade máxima (padrão 80 km/h) |
+| Pontos de drift (desligado) | Contador de pontos de drift na tela |
+| Roda solta em batida (desligado) | Roda solta por força do impacto ou por velocidade da colisão |
+| Roda virada ao desligar (desligado) | A roda fica no ângulo em que o carro foi desligado |
+| Sem controle no ar (desligado) | Carro no ar não gira pelo controle |
+| Dano e falha do motor (ligado) | Batida estraga o motor: ele perde força conforme apanha, abaixo de 250 vai falhando aos poucos, abaixo de 200 falha rápido e para (ou só anda devagar, com "Motor nunca morre de vez"). Kit de reparo (`repairkit`) leva o motor a 500 e conserta os pneus, o avançado (`advancedrepairkit`) leva a 1000, os dois do lado do motor, com o capô ou o porta-malas aberto conforme o carro; kit de limpeza (`cleaningkit`) lava. O item só sai do inventário quando a barra termina. `/fix` (admin, no banco do motorista) conserta, lava e abastece pelo cdn-fuel. Opções: dano por batida e de tiro (leve, normal, pesado), perda de força, motor que nunca morre, tanque que não explode, não desvirar pelo controle, pedal suave, pneu furando sozinho (nunca, raro, às vezes) e desgaste das peças do qbx_mechanicjob. Substitui o qbx_vehiclefailure; com ele ligado o módulo fica parado e avisa no console |
+| Explosão em queda (desligado) | Explode ao cair de uma altura (padrão 40 m) |
+| Entrar pela porta (ligado) | Olhinho em cada porta; carro de concessionária não deixa |
+| Rádio do carro (ligado) | Rádio bloqueado por padrão: desligado em todo veículo, sem como ligar. Sem o bloqueio, `/mri_carradio` liga e desliga o rádio e a escolha vale em todo veículo. Sem tecla padrão (dá pra definir no painel) |
+| Placas Mercosul (desligado) | Textura de placa Mercosul. Obsoleto: prefira o `mri_Qcarplates` |
+| Sem pular de banco (ligado) | Igual ao qbx_noshuff: quem entra no banco do passageiro não pula sozinho pro do motorista. A tecla `shuffleSeat` (padrão O) troca de banco de propósito, menos algemado ou de cinto. Substitui o qbx_noshuff |
+| Piloto automático (ligado) | Igual ao qbx_cruise: o motorista mantém a velocidade atual com a tecla `toggle_cruise_control` (padrão Y). Apertar de novo ou perder velocidade sem frear nem virar desliga. Não vale pra bicicleta, barco, helicóptero, avião e trem. Substitui o qbx_cruise |
+| Desvirar veículo (ligado) | Desvira veículo capotado com barra de progresso (padrão 15 s, até 2 m): pelo olhinho ou pelo export do qbx_flipvehicle (`exports.qbx_smallresources:FlipVehicle`). Substitui o qbx_flipvehicle |
+| Empurrar veículo (ligado) | Igual ao qbx_vehiclepush: a pé, segurando Shift e E (teclas `push_vehicle` e `push_vehicle_e`) perto de um veículo sem motorista, empurra; A e D viram as rodas e soltar o Shift para. Opções: vida do motor pra poder empurrar (padrão 1000, qualquer um; sem gasolina sempre pode) e classes que não empurram. Substitui o qbx_vehiclepush |
+
+### Interação
+
+| Módulo | O que faz |
+|---|---|
+| Lixeiras (ligado) | Olhinho pra se esconder e vasculhar (abre o inventário da lixeira). Modelos no painel |
+| Bebedouros (ligado) | Beber água e encher garrafa em bebedouros, fontes e pias. Beber seguido demais só mostra um aviso |
+
+### Inventário
+
+| Módulo | O que faz |
+|---|---|
+| Editor do inventário (base) | Itens, armas, lojas, crafting, licenças, baús, evidências, espaço dos veículos e animações do ox_inventory, editados no jogo. Ver [Editor do inventário](#editor-do-inventário) |
+| Pegar itens do chão (ligado) | Olhinho pra pegar o prop de um item do ox_inventory. O export `itemPlace` continua valendo desligado |
+| Carregar nos braços (ligado) | Itens como caixas ficam nos braços com animação (lista em `resources/modules/itemcarry/items.lua`) |
+| Craft arrastando (ligado) | Arrastar um item sobre o outro faz a receita (em `resources/modules/dragcraft/recipes.lua`) |
+| Item no chão vira prop (desligado) | Item largado aparece como o prop dele (tabela item e prop no painel) |
+| Arremessar armas (ligado) | Com a arma na mão, a tecla de arremesso joga ela na direção da mira. O painel escolhe a tecla do servidor (botão do meio do mouse por padrão, botões laterais, H, J, K ou Y) e a troca vale na hora pra todos; depois cada jogador ainda muda a sua em "Arremessar a arma" nas configurações do FiveM. A trajetória sai do peso do item no ox_inventory (munição e acessórios contam): faca voa rápida, reta e girando, fuzil faz arco curto e gira devagar, minigun mal sai da mão; o movimento de arremesso fica mais lento com o peso, e quem arremessa correndo soma o embalo. A arma vira objeto do servidor e qualquer um pega pelo olhinho, com munição e acessórios; com o mri_Qbox parado, as que estão no chão viram drop do ox_inventory. Opções: força do arremesso (fraca, normal, forte), largar a arma ao morrer e um liga/desliga por tipo de arma (brancas, pistolas e taser, submetralhadoras, escopetas, fuzis, metralhadoras, fuzis de precisão, pesadas). Substitui o pickle_weaponthrowing |
+| Consumíveis (ligado) | Igual ao qbx_consumables: comida, bebida e álcool no painel (fome ou sede sorteada entre o mínimo e o máximo, alívio de estresse com aviso, animação e objeto na mão), contador de álcool com os eventos de evidência, drogas (baseado, cocaína, crack, ecstasy, oxy e metanfetamina), lockpick e lockpick avançado (evento `lockpicks:UseLockpick`) e a garrafa vazia depois da água. Mantém os eventos `consumables:*` e os exports pelo nome antigo (`exports.qbx_smallresources:AddHunger` e os outros). O baseado usa a animação do rpemotes-reborn. Substitui o qbx_consumables |
+
+### Som
+
+| Módulo | O que faz |
+|---|---|
+| Trilha sonora (ligado) | Player de música do servidor: scripts pedem música por prioridade e a trilha toca a mais importante, com troca suave. Abaixa quando o jogador fala. O volume segue o slider de efeitos sonoros das configurações de áudio do GTA (zerado, não toca). Ao trocar de faixa, mostra um aviso com capa, título e artista, ou um player com play e pause, numa das 8 posições das notificações do ox_lib. Opções: volume da trilha, tempo da troca, abaixar falando e quanto, aviso da faixa, posição do aviso e do player, os momentos e os locais |
+
+### Mundo
+
+| Módulo | O que faz |
+|---|---|
+| Sem capacete automático (ligado) | O personagem não põe capacete sozinho na moto |
+| Máscara sem atravessar o rosto (desligado) | Encolhe cabeça e traços enquanto a máscara pede |
+| Postes indestrutíveis (ligado) | Postes, semáforos e hidrantes não quebram (modelos no painel) |
+| Densidade (ligado) | Quantidade de carros estacionados, no trânsito e aleatórios, pedestres e NPCs de cenário (0 a 1, padrão 0.8). A opção Cidade vazia tira todos de uma vez. NPCs de gangue, polícia, bombeiros, médicos e presos não atacam o jogador. Sem veículos parados no aeroporto, na base militar e em mais dois pontos. Substitui o qbx_density |
+| Trânsito (ligado) | Escolhe no painel quais carros e motos aparecem no trânsito, grupo por grupo (bairros pobres, classe média, ricos, centro, rodovias, interior e motos), entre os do GTA e os das DLCs. Muda na hora: o carro desligado para de aparecer e os que já estão na rua somem com o tempo. Vem com a lista de cara brasileira ligada e o resto desligado. Substitui o mri_replacetraffic |
+| Necessidades (ligado) | Liga e desliga fome, sede e estresse e ajusta quanto a fome e a sede caem a cada ciclo do qbx_core (padrão 4,2 e 3,8). Fome ou sede desligada fica sempre cheia e não tira vida. O estresse vem desligado: fica em zero, sem aviso nem tremor, a barra some do mri_Qhud e comida e bebida não mostram mais o aviso de estresse. O estresse não tem ritmo de queda: ele sobe por evento (velocidade e tiro, no mri_Qhud) e desce com item. Precisa do qbx_core 1.24.1 ou mais novo |
+| Polícia e serviços do GTA (ligado) | Igual ao qbx_disableservices: desliga a polícia, os bombeiros, a ambulância, as gangues de reforço e o exército que o GTA manda sozinho (as barreiras da polícia continuam ligadas), os policiais a pé, o rádio da polícia e as sirenes ao longe, e trava o nível de procurado em 0. Cada serviço pode ser religado no painel. Substitui o qbx_disableservices e parte do qbx_ignore |
+| Mapa (ligado) | Igual ao qbx_ignore e companhia: sem câmera parada e sem som ambiente, sem caminhão de lixo, carros não desenhados de longe, cenários e grupos de cenário desligados e veículos fora do trânsito (reaplicados a cada 10 s) e sons fixos desligados. O comando `/staticemitters` (admin) lista os sons fixos do mapa por interior, com marcadores e teleporte. Substitui o qbx_ignore e o qbx_staticemitters (props do mapa removidos ficam com o mri_Qobjects) |
+| Áreas sem carro estacionado (ligado) | O GTA não estaciona carro nas áreas da lista (hospitais, delegacias, praia de nudismo e helicópteros de Vespucci). Saiu do módulo Mapa |
+| Cancelas automáticas (ligado) | Cancelas e portões do mapa abrem sozinhos quando o carro chega perto. Vem com 69 cancelas de estacionamento e de linha de trem; no painel o admin adiciona mirando no portão, remove e vai até cada uma (lista por tipo, bairro e distância). A opção Para que lado abre vale pra todas: pros dois lados, abrindo longe do carro (padrão, o módulo gira a cancela no lugar do GTA), todas pro outro lado, ou um lado só (cada cancela pode ter o Outro lado ligado), e o botão Mostrar áreas desenha, só na tela do admin, o círculo onde cada uma abre: verde abre, vermelho é prop não achado ou que não é porta. Opções: distância para abrir (padrão média) e velocidade da cancela (padrão rápida). Substitui o cfx-anes-gates |
 
 ---
 
@@ -147,23 +208,21 @@ Arquivo principal: `config.lua` (tabela global `cfg`).
 
 | Comando | Permissão | Descrição |
 |---|---|---|
-| `/tpway` | Nenhuma | Teleporta para o waypoint marcado no mapa (executa `tpm` no cliente) |
-| `/god [id]` | Nenhuma | Revive o jogador informado ou você mesmo. **Sem restrição de permissão no código** |
-| `/menu <job>` | Nenhuma | Abre o boss menu do job informado (`qbx_management:OpenBossMenu`) |
-| `/cutscene <nome>` | Nenhuma | Reproduz uma cutscene nativa do GTA pelo nome |
-| `/setargang <id>` | Nenhuma | Abre o diálogo de definir gangue do jogador informado. **Sem restrição de permissão no código** |
-| `/item <item> [count] [target] [type]` | `group.admin` | Adiciona um item ao inventário (seu ou do alvo) |
-| `/tuning` | `group.admin` | Aplica todos os mods no veículo em que você está |
-| `/customs` | `group.admin` | Abre o menu de customização do veículo atual |
-| `/menu_admin` | `group.admin` | Abre o menu administrativo (mesma coisa que F10) |
-| `/raycast` | `group.admin` | Seleciona coordenadas no mundo por raycast e copia para o clipboard |
-| `/models` | `group.admin` | Copia para o clipboard a lista de modelos de veículo presentes no servidor mas ausentes da `VehicleList` |
-| `/viewallitems` | `group.admin` | Abre um stash temporário com todos os itens do servidor (exceto `identification`) |
-| `/staff <id> <add\|rem> [cargo]` | `group.admin` | Concede ou remove cargo de staff (`admin`, `mod`, `support`) |
-| `/vipadm <id> <add\|rem> [tier]` | `group.admin` | Concede ou remove um tier de VIP |
-| `/cinematic` | `group.admin` | Dispara a cinemática de boas-vindas para quem executou |
+| `/mriqbox` | `mri_Qbox.admin` ou `command` | Abre o painel de configuração |
+| `/tpway` | A do `/tpm` | Atalho de `/tpm`: teleporta pro waypoint do mapa |
+| `/god [id]` | A do `/revive` | Atalho de `/revive`: revive o jogador informado ou você mesmo |
+| `/menu <job>` | Nenhuma | Abre o painel da organização no `mri_Qbossmenu` (admin entra em qualquer uma) |
+| `/mri_carradio` | Nenhuma | Liga e desliga o rádio do carro |
+| `/item <item> [qtd] [alvo] [tipo]` | `group.admin` | Dá um item a você ou ao alvo |
+| `/tuning` | `group.admin` | Aplica todos os mods no veículo atual |
+| `/customs` | `group.admin` | Abre a customização do veículo atual |
+| `/menu_admin` | `group.admin` | Abre o menu F10 |
+| `/raycast` | `group.admin` | Pega coordenadas por raycast e copia |
+| `/vipadm <id> <add\| `/staticemitters` | `admin` | Lista os sons fixos do mapa (módulo Mapa) |
+|rem> [tier]` | `group.admin` | Dá ou tira um tier de VIP |
 
-`/god`, `/tpway`, `/setargang` e `/cutscene` estão sem restrição — o `restricted` está comentado no código-fonte de `/god` e `/tpway`.
+Cada comando pertence a um módulo e só faz algo com o módulo ligado. `/menu` não tem restrição de permissão. `/tpway` e `/god` são atalhos
+(módulo Atalhos de comando) e seguem a permissão do comando que chamam.
 
 ---
 
@@ -171,198 +230,269 @@ Arquivo principal: `config.lua` (tabela global `cfg`).
 
 | Tecla | Ação |
 |---|---|
-| `F9` | Abre o menu do jogador |
-| `F10` | Abre o menu administrativo (executa `/menu_admin`, que exige `group.admin`) |
+| `F9` | Menu do jogador |
+| `F10` | Menu de administração (executa `/menu_admin`, que exige `group.admin`) |
+| `E` | Derrubar correndo (`tackle`) |
+| `O` | Trocar de banco no veículo (`shuffleSeat`) |
+| `Y` | Piloto automático (`toggle_cruise_control`) |
+| `Shift` + `E` | Empurrar veículo (`push_vehicle` e `push_vehicle_e`) |
 
-As duas são keybinds do `ox_lib` (`menu_jogador_keybind` e `menu_admin_keybind`), então o jogador pode reatribuí-las nas configurações do FiveM.
+São keybinds do `ox_lib` (`menu_jogador_keybind` e `menu_admin_keybind`); o jogador pode
+trocar nas configurações do FiveM. As teclas vindas do qbx_smallresources mantêm o nome do keybind de lá, então quem já tinha escolhido outra tecla continua com ela. O rádio do carro (`/mri_carradio`) vem sem tecla.
 
 ---
 
 ## Menus F9 e F10
 
-### F9 — menu do jogador
+### F9: menu do jogador
 
-Entradas fixas: Identificação (`/id`), Emprego (`/job`), Gangue (`/gang`), Ver Reputação (`/rep`), Ver Habilidades (`/skill`) e Waypoints (limpar marcadores e configurações).
+Identificação (`/id`), Emprego (`/job`), Gangue (`/gang`), Ver Reputação (`/rep`), Ver
+Habilidades (`/skill`) e Waypoints (limpar marcadores e configurações). "Gerenciar Emprego"
+e "Gerenciar Gangue" aparecem pra chefe ou recrutador, segundo o `mri_Qbossmenu`.
 
-"Gerenciar Emprego" e "Gerenciar Gangue" só aparecem se o `mri_Qjobsystem` disser que o jogador é chefe ou recrutador.
+### F10: menu de administração
 
-### F10 — menu de administração
+Abrir Painel (`/adm`), Customizar Veículo (`/customs`), Relógio (hora, escala de tempo,
+congelar tempo), Clima (`/weather`) e Gerenciamento: Portas, Blips, Baús, NPC, Props,
+Elevador, Garagens, Crafting, Grupos, Spotlight e, com o `mri_Qvinewood`,
+Vinewood. O VIP entra aqui quando o módulo está ligado.
 
-Entradas fixas: Abrir Painel (`/adm`), Customizar Veículo (`/customs`), Relógio (hora, escala de tempo, congelar tempo), Clima (`/weather`) e Gerenciamento.
-
-O submenu **Gerenciamento** agrupa comandos de outros recursos: Portas (`doorlock`), Blips (`blip`), Baús (`bau`), NPC (`npc`), Props (`objectspawner`), Elevador (`elevador`), Outdoors/Posters (`rw_draw++`), Garagens (`garagelist`), Crafting (`craft:create` / `craft:edit`), Grupos (`createjob` / `open_jobs`) e Spotlight. Se o `mri_Qvinewood` estiver iniciado, aparece também a entrada Vinewood.
-
-### Menus extensíveis
-
-Os três menus aceitam entradas de outros recursos em runtime — ver [Entrypoints](#entrypoints-para-outros-recursos). Os alvos válidos são `'player'` (F9), `'f10'` (F10) e `'management'` (submenu Gerenciamento).
+Outros recursos acrescentam entradas pelos exports (ver
+[Entrypoints](#entrypoints-para-outros-recursos)). Alvos: `'player'` (F9), `'f10'` e
+`'management'`.
 
 ---
 
 ## Staff
 
-O cargo de staff é gravado em `metadata.staff` do personagem, com o valor no formato `group.<cargo>` (`group.admin`, `group.mod`, `group.support`).
+Os cargos de staff ficam no **Permissões do mri_Qadmin**: o grupo vinculado a `group.admin`,
+`group.mod` ou `group.support` dá o cargo a quem entra nele. O `/staff` agora é do mri_Qadmin.
 
-- `/staff <id> add <cargo>` — grava a metadata e concede o principal na hora.
-- `/staff <id> rem` — remove o principal e limpa a metadata.
-- No login (`QBCore:Server:OnPlayerLoaded`), o principal é reaplicado a partir da metadata.
-- O painel de staff (registrado no menu de Gerenciamento) lista todos os personagens do banco com metadata de staff, online e offline, e permite alterar o cargo de jogadores offline via `mri_Qbox:server:manageStaff`.
+Quem tinha cargo pelo antigo `/staff` (em `metadata.staff`) continua com ele: o mri_Qbox reaplica
+o cargo ao logar até o mri_Qadmin mover o personagem para o grupo do cargo.
 
 ---
 
 ## VIP
 
-Ligado por `cfg.vipmenu.Enable`. O tier é gravado em `metadata.vip` e vira principal de ACE com o mesmo nome do tier.
+O tier fica em `metadata.vip` e vira principal ACE com o mesmo nome.
 
-- **Salário** — a cada `PaycheckInterval` minutos, cada jogador online com VIP recebe `Roles[tier].payment` na conta definida em `CashType`.
-- **Peso do inventário** — no login e a cada alteração de VIP, o peso máximo é definido como `Roles[tier].inventory * 1000` gramas. Quem não é VIP usa `Roles.nenhum.inventory` — por isso a chave `nenhum` é obrigatória.
-- **Painel** — entrada no menu F10; lista VIPs online e offline e permite adicionar/remover.
+- **Salário:** a cada intervalo (minutos, no painel), cada VIP online recebe o `payment` do
+  tier na conta escolhida. `0` desliga.
+- **Peso do inventário:** no login e a cada mudança, o peso máximo vira `inventory * 1000`
+  gramas. Quem não é VIP usa o tier `nenhum`, por isso ele precisa existir.
+- **Painel:** F10 > Vip lista VIPs online e offline e permite adicionar e remover.
 
----
+Tiers no painel, em JSON:
 
-## Módulos
+```json
+{
+  "nenhum": { "label": "Sem vip", "payment": 0, "inventory": 100 },
+  "tier1": { "label": "Tier 1", "payment": 5000, "inventory": 200 }
+}
+```
 
-Cada módulo é ligado individualmente pelo `config.lua`. Os que estão desligados fazem `return` no topo do arquivo e não custam nada.
+## Veículos: cadastro e estoque
 
-### Combate (`modules/mri/client-side/combat-modules/`)
+Módulo da base (sempre ligado, substitui o antigo mri_Qvehicles). Cadastra, edita e controla
+o estoque dos veículos sem editar o `shared/vehicles.lua` do qbx_core e sem reiniciar.
 
-| Módulo | Config | O que faz |
-|---|---|---|
-| `damageragdoll.lua` | `cfg.damageragdoll` | Ragdoll ao levar tiro na perna |
-| `disableblindfiring.lua` | `cfg.disableblindfiring` | Remove o tiro cego em cobertura |
-| `disablecombatroll.lua` | `cfg.disablecombatroll` | Remove o rolamento de combate |
-| `disablefreepunch.lua` | `cfg.disablefreepunch` | Só permite socar mirando |
-| `forcedfirstperson.lua` | `cfg.forcedfirstperson` | Restringe as visões de câmera / força primeira pessoa no veículo |
-| `realisticrecoil.lua` | `cfg.realisticrecoil` | Recuo vertical, mira instável, sem headshot, sem crosshair |
+- **Onde abre:** aba **Veículos** do mri_Qadmin, ou `/mriqbox` > Veículos > Veículos.
+- **Adicionar** veículos (carros addon) com nome, marca, preço, categoria, tipo e estoque.
+- **Modelos fora da lista:** mostra os veículos que o jogo conhece (base e packs rodando) e
+  que não estão na lista do qbx_core. "Cadastrar" abre o formulário já com o nome, a marca e
+  o tipo que o jogo dá. É o antigo `/models`, agora na tela.
+- **Editar veículos do jogo:** só os campos alterados ficam salvos; o resto segue o
+  `shared/vehicles.lua`, então atualizações do Qbox continuam chegando.
+- **Remover e restaurar:** veículo do jogo removido fica no filtro "Removidos" e volta ao
+  original com um clique.
+- **Aviso de modelo ausente:** marca veículos cujo modelo não existe no jogo (nome errado ou
+  pack do carro parado).
+- Tudo vale na hora pra concessionária, garagem, painel admin e demais scripts que usam a
+  lista do qbx_core. Com a tela aberta, compras e mudanças de outro admin atualizam sozinhas.
 
-### Veículos (`modules/mri/client-side/vehicles-modules/`)
+Precisa do `qbx_core` com a API de veículos em runtime (`UpsertVehicleData` e
+`RemoveVehicleData`, na pasta `mri/` do fork MRI).
 
-| Módulo | Config | O que faz |
-|---|---|---|
-| `drift.lua` | `cfg.drift` | Drift com Shift; contador de pontos na NUI (`web-side/`) |
-| `wheelbreak.lua` | `cfg.wheelbreak` | Roda quebra em impacto forte |
-| `savewheelpos.lua` | `cfg.savewheelpos` | Mantém o ângulo do volante ao estacionar |
-| `disableaircontrol.lua` | `cfg.disableaircontrol` | Bloqueia sair/pular do veículo no ar |
-| `carexplosion.lua` | `cfg.carexplosion` | Explosão ao cair de altura |
-| `mercosulplates.lua` | `cfg.mercosulplates` | Deprecado — use `mri_Qcarplates` |
+### Tabela `vehicles_data`
 
-### Target (`modules/mri/client-side/target-modules/`)
+Criada ou ajustada sozinha no start.
 
-| Módulo | Config | O que faz |
-|---|---|---|
-| `dumpsters.lua` | `cfg.dumpsters` | "Esconder" e "Vasculhar" em lixeiras via `ox_target` |
-| `entervehicle.lua` | `cfg.entervehicle` | Entrar no veículo pela porta que estiver mirando. Bloqueia veículos de concessionária (`state.isVehicleShopEntity`) |
-| `trunkchest.lua` | — | **Arquivo inteiramente comentado** — não faz nada |
-
-### Utilitários
-
-| Módulo | O que faz |
+| Coluna | Significado |
 |---|---|
-| `indestructibleprops.lua` | Congela props de rua (ligado por `cfg.indestructibleProps`) |
-| `maskfix.lua` | Corrige clipping de máscara em faces freemode |
-| `oncache.lua` | Desliga o capacete automático de moto (`SetPedConfigFlag 35`) |
-| `cutscene.lua` | `/cutscene <nome>` — reproduz cutscene nativa |
-| `exports.lua` | `GetRayCoords` e `Request` |
-| `checkWeight.lua` | `CanCarryItem` |
-| `dropitems.lua` (server) | Hook `swapItems` do `ox_inventory`: largar um item de `cfg.dropitems_table` cria o drop com o prop correspondente |
-| `connect.lua` (server) | Imprime identifiers no `playerConnecting` |
+| `model` | nome de spawn do veículo |
+| `stock` | estoque da concessionária |
+| `name`, `brand`, `price`, `category`, `type` | `NULL` = valor do `shared/vehicles.lua`; preenchido = editado pelo painel |
+| `removed` | veículo do jogo removido pelo painel |
 
-### Módulos independentes (`modules/*/`)
+A versão antiga do `qbx_vehicleshop` gravava uma cópia completa de cada veículo nessa
+tabela. No primeiro start, o estoque fica, os campos iguais ao `shared/vehicles.lua` viram
+`NULL` e os diferentes ficam como edição. Nada é apagado.
 
-| Módulo | O que faz |
-|---|---|
-| `cinematic/` | Cinemática de boas-vindas: percorre os planos de câmera do config, força clima e horário e, ao final, teleporta o jogador para `vector3(304.44, -1204.42, 38.89)` (posição fixa no código) |
-| `dragCraft/` | Craft por arrasto no `ox_inventory`: arrastar item A sobre item B produz o resultado da receita. Hooks `swapItems` no servidor; receitas em `modules/dragCraft/config.lua` |
-| `itemCarry/` | Prop visual anexado ao jogador ao carregar certos itens (`CARRY_ITEMS`), com `walkOnly` e `blockVehicle` |
-| `itemcollection/` | Pegar props do mundo como item e colocar itens no mundo como prop. Os modelos são derivados do campo `prop` dos itens do `ox_inventory` — não há lista fixa |
-| `waterCooler/` | Beber em bebedouros/pias (aumenta `thirst`) e encher `empty_water_bottle` → `water_bottle`. Beber demais (`excessiveDrinkCount` vezes em 1 minuto) mata o personagem |
+### Vindo do mri_Qvehicles
+
+Tire o `mri_Qvehicles` do servidor (pasta e `ensure`). O mri_Qbox faz `provide` dele e
+continua com a mesma tabela, a mesma permissão (`mri_Qvehicles.admin`), a mesma aba no
+mri_Qadmin e os mesmos exports. Se os dois estiverem rodando juntos, o módulo de veículos do
+mri_Qbox não sobe e avisa no console.
+
+### Vindo do qbx_density
+
+Tire o `qbx_density` do servidor (pasta e `ensure`) e ajuste os valores no módulo Densidade. O
+mri_Qbox faz `provide` dele e responde `exports.qbx_density:SetDensity(tipo, valor)` (tipos
+`parked`, `vehicle`, `randomvehicles`, `peds`, `scenario`; `nil` volta ao valor do painel).
+Os `.ymap` que desligavam veículos parados viraram áreas no código, sem `stream/`. Se os dois
+estiverem rodando juntos, o módulo não sobe e avisa no console do F8.
+
+### Para scripts que guardam a lista de veículos
+
+Quem pega a lista uma vez (`exports.qbx_core:GetVehiclesByName()` ou
+`GetCoreObject().Shared.Vehicles`) recebe uma cópia. Pra acompanhar as mudanças do painel,
+escute o evento do qbx_core:
+
+```lua
+-- server
+AddEventHandler('qbx_core:server:onVehicleUpdate', function(model, vehicle)
+    VEHICLES[model] = vehicle -- vehicle nil = removido
+end)
+
+-- client
+RegisterNetEvent('qbx_core:client:onVehicleUpdate', function(model, vehicle)
+    VEHICLES[model] = vehicle
+end)
+```
+
+### Classe de desempenho
+
+A nota de desempenho que a base mostra (garagem do mri_Qgarage, oficina do mri_Qcustoms) vem de
+um lugar só, o export de cliente `GetVehicleRating`:
+
+```lua
+local rating = exports.mri_Qbox:GetVehicleRating(vehicle)
+-- { speed, acceleration, braking, traction (0 a 1), value (100 a 1000), letter }
+```
+
+- Cada barra é o valor do carro como ele está (peças instaladas contam:
+  `GetVehicleEstimatedMaxSpeed`, `GetVehicleAcceleration`, `GetVehicleMaxBraking`,
+  `GetVehicleMaxTraction`) dividido pelo melhor da categoria do GTA vezes 1,15.
+- A nota pesa velocidade e aceleração 32% cada, freio e tração 18% cada, e vai de 100 a 1000.
+- Letra pela nota: até 400 D, até 500 C, até 600 B, até 700 A, até 800 S1, até 900 S2, acima X.
+- Pesos e faixas ficam no topo da seção em `resources/modules/vehicles/client.lua`.
+- Devolve `nil` se a entidade não for um veículo. Quem usa esconde a nota nesse caso.
+
+## Editor do inventário
+
+Módulo da base (sempre ligado). Edita o ox_inventory no jogo sem mexer nos arquivos dele: as
+mudanças ficam em `data/inventory.json` do mri_Qbox, e o ox_inventory junta tudo por cima dos
+arquivos `data/*.lua` dele quando carrega.
+
+- **Onde abre:** aba **Editor do inventário** do mri_Qadmin, ou `/mriqbox` > Inventário > Editor
+  do inventário.
+- **Abas:** Itens, Armas, Lojas, Crafting, Licenças, Baús, Evidências, Veículos (porta-malas e
+  porta-luvas por classe ou por modelo) e Animações.
+- **Itens e lojas da MRI:** vêm do mri_Qbox (`resources/modules/inventory/base/items.lua` e
+  `shops.lua`), não do ox_inventory, e o editor mostra eles como original. Se o dono mexeu no
+  `items.lua` ou no `shops.lua` do ox_inventory, o arquivo dele vale: do mri_Qbox só entra o que
+  falta lá.
+- **Editar o que vem do ox_inventory:** só o que mudou fica salvo, então atualizações do
+  ox_inventory continuam chegando. Partes em código do original (botões, efeitos) continuam valendo.
+- **Novo, remover e voltar ao original:** removido fica no filtro Removidos e volta com um clique.
+- **Pegar 1:** dá um do item ou da arma pra testar.
+- **Posições:** não se digitam. **Minha posição** usa onde você está (no atendente da loja, também
+  a direção pra onde você olha) e **Ir até** leva você até lá. Zona do ox_target e ajuste fino
+  ficam no Avançado (JSON).
+- **Avançado (JSON):** todos os campos da entrada, inclusive os que o formulário não mostra.
+- **Baús e o mri_Qstashes:** com o mri_Qstashes ligado, a aba Baús também lista os baús do painel
+  de Baús dele (embaixo, em "Do painel de Baús"), com o botão que abre esse painel. Os baús daqui
+  aparecem lá também, em "De outros scripts". Baú com zona, senha, item exigido, log ou acesso por
+  personagem se cria no painel de Baús.
+
+| Aba | Vale na hora | Vale no próximo restart do servidor |
+|---|---|---|
+| Itens e armas | Criar e editar | Remover |
+| Lojas | Produtos e preços | Locais, blip e loja nova |
+| Crafting | | Tudo |
+| Licenças | Preço | Local e licença nova |
+| Baús, evidências, veículos e animações | Tudo | |
+
+Precisa do ox_inventory da MRI com `mri/data.lua` e `mri/live.lua`. Permissão: ACE
+`mri_Qbox.admin` ou `command`. Ao atualizar o mri_Qbox à mão, guarde o `data/inventory.json`.
 
 ---
 
 ## Integrações
 
-### mri_Qjobsystem
-
-O menu F9 chama `CheckPlayerIsbossByJobSystemData` e `CheckPlayerIrecruiterByJobSystemData` para decidir se mostra "Gerenciar Emprego" e "Gerenciar Gangue". A chamada é direta, sem `GetResourceState` — sem o `mri_Qjobsystem` iniciado, o menu do jogador não abre.
-
 ### mri_Qadmin
 
-`setPlayerJob` e `setPlayerGang` verificam `GetResourceState('mri_Qadmin')`. Se estiver iniciado, disparam `mri_Qadmin:server:SetJob` / `mri_Qadmin:server:SetGang`. Caso contrário, caem no fallback do `ps-adminmenu`.
+O painel aparece como a aba "MRI Qbox" e a tela de veículos como a aba "Veículos" (dois
+plugins do mesmo resource).
 
-### qbx_management
+### mri_Qbossmenu (qbx_management e mri_Qjobsystem)
 
-Fonte da lista de jogadores próximos usada nos painéis de staff e VIP (`qbx_management:server:getPlayers`) e do boss menu aberto por `/menu <job>`.
-
-### mri_Qvinewood
-
-Se estiver iniciado, adiciona a entrada "Vinewood" no submenu de Gerenciamento (executa `/vinewood`).
+O `mri_Qbossmenu` substitui os dois e responde pelos nomes deles. O F9 consulta `CheckPlayerIsbossByJobSystemData` e `CheckPlayerIrecruiterByJobSystemData`
+pra mostrar as opções de gerenciar. O painel de VIP pega os jogadores próximos por
+`qbx_management:server:getPlayers`, e o `/menu <job>` abre o painel por `OpenBossMenu`.
 
 ### ox_inventory
 
-Além dos usos diretos (peso, itens, stash temporário), o recurso registra **dois hooks `swapItems`**: um para o drop de itens como prop e outro para o drag-craft.
+Ganchos `swapItems`/`createItem` dos módulos de item no chão, craft arrastando e carregar
+nos braços (registrados só com o módulo ligado) e o export `itemPlace` nos itens.
 
 ---
 
 ## Entrypoints para outros recursos
 
-### Menus — cliente
-
-Adicionar e remover entradas dos menus F9/F10/Gerenciamento em runtime. É o mecanismo que os outros recursos MRI usam para se plugarem ao painel.
+### Menus (cliente)
 
 ```lua
-exports.mri_Qbox:AddPlayerMenu({          -- menu F9
+exports.mri_Qbox:AddPlayerMenu({          -- F9
     title = 'Minha opção',
     icon = 'star',
-    iconAnimation = 'fade',
     description = 'Descrição da opção',
     arrow = true,
     onSelectFunction = function() ExecuteCommand('meucomando') end,
-    onSelectArg = nil,                    -- opcional: argumento passado para onSelectFunction
+    onSelectArg = nil,                    -- opcional: argumento pra onSelectFunction
 })
 exports.mri_Qbox:RemovePlayerMenu('Minha opção')
 
-exports.mri_Qbox:AddManageMenu({ ... })   -- submenu Gerenciamento (dentro do F10)
+exports.mri_Qbox:AddManageMenu({ ... })   -- F10 > Gerenciamento
 exports.mri_Qbox:RemoveManageMenu('Minha opção')
 
-exports.mri_Qbox:AddItemToMenu('f10', { ... })  -- menu F10 direto ('f10' | 'management' | 'player')
+exports.mri_Qbox:AddItemToMenu('f10', { ... })  -- 'f10' | 'management' | 'player'
 exports.mri_Qbox:RemoveItemFromMenu('f10', 'Minha opção')
 ```
 
-### `GetRayCoords` — cliente
+### `GetRayCoords` (cliente)
 
-Abre o seletor de coordenadas por raycast. Bloqueia até o jogador confirmar (`E` = vector3, `G` = vector4) ou cancelar (`Q`). Retorna o vetor e já copia para o clipboard; retorna `false` se cancelado.
+Seletor de coordenadas por raycast. Bloqueia até `E` (vector3), `G` (vector4) ou `Q`
+(cancela, retorna `false`). Já copia pro clipboard.
 
 ```lua
 local coords = exports.mri_Qbox:GetRayCoords()
 ```
 
-### `Request` — cliente
+### `Request` (cliente)
 
-Diálogo Sim/Não em menu do `ox_lib`. Bloqueia até a resposta e retorna booleano.
+Pergunta Sim/Não num menu do `ox_lib`. Bloqueia até a resposta e retorna booleano. Também
+disponível como callback `mri_Qbox:client:request`.
 
 ```lua
 local confirmou = exports.mri_Qbox:Request('Título', 'Texto da pergunta', 'top-right')
 ```
 
-### `CanCarryItem` — cliente
-
-Verifica se o jogador aguenta o peso de `amount` unidades do item.
+### `CanCarryItem` (cliente)
 
 ```lua
 local pode = exports.mri_Qbox:CanCarryItem('water', 5)
 ```
 
-### `setPlayerJob` / `setPlayerGang` — cliente
-
-Abrem diálogos de seleção de job/gangue e grade e aplicam no jogador alvo (via `mri_Qadmin` ou `ps-adminmenu`).
+### `SetDensity` (cliente)
 
 ```lua
-exports.mri_Qbox:setPlayerJob(targetServerId)   -- job opcional; se omitido, abre o seletor
-exports.mri_Qbox:setPlayerGang(targetServerId)
+exports.mri_Qbox:SetDensity('peds', 0.2) -- nil volta ao valor do painel
 ```
 
-### `addVip` / `removeVip` — cliente
-
-Usados pelo painel de VIP. Tratam jogador online (via comando `/vipadm`) e offline (via evento `mri_Qbox:server:manageVip`).
+### `addVip` / `removeVip` (cliente)
 
 ```lua
 exports.mri_Qbox:addVip({
@@ -372,17 +502,17 @@ exports.mri_Qbox:addVip({
 })
 ```
 
-### `VipAdm` — servidor
+### `VipAdm` (servidor)
 
-Mesma lógica do comando `/vipadm`, chamável de outro recurso. Retorna `true` em caso de sucesso.
+Mesma lógica do `/vipadm`. Retorna `true` em caso de sucesso.
 
 ```lua
 exports.mri_Qbox:VipAdm(source, { id = targetId, tipo = 'add', tier = 'tier1' })
 ```
 
-### `addRecipe` — cliente e servidor
+### `addRecipe` (cliente e servidor)
 
-Adiciona uma receita de drag-craft em runtime; a chamada sincroniza automaticamente o outro lado.
+Receita de craft arrastando em runtime; sincroniza o outro lado sozinha.
 
 ```lua
 exports.mri_Qbox:addRecipe('garbage metalscrap', {
@@ -392,11 +522,12 @@ exports.mri_Qbox:addRecipe('garbage metalscrap', {
 })
 ```
 
-A chave da receita é `"<itemA> <itemB>"`; a ordem inversa também é aceita no momento do craft.
+A chave é `"<itemA> <itemB>"`; a ordem inversa também vale.
 
-### `itemPlace` — servidor
+### `itemPlace` (servidor)
 
-Export desenhado para ser usado como hook de item do `ox_inventory` (campo `export` em `data/items.lua`). Coloca o prop do item no chão à frente do jogador e bloqueia o uso dentro de veículo.
+Pra usar no campo `export` de um item do `ox_inventory`: coloca o prop do item no chão à
+frente do jogador e bloqueia o uso dentro de veículo.
 
 ```lua
 ['cadeira'] = {
@@ -407,15 +538,131 @@ Export desenhado para ser usado como hook de item do `ox_inventory` (campo `expo
 },
 ```
 
+### Trilha sonora (estado e evento)
+
+A trilha não tem export: quem pede música não precisa saber se o mri_Qbox está rodando
+(sem ele, nada acontece e não dá erro) e nada passa pelo servidor.
+
+**Pedido contínuo** (tocar enquanto algo dura): uma chave `music:<id>` no statebag do
+jogador. Toca o pedido de maior prioridade (o mais recente desempata); ao soltar
+(`nil`), volta o que estava por baixo. Prioridades: `ambient` (10), `zone` (20),
+`activity` (30), `scene` (40), `ui` (50), ou um número. Por ser estado, o pedido
+sobrevive a reinício: se o mri_Qbox subir depois, ele lê as chaves que já existem.
+
+```lua
+-- client (o último argumento false = só neste client, sem rede)
+LocalPlayer.state:set('music:perseguicao', { moment = 'chase', priority = 'activity' }, false)
+LocalPlayer.state:set('music:perseguicao', nil, false)        -- solta
+
+-- abaixar a música (diálogo, cutscene com som próprio): nível 0 a 1, ou { level, fade }
+LocalPlayer.state:set('musicDuck:cutscene', { level = 0.3, fade = 800 }, false)
+LocalPlayer.state:set('musicDuck:cutscene', nil, false)
+
+-- servidor, pra um jogador
+Player(source).state:set('music:evento', { moment = 'festa', priority = 'zone' }, true)
+
+-- servidor, pra todo mundo (só o servidor escreve no GlobalState)
+GlobalState['music:carnaval'] = { moment = 'festa', priority = 'zone' }
+GlobalState['music:carnaval'] = nil
+```
+
+Quem pediu deve soltar a chave ao terminar (e ao parar o resource).
+
+**Frase curta por cima** (missão concluída, alerta): evento local; a música abaixa
+enquanto ela toca.
+
+```lua
+TriggerEvent('mri_Qbox:soundtrack:stinger', { moment = 'alerta' })                 -- client
+TriggerClientEvent('mri_Qbox:soundtrack:stinger', source, { moment = 'alerta' })   -- servidor
+```
+
+**Faixa:** `moment` (cadastrado no painel) ou `url` direto, em três formatos:
+
+| Formato | Exemplo | Observação |
+|---|---|---|
+| YouTube | `https://www.youtube.com/watch?v=...` | Toca pelo player do YouTube |
+| Link direto de áudio | `https://cdn.exemplo.com/chase.ogg` | Player leve, sem anúncio, loop sem emenda |
+| Arquivo de um resource | `@meu_script/sounds/chase.ogg` | O próprio script hospeda: o arquivo precisa estar no `files` do fxmanifest dele |
+
+Opções do pedido: `volume` (0 a 1), `loop`, `fade` (ms) e `title` (nome no aviso).
+
+**Como aparece na tela** (no pedido ou no momento; sem nada, vale o painel):
+
+| Opção | Valores | Efeito |
+|---|---|---|
+| `display` | `toast` (padrão), `player`, `none` | Aviso que some em alguns segundos, player com play/pause e progresso que fica enquanto a música é a da vez, ou nada na tela |
+| `position` | `top`, `top-right`, `top-left`, `bottom`, `bottom-right`, `bottom-left`, `center-right`, `center-left` | As mesmas 8 posições das notificações do ox_lib. `bottom-left` fica acima do minimapa. Sem ela, a posição do aviso ou do player do painel |
+| `autoplay` | `true` (padrão), `false` | Só no player: com `false` ele aparece pausado, esperando o play |
+| `focus` | `true` | Só no pedido: o player ganha o mouse até a pessoa dar play, fechar (X) ou apertar ESC |
+
+```lua
+-- caixa de som: aparece no meio da tela, pausada, com o mouse pra pessoa dar play
+LocalPlayer.state:set('music:caixa', {
+    url = '@meu_script/sounds/radio.ogg',
+    priority = 'activity',
+    display = 'player',
+    autoplay = false,
+    focus = true,
+    position = 'center-right',
+}, false)
+```
+
+Pausar segura a vez da música: ela fica em silêncio sem pular pra outra de prioridade
+menor, e o play continua de onde parou. Sem `focus`, o player só mostra e não dá pra
+clicar (clicar na NUI tira o controle do personagem, então quem decide é o script).
+
+Os momentos se cadastram no painel (módulo Trilha sonora, campo **Momentos**): nome,
+uma ou mais faixas (com várias, sorteia uma a cada vez), volume, loop, como aparece,
+posição e se o player começa tocando. Cada faixa tem um ▶ pra ouvir na hora.
+
+### Locais da trilha (painel)
+
+No painel, módulo Trilha sonora, campo **Locais**: cada local é um círculo no mapa que toca
+um momento enquanto o jogador está dentro. Saiu, volta o que estava tocando antes. Não
+precisa de script.
+
+- Cadastre antes os momentos (campo **Momentos**, logo acima). **Adicionar local aqui** cria o local na posição atual do jogador; **Usar minha posição**
+  move um local existente. Vá até o lugar com o painel aberto.
+- Cada local: nome, raio (metros), momento, prioridade (`zona` por padrão, pra
+  perseguição e cena passarem por cima), só a pé ou só de veículo, altura mínima e máxima
+  (separa andares e interiores) e só à noite (20h às 6h).
+- **Testar** toca o momento na hora; **Mostrar** desenha o círculo no mundo por 20
+  segundos (feche o painel pra ver).
+- Locais um dentro do outro seguem a prioridade, e o mais recente desempata.
+- Usa as zonas do ox_lib: só acordam ao entrar e sair. Cada jogador roda os próprios
+  locais, então ninguém dispara a música de outro.
+
+### Estoque de veículos (servidor)
+
+| Export | Nome antigo | Descrição |
+|---|---|---|
+| `exports.mri_Qbox:GetVehicleStock(model)` | `GetStock` | Estoque do modelo (0 quando não há linha) |
+| `exports.mri_Qbox:GetVehicleStocks()` | `GetStocks` | Estoque de todos os modelos com linha na tabela |
+| `exports.mri_Qbox:TakeVehicleStock(model)` | `TakeStock` | Tira uma unidade. Retorna `false` sem estoque. Atômico no banco |
+| `exports.mri_Qbox:ReturnVehicleStock(model)` | `ReturnStock` | Devolve uma unidade (ex.: pagamento falhou) |
+| `exports.mri_Qbox:SetVehicleStock(model, stock)` | `SetStock` | Define o estoque |
+
+O nome antigo (`exports.mri_Qvehicles:GetStock` e os outros) continua respondendo, pra quem já chamava o mri_Qvehicles (o mri_Qbox faz `provide` dele). Script novo usa o nome do mri_Qbox.
+
+### Passaporte (servidor)
+
+| Export | Descrição |
+|---|---|
+| `exports.mri_Qbox:GetPlayerPassport(source)` | Passaporte do jogador online (`nil` sem personagem carregado) |
+| `exports.mri_Qbox:GetPlayerByPassport(passport)` | `source` do jogador online com esse passaporte, ou `nil` |
+| `exports.mri_Qbox:GetCitizenIdByPassport(passport)` | `citizenid` do personagem, mesmo offline |
+| `exports.mri_Qbox:SetCitizenPassport(citizenId, passport)` | Troca o passaporte do personagem, mesmo offline. Devolve `true` ou `false, motivo`: `disabled` (módulo desligado), `invalid`, `not_found`, `taken` (já é de outro) ou `not_reserved` (número igual ou acima do próximo passaporte, que um personagem novo ainda vai pegar) |
+| `exports.mri_Qbox:IsPassportEnabled()` | `true` com o módulo ligado. Pra acompanhar sem perguntar, ouça a chave `GlobalState['mri:passportEnabled']` com `AddStateBagChangeHandler` |
+
+No cliente e em outros resources, o passaporte está em `Player(source).state.passport` (no próprio cliente, `LocalPlayer.state.passport`). Serve pra mostrar; pra decidir alguma coisa no servidor, use os exports, porque o cliente consegue escrever no próprio statebag.
+
 ### GlobalState `UIColors`
 
-O recurso publica um esquema de cores em `GlobalState.UIColors`, consumido pelos demais recursos MRI:
+Cores de status que os recursos MRI leem:
 
 ```lua
 { success = '#51CF66', info = '#668CFF', warning = '#FFD700', danger = '#FF6347' }
 ```
-
-Para alterar, edite `modules/mri/client-side/ox_lib-modules/context.lua` **e** `modules/mri/client-side/main.lua` — a tabela está duplicada nos dois arquivos.
 
 ---
 
@@ -423,42 +670,10 @@ Para alterar, edite `modules/mri/client-side/ox_lib-modules/context.lua` **e** `
 
 ```
 mri_Qbox/
-├── config.lua                                   — cfg: VIP, drop de itens, combate, veículos, target
-├── modules/
-│   ├── cinematic/                               — cinemática de boas-vindas (/cinematic)
-│   │   ├── client/client.lua                    — planos de câmera, música, teleporte final
-│   │   ├── client/config.lua                    — lista de shots (posição, look-at, duração, texto, hora)
-│   │   └── server/server.lua                    — comando /cinematic (group.admin)
-│   ├── dragCraft/                               — craft arrastando um item sobre outro
-│   │   ├── config.lua                           — RECIPES
-│   │   ├── client/client.lua                    — progress bar e callbacks client
-│   │   └── server/server.lua                    — hook swapItems, fila de craft, addRecipe
-│   ├── itemCarry/                               — prop visual ao carregar item
-│   │   ├── client/c_itemCarry.lua               — anexa o prop, restringe andar/veículo
-│   │   └── server/data.lua                      — CARRY_ITEMS
-│   ├── itemcollection/                          — pegar/colocar props do mundo como item
-│   │   ├── shared/shared.lua                    — mapa prop → item, derivado do ox_inventory
-│   │   ├── client/client.lua                    — target "Pegar" em objetos do mundo
-│   │   └── server/server.lua                    — pickup e export itemPlace
-│   ├── waterCooler/                             — beber e encher garrafa
-│   │   ├── config/config.lua                    — props-alvo, distâncias, itens, hidratação
-│   │   ├── client/client.lua                    — target, animação, skill check
-│   │   └── server/server.lua                    — hidratação, troca de garrafa, anti-abuso
-│   └── mri/
-│       ├── client-side/
-│       │   ├── main.lua                         — GlobalState.UIColors
-│       │   ├── combat-modules/                  — ragdoll, recoil, blind fire, combat roll, free punch, POV
-│       │   ├── vehicles-modules/                — drift, wheelbreak, explosão, volante, controle no ar, placas
-│       │   ├── target-modules/                  — lixeiras, entrada por porta, trunkchest (comentado)
-│       │   ├── ox_lib-modules/                  — menus F9/F10, painel staff, painel VIP, inputs, oncache
-│       │   ├── ox_inventory-modules/            — CanCarryItem
-│       │   └── utilities-modules/               — comandos, cutscene, raycast/Request, props indestrutíveis, maskfix
-│       └── server-side/
-│           ├── ox_lib-modules/                  — drop de itens como prop, staff, VIP (salário e peso)
-│           └── utilities-modules/               — comandos admin, identifiers no connect, /viewallitems
-├── web-side/                                    — NUI do contador de pontos de drift
-│   ├── index.html
-│   ├── core.js
-│   └── icones/
+├── data/config.json            # valores salvos pelo painel
+├── html/                       # NUI (painel, contador de drift, trilha) e vehicles.html (aba Veículos)
+├── resources/
+│   ├── core/                   # núcleo: registro dos módulos, config, painel, exports
+│   └── modules/<módulo>/       # um módulo por pasta: config.lua, client.lua, server.lua
 └── fxmanifest.lua
 ```

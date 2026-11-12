@@ -1,6 +1,8 @@
 ---
-title: MRI Qinteract
+title: "MRI Qinteract (beta)"
 ---
+
+> **Beta:** este resource está só na receita beta da MRI e ainda não faz parte da receita regular. Pode mudar sem aviso.
 
 **AAA-Grade Interaction Experience for FiveM.**
 

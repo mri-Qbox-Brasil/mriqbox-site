@@ -1,5 +1,5 @@
 ---
-title: MRI Qfarm
+title: MRI Qfarm v1
 ---
 
 ## Objetivo do recurso

@@ -1,6 +1,8 @@
 ---
-title: MRI Qwhatsapp
+title: "MRI Qwhatzapp (beta)"
 ---
+
+> **Beta:** este resource está só na receita beta da MRI e ainda não faz parte da receita regular. Pode mudar sem aviso.
 
 **Whatzapp**: mensageiro para o [sd-phone](https://github.com/Samuels-Development/sd-phone) e o sd-tablet. Conversas, grupos, status, fotos, GIFs, áudio, localização, contatos e ligações, com o visual de um mensageiro moderno, tema claro e escuro e textos em pt-BR e inglês.
 

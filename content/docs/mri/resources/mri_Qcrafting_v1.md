@@ -1,5 +1,5 @@
 ---
-title: MRI Qcrafting
+title: MRI Qcrafting v1
 ---
 
 Sistema de bancadas de crafting criadas e editadas em jogo, com receitas, preview 3D do item, restrição por job/gang e persistência em MySQL.

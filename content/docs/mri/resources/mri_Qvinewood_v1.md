@@ -1,5 +1,5 @@
 ---
-title: MRI Qvinewood
+title: MRI Qvinewood v1
 ---
 
 Permite editar em tempo real o texto e a cor da placa Vinewood, com persistência em arquivo JSON no próprio recurso.
