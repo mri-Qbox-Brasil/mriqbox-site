@@ -134,7 +134,7 @@ O botão **Testar no meu PC** de cada preset mede o ganho de verdade, onde o jog
 
 ## Aba GFX: filtros
 
-Cada filtro é um card com uma prévia aproximada sobre um print do jogo; o efeito exato aparece no mundo ao lado do painel. Aplica `SetTimecycleModifier` (e, na Opção #4, `SetExtraTimecycleModifier`). Trocar de filtro limpa o extra do anterior. Quando outro script limpa o timecycle (desfoque de painel, tela de morte), o filtro volta em até meio segundo.
+Cada filtro é um card com uma prévia aproximada sobre um print do jogo; o efeito exato aparece no mundo ao lado do painel. A prévia dos filtros novos sai dos valores do próprio jogo (`timecycle_mods_*.xml`: saturação, exposição, tom das luzes e das sombras, vinheta, desfoque, linhas e granulado), em `web/src/lib/timecycles.ts`. Aplica `SetTimecycleModifier` com `SetTimecycleModifierStrength` na intensidade escolhida (25%, 50%, 75% ou 100%) e, na Opção #4, `SetExtraTimecycleModifier`. Trocar de filtro limpa o extra do anterior. Quando outro script limpa o timecycle (desfoque de painel, tela de morte), o filtro volta em até meio segundo.
 
 | ID | Rótulo |
 |---|---|
@@ -143,6 +143,12 @@ Cada filtro é um card com uma prévia aproximada sobre um print do jogo; o efei
 | `yell_tunnel_nodirect` | Opção #2 |
 | `tunnel` | Opção #3 |
 | `MP_Powerplay_blend` | Opção #4 (extra `reflection_correct_ambient`) |
+
+Os outros grupos:
+
+- **Ajustes de imagem:** os ajustes do Rockstar Editor (`rply_saturation`, `rply_contrast`, `rply_brightness` e os `_neg`, `rply_vignette`).
+- **Cores, Preto e branco, Retrô e câmera, Artísticos:** os 25 filtros do Rockstar Editor (`NG_filmic01` a `NG_filmic25`), os dois noir (`NG_filmnoir_BW01`, `BW02`) e os tons dos personagens (`FranklinColorCodeBright`, `MichaelColorCodeBright`, `TrevorColorCodeBright`, `NeutralColorCodeBright`). Os nomes são pela aparência; a lista com o id de cada um está nos `locales`.
+- Fora de propósito: `nightvision`, os de blackout e os de droga ou bebida, que são efeito de jogo e não filtro.
 
 ---
 
@@ -194,7 +200,7 @@ Corta onde ninguém está olhando: uma camada temporária por cima do preset do 
 | Poupar no menu de pausa | Desligado | Com o mapa ou o menu aberto, o mundo atrás vai ao Ultra baixo; ao fechar volta tudo |
 | Modo ausente | Desligado | Parado (sem mexer o mouse, andar ou apertar tecla; celular e outras janelas abertas contam como presença) por 2, 5, 10 ou 15 minutos, vai ao Ultra baixo; o primeiro movimento traz de volta |
 | Aliviar em interiores | Desligado | Dentro de um interior, `SetAmbientPed/VehicleRangeMultiplierThisFrame(0.3)` simula menos gente lá fora |
-| Boost automático | Desligado | Média de 10 s abaixo de 30, 45 ou 60 sobe um preset; acima de 75, 90 ou 120 desce um. 30 s entre mudanças, nunca um preset travado |
+| Boost automático | Desligado | Média de 10 s abaixo de 30, 45 ou 60 sobe um preset, até o Baixo; média de 30 s acima de 60, 75 ou 90 (e pelo menos 15 acima do limite de subir) desce um. Corta luzes, sombras e efeitos, nunca a distância do mapa. 30 s entre mudanças, nunca um preset travado; mudar algo no painel desliga o boost na hora |
 | Aviso de FPS baixo | Desligado | Avisa depois de 15 s seguidos abaixo de 20, 30 ou 40, no máximo a cada 2 minutos |
 | Limpeza automática | Desligado | A cada 30, 60, 120 ou 300 s tira marcas, partículas e vidro quebrado num raio de 50, 100 ou 250 m. Nunca durante tiro ou briga; nada é apagado do mundo além disso |
 
@@ -217,6 +223,7 @@ As preferências são do jogador, no KVP do cliente.
 | `mri_Qfps:Graphics` | Preset e todos os valores do ajuste fino, em JSON. As chaves da 1.0 (`PresetFps`, `LodDistance`, `LightsCutoff`, `ShadowsCutoff`) são lidas uma vez e apagadas |
 | `mri_Qfps:Prefs` | Automação, limpeza e contador na tela |
 | `mri_Qfps:TimecycleModifier` | Filtro ativo |
+| `mri_Qfps:TimecycleStrength` | Intensidade do filtro (float de 0.1 a 1.0) |
 | `mri_Qfps:Crosshair` | Mira em JSON; as 12 chaves antigas são convertidas e apagadas no primeiro save |
 | `mri_Qfps:Hitmarker` | Marcador, estilo, som e volume do acerto |
 
